@@ -30,3 +30,5 @@ Tento kurz je zamereny na seznameni se zaklady v programovacim jazyce Python. Ci
 # Introduction
 Opening presentation/ Uvodni prezentace -->
 [link](https://docs.google.com/presentation/d/1rz0A46HDcbyAdZMLucDNtpOg1RgB-Y_FIhyeHceTfm4/edit#slide=id.g89db67e723_1_393)
+
+[PREJIT NA LEKCI#01](https://github.com/Bralor/python-academy/tree/lekce01)
