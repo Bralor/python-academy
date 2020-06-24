@@ -338,4 +338,4 @@ Nahradime hodnotu promenne __ODDELOVAC__:
 ODDELOVAC = "=" * 35
 ```
 
-Pokracovat na [LEKCI#02](https://github.com/Bralor/python-academy/blob/master/README.md)
+Pokracovat na [Lekci#02](https://github.com/Bralor/python-academy/blob/lekce02/README.md)
