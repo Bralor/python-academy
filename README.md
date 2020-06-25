@@ -150,7 +150,7 @@ else:
 ```
 
 ## Jak ukoncit nas probihajici program?
-Pokud uzivatel nejakou podminku pri zadavani nesplni, chceme automaticky program ukoncit. Budeme pouzivat tzv. _ukoncovaci oznameni_. Jde o formu ukonceni prubehu naseho souboru. V Pythonu je vic moznosti jak ukonceni vyvolat (__quit()__/__exit()__).
+Pokud uzivatel nejakou podminku pri zadavani nesplni, chceme automaticky program ukoncit. Budeme pouzivat tzv. _ukoncovaci oznameni_. Jde o formu ukonceni prubehu naseho souboru. V Pythonu je vic moznosti jak ukonceni vyvolat (__quit()__/__exit()__). Ve zkratce mezi obema funkcemi neni zasadni rozdil. Obe funkce maji za nasledek spusteni te same ukoncovaci procedury. Takze duvod dvojiho oznaceni je zejmena kvuli snadnejsimu uzivatelskemu pouzivani.
 
 __Priklad__:
 ```python
@@ -176,9 +176,9 @@ __Priklad__:
 Takze nase varianta se slevou bude vypada nasledovne:
 ```python
 if destinace in SLEVY:
-    cena_po_sleve = 0.75 * cena
+    konecna_cena = 0.75 * cena
 else:
-    cena_po_sleve = cena
+    konecna_cena = cena
 ```
 
 
