@@ -40,9 +40,12 @@ Vyberte film: The Godfather
  'STOPAZ': '175 min'}
 ```
 
-# Prerequisites
-Zkopirujeme zadane slovniky do noveho souboru:
-```
+## Co budeme potrebovat?
+- Python 3.6+
+- textovy editor
+- vytvorit si novy soubor ve svem pracovnim adresari
+- predem zadane vstupy nize
+```python
 film1 = {
 'JMENO': 'Shawshank Redemption',
 'HODNOCENI': 93,
