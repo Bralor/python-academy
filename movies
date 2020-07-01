@@ -32,7 +32,7 @@ film["HRAJI"] = (
     "Mark Rolston",
     "James Whitmore",
     "Jeffrey DeMunn",
-    "Larry Brandenburg"    
+    "Larry Brandenburg"
 )
 
 # IV. KROK
@@ -119,30 +119,31 @@ Mame v nabidce tyto snimky:
 {list(filmovy_seznam.keys())}
 {ODDELOVAC}
 Vyberte kategorii:
-{ODDELOVAC} 
+{ODDELOVAC}
 {'DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE'.center(76, " ")}
 {ODDELOVAC}
 """
 )
 
-vyber = input("Vyberte moznost: ")
+vyber = input("VYBERTE MOZNOST: ")
 
 # VIII. KROK
 # Pouzijeme metodu .get()
 if vyber == "DETAILY FILMU".lower():
     print(ODDELOVAC)
-    pp(filmovy_seznam.get(vyber_filmu, "Vami zadany film neni v db"))
+    vyber_filmu = input("VYBERTE FILM: ")
+    pprint(filmovy_seznam.get(vyber_filmu, "Vami zadany film neni v db"))
 
 
 # IX. KROK
 # Vytvorime set z klice herci u slovniku Shawshank Redemption
 elif vyber == "SPOLECNE".lower():
     print(ODDELOVAC)
-    film1 = input("Vyberte prvniho filmu: ")
-    film2 = input("Vyberte druheho filmu: ")
+    film1 = input("VYBERTE I. FILM: ")
+    film2 = input("VYBERTE II. FILM: ")
     herci_film1 = set(filmovy_seznam[film1]["HRAJI"])
     herci_film2 = set(filmovy_seznam[film2]["HRAJI"])
-    
+
     prunik = herci_film1 & herci_film2
     print(f"SPOLECNI HERCI PRO *{filmovy_seznam[film1]['JMENO']}* A *{filmovy_seznam[film2]['JMENO']}*: {prunik}")
 
@@ -150,7 +151,7 @@ elif vyber == "SPOLECNE".lower():
 # Podmnozina
 elif vyber == "PODMNOZINA".lower():
     print(ODDELOVAC)
-    film1 = input("Vyberte jmeno filmu: ")
+    film1 = input("VYBERTE FILM: ")
     vzorek = input("ZADEJTE JMENA: ")
     print(set(vzorek.split(", ")).issubset(set(filmovy_seznam[film1]["HRAJI"])))
 
@@ -158,6 +159,6 @@ elif vyber == "PODMNOZINA".lower():
 # Rozdilnost
 elif vyber == "ROZDILNE".lower():
     print(ODDELOVAC)
-    film1 = input("Vyberte jmeno filmu: ")
+    film1 = input("VYBERTE FILM: ")
     vzorek = input("ZADEJTE JMENA: ")
     print(set(vzorek.split(", ")).isdisjoint(set(filmovy_seznam[film1]["HRAJI"])))
