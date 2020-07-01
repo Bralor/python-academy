@@ -349,4 +349,5 @@ True
 False
 
 ```
+Pokracovat na [Lekce#03](https://github.com/Bralor/python-academy/tree/lekce03)
 
