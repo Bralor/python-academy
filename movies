@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Lekce #3 - Uvod do programovani, Movies """
-from pprint import pprint as pp
+from pprint import pprint
 
 # I. KROK
 # Vytvorim novy (prazdny) slovnik
@@ -118,12 +118,10 @@ f"""{ODDELOVAC}
 Mame v nabidce tyto snimky:
 {list(filmovy_seznam.keys())}
 {ODDELOVAC}
-Vyberte kategorii:
+VYBERTE KATEGORII:
 {ODDELOVAC}
 {'DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE'.center(76, " ")}
-{ODDELOVAC}
-"""
-)
+{ODDELOVAC}""")
 
 vyber = input("VYBERTE MOZNOST: ")
 
@@ -132,8 +130,8 @@ vyber = input("VYBERTE MOZNOST: ")
 if vyber == "DETAILY FILMU".lower():
     print(ODDELOVAC)
     vyber_filmu = input("VYBERTE FILM: ")
+    print(ODDELOVAC)
     pprint(filmovy_seznam.get(vyber_filmu, "Vami zadany film neni v db"))
-
 
 # IX. KROK
 # Vytvorime set z klice herci u slovniku Shawshank Redemption

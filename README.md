@@ -30,14 +30,13 @@ __Komunikace s programem__:
 Mame v nabidce tyto snimky:
 ['Shawshank Redemption', 'The Godfather', 'The Dark Knight', 'The Prestige']
 ============================================================================
-Vyberte kategorii:
+VYBERTE KATEGORII:
 ============================================================================ 
               DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE              
 ============================================================================
-
-Vyberte moznost: detaily filmu
+VYBERTE MOZNOST: detaily filmu
 ============================================================================
-Vyberte moznost: The Dark Knight
+VYBERTE FILM: The Dark Knight
 {'HODNOCENI': '90/100',
  'HRAJI': ('Christian Bale',
            'Heath Ledger',
@@ -141,7 +140,7 @@ film4 = {
 ## Prvni krucek
 Vytvorime si novy soubor, pojmenujeme jej "movies.py" a zkopirujeme nasledujici sablonu:
 ```
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """ Lekce #3 - Uvod do programovani, Movies """
 from pprint import pprint  # -> vysvetlime pozdeji
 ```
@@ -178,26 +177,27 @@ print(slovnik)
 ```
 
 Pro ucely nasi ulohy nejprve vytvorime prazdne klice a hodnoty pridame az v dalsim kroku.
-__Doplnime nasi ulohu__:
-```python
-film["JMENO"] = ""
-film["HODNOCENI"] = ""
-film["ROK"] = None
-film["REZISER"] = ""
-film["STOPAZ"] = None
-film["HRAJI"] = ()
-```
-## Vlozime hodnoty pro existujici klice
-Muzeme je vkladat primo s hodnotami ale pro ucely dnesni lekce je budeme zadavat separatne. Vsimnete si, ze poradi ktere nam Python vraci nemusi odpovidat poradi, ktere jsme zadavaly.
 
 __Doplnime nasi ulohu__:
 ```python
-film["JMENO"] = "Shawshank Redemption"
-film["HODNOCENI"] = "93/100"
-film["ROK"] = 1994
-film["REZISER"] = "Frank Darabont"
-film["STOPAZ"] = 144
-film["HRAJI"] = (
+film1["JMENO"] = ""
+film1["HODNOCENI"] = ""
+film1["ROK"] = None
+film1["REZISER"] = ""
+film1["STOPAZ"] = None
+film1["HRAJI"] = ()
+```
+## Vlozime hodnoty pro existujici klice
+Muzeme je vkladat primo s hodnotami ale pro ucely dnesni lekce je budeme zadavat separatne. Vsimnete si, ze poradi ktere nam Python vraci nemusi odpovidat poradi, ktere jsme zadavali.
+
+__Doplnime nasi ulohu__:
+```python
+film1["JMENO"] = "Shawshank Redemption"
+film1["HODNOCENI"] = "93/100"
+film1["ROK"] = 1994
+film1["REZISER"] = "Frank Darabont"
+film1["STOPAZ"] = 144
+film1["HRAJI"] = (
     "Tim Robbins",
     "Morgan Freeman",
     "Bob Gunton",
@@ -324,6 +324,7 @@ __Vracime klice__:
 ### Doplnime do ulohy cele
 ```python
 ODDELOVAC = '=' * 76
+
 print(ODDELOVAC)
 print("Vitejte v nasi skromne filmove databazi".center(76, " "))
 print(
@@ -331,12 +332,10 @@ f"""{ODDELOVAC}
 Mame v nabidce tyto snimky:
 {list(filmovy_seznam.keys())}
 {ODDELOVAC}
-Vyberte kategorii:
+VYBERTE KATEGORII:
 {ODDELOVAC}
 {'DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE'.center(76, " ")}
-{ODDELOVAC}
-"""
-)
+{ODDELOVAC}""")
 ```
 ## Doplnime strom podminek
 Ten nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat. Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky.
@@ -350,7 +349,7 @@ Prvni podminka bude mit na starost obstarat vystup, ktery zahrnuje obsah jednotl
 
 Doplnime moznost zvolit si jeden rezim:
 ```python
-vyber = input("Vyberte moznost: ")
+vyber = input("VYBERTE MOZNOST: ")
 ```
 
 Dale doplnime prvni vetev s detaily:
@@ -376,7 +375,8 @@ __Doplnime__:
 ```python
 if vyber == "DETAILY FILMU".lower():
     print(ODDELOVAC)
-    vyber_filmu = input("Vyberte moznost: ")
+    vyber_filmu = input("VYBERTE FILM: ")
+    print(ODDELOVAC)
     pprint(filmovy_seznam.get(vyber_filmu, "Vami zadany film neni v db"))
 ```
 
@@ -387,7 +387,7 @@ Mnozina/set je opet neserazena kolekce udaju, ktera je typicka tim, ze uvnitr ne
 3. rozdil
 4. sym. rozdil
 
-## Jak vytvorit set
+## Jak vytvorit mnozinu
 [Vytvoreni](https://engeto.com/cs/kurz/online-python-akademie/studium/ArzFlswCT3qr8HS9R_oYbg/slovniky-a-mnoziny/mnoziny/vytvoreni-mnozin) pomoci dvou zpusobu:
 ```python
 novy_set = set(); type(novy_set)
@@ -424,7 +424,7 @@ __Priklad__:
 ```python
 set1 = {"Pavel", "Matous", "Tomas", "Martin"}
 set2 = {"Martin", "Petr", "Vojtech"}
-print(set1 & set2)
+print(set1 & set2)  # "Martin"
 ```
 
 __Doplnime__:
@@ -481,3 +481,5 @@ elif vyber == "ROZDILNE".lower():
     vzorek = input("ZADEJTE JMENA: ")
     print(set(vzorek.split(", ")).isdisjoint(set(filmovy_seznam[film1]["HRAJI"])))
 ```
+
+Pokracovat na Lekci#04
