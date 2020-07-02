@@ -1,4 +1,4 @@
-[VRATIT NA UVOD](https://github.com/Bralor/python-academy/blob/master/README.md)
+Vratit na [Uvodni lekci](https://github.com/Bralor/python-academy/blob/master/README.md)
 
 <p align="center">
   <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
@@ -338,4 +338,4 @@ Nahradime hodnotu promenne __ODDELOVAC__:
 ODDELOVAC = "=" * 35
 ```
 
-[POKRACOVAT NA LEKCI#02](https://github.com/Bralor/python-academy/blob/master/README.md)
+Pokracovat na [Lekci#02](https://github.com/Bralor/python-academy/blob/lekce02/README.md)
