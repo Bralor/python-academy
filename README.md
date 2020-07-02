@@ -1,4 +1,4 @@
-Minula lekce[lekce#01](https://github.com/Bralor/python-academy/tree/lekce01)
+Minula [lekce#01](https://github.com/Bralor/python-academy/tree/lekce01)
 
 <p align="center">
   <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
@@ -338,4 +338,4 @@ elif POCET_OBYVATEL == 374_734 and METRO == False:
     print("Jasne BRNO!")
 ```
 
-Pokracovat na [Lekci#02](https://github.com/Bralor/python-academy/tree/lekce01)
+Pokracovat na [Lekci#03](https://github.com/Bralor/python-academy/tree/lekce03)
