@@ -230,7 +230,7 @@ Celkem muzeme vyuzit 3 zpusobu, ktere odstrani klice a jejich hodnoty:
 slovnik = dict()
 slovnik["JMENO"] = "Matous"
 slovnik["PRIJMENI"] = "Holinka"
-del slovnik["Jmeno"]
+del slovnik["JMENO"]
 ```
 2. Zpusob vraci hodnotu spojenou s klicem jako vystup a odebere par ze slovniku
 ```python
@@ -274,11 +274,11 @@ Nejprve vlozime zadane slovniky (film2~film4) do naseho pracovniho souboru a pot
 
 __Doplneni__:
 ```python
-filmovy_seznam = {}
-filmovy_seznam[film1["JMENO"]] = film1
-filmovy_seznam[film2["JMENO"]] = film2
-filmovy_seznam[film3["JMENO"]] = film3
-filmovy_seznam[film4["JMENO"]] = film4
+filmovy_slovnik = {}
+filmovy_slovnik[film1["JMENO"]] = film1
+filmovy_slovnik[film2["JMENO"]] = film2
+filmovy_slovnik[film3["JMENO"]] = film3
+filmovy_slovnik[film4["JMENO"]] = film4
 ```
 
 ## Vytvorime dotazovac
@@ -318,7 +318,7 @@ Mezi dalsi metody slovniku patri takove, ktere nam umozni nahledy.
 
 __Vracime klice__:
 ```python
-{list(filmovy_seznam.keys())}
+{list(filmovy_slovnik.keys())}
 ```
 
 ### Doplnime do ulohy cele
@@ -330,7 +330,7 @@ print("Vitejte v nasi skromne filmove databazi".center(76, " "))
 print(
 f"""{ODDELOVAC}
 Mame v nabidce tyto snimky:
-{list(filmovy_seznam.keys())}
+{list(filmovy_slovnik.keys())}
 {ODDELOVAC}
 VYBERTE KATEGORII:
 {ODDELOVAC}
@@ -377,7 +377,7 @@ if vyber == "DETAILY FILMU".lower():
     print(ODDELOVAC)
     vyber_filmu = input("VYBERTE FILM: ")
     print(ODDELOVAC)
-    pprint(filmovy_seznam.get(vyber_filmu, "Vami zadany film neni v db"))
+    pprint(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
 ```
 
 # Mnoziny a.k.a sety
@@ -433,11 +433,11 @@ elif vyber == "SPOLECNE".lower():
     print(ODDELOVAC)
     vyber_film1 = input("Vyberte prvniho filmu: ")
     vyber_film2 = input("Vyberte druheho filmu: ")
-    herci_film1 = set(filmovy_seznam[vyber_film1]["HRAJI"])
-    herci_film2 = set(filmovy_seznam[vyber_film2]["HRAJI"])
+    herci_film1 = set(filmovy_slovnik[vyber_film1]["HRAJI"])
+    herci_film2 = set(filmovy_slovnik[vyber_film2]["HRAJI"])
 
     prunik = herci_film1 & herci_film2
-    print(f"SPOLECNI HERCI PRO *{filmovy_seznam[vyber_film1]['JMENO']}* A *{filmovy_seznam[vyber_film2]['JMENO']}*: {prunik}")
+    print(f"SPOLECNI HERCI PRO *{filmovy_slovnik[vyber_film1]['JMENO']}* A *{filmovy_slovnik[vyber_film2]['JMENO']}*: {prunik}")
 
 ```
 
@@ -459,7 +459,7 @@ elif vyber == "PODMNOZINA".lower():
     print(ODDELOVAC)
     vyber_film = input("Vyberte jmeno filmu: ")
     vzorek = input("ZADEJTE JMENA: ")
-    print(set(vzorek.split(", ")).issubset(set(filmovy_seznam[vyber_film]["HRAJI"])))
+    print(set(vzorek.split(", ")).issubset(set(filmovy_slovnik[vyber_film]["HRAJI"])))
 ```
 
 ## Jsou tyto dva sety odlisne?
@@ -479,7 +479,7 @@ elif vyber == "ROZDILNE".lower():
     print(ODDELOVAC)
     film1 = input("Vyberte jmeno filmu: ")
     vzorek = input("ZADEJTE JMENA: ")
-    print(set(vzorek.split(", ")).isdisjoint(set(filmovy_seznam[film1]["HRAJI"])))
+    print(set(vzorek.split(", ")).isdisjoint(set(filmovy_slovnik[film1]["HRAJI"])))
 ```
 
 Pokracovat na Lekci#04
