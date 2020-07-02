@@ -4,25 +4,25 @@ from pprint import pprint
 
 # I. KROK
 # Vytvorim novy (prazdny) slovnik
-film = {}
+film1 = {}
 
 # II. KROK
 # Vlozim novy klice
-film["JMENO"] = ""
-film["HODNOCENI"] = ""
-film["ROK"] = None
-film["REZISER"] = ""
-film["STOPAZ"] = None
-film["HRAJI"] = ()
+film1["JMENO"] = ""
+film1["HODNOCENI"] = ""
+film1["ROK"] = None
+film1["REZISER"] = ""
+film1["STOPAZ"] = None
+film1["HRAJI"] = ()
 
 # III. KROK
 # Vlozim hodnoty klicum
-film["JMENO"] = "Shawshank Redemption"
-film["HODNOCENI"] = "93/100"
-film["ROK"] = 1994
-film["REZISER"] = "Frank Darabont"
-film["STOPAZ"] = 144
-film["HRAJI"] = (
+film1["JMENO"] = "Shawshank Redemption"
+film1["HODNOCENI"] = "93/100"
+film1["ROK"] = 1994
+film1["REZISER"] = "Frank Darabont"
+film1["STOPAZ"] = 144
+film1["HRAJI"] = (
     "Tim Robbins",
     "Morgan Freeman",
     "Bob Gunton",
@@ -37,12 +37,12 @@ film["HRAJI"] = (
 
 # IV. KROK
 # Aktualizujeme klic metodou .update()
-film.update({"JMENO": "Shawnshak Redemption"})
+film1.update({"JMENO": "Shawnshak Redemption"})
 
 # V. KROK
 # Smazene klic JMENO
-film.pop("JMENO")
-film["JMENO"] = "Shawshank Redemption"
+film1.pop("JMENO")
+film1["JMENO"] = "Shawshank Redemption"
 
 # VI. KROK
 # Nestujeme slovniky
@@ -101,11 +101,11 @@ film4 = {
         "David Bowie"
     )
 }
-filmovy_seznam = {}
-filmovy_seznam[film["JMENO"]] = film
-filmovy_seznam[film2["JMENO"]] = film2
-filmovy_seznam[film3["JMENO"]] = film3
-filmovy_seznam[film4["JMENO"]] = film4
+filmovy_slovnik = {}
+filmovy_slovnik[film1["JMENO"]] = film1
+filmovy_slovnik[film2["JMENO"]] = film2
+filmovy_slovnik[film3["JMENO"]] = film3
+filmovy_slovnik[film4["JMENO"]] = film4
 
 # VII. KROK
 # Vytvorime pomyslneho interpreta naseho slovniku
@@ -116,47 +116,47 @@ print("Vitejte v nasi skromne filmove databazi".center(76, " "))
 print(
 f"""{ODDELOVAC}
 Mame v nabidce tyto snimky:
-{list(filmovy_seznam.keys())}
+{list(filmovy_slovnik.keys())}
 {ODDELOVAC}
 VYBERTE KATEGORII:
 {ODDELOVAC}
 {'DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE'.center(76, " ")}
 {ODDELOVAC}""")
 
-vyber = input("VYBERTE MOZNOST: ")
+vyber = input("VYBERTE MOZNOST: ").lower()
 
 # VIII. KROK
 # Pouzijeme metodu .get()
-if vyber == "DETAILY FILMU".lower():
+if vyber == "detaily filmu":
     print(ODDELOVAC)
     vyber_filmu = input("VYBERTE FILM: ")
     print(ODDELOVAC)
-    pprint(filmovy_seznam.get(vyber_filmu, "Vami zadany film neni v db"))
+    pprint(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
 
 # IX. KROK
 # Vytvorime set z klice herci u slovniku Shawshank Redemption
-elif vyber == "SPOLECNE".lower():
+elif vyber == "spolecne":
     print(ODDELOVAC)
     film1 = input("VYBERTE I. FILM: ")
     film2 = input("VYBERTE II. FILM: ")
-    herci_film1 = set(filmovy_seznam[film1]["HRAJI"])
-    herci_film2 = set(filmovy_seznam[film2]["HRAJI"])
+    herci_film1 = set(filmovy_slovnik[film1]["HRAJI"])
+    herci_film2 = set(filmovy_slovnik[film2]["HRAJI"])
 
     prunik = herci_film1 & herci_film2
-    print(f"SPOLECNI HERCI PRO *{filmovy_seznam[film1]['JMENO']}* A *{filmovy_seznam[film2]['JMENO']}*: {prunik}")
+    print(f"SPOLECNI HERCI PRO *{filmovy_slovnik[film1]['JMENO']}* A *{filmovy_slovnik[film2]['JMENO']}*: {prunik}")
 
 # X. KROK
 # Podmnozina
-elif vyber == "PODMNOZINA".lower():
+elif vyber == "podmnozina":
     print(ODDELOVAC)
     film1 = input("VYBERTE FILM: ")
     vzorek = input("ZADEJTE JMENA: ")
-    print(set(vzorek.split(", ")).issubset(set(filmovy_seznam[film1]["HRAJI"])))
+    print(set(vzorek.split(", ")).issubset(set(filmovy_slovnik[film1]["HRAJI"])))
 
 # XI. KROK
 # Rozdilnost
-elif vyber == "ROZDILNE".lower():
+elif vyber == "rozdilne":
     print(ODDELOVAC)
     film1 = input("VYBERTE FILM: ")
     vzorek = input("ZADEJTE JMENA: ")
-    print(set(vzorek.split(", ")).isdisjoint(set(filmovy_seznam[film1]["HRAJI"])))
+    print(set(vzorek.split(", ")).isdisjoint(set(filmovy_slovnik[film1]["HRAJI"])))
