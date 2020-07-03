@@ -482,4 +482,4 @@ elif vyber == "ROZDILNE".lower():
     print(set(vzorek.split(", ")).isdisjoint(set(filmovy_slovnik[film1]["HRAJI"])))
 ```
 
-Pokracovat na Lekci#04
+Pokracovat na [lekci#04](https://github.com/Bralor/python-academy/tree/lekce04)
