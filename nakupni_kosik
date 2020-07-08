@@ -88,7 +88,7 @@ else:
 #    print(f"CENA CELKEM: {CELKEM} CZK")
 
 # VII. KROK
-# pouziti prirazovaciho operatoru *walrus operator*
+# pouziti prirazovaciho operatoru
 while (vyber_zbozi := input("VYBERTE ZBOZI: ")) != 'exit':
     if vyber_zbozi not in POTRAVINY:
         print("TOTO ZBOZI NEMAME V NABIDKCE!")
