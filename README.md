@@ -6,19 +6,34 @@ Minula [lekce#03](https://github.com/Bralor/python-academy/tree/lekce03)
 
 # Python academy, lekce 04
 ## Dulezite odkazy
-- [Engeto.com](https://engeto.com/)
+- [Portal Engeto.com](https://engeto.com/)
 - [Python academy, repozitar](https://github.com/Bralor/python-academy)
 - [Walrus operator](https://realpython.com/lessons/assignment-expressions/)
 
-# Dnesni ukol
-V ramciho dnesni lekce se pokusime nasi praci v Pythonu lehce automatizovat. Probereme prvni typ cyklu v Pythonu pomoci *while ...* a povime si jak jej prakticky pouzivat.
+## Co nas dnes ceka?
+Doposud jsme se snazili kazdy udaj zadat/vypisovat rucne. Kazde oznameni v 
+kodu melo svuju prislusny radek. Ode dneska se budeme snazit zapis trochu 
+automatizovat. Probereme spolecne prvni typ smycek/cyklus v Pythonu.
+Bude to tzv. cyklus _while_, o kterem se budeme podrobneji bavit a naucime se 
+ho pouzivat.
 
-# Nakupni kosik
-Budeme chtit vytvorit virtualni kosik, do ktereho budeme moci vkladat zbozi z nabidky (ze slovniku). Nas kosik bude umet vypisovat celkovou hodnotu zbozi v kosiku a soucasne ukazovat, co je jeho obsahem.
+## Nakupni kosik 
+V ramci dnesni hodiny se budeme snazit vytvorit virtualni nakupni kosik, do
+ktereho budeme moci jako zakaznik vkladat zbozi z nabidky. Nas kosik bude umet
+vypisovat celkovou hodnotu zbozi v kosiku a soucasne ukazovat, co je jeho 
+obsahem.
 
-# Nas cil
-Vystup by na konci lekce mohl vypadat nasledovne:
+## Ukazka
+Po spusteni by mel program vypadat nasledovne:
+```bash
+$ ./nakupni_kosik
 ```
+Cela ukazka z terminalu: 
+```bash
+VITEJTE V NASEM VIRTUALNIM OBCHODE!
+========================================
+VYBERTE SI Z NASEHO ZBOZI:
+========================================
 {'banan': 30,
  'chleb': 20,
  'jablko': 10,
@@ -27,21 +42,31 @@ Vystup by na konci lekce mohl vypadat nasledovne:
  'mleko': 30,
  'pomeranc': 15}
 ========================================
-VYBERTE ZBOZI: chleb
-VYBERTE ZBOZI: pomeranc
-VYBERTE ZBOZI: maso
-VYBERTE ZBOZI: exit
+VYBERTE ZBOZI: banan
+VYBERTE ZBOZI: mleko
+VYBERTE ZBOZI: pomeranc 
+VYBERTE ZBOZI: exit 
 ========================================
-{'chleb': 20, 'pomeranc': 15, 'maso': 100}
+{'banan': 30, 'mleko': 30, 'pomeranc': 15}
 ========================================
-CENA CELKEM: 135 CZK
+CENA CELKEM: 75 CZK
+Vystup by na konci lekce mohl vypadat nasledovne:
 ```
-# Prerequisites
-- python 3.8!
+## Co budeme potrebovat? 
+- python 3.8! (kvuli novemu operatoru)
 - text. editor
 - [podminky](https://github.com/Bralor/python_academy/tree/master/lesson02#podminkovy-zapis)
 - [slovnik](https://github.com/Bralor/python_academy/tree/master/lesson03#slovnik)
-```
+
+## Muzeme zacit!
+<p align="center">
+  <img src="https://media.giphy.com/media/GSrZUFaPs7yCs/source.gif" width="300" height="300">
+</p>
+
+Nejprve si vytvorime novy soubor pro dnesni lekci. Po te nakopirujeme zadane
+udaje, se kterymi budeme chtit pracovat.
+
+```python
 KOSIK = {}
 ODDELOVAC = "=" * 40
 POTRAVINY = {
@@ -53,60 +78,123 @@ POTRAVINY = {
     "jablko": 10,
     "pomeranc": 15,
 }
-
 ```
-# Postup
-Opet si otevreme novy soubor *.py* a nakopirujeme sablonu nize:
-```
-#!/usr/bin/env python3
-""" Lekce #3 - Uvod do programovani, Movie dictionary """
-from pprint import pprint as pp
-
-# I. KROK
-# Vytvorime promenne, se kterymi budeme pracovat
-# Nabidku potravin, *POTRAVINY*
-# Prazdny slovnik, *KOSIK*
-# Oddelovac, *ODDELOVAC*
-
-
+## Vypiseme uvodni text
+Na uvod nam bude stacit vypsat, ze kterych potravin zakaznik muze vybirat. Plus
+oddelovaci lemovany uvodni text. Prvni cast by mohla vypadat nasledovne:
+```python
 # II. KROK
-# Vypiseme nabidku potravin a oddelime
+# Vypiseme nabidku a oddelime
+print(ODDELOVAC)
+print("VITEJTE V NASEM VIRTUALNIM OBCHODE!")
+print(ODDELOVAC)
+print("VYBERTE SI Z NASEHO ZBOZI:")
+print(ODDELOVAC)
+pprint(POTRAVINY)
+print(ODDELOVAC)
+```
+Kdyz se koukame na promennou __ODDELOVAC__, zacina byt malicko napadna. Proto
+se dneska naucime pouzivat atribut funkce __print__. Tim bude _end_. Jde o
+volitelny atribut, ktery neni nutne zadavat. Slouzi hlavne k tomu, abychom na 
+konec toho, co chceme zobrazit mohli doplnit libovolny znak/znaky.
 
+__Ukazka__:
+```python
+print("Ahoj, ze 4. lekce!", end="\n##################")
+```
 
-# III. KROK
-# Vlozit 3 potraviny z vyberu do kosiku
-# Pomoci input() + metod spojenymi se slovniky
+## Takze...
+Nyni muzeme prvni vystupni sekci doplnit o nas novy atribut __end__.
+```python
+print("VITEJTE V NASEM VIRTUALNIM OBCHODE!", end=f"\n{ODDELOVAC}")
+print("VYBERTE SI Z NASEHO ZBOZI:", end="\n{ODDELOVAC}")
+pprint(POTRAVINY)
+print(ODDELOVAC)
+```
 
+## Chceme vybrat zbozi
+Nyni se budeme snazit vybrat 3 polozky z promenne _POTRAVINY_ a pridat je do
+promenne _KOSIK_.
 
-# IV. KROK
-# Zakomentuj predchozi kod!
-# Celou ulohu predelame pomoci smycky *while*
-# Plnime kosik, dokud v nem nejsou 3 predmety
+### Nejprve potrebuje vstup...
+Abychom meli moznost si vybrat, musime vyuzit funkce __input__:
+```python
+vyber_potravinu = input("VYBERTE ZBOZI: ")
+``` 
+### ...Vlozime do kosiku...
+Jakmile jsme vybrali zbozi, musime jej vlozim do promenne __KOSIK__:
+```python
+KOSIK[vyber_potravinu] = POTRAVINY.get(vyber_potravinu, "NENI SKLADEM")
+```
+### ...Vypisime cenu
+Jakmile je potravina v seznamu, zjistime cenu a vypiseme ji:
+```python
+print(f"CELKEM: {sum(KOSIK.values())} CZK")
+```
 
+## Trochu obtiznejsi varianta
+Jakmile se nam podari cela procedura zapsat. Vyzkousejme si to cele zopakovat
+pro vyber 4 polozek ze zadaneho vyberu.
 
-# V. KROK
-# Vytvorim *else* vetev
-# Doplnime sumu veskereho zbozi v kosiku
+__Mozne reseni__:
+```python
+vyber1 = input("VYBERTE ZBOZI c.1: ")
+vyber2 = input("VYBERTE ZBOZI c.2  ")
+vyber3 = input("VYBERTE ZBOZI c.3: ")
 
+KOSIK[vyber1] = POTRAVINY.get(vyber1, "NENI SKLADEM")
+KOSIK[vyber2] = POTRAVINY.get(vyber2, "NENI SKLADEM")
+KOSIK[vyber3] = POTRAVINY.get(vyber3, "NENI SKLADEM")
 
-# VI. KROK
-# Zakomentuj predchozi kod!
-# Aplikujeme nekonecnou smycku
-# Koncept *break/continue* statement
+print(ODDELOVAC)
+print(KOSIK)
+print(ODDELOVAC)
+print(f"CELKEM: {sum(KOSIK.values())} CZK")
+``` 
 
-# VII. KROK
-# Zakomentuj predchozi kod!
-# pouziti prirazovaciho operatoru *walrus operator* --> Python 3.8+
+## Citite prsty?
+Predchozi krok byl jeste unosny. Trochu.. Predstavme si ale, ze se budeme
+snazit zapsat desitky nebo stovky polozek. Tady uz by situace, kdy budu udaje
+opakovane vkladat, zapisovat do slovniku a nasledne jej scitat a vypisovat
+neprehledna.
 
+## Jak to obejit?
+Na stesti v Pythonu existuje neco, co nam opakovani, takovych kroku zajisti. Je
+to prave _cyklus_, nebo take _smycka_. Tedy proces, ktery probiha opakovane. V
+ramci dnesni lekce se seznamime s prvnim typem smycek.
+
+## while cyklus
+Jak uz jmeno prozradi, oznameni teto smycky se schovava za klicovym slovem
+__while__. Popiseme si, jak __while__ funguje:
+```python
+while <podminka>:
+    # provadej toto pokud je podminka pravdiva (TRUE)
+# pokracuj dal, pokud smycka skoncila
+```
+### Podminka
+V zahlavi si muzeme vsimnout pojmu _podminka_. Je to tak, ze smycka probiha,
+pokud podminka v zahlavi vraci boolean hodnotu _True_. Jakmile dostane _False_,
+cyklus skonci.
+
+### -> True
+Pokud nam podminka vraci __True__, probiha ten kod, ktery je odsazeny hned pod
+zahlavim. Tedy v nasem vzoru cast:
+```python
+    # provadej toto pokud je podminka pravdiva (TRUE)
+```
+Vsimnete si urcite povinneho odsazeni.
+
+### -> False
+Jakmile nam ale podminka v zahlavi vrati _False_. Cela smycka se ukonci a
+nasleduje kod za ni. Tedy:
+```python
+# pokracuj dal, pokud smycka skoncila
 ```
 
 # Cheatsheet s priklady
 # While cyklus
 Je to jeden z [cyklu](https://engeto.com/cs/kurz/online-python-akademie/studium/y1BTUUW1Q12bjKt1MGVJRw/rozsireni-sekvenci-smycka-while/smycka-while/princip-while) v Pythonu, ktery umoznuje opakovat libovolnou cast naseho kodu. Opet je slovo *while* nejaky rezervovany pojem, ktery Pythonu rozezna.
 ```
-while <podminka>:
-    # provadej toto pokud je podminka pravdiva (TRUE)
-# pokracuj dal, pokud smycka skoncila
 ```
 Priklad:
 ```
