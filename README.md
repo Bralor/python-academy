@@ -11,16 +11,16 @@ Minula [lekce#03](https://github.com/Bralor/python-academy/tree/lekce03)
 - [Walrus operator](https://realpython.com/lessons/assignment-expressions/)
 
 ## Co nas dnes ceka?
-Doposud jsme se snazili kazdy udaj zadat/vypisovat rucne. Kazde oznameni v 
-kodu melo svuju prislusny radek. Ode dneska se budeme snazit zapis trochu 
+Doposud jsme se snazili kazdy udaj zadat/vypisovat rucne. Kazde oznameni v
+kodu melo svuju prislusny radek. Ode dneska se budeme snazit zapis trochu
 automatizovat. Probereme spolecne prvni typ smycek/cyklus v Pythonu.
-Bude to tzv. cyklus _while_, o kterem se budeme podrobneji bavit a naucime se 
+Bude to tzv. cyklus _while_, o kterem se budeme podrobneji bavit a naucime se
 ho pouzivat.
 
-## Nakupni kosik 
+## Nakupni kosik
 V ramci dnesni hodiny se budeme snazit vytvorit virtualni nakupni kosik, do
 ktereho budeme moci jako zakaznik vkladat zbozi z nabidky. Nas kosik bude umet
-vypisovat celkovou hodnotu zbozi v kosiku a soucasne ukazovat, co je jeho 
+vypisovat celkovou hodnotu zbozi v kosiku a soucasne ukazovat, co je jeho
 obsahem.
 
 ## Ukazka
@@ -95,19 +95,19 @@ print(ODDELOVAC)
 ```
 Kdyz se koukame na promennou __ODDELOVAC__, zacina byt malicko napadna. Proto
 se dneska naucime pouzivat atribut funkce __print__. Tim bude _end_. Jde o
-volitelny atribut, ktery neni nutne zadavat. Slouzi hlavne k tomu, abychom na 
+volitelny atribut, ktery neni nutne zadavat. Slouzi hlavne k tomu, abychom na
 konec toho, co chceme zobrazit mohli doplnit libovolny znak/znaky.
 
 __Ukazka__:
 ```python
-print("Ahoj, ze 4. lekce!", end="\n##################")
+print("Ahoj, ze 4. lekce!", end="\n##################\n")
 ```
 
 ## Takze...
 Nyni muzeme prvni vystupni sekci doplnit o nas novy atribut __end__.
 ```python
-print("VITEJTE V NASEM VIRTUALNIM OBCHODE!", end=f"\n{ODDELOVAC}")
-print("VYBERTE SI Z NASEHO ZBOZI:", end="\n{ODDELOVAC}")
+print("VITEJTE V NASEM VIRTUALNIM OBCHODE!", end=f"\n{ODDELOVAC\n}")
+print("VYBERTE SI Z NASEHO ZBOZI:", end="\n{ODDELOVAC\n}")
 pprint(POTRAVINY)
 print(ODDELOVAC)
 ```
@@ -120,7 +120,7 @@ promenne _KOSIK_.
 Abychom meli moznost si vybrat, musime vyuzit funkce __input__:
 ```python
 vyber_potravinu = input("VYBERTE ZBOZI: ")
-``` 
+```
 ### ...Vlozime do kosiku...
 Jakmile jsme vybrali zbozi, musime jej vlozim do promenne __KOSIK__:
 ```python
@@ -138,6 +138,7 @@ pro vyber 4 polozek ze zadaneho vyberu.
 
 __Mozne reseni__:
 ```python
+# III. KROK
 vyber1 = input("VYBERTE ZBOZI c.1: ")
 vyber2 = input("VYBERTE ZBOZI c.2  ")
 vyber3 = input("VYBERTE ZBOZI c.3: ")
@@ -147,10 +148,9 @@ KOSIK[vyber2] = POTRAVINY.get(vyber2, "NENI SKLADEM")
 KOSIK[vyber3] = POTRAVINY.get(vyber3, "NENI SKLADEM")
 
 print(ODDELOVAC)
-print(KOSIK)
-print(ODDELOVAC)
-print(f"CELKEM: {sum(KOSIK.values())} CZK")
-``` 
+print(KOSIK, end=f"\n{ODDELOVAC}\n")
+print(f"CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
+```
 
 ## Citite prsty?
 Predchozi krok byl jeste unosny. Trochu.. Predstavme si ale, ze se budeme
@@ -191,61 +191,57 @@ nasleduje kod za ni. Tedy:
 # pokracuj dal, pokud smycka skoncila
 ```
 
-# Cheatsheet s priklady
-# While cyklus
-Je to jeden z [cyklu](https://engeto.com/cs/kurz/online-python-akademie/studium/y1BTUUW1Q12bjKt1MGVJRw/rozsireni-sekvenci-smycka-while/smycka-while/princip-while) v Pythonu, ktery umoznuje opakovat libovolnou cast naseho kodu. Opet je slovo *while* nejaky rezervovany pojem, ktery Pythonu rozezna.
-```
-```
-Priklad:
-```
+## Jednoducha ukazka
+Pojdme spolecne mrknout na __while__ cyklus v praxi:
+```python
 x = 0
 
->>> while x < 10:
-...     print(f"x={x}; {x}<10, v poradku!")
-...     x = x + 1
-... 
-x=0; 0<10, v poradku!
-x=1; 1<10, v poradku!
-x=2; 2<10, v poradku!
-x=3; 3<10, v poradku!
-x=4; 4<10, v poradku!
-x=5; 5<10, v poradku!
-x=6; 6<10, v poradku!
-x=7; 7<10, v poradku!
-x=8; 8<10, v poradku!
-x=9; 9<10, v poradku!
+while x < 10:
+    print(f"x={x}; {x}<10, v poradku!")
+    x = x + 1
+print(f"x={x}; {x}=10, konec smycky, pokracujeme...")
+```
+## Vyzkousejme while!
+Na zaklade toho, co jsme se pred chvili o __while__ cyklus rekli, pojdme
+upravit nas kod z [kroku III.](#-trochu-obtiznejsi-varianta):
+```python
+while len(KOSIK) < 3:
+    vyber_zbozi = input(f"VYBERTE ZBOZI (AKTUALNI POCET: {len(KOSIK)}): ")
+    KOSIK[vyber_zbozi] = POTRAVINY.get(vyber_zbozi, "NENI SKLADEM")
+```
+Ted uz staci jen dopsat vypocet celkove ceny nakupu. Muzeme pokracovat v kodu
+pod smyckou nebo pouzit podminkovou vetev _else_.
 
+__Ukazka__:
+```python
+while <podminka>:
+    <proved pokud podminka -> True>
+else:
+    <proved pokud podminka -> False>
 ```
-# While + else
-While cyklus ma spoustu ze sve podstaty spolecne s podminkovym zapisem. Mimo struktury zapisu napr. *else*. Pokud se podminka v zahlavi vyhodnoti jako NEPRAVDIVA, potom se nevykonava kod v odsazenem bloku po zahlavi, ale v prave *else*.
+__Doplneny zapis__:
+```python
+else:
+    print(ODDELOVAC)
+    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC\n}")
+    print(KOSIK, end=f"\n{ODDELOVAC\n}")
+    print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC\n}")
 ```
->>> x = 0
->>> while x < 10:
-...     print(f"x={x}; {x}<10, v poradku!")
-...     x = x + 1
-... else:
-...     print(f"x=10; 10==10, cyklus konci!")
-... 
-x=0; 0<10, v poradku!
-x=1; 1<10, v poradku!
-x=2; 2<10, v poradku!
-x=3; 3<10, v poradku!
-x=4; 4<10, v poradku!
-x=5; 5<10, v poradku!
-x=6; 6<10, v poradku!
-x=7; 7<10, v poradku!
-x=8; 8<10, v poradku!
-x=9; 9<10, v poradku!
-x=10; 10==10, cyklus konci!
-```
+## Proc jenom 3 polozky?
+Dalsi otazkou zamysleni, je vyber maximalniho poctu polozek pro kosik. Ukoncit
+po 3, 4, 5 polozkach? Nechat jej neomezeny? Jak tedy nakup ukoncit? 
 
-# Nekonecny cyklus
-Jednou z moznosti, kterou *while* smycka nabizi je zapsani [nekonecne](https://engeto.com/cs/kurz/online-python-akademie/studium/jSauyS9oTWW2PX_0PL9PZw/rozsireni-sekvenci-smycka-while/smycka-while/preruseni-while-break) smycky.
-Jak by smycka vypadat nemela:
-```
->>> x = 0
->>> while x < 10:
-...     print(f"x={x}; {x}<10, v poradku!")
+### Dokdy podminka probiha?
+Na uvod ke smycce __while__ jsme si rekli, ze smycka bezi tak dlouho, dokud
+podminka vraci __True__. Co kdyz ale explicitne zapisu, ze ma podminka ma
+hodnotu __True__?
+__Ukazka__:
+```python
+x = 0
+
+while x < 10:
+    print(f"x={x}; {x}<10, v poradku!")
+
 x=0; 0<10, v poradku!
 x=0; 0<10, v poradku!
 x=0; 0<10, v poradku!
@@ -253,109 +249,159 @@ x=0; 0<10, v poradku!
 ...
 <ctrl+C --> ukonci>
 ```
-Jak vytvorit nekonecnou smycku, ktera ma ucel:
-```
->>> cislo = 2
->>> prepinac = True
->>> while prepinac:
-...     cislo = cislo ** cislo
-...     kontrola = input("PRO UKONCENI NAPIS 'q': ")
-...     if kontrola == "q":
-...             prepinac = False
-...     else:
-...             print(cislo)
-... 
-PRO UKONCENI NAPIS 'q': 
-4
-PRO UKONCENI NAPIS 'q': 
-256
+Muze se mi stat, ze pokud podminku postavim nevhodne, tak vytvorim nekonecnou
+smycku. Pripadne tedy muzu mit vytvoreni nekonecne smycky umyslne, potom ale
+potrebuji ohlaseni, ktere je schopne prubeh ukoncit.
 
-```
-# Break + continue
-V ramci pouziti smycek muzeme vyuzivat dvou ohlasenich uvnitr smycky.
-1. [break](https://engeto.com/cs/kurz/online-python-akademie/studium/jSauyS9oTWW2PX_0PL9PZw/rozsireni-sekvenci-smycka-while/smycka-while/preruseni-while-break) - pri cteni odsazeneho bloku narazim na toto ohlaseni a smycku ukoncim
-2. continue - ... vracim se opet do zahlavi a zacinam dalsi cyklus
-Priklad BREAK:
-```
->>> while cislo < 100:
-...     cislo = cislo + 2
-...     if cislo == 14:
-...             break
-...     else:
-...             print(cislo)
-... 
-2
-4
-6
-8
-10
-12
-```
-Priklad CONTINUE:
-```
->>> cislo = 0
->>> while cislo < 100:
-...     cislo = cislo + 3
-...     if cislo % 15 == 0:
-...             print(f"NASOBEK 15ti! Cislo --> {cislo}")
-...             continue
-...     else:
-...             print(cislo)
-... 
-3
-6
-9
-12
-NASOBEK 15ti! Cislo --> 15
-18
-21
-24
-27
-NASOBEK 15ti! Cislo --> 30
-33
-36
-39
-42
-NASOBEK 15ti! Cislo --> 45
-48
-51
-54
-57
-NASOBEK 15ti! Cislo --> 60
-63
-66
-69
-72
-NASOBEK 15ti! Cislo --> 75
-78
-81
-84
-87
-NASOBEK 15ti! Cislo --> 90
-93
-96
-99
-102
+__Ukazka__:
+```python
+cislo = 2
+prepinac = True
 
+while prepinac:
+    cislo = cislo ** cislo
+    kontrola = input("PRO UKONCENI NAPIS 'q': ").lower()
+
+    if kontrola == "q":
+            prepinac = False
+    else:
+            print(cislo)
 ```
 
-# Walrus (prirazovaci) operator
-Prirazovaci operator, nebo prirazovaci vyraz je v Pythonu pomerne nova zalezitost. Jeho jmeno je odvozene od symbolu jejichz kombinace pripomina mroze. Jeho ucel spociva ve zkraceni definice promenne a jejiho pouziti do jedne konstrukce (formy zapisu).
+## Nase nova nekonecna smycka!
+<p align="center">
+  <img src="https://media.giphy.com/media/qVVVfmHDMBZug/source.gif" width="300" height="300">
+</p>
+
+Nyni pojdme upravit nas kod tak, aby bylo mozne vkladat polozky do nakupniho
+kosiku tak dlouho, jak jen uzivatel bude potrebovat.
+
+__Doplneni programu__:
+```python
+pokracovat = True
+
+while pokracovat:
+    vyber_zbozi = input(f"VYBERTE ZBOZI (AKTUALNI POCET: {len(KOSIK)}): ")
+    KOSIK[vyber_zbozi] = POTRAVINY.get(vyber_zbozi, "NENI SKLADEM")
+
+    kontrola = input("POKRACOVAT V NAKUPU? (y/n)")
+    if kontrola == "n":
+        pokracovat = False
+
+else:
+    print(ODDELOVAC)
+    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC}\n")
+    print(KOSIK, end=f"\n{ODDELOVAC}\n")
+    print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
 ```
->>> while ((dotaz:=input("VLOZ CISLO: ")).isnumeric()):
-...     print(dotaz)
-... 
-VLOZ CISLO: 1
-1
-VLOZ CISLO: 2
-2
-VLOZ CISLO: 3
-3
-VLOZ CISLO: 4
-4
-VLOZ CISLO: a
->>>
+
+## Co kdyz se spletu?
+Muze se stat, ze jako uzivatelem napiseme polozku (jeji jmeno), ktere nebude
+skladem, nebo se jen prepiseme. Jak to opravit?
+
+### Ukoncit nebo ne?
+Vhodnejsi bude zuzitkovat nasi smycku a misto vypinani celeho kodu, bude
+upozorneni, ze nastala chyba a cekat na novy vstup.
+
+### Jak se vratim k smycce?
+Pokud je interpret Pythonu u cteni sady kodu, ktera nasleduje po zahlavi, musim
+pouzit specialni syntaxi pro preruseni.
+
+### Continue, ohlaseni
+Casto se muze hodit vraceni se k podmince smycky a jeji opetovne spusteni.
+Ukazeme si to na konkretnim prikladu:
+```python
+cislo = 0
+
+while cislo < 100:
+    cislo = cislo + 3
+
+    if cislo % 15 == 0:
+            print(f"NASOBEK 15ti! Cislo --> {cislo}")
+            continue
+    else:
+            print(cislo)
+```
+V tomto pripade pouze dostojim sade kodu v podmince a po jejim provedeni se
+vratim k dalsimu prvku z naseho cyklu.
+
+### Break, ohlaseni
+Podobne ale muze nastat situace, kdy nase smycka na neco narazi a v takovem
+pripade chceme cyklus uplne ukoncit.
+```python
+cislo = 0
+
+while cislo < 100:
+    cislo = cislo + 2
+    if cislo == 14:
+            break
+    else:
+            print(cislo)
+```
+Podle naseho prikladu pricitame k predchozimu cislu vzdy +2. Jakmile se ale
+hodnota promenne _cislo_ bude rovnat hodnote 14, potom se spusti ohlaseni
+_break_ a smycka skonci. Interpret potom pokracuje cteni kodu pod smyckou.
+
+### Doplnime nas kod
+Ted, kdyz vime jaka dalsi ohlaseni pro smycky mame k dispozici, pojdme doplnit
+nas program. Chceme overit, jestli vybrane zbozi je mezi klici promenne 
+__ZBOZI__. Pokud ano, doplnim do __KOSIK__. Pokud ne, vypisu oznameni a
+pokracuji dalsi smyckou.
+
+__Muzeme doplnit__:
+```python
+pokracovat = True
+
+while pokracovat:
+    vyber_zbozi = input(f"VYBERTE ZBOZI (AKTUALNI POCET: {len(KOSIK)}): ")
+    if vyber_zbozi not in POTRAVINY.keys():
+        print("ZBOZI NENI SKLADEM!")
+        continue
+    else:
+        KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi]
+
+    kontrola = input("POKRACOVAT V NAKUPU? (y/n)")
+    if kontrola == "n":
+        pokracovat = False
+
+else:
+    print(ODDELOVAC)
+    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC}\n")
+    print(KOSIK, end=f"\n{ODDELOVAC}\n")
+    print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
 
 ```
+## Walrus operator (Python3.8+!)
+Dalsi moznosti jak nas kod upravit, pripadne vylepsit je pomoci specialniho
+operatoru, tzv. _prirazovaciho_ operatoru (z angl. _walrus operator_).
+V prikladu nize si ukazeme jak funguje:
+```python
+DATA = dict()
+
+while ((dotaz:=input("JMENO? "))):
+    DATA[dotaz] = dotaz.isalpha()
+```
+## Zkusime zkratit zadavani zbozi
+Ted, kdyz tusime jak __prirazovaci operator__ funguje, jej zkusime doplnit do
+naseho kodu.
+__Po zapsani__:
+```python
+while (vyber_zbozi := input("VYBERTE ZBOZI: ")) != 'exit':
+    if vyber_zbozi not in POTRAVINY:
+        print("NENI SKLADEM!")
+        continue
+    else:
+        KOSIK[vyber_zbozi] = POTRAVINY.get(vyber_zbozi, "NENI SKLADEM")
+else:
+    print(ODDELOVAC)
+    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC}\n")
+    print(KOSIK, end=f"\n{ODDELOVAC}\n")
+    print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
+```
+## Lepsi vypis v uvodu
+Pomoci smycky bychom mohli vylepsit zapis v uvodu. Dovedete to?
+
+## Co jednotlive kusy zbozi?
 
 Pokracovat na Lekci#05
+

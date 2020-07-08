@@ -6,23 +6,27 @@ from pprint import pprint
 # Vytvorime promenne, se kterymi budeme pracovat
 ODDELOVAC = "=" * 40
 POTRAVINY = {
-    "mleko": 30,
-    "maso": 100,
-    "banan": 30,
-    "jogurt": 10,
-    "chleb": 20,
-    "jablko": 10,
-    "pomeranc": 15,
+    "mleko": [30, 5],
+    "maso": [100, 1],
+    "banan": [30, 10],
+    "jogurt": [10, 5],
+    "chleb": [20, 5],
+    "jablko": [10, 10],
+    "pomeranc": [15, 10]
 }
 KOSIK = {}
 
 # II. KROK
 # Vypiseme nabidku potravin a oddelime
-print("VITEJTE V NASEM VIRTUALNIM OBCHODE!", end=f"\n{ODDELOVAC}")
-print("VYBERTE SI Z NASEHO ZBOZI:", end="\n{ODDELOVAC}")
-print(ODDELOVAC)
-pprint(POTRAVINY)
-print(ODDELOVAC)
+print("VITEJTE V NASEM VIRTUALNIM OBCHODE!", end=f"\n{ODDELOVAC}\n")
+print("VYBERTE SI Z NASEHO ZBOZI:", end=f"\n{ODDELOVAC}\n")
+TABULKA = POTRAVINY.copy()
+
+while TABULKA:
+    radek_potravina = TABULKA.popitem()
+    print(f"POTRAVINA: {radek_potravina[0]},\tCENA: {radek_potravina[1][0]}")
+else:
+    print(ODDELOVAC)
 
 # III. KROK
 # Vlozit 3 potraviny z vyberu do kosiku, bez cyklu
@@ -45,8 +49,8 @@ print(ODDELOVAC)
 # Plnime kosik, dokud v nem nejsou 3 predmety, pomoci cyklu
 
 #while len(KOSIK) < 3:
-#    vyber_n = input(f"VYBERTE ZBOZI (AKTUALNI POCET: {len(KOSIK)}): ")
-#    KOSIK[vyber_n] = POTRAVINY.get(vyber_n, "NENI SKLADEM")
+#    vyber_zbozi = input(f"VYBERTE ZBOZI (AKTUALNI POCET: {len(KOSIK)}): ")
+#    KOSIK[vyber_zbozi] = POTRAVINY.get(vyber_zbozi, "NENI SKLADEM")
 
 # V. KROK
 # Vytvorim *else* vetev, doplnime soucet polozek
@@ -63,12 +67,12 @@ print(ODDELOVAC)
 #pokracovat = True
 #
 #while pokracovat:
-#    vyber_n = input(f"VYBERTE ZBOZI (AKTUALNI POCET: {len(KOSIK)}): ")
-#    if vyber_n not in POTRAVINY.keys():
+#    vyber_zbozi = input(f"VYBERTE ZBOZI (AKTUALNI POCET: {len(KOSIK)}): ")
+#    if vyber_zbozi not in POTRAVINY.keys():
 #        print("ZBOZI NENI SKLADEM!")
 #        continue
 #    else:
-#        KOSIK[vyber_n] = POTRAVINY[vyber_n]
+#        KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi]
 #
 #    kontrola = input("POKRACOVAT V NAKUPU? (y/n)")
 #    if kontrola == "n":
@@ -84,16 +88,34 @@ print(ODDELOVAC)
 
 # VII. KROK
 # pouziti prirazovaciho operatoru *walrus operator*
-while (vyber_n := input("VYBERTE ZBOZI: ")) != 'exit':
-    if vyber_n not in POTRAVINY:
+while (vyber_zbozi := input("VYBERTE ZBOZI: ")) != 'exit':
+    if vyber_zbozi not in POTRAVINY:
         print("NENI SKLADEM!")
         continue
-    else:
-        KOSIK[vyber_n] = POTRAVINY.get(vyber_n, "NENI SKLADEM")
+
+    elif vyber_zbozi not in KOSIK and POTRAVINY[vyber_zbozi][1] > 0:
+            KOSIK[vyber_zbozi] = [
+                POTRAVINY[vyber_zbozi][0],
+                1
+            ]
+            POTRAVINY[vyber_zbozi][1] -= 1
+    elif vyber_zbozi in KOSIK and POTRAVINY[vyber_zbozi][1] > 0:
+        KOSIK[vyber_zbozi][1] += 1
+        POTRAVINY[vyber_zbozi][1] -= 1
+
+    elif POTRAVINY[vyber_zbozi][1] == 0:
+        print(f"{vyber_zbozi} DOSEL!")
 
 else:
     print(ODDELOVAC)
-    CELKEM = sum(KOSIK.values())
-    print(KOSIK)
-    print(ODDELOVAC)
-    print(f"CENA CELKEM: {CELKEM} CZK")
+    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC}\n")
+    index, vysledek = 0, 0
+
+    while index != len(muj_kosik:=list(KOSIK.values())):
+        zbozi = muj_kosik[index]
+        cena, pocet = zbozi[0], zbozi[1]
+        vysledek += cena * pocet
+        index += 1
+    else:
+        print(vysledek, end=f"\n{ODDELOVAC}\n")
+
