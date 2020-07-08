@@ -60,9 +60,8 @@ Vystup by na konci lekce mohl vypadat nasledovne:
 
 ## Muzeme zacit!
 <p align="center">
-  <img src="https://media.giphy.com/media/GSrZUFaPs7yCs/source.gif" width="300" height="300">
+  <img src="https://media.giphy.com/media/GSrZUFaPs7yCs/giphy-downsized.gif" width="300" height="300">
 </p>
-
 Nejprve si vytvorime novy soubor pro dnesni lekci. Po te nakopirujeme zadane
 udaje, se kterymi budeme chtit pracovat.
 
