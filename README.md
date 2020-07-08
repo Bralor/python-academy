@@ -6,8 +6,8 @@ Minula [lekce#03](https://github.com/Bralor/python-academy/tree/lekce03)
 
 # Python academy, lekce 04
 ## Dulezite odkazy
-- [Portal Engeto.com](https://engeto.com/)
-- [Python academy, repozitar](https://github.com/Bralor/python-academy)
+- Portal [Engeto.com](https://engeto.com/)
+- Python Academy [repozitar](https://github.com/Bralor/python-academy)
 - [Walrus operator](https://realpython.com/lessons/assignment-expressions/)
 
 ## Co nas dnes ceka?
@@ -34,24 +34,28 @@ VITEJTE V NASEM VIRTUALNIM OBCHODE!
 ========================================
 VYBERTE SI Z NASEHO ZBOZI:
 ========================================
-{'banan': 30,
- 'chleb': 20,
- 'jablko': 10,
- 'jogurt': 10,
- 'maso': 100,
- 'mleko': 30,
- 'pomeranc': 15}
+POTRAVINA: pomeranc,    CENA: 15
+POTRAVINA: jablko,      CENA: 10
+POTRAVINA: chleb,       CENA: 20
+POTRAVINA: jogurt,      CENA: 10
+POTRAVINA: banan,       CENA: 30
+POTRAVINA: maso,        CENA: 100
+POTRAVINA: mleko,       CENA: 30
 ========================================
-VYBERTE ZBOZI: banan
+VYBERTE ZBOZI: maso
+VYBERTE ZBOZI: maso
+*MASO* NENI SKLADEM!
 VYBERTE ZBOZI: mleko
-VYBERTE ZBOZI: pomeranc 
-VYBERTE ZBOZI: exit 
+VYBERTE ZBOZI: banan
+VYBERTE ZBOZI: jablko
+VYBERTE ZBOZI: exit
 ========================================
-{'banan': 30, 'mleko': 30, 'pomeranc': 15}
+        KOSIK JE PLNY! UKONCUJI
 ========================================
-CENA CELKEM: 75 CZK
-Vystup by na konci lekce mohl vypadat nasledovne:
+          CELKOVA CENA: 170,-
+========================================
 ```
+
 ## Co budeme potrebovat? 
 - python 3.8! (kvuli novemu operatoru)
 - text. editor
@@ -69,13 +73,13 @@ udaje, se kterymi budeme chtit pracovat.
 KOSIK = {}
 ODDELOVAC = "=" * 40
 POTRAVINY = {
-    "mleko": 30,
-    "maso": 100,
-    "banan": 30,
-    "jogurt": 10,
-    "chleb": 20,
-    "jablko": 10,
-    "pomeranc": 15,
+    "mleko": [30, 5],
+    "maso": [100, 1],
+    "banan": [30, 10],
+    "jogurt": [10, 5],
+    "chleb": [20, 5],
+    "jablko": [10, 10],
+    "pomeranc": [15, 10]
 }
 ```
 ## Vypiseme uvodni text

@@ -25,6 +25,7 @@ TABULKA = POTRAVINY.copy()
 while TABULKA:
     radek_potravina = TABULKA.popitem()
     print(f"POTRAVINA: {radek_potravina[0]},\tCENA: {radek_potravina[1][0]}")
+
 else:
     print(ODDELOVAC)
 
@@ -90,7 +91,7 @@ else:
 # pouziti prirazovaciho operatoru *walrus operator*
 while (vyber_zbozi := input("VYBERTE ZBOZI: ")) != 'exit':
     if vyber_zbozi not in POTRAVINY:
-        print("NENI SKLADEM!")
+        print("TOTO ZBOZI NEMAME V NABIDKCE!")
         continue
 
     elif vyber_zbozi not in KOSIK and POTRAVINY[vyber_zbozi][1] > 0:
@@ -104,11 +105,11 @@ while (vyber_zbozi := input("VYBERTE ZBOZI: ")) != 'exit':
         POTRAVINY[vyber_zbozi][1] -= 1
 
     elif POTRAVINY[vyber_zbozi][1] == 0:
-        print(f"{vyber_zbozi} DOSEL!")
+        print(f"*{vyber_zbozi.upper()}* NENI SKLADEM!")
 
 else:
     print(ODDELOVAC)
-    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC}\n")
+    print("KOSIK JE PLNY! UKONCUJI".center(40, " "), end=f"\n{ODDELOVAC}\n")
     index, vysledek = 0, 0
 
     while index != len(muj_kosik:=list(KOSIK.values())):
@@ -116,6 +117,10 @@ else:
         cena, pocet = zbozi[0], zbozi[1]
         vysledek += cena * pocet
         index += 1
+
     else:
-        print(vysledek, end=f"\n{ODDELOVAC}\n")
+        print(
+            f"CELKOVA CENA: {vysledek},-".center(40, " "),
+            end=f"\n{ODDELOVAC}\n"
+        )
 
