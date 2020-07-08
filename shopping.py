@@ -1,6 +1,6 @@
 # I. KROK
 # Zadane udaje
-from pprint import pprint
+from pprint import pprint as pp
 
 ODDELOVAC = "=" * 40
 POTRAVINY = {
@@ -18,7 +18,7 @@ KOSIK = {}
 print(ODDELOVAC)
 print("VITEJTE V NASEM VIRT. OBCHODE!", end=f"\n{ODDELOVAC}\n")
 print("VYBERTE SI Z NASEHO ZBOZI:", end=f"\n{ODDELOVAC}\n")
-pprint(POTRAVINY)
+pp(POTRAVINY)
 print(ODDELOVAC)
 
 # III. KROK
