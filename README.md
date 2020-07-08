@@ -402,6 +402,8 @@ else:
 Pomoci smycky bychom mohli vylepsit zapis v uvodu. Dovedete to?
 
 ## Co jednotlive kusy zbozi?
+Napada vas jak vyresit problem, kdy bude chtit vlozit opakovane nejakou
+potravinu do kosiku? Jak na to? 
 
 Pokracovat na Lekci#05
 
