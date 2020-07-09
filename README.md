@@ -70,6 +70,8 @@ Nejprve si vytvorime novy soubor pro dnesni lekci. Po te nakopirujeme zadane
 udaje, se kterymi budeme chtit pracovat.
 
 ```python
+# I. KROK
+# Zadame udaje
 KOSIK = {}
 ODDELOVAC = "=" * 40
 POTRAVINY = {
@@ -109,9 +111,9 @@ print("Ahoj, ze 4. lekce!", end="\n##################\n")
 ## Takze...
 Nyni muzeme prvni vystupni sekci doplnit o nas novy atribut __end__.
 ```python
-print("VITEJTE V NASEM VIRTUALNIM OBCHODE!", end=f"\n{ODDELOVAC\n}")
-print("VYBERTE SI Z NASEHO ZBOZI:", end="\n{ODDELOVAC\n}")
-pprint(POTRAVINY)
+print("VITEJTE V NASEM VIRTUALNIM OBCHODE!", end=f"\n{ODDELOVAC}\n")
+print("VYBERTE SI Z NASEHO ZBOZI:", end="\n{ODDELOVAC}\n")
+pprint(POTRAVINY) # nelze pouzivat *end* u `pprint`
 print(ODDELOVAC)
 ```
 
@@ -125,9 +127,10 @@ Abychom meli moznost si vybrat, musime vyuzit funkce __input__:
 vyber_potravinu = input("VYBERTE ZBOZI: ")
 ```
 ### ...Vlozime do kosiku...
-Jakmile jsme vybrali zbozi, musime jej vlozim do promenne __KOSIK__:
+Jakmile jsme vybrali zbozi, musime jej vlozim do promenne __KOSIK__ spolecne
+s jeho cenou (pouze cenou):
 ```python
-KOSIK[vyber_potravinu] = POTRAVINY.get(vyber_potravinu, "NENI SKLADEM")
+KOSIK[vyber_potravinu] = POTRAVINY[vyber_zbozi][0]
 ```
 ### ...Vypisime cenu
 Jakmile je potravina v seznamu, zjistime cenu a vypiseme ji:
@@ -143,12 +146,14 @@ __Mozne reseni__:
 ```python
 # III. KROK
 vyber1 = input("VYBERTE ZBOZI c.1: ")
-vyber2 = input("VYBERTE ZBOZI c.2  ")
+vyber2 = input("VYBERTE ZBOZI c.2: ")
 vyber3 = input("VYBERTE ZBOZI c.3: ")
+vyber4 = input("VYBERTE ZBOZI c.4: ")
 
 KOSIK[vyber1] = POTRAVINY.get(vyber1, "NENI SKLADEM")
 KOSIK[vyber2] = POTRAVINY.get(vyber2, "NENI SKLADEM")
 KOSIK[vyber3] = POTRAVINY.get(vyber3, "NENI SKLADEM")
+KOSIK[vyber4] = POTRAVINY.get(vyber4, "NENI SKLADEM")
 
 print(ODDELOVAC)
 print(KOSIK, end=f"\n{ODDELOVAC}\n")
@@ -209,8 +214,8 @@ Na zaklade toho, co jsme se pred chvili o __while__ cyklus rekli, pojdme
 upravit nas kod z [kroku III.](#-trochu-obtiznejsi-varianta):
 ```python
 while len(KOSIK) < 3:
-    vyber_zbozi = input(f"VYBERTE ZBOZI (AKTUALNI POCET: {len(KOSIK)}): ")
-    KOSIK[vyber_zbozi] = POTRAVINY.get(vyber_zbozi, "NENI SKLADEM")
+    vyber_zbozi = input(f"VYBERTE ZBOZI ('q' -> KONEC): ")
+    KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
 ```
 Ted uz staci jen dopsat vypocet celkove ceny nakupu. Muzeme pokracovat v kodu
 pod smyckou nebo pouzit podminkovou vetev _else_.
@@ -230,7 +235,7 @@ else:
     print(KOSIK, end=f"\n{ODDELOVAC\n}")
     print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC\n}")
 ```
-## Proc jenom 3 polozky?
+## Proc jenom 4 polozky?
 Dalsi otazkou zamysleni, je vyber maximalniho poctu polozek pro kosik. Ukoncit
 po 3, 4, 5 polozkach? Nechat jej neomezeny? Jak tedy nakup ukoncit? 
 
