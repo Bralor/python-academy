@@ -330,35 +330,48 @@ Casto se muze hodit vraceni se k podmince smycky a jeji opetovne spusteni.
 Ukazeme si to na konkretnim prikladu:
 ```python
 cislo = 0
+veta = "Příliš žluťoučký kůň úpěl ďábelské ódy"
 
-while cislo < 100:
-    cislo = cislo + 3
+while cislo < len(veta):
+    pismeno = veta[cislo]
 
-    if cislo % 15 == 0:
-            print(f"NASOBEK 15ti! Cislo --> {cislo}")
-            continue
-    else:
-            print(cislo)
+    if pismeno in "říšžťčýůňúěďáéó":
+        cislo = cislo + 1
+        continue  # zakomentuj pro vysvetleni
+
+    print(pismeno)
+    cislo = cislo + 1
 ```
-V tomto pripade pouze dostojim sade kodu v podmince a po jejim provedeni se
-vratim k dalsimu prvku z naseho cyklu.
+V nasem prikladu chceme vypisovat pouze pismena, ktera nemaji diakritiku
+(neobsahuji hacky a carky). Pokud takove pismeno v nasi promenne _VETA_ najdu,
+zamerne jej preskocim pomoci ohlaseni __continue__.
 
 ### Break, ohlaseni
 Podobne ale muze nastat situace, kdy nase smycka na neco narazi a v takovem
 pripade chceme cyklus uplne ukoncit.
 ```python
 cislo = 0
+veta = "Příliš žluťoučký kůň úpěl ďábelské ódy"
 
-while cislo < 100:
-    cislo = cislo + 2
-    if cislo == 14:
-            break
-    else:
-            print(cislo)
+while cislo < len(veta):
+    pismeno = veta[cislo]
+
+    if pismeno in "říšžťčýůňúěďáéó":
+        cislo = cislo + 1
+        break  # zakomentuj pro vysvetleni
+
+    print(pismeno)
+    cislo = cislo + 1
+
+else:
+    print("Preskakuji `else` vetev")
+
+print("Pokracuji!")
 ```
-Podle naseho prikladu pricitame k predchozimu cislu vzdy +2. Jakmile se ale
-hodnota promenne _cislo_ bude rovnat hodnote 14, potom se spusti ohlaseni
-_break_ a smycka skonci. Interpret potom pokracuje cteni kodu pod smyckou.
+Ve druhem prikladu prochazim nasi vetu symbol za symbolem, jako v predchozi
+variante a pokud narazim na symbol s diakritikou, smycku ukoncim. Muzete si
+vsimnout, ze preskakuji i vetev _else_. Proto je potreba na to pri psani
+myslet.
 
 ### Doplnime nas kod
 Ted, kdyz vime jaka dalsi ohlaseni pro smycky mame k dispozici, pojdme doplnit
@@ -368,29 +381,25 @@ pokracuji dalsi smyckou.
 
 __Muzeme doplnit__:
 ```python
+# III. KROK
 pokracovat = True
 
 while pokracovat:
-    vyber_zbozi = input(f"VYBERTE ZBOZI (AKTUALNI POCET: {len(KOSIK)}): ")
-    if vyber_zbozi not in POTRAVINY.keys():
-        print("ZBOZI NENI SKLADEM!")
-        continue
-    else:
-        KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi]
+    vyber_zbozi = input(f"VYBERTE ZBOZI ('q' -> KONEC): ")
 
-    kontrola = input("POKRACOVAT V NAKUPU? (y/n)")
-    if kontrola == "n":
+    if vyber_zbozi == "q":
         pokracovat = False
+    elif vyber_zbozi not in POTRAVINY.keys():
+        print(f"*{vyber_zbozi}* NEMAME SKLADEM!")
+    else:
+        KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
+
 
 else:
-    print(ODDELOVAC)
-    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC}\n")
-    print(KOSIK, end=f"\n{ODDELOVAC}\n")
-    print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
-
+    ...
 ```
 ## Walrus operator (Python3.8+!)
-Dalsi moznosti jak nas kod upravit, pripadne vylepsit je pomoci specialniho
+Dalsi moznosti jak nas kod upravit je pomoci specialniho
 operatoru, tzv. _prirazovaciho_ operatoru (z angl. _walrus operator_).
 V prikladu nize si ukazeme jak funguje:
 ```python
@@ -404,18 +413,17 @@ Ted, kdyz tusime jak __prirazovaci operator__ funguje, jej zkusime doplnit do
 naseho kodu.
 __Po zapsani__:
 ```python
-while (vyber_zbozi := input("VYBERTE ZBOZI: ")) != 'exit':
-    if vyber_zbozi not in POTRAVINY:
-        print("NENI SKLADEM!")
-        continue
+while (vyber_zbozi := input("VYBERTE ZBOZI: ")) != 'q':
+    if vyber_zbozi not in POTRAVINY.keys():
+        print(f"*{vyber_zbozi}* NEMAME SKLADEM!")
     else:
-        KOSIK[vyber_zbozi] = POTRAVINY.get(vyber_zbozi, "NENI SKLADEM")
+        KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
 else:
-    print(ODDELOVAC)
-    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC}\n")
-    print(KOSIK, end=f"\n{ODDELOVAC}\n")
-    print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
+    ...
 ```
+Zapis se nam podstatne zkrati, podminka pro zadani potraviny a ukonceni nakupu
+se nam presune do zahlavi __while__ cyklu.
+
 ## Lepsi vypis v uvodu
 Pomoci smycky bychom mohli vylepsit zapis v uvodu. Dovedete to?
 
