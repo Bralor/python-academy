@@ -72,6 +72,8 @@ udaje, se kterymi budeme chtit pracovat.
 ```python
 # I. KROK
 # Zadame udaje
+from pprint import pprint  # Vysvetlime v pozdejich lekcich
+
 KOSIK = {}
 ODDELOVAC = "=" * 40
 POTRAVINY = {
@@ -153,10 +155,10 @@ vyber2 = input("VYBERTE ZBOZI c.2: ")
 vyber3 = input("VYBERTE ZBOZI c.3: ")
 vyber4 = input("VYBERTE ZBOZI c.4: ")
 
-KOSIK[vyber1] = POTRAVINY.get(vyber1, "NENI SKLADEM")
-KOSIK[vyber2] = POTRAVINY.get(vyber2, "NENI SKLADEM")
-KOSIK[vyber3] = POTRAVINY.get(vyber3, "NENI SKLADEM")
-KOSIK[vyber4] = POTRAVINY.get(vyber4, "NENI SKLADEM")
+KOSIK[vyber1] = POTRAVINY[vyber1][0]
+KOSIK[vyber2] = POTRAVINY[vyber2][0]
+KOSIK[vyber3] = POTRAVINY[vyber3][0]
+KOSIK[vyber4] = POTRAVINY[vyber4][0]
 
 print(ODDELOVAC)
 print(KOSIK, end=f"\n{ODDELOVAC}\n")
@@ -216,7 +218,7 @@ print(f"x={x}; {x}=10, konec smycky, pokracujeme...")
 Na zaklade toho, co jsme se pred chvili o __while__ cyklus rekli, pojdme
 upravit nas kod z [kroku III.](#-trochu-obtiznejsi-varianta):
 ```python
-while len(KOSIK) < 3:
+while len(KOSIK) < 4:
     vyber_zbozi = input(f"VYBERTE ZBOZI ('q' -> KONEC): ")
     KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
 ```
@@ -234,9 +236,9 @@ __Doplneny zapis__:
 ```python
 else:
     print(ODDELOVAC)
-    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC\n}")
-    print(KOSIK, end=f"\n{ODDELOVAC\n}")
-    print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC\n}")
+    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC}\n")
+    print(KOSIK, end=f"\n{ODDELOVAC}\n")
+    print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
 ```
 ## Proc jenom 4 polozky?
 Dalsi otazkou zamysleni, je vyber maximalniho poctu polozek pro kosik. Ukoncit
@@ -379,25 +381,6 @@ nas program. Chceme overit, jestli vybrane zbozi je mezi klici promenne
 __ZBOZI__. Pokud ano, doplnim do __KOSIK__. Pokud ne, vypisu oznameni a
 pokracuji dalsi smyckou.
 
-__Muzeme doplnit__:
-```python
-# III. KROK
-pokracovat = True
-
-while pokracovat:
-    vyber_zbozi = input(f"VYBERTE ZBOZI ('q' -> KONEC): ")
-
-    if vyber_zbozi == "q":
-        pokracovat = False
-    elif vyber_zbozi not in POTRAVINY.keys():
-        print(f"*{vyber_zbozi}* NEMAME SKLADEM!")
-    else:
-        KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
-
-
-else:
-    ...
-```
 ## Walrus operator (Python3.8+!)
 Dalsi moznosti jak nas kod upravit je pomoci specialniho
 operatoru, tzv. _prirazovaciho_ operatoru (z angl. _walrus operator_).
@@ -427,9 +410,76 @@ se nam presune do zahlavi __while__ cyklu.
 ## Lepsi vypis v uvodu
 Pomoci smycky bychom mohli vylepsit zapis v uvodu. Dovedete to?
 
+### Dalsi smycka
+Reseni spociva v pouziti dalsi (separatni smycky v uvodu). Nez ji ale zapiseme
+podivejme se jaky datovy typ je promenna __POTRAVINY__. Jde o slovnik, takze
+abychom jej mohli prochazet, budeme potrebovat metodu _pop_/_popitem_. Ty
+bohuzel puvodni slovnik promazou, takze si schvalne vytvorime jeho kopii.
+```python
+TABULKA = POTRAVINY.copy()
+```
+Staci pouzit metodu pro slovniky _copy()_, ktera nam zajisti vytvoreni
+duplicitniho slovniku.
+
+__Doplnim smycku__:
+```python
+while TABULKA:
+    radek_potravina = TABULKA.popitem()
+    print(f"POTRAVINA: {radek_potravina[0]},\tCENA: {radek_potravina[1][0]}")
+```
+
 ## Co jednotlive kusy zbozi?
 Napada vas jak vyresit problem, kdy bude chtit vlozit opakovane nejakou
 potravinu do kosiku? Jak na to? 
+
+### Musime pocitat
+V zadani mame jako hodnotu seznam. Ten vzdy obsahuje:
+1. 0. index -> cenu
+2. 1. index -> pocet na sklade
+
+### Nejprve podminky
+Musime rozsirit nase podminky, aby odecitani zbozi bylo provadeno automaticky.
+```python
+    ... 
+    elif vyber_zbozi not in KOSIK and POTRAVINY[vyber_zbozi][1] > 0:
+        KOSIK[vyber_zbozi] = [
+            POTRAVINY[vyber_zbozi][0],
+            1
+        ]
+
+    elif vyber_zbozi in KOSIK and POTRAVINY[vyber_zbozi][1] > 0:
+        KOSIK[vyber_zbozi][1]  = KOSIK[vyber_zbozi][1] + 1
+        POTRAVINY[vyber_zbozi][1] = POTRAVINY[vyber_zbozi][1] - 1
+
+    elif POTRAVINY[vyber_zbozi][1] == 0:
+        print(f"*{vyber_zbozi.upper()}* NENI SKLADEM!")
+    ...
+```
+Podle nasich podminek nyni program zohledni, jestli je jeste zbozi skladem nebo
+nikoliv.
+
+### Nove vypocet ceny
+No a na zaver doplnim jeste posledni __while__ cyklus, ktery mi secte celkovou
+cenu. Soucasne doplnime metodu _center()_, ktera nam vystup zarovna na stred. 
+```python
+else:
+    print(ODDELOVAC)
+    print("KOSIK JE PLNY! UKONCUJI".center(40, " "), end=f"\n{ODDELOVAC}\n")
+    index, vysledek = 0, 0
+
+    while index != len(muj_kosik:=list(KOSIK.values())):
+        zbozi = muj_kosik[index]
+        cena, pocet = zbozi[0], zbozi[1]
+        vysledek += cena * pocet
+        index += 1
+
+    else:
+        print(
+            f"CELKOVA CENA: {vysledek},-".center(40, " "),
+            end=f"\n{ODDELOVAC}\n"
+        )
+
+```
 
 Pokracovat na Lekci#05
 
