@@ -434,8 +434,8 @@ potravinu do kosiku? Jak na to?
 
 ### Musime pocitat
 V zadani mame jako hodnotu seznam. Ten vzdy obsahuje:
-1. 0. index -> cenu
-2. 1. index -> pocet na sklade
+1. I. index -> cenu
+2. II. index -> pocet na sklade
 
 ### Nejprve podminky
 Musime rozsirit nase podminky, aby odecitani zbozi bylo provadeno automaticky.
@@ -462,6 +462,7 @@ nikoliv.
 No a na zaver doplnim jeste posledni __while__ cyklus, ktery mi secte celkovou
 cenu. Soucasne doplnime metodu _center()_, ktera nam vystup zarovna na stred. 
 ```python
+...
 else:
     print(ODDELOVAC)
     print("KOSIK JE PLNY! UKONCUJI".center(40, " "), end=f"\n{ODDELOVAC}\n")
