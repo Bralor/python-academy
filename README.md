@@ -310,7 +310,7 @@ else:
 Je nutne doplnit radny system v podminkove vetvi, jinak nebude funkcionalita
 naseho programu dostatecne stabilni.
 1. Hlidam si ukonceni programu
-2. Hlidame jestli je uzivatelem zadane zbozi ve slovniky __POTRAVINY__
+2. Hlidame jestli je uzivatelem zadane zbozi ve slovniku __POTRAVINY__
 3. Pokud je vsechno predchozi vyhodnoceno __False__, ukladame.
 
 ## Co kdyz se spletu?
