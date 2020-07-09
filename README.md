@@ -109,8 +109,11 @@ print("Ahoj, ze 4. lekce!", end="\n##################\n")
 ```
 
 ## Takze...
-Nyni muzeme prvni vystupni sekci doplnit o nas novy atribut __end__.
+Nyni muzeme prvni vystupni sekci doplnit o nas novy atribut __end__ a upravit
+tak nasi druhou sekci kodu:
 ```python
+# II. KROK
+# Vypiseme nabidku a oddelime
 print("VITEJTE V NASEM VIRTUALNIM OBCHODE!", end=f"\n{ODDELOVAC}\n")
 print("VYBERTE SI Z NASEHO ZBOZI:", end="\n{ODDELOVAC}\n")
 pprint(POTRAVINY) # nelze pouzivat *end* u `pprint`
@@ -289,12 +292,14 @@ __Doplneni programu__:
 pokracovat = True
 
 while pokracovat:
-    vyber_zbozi = input(f"VYBERTE ZBOZI (AKTUALNI POCET: {len(KOSIK)}): ")
-    KOSIK[vyber_zbozi] = POTRAVINY.get(vyber_zbozi, "NENI SKLADEM")
+    vyber_zbozi = input(f"VYBERTE ZBOZI ('q' -> KONEC): ")
 
-    kontrola = input("POKRACOVAT V NAKUPU? (y/n)")
-    if kontrola == "n":
+    if vyber_zbozi == "q":
         pokracovat = False
+    elif vyber_zbozi not in POTRAVINY.keys():
+        print(f"*{vyber_zbozi}* NEMAME SKLADEM!")
+    else:
+        KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
 
 else:
     print(ODDELOVAC)
@@ -302,6 +307,11 @@ else:
     print(KOSIK, end=f"\n{ODDELOVAC}\n")
     print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
 ```
+Je nutne doplnit radny system v podminkove vetvi, jinak nebude funkcionalita
+naseho programu dostatecne stabilni.
+1. Hlidam si ukonceni programu
+2. Hlidame jestli je uzivatelem zadane zbozi ve slovniky __POTRAVINY__
+3. Pokud je vsechno predchozi vyhodnoceno __False__, ukladame.
 
 ## Co kdyz se spletu?
 Muze se stat, ze jako uzivatelem napiseme polozku (jeji jmeno), ktere nebude
