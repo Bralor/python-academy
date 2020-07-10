@@ -1,486 +1,263 @@
-Minula [lekce#03](https://github.com/Bralor/python-academy/tree/lekce03)
+Minula [lekce#04](https://github.com/Bralor/online-python-academy/tree/master/lesson04)
 
 <p align="center">
   <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
 </p>
 
-# Python academy, lekce 04
+![](../images/engeto.png)
+# Online Python academy, lesson 05
 ## Dulezite odkazy
 - Portal [Engeto.com](https://engeto.com/)
 - Python Academy [repozitar](https://github.com/Bralor/python-academy)
-- [Walrus operator](https://realpython.com/lessons/assignment-expressions/)
+- Funkce [Sorted()](https://docs.python.org/3/library/functions.html#sorted)
+- Seznamova [komprehence](http://howto.py.cz/cap08.htm#10)
 
-## Co nas dnes ceka?
-Doposud jsme se snazili kazdy udaj zadat/vypisovat rucne. Kazde oznameni v
-kodu melo svuju prislusny radek. Ode dneska se budeme snazit zapis trochu
-automatizovat. Probereme spolecne prvni typ smycek/cyklus v Pythonu.
-Bude to tzv. cyklus _while_, o kterem se budeme podrobneji bavit a naucime se
-ho pouzivat.
+## Co nas dneska ceka
+V ramci dnesni lekce budeme chtit dokoncit teorii o smyckach v Pythonu. Rekneme si obecne o jejich pouziti, doplnujici zpusob prace s nimi. Nakonec bychom si jeste ve zkratce ukazali praci s gitem.
 
-## Nakupni kosik
-V ramci dnesni hodiny se budeme snazit vytvorit virtualni nakupni kosik, do
-ktereho budeme moci jako zakaznik vkladat zbozi z nabidky. Nas kosik bude umet
-vypisovat celkovou hodnotu zbozi v kosiku a soucasne ukazovat, co je jeho
-obsahem.
+## Hledani nejcastejsich slov
+Spolecne si zadame nahodny text, s nimz dnes budeme pracovat. Cilem bude zjistit pet nejcastejsich slov, ktere se v textu vyskytuji.
 
-## Ukazka
-Po spusteni by mel program vypadat nasledovne:
-```bash
-$ ./nakupni_kosik
+## Ukazka na uvod
+Vystup by na konci lekce mohl vypadat nasledovne:
 ```
-Cela ukazka z terminalu: 
-```bash
-VITEJTE V NASEM VIRTUALNIM OBCHODE!
-========================================
-VYBERTE SI Z NASEHO ZBOZI:
-========================================
-POTRAVINA: pomeranc,    CENA: 15
-POTRAVINA: jablko,      CENA: 10
-POTRAVINA: chleb,       CENA: 20
-POTRAVINA: jogurt,      CENA: 10
-POTRAVINA: banan,       CENA: 30
-POTRAVINA: maso,        CENA: 100
-POTRAVINA: mleko,       CENA: 30
-========================================
-VYBERTE ZBOZI: maso
-VYBERTE ZBOZI: maso
-*MASO* NENI SKLADEM!
-VYBERTE ZBOZI: mleko
-VYBERTE ZBOZI: banan
-VYBERTE ZBOZI: jablko
-VYBERTE ZBOZI: exit
-========================================
-        KOSIK JE PLNY! UKONCUJI
-========================================
-          CELKOVA CENA: 170,-
-========================================
+==========================
+1, SLOVO: *he*, VYSKYT: 6x
+==========================
+2, SLOVO: *in*, VYSKYT: 5x
+==========================
+3, SLOVO: *up*, VYSKYT: 4x
+==========================
+4, SLOVO: *of*, VYSKYT: 3x
+==========================
+5, SLOVO: *ye*, VYSKYT: 3x
 ```
-
-## Co budeme potrebovat? 
-- python 3.8! (kvuli novemu operatoru)
+## Co budeme potrebovat?
+- python 3.6+
 - text. editor
-- [podminky](https://github.com/Bralor/python_academy/tree/master/lesson02#podminkovy-zapis)
-- [slovnik](https://github.com/Bralor/python_academy/tree/master/lesson03#slovnik)
+- pomocny text:
+```
+TEXT = """
+Affronting imprudence do he he everything. Sex lasted dinner wanted indeed
+wished out law. Far advanced settling say finished raillery. Offered
+chiefly farther of my no colonel shyness. Such on help ye some door if in.
+Laughter proposal laughing any son law consider. Needed except up piqued
+an. Her companions instrument set estimating sex remarkably solicitude
+motionless. Property men the why smallest graceful day insisted required.
+Inquiry justice country old placing sitting any ten age. Looking venture
+justice in evident in totally he do ability. Be is lose girl long of up give.
+Trifling wondered unpacked ye at he. In household certainty an on tolerably
+smallness difficult. Many no each like up be is next neat. Put not enjoyment
+behaviour her supposing. At he pulled object others. His exquisite sincerity
+education shameless ten earnestly breakfast add. So we me unknown as improve
+hastily sitting forming. Especially favourable compliment but thoroughly
+unreserved saw she themselves. Sufficient impossible him may ten insensible
+put continuing. Oppose exeter income simple few joy cousin but twenty. Scale
+began quiet up short wrong in in. Sportsmen shy forfeited engrossed may can.
+Remain valley who mrs uneasy remove wooded him you. Her questions favourite
+him concealed. We to wife face took he. The taste begin early old why since
+dried can first. Prepared as or humoured formerly. Evil mrs true get post.
+Express village evening prudent my as ye hundred forming. Thoughts she why not
+directly reserved packages you. Winter an silent favour of am tended mutual. 
+"""
+```
 
-## Muzeme zacit!
-<p align="center">
-  <img src="https://media.giphy.com/media/GSrZUFaPs7yCs/giphy-downsized.gif" width="300" height="300">
-</p>
-Nejprve si vytvorime novy soubor pro dnesni lekci. Po te nakopirujeme zadane
-udaje, se kterymi budeme chtit pracovat.
+## Jdeme na to!
+Opet si otevreme novy soubor *.py* a nakopirujeme sablonu nize:
+```
+#!/usr/bin/env python3
+""" Lekce #5 - Uvod do programovani, hledac slov """
 
-```python
 # I. KROK
-# Zadame udaje
-from pprint import pprint  # Vysvetlime v pozdejich lekcich
+# Zadani nasi ulohy
+XXXXXX
 
-KOSIK = {}
-ODDELOVAC = "=" * 40
-POTRAVINY = {
-    "mleko": [30, 5],
-    "maso": [100, 1],
-    "banan": [30, 10],
-    "jogurt": [10, 5],
-    "chleb": [20, 5],
-    "jablko": [10, 10],
-    "pomeranc": [15, 10]
-}
-```
-## Vypiseme uvodni text
-Na uvod nam bude stacit vypsat, ze kterych potravin zakaznik muze vybirat. Plus
-oddelovaci lemovany uvodni text. Prvni cast by mohla vypadat nasledovne:
-```python
 # II. KROK
-# Vypiseme nabidku a oddelime
-print(ODDELOVAC)
-print("VITEJTE V NASEM VIRTUALNIM OBCHODE!")
-print(ODDELOVAC)
-print("VYBERTE SI Z NASEHO ZBOZI:")
-print(ODDELOVAC)
-pprint(POTRAVINY)
-print(ODDELOVAC)
-```
-Kdyz se koukame na promennou __ODDELOVAC__, zacina byt malicko napadna. Proto
-se dneska naucime pouzivat atribut funkce __print__. Tim bude _end_. Jde o
-volitelny atribut, ktery neni nutne zadavat. Slouzi hlavne k tomu, abychom na
-konec toho, co chceme zobrazit mohli doplnit libovolny znak/znaky.
+# Prochazime promennou *text*
 
-__Ukazka__:
-```python
-print("Ahoj, ze 4. lekce!", end="\n##################\n")
-```
-
-## Takze...
-Nyni muzeme prvni vystupni sekci doplnit o nas novy atribut __end__ a upravit
-tak nasi druhou sekci kodu:
-```python
-# II. KROK
-# Vypiseme nabidku a oddelime
-print("VITEJTE V NASEM VIRTUALNIM OBCHODE!", end=f"\n{ODDELOVAC}\n")
-print("VYBERTE SI Z NASEHO ZBOZI:", end="\n{ODDELOVAC}\n")
-pprint(POTRAVINY) # nelze pouzivat *end* u `pprint`
-print(ODDELOVAC)
-```
-
-## Chceme vybrat zbozi
-Nyni se budeme snazit vybrat 3 polozky z promenne _POTRAVINY_ a pridat je do
-promenne _KOSIK_.
-
-### Nejprve potrebuje vstup...
-Abychom meli moznost si vybrat, musime vyuzit funkce __input__:
-```python
-vyber_potravinu = input("VYBERTE ZBOZI: ")
-```
-### ...Vlozime do kosiku...
-Jakmile jsme vybrali zbozi, musime jej vlozim do promenne __KOSIK__ spolecne
-s jeho cenou (pouze cenou):
-```python
-KOSIK[vyber_potravinu] = POTRAVINY[vyber_zbozi][0]
-```
-### ...Vypisime cenu
-Jakmile je potravina v seznamu, zjistime cenu a vypiseme ji:
-```python
-print(f"CELKEM: {sum(KOSIK.values())} CZK")
-```
-
-## Trochu obtiznejsi varianta
-Jakmile se nam podari cela procedura zapsat. Vyzkousejme si to cele zopakovat
-pro vyber 4 polozek ze zadaneho vyberu.
-
-__Mozne reseni__:
-```python
 # III. KROK
-vyber1 = input("VYBERTE ZBOZI c.1: ")
-vyber2 = input("VYBERTE ZBOZI c.2: ")
-vyber3 = input("VYBERTE ZBOZI c.3: ")
-vyber4 = input("VYBERTE ZBOZI c.4: ")
+# Rozdelime promennou *text*, abych prochazeli slova
 
-KOSIK[vyber1] = POTRAVINY[vyber1][0]
-KOSIK[vyber2] = POTRAVINY[vyber2][0]
-KOSIK[vyber3] = POTRAVINY[vyber3][0]
-KOSIK[vyber4] = POTRAVINY[vyber4][0]
+# IV. KROK
+# Zakomentuj krok 2.
+# Prochazime znovu
 
-print(ODDELOVAC)
-print(KOSIK, end=f"\n{ODDELOVAC}\n")
-print(f"CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
-```
+# Zkusime napsat pomoci *while* cyklu
 
-## Citite prsty?
-Predchozi krok byl jeste unosny. Trochu.. Predstavme si ale, ze se budeme
-snazit zapsat desitky nebo stovky polozek. Tady uz by situace, kdy budu udaje
-opakovane vkladat, zapisovat do slovniku a nasledne jej scitat a vypisovat
-neprehledna.
+# VI. KROK
+# Zakomentujeme krok 4.
+# Vyzkousime seznamovou komprehenci
+# Utridime slova do slovniku podle vyskytu
 
-## Jak to obejit?
-Na stesti v Pythonu existuje neco, co nam opakovani, takovych kroku zajisti. Je
-to prave _cyklus_, nebo take _smycka_. Tedy proces, ktery probiha opakovane. V
-ramci dnesni lekce se seznamime s prvnim typem smycek.
+# VII. KROK
+# Vytvorim pomocnou promennou *vyskyt_slov*
+# Pocitam vyskyt slov
 
-## while cyklus
-Jak uz jmeno prozradi, oznameni teto smycky se schovava za klicovym slovem
-__while__. Popiseme si, jak __while__ funguje:
-```python
-while <podminka>:
-    # provadej toto pokud je podminka pravdiva (TRUE)
-# pokracuj dal, pokud smycka skoncila
-```
-### Podminka
-V zahlavi si muzeme vsimnout pojmu _podminka_. Je to tak, ze smycka probiha,
-pokud podminka v zahlavi vraci boolean hodnotu _True_. Jakmile dostane _False_,
-cyklus skonci.
+# VIII. KROK
+# Vybere 5 nejcastejsich slov
 
-### -> True
-Pokud nam podminka vraci __True__, probiha ten kod, ktery je odsazeny hned pod
-zahlavim. Tedy v nasem vzoru cast:
-```python
-    # provadej toto pokud je podminka pravdiva (TRUE)
-```
-Vsimnete si urcite povinneho odsazeni.
-
-### -> False
-Jakmile nam ale podminka v zahlavi vrati _False_. Cela smycka se ukonci a
-nasleduje kod za ni. Tedy:
-```python
-# pokracuj dal, pokud smycka skoncila
-```
-
-## Jednoducha ukazka
-Pojdme spolecne mrknout na __while__ cyklus v praxi:
-```python
-x = 0
-
-while x < 10:
-    print(f"x={x}; {x}<10, v poradku!")
-    x = x + 1
-print(f"x={x}; {x}=10, konec smycky, pokracujeme...")
-```
-## Vyzkousejme while!
-Na zaklade toho, co jsme se pred chvili o __while__ cyklus rekli, pojdme
-upravit nas kod z [kroku III.](#-trochu-obtiznejsi-varianta):
-```python
-while len(KOSIK) < 4:
-    vyber_zbozi = input(f"VYBERTE ZBOZI ('q' -> KONEC): ")
-    KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
-```
-Ted uz staci jen dopsat vypocet celkove ceny nakupu. Muzeme pokracovat v kodu
-pod smyckou nebo pouzit podminkovou vetev _else_.
-
-__Ukazka__:
-```python
-while <podminka>:
-    <proved pokud podminka -> True>
-else:
-    <proved pokud podminka -> False>
-```
-__Doplneny zapis__:
-```python
-else:
-    print(ODDELOVAC)
-    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC}\n")
-    print(KOSIK, end=f"\n{ODDELOVAC}\n")
-    print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
-```
-## Proc jenom 4 polozky?
-Dalsi otazkou zamysleni, je vyber maximalniho poctu polozek pro kosik. Ukoncit
-po 3, 4, 5 polozkach? Nechat jej neomezeny? Jak tedy nakup ukoncit? 
-
-### Dokdy podminka probiha?
-Na uvod ke smycce __while__ jsme si rekli, ze smycka bezi tak dlouho, dokud
-podminka vraci __True__. Co kdyz ale explicitne zapisu, ze ma podminka ma
-hodnotu __True__?
-__Ukazka__:
-```python
-x = 0
-
-while x < 10:
-    print(f"x={x}; {x}<10, v poradku!")
-
-x=0; 0<10, v poradku!
-x=0; 0<10, v poradku!
-x=0; 0<10, v poradku!
-x=0; 0<10, v poradku!
-...
-<ctrl+C --> ukonci>
-```
-Muze se mi stat, ze pokud podminku postavim nevhodne, tak vytvorim nekonecnou
-smycku. Pripadne tedy muzu mit vytvoreni nekonecne smycky umyslne, potom ale
-potrebuji ohlaseni, ktere je schopne prubeh ukoncit.
-
-__Ukazka__:
-```python
-cislo = 2
-prepinac = True
-
-while prepinac:
-    cislo = cislo ** cislo
-    kontrola = input("PRO UKONCENI NAPIS 'q': ").lower()
-
-    if kontrola == "q":
-            prepinac = False
-    else:
-            print(cislo)
-```
-
-## Nase nova nekonecna smycka!
-<p align="center">
-  <img src="https://media.giphy.com/media/qVVVfmHDMBZug/source.gif" width="300" height="300">
-</p>
-
-Nyni pojdme upravit nas kod tak, aby bylo mozne vkladat polozky do nakupniho
-kosiku tak dlouho, jak jen uzivatel bude potrebovat.
-
-__Doplneni programu__:
-```python
-pokracovat = True
-
-while pokracovat:
-    vyber_zbozi = input(f"VYBERTE ZBOZI ('q' -> KONEC): ")
-
-    if vyber_zbozi == "q":
-        pokracovat = False
-    elif vyber_zbozi not in POTRAVINY.keys():
-        print(f"*{vyber_zbozi}* NEMAME SKLADEM!")
-    else:
-        KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
-
-else:
-    print(ODDELOVAC)
-    print("KOSIK JE PLNY! UKONCUJI", end=f"\n{ODDELOVAC}\n")
-    print(KOSIK, end=f"\n{ODDELOVAC}\n")
-    print(f"CENA CELKEM: {sum(KOSIK.values())} CZK", end=f"\n{ODDELOVAC}\n")
-```
-Je nutne doplnit radny system v podminkove vetvi, jinak nebude funkcionalita
-naseho programu dostatecne stabilni.
-1. Hlidam si ukonceni programu
-2. Hlidame jestli je uzivatelem zadane zbozi ve slovniku __POTRAVINY__
-3. Pokud je vsechno predchozi vyhodnoceno __False__, ukladame.
-
-## Co kdyz se spletu?
-Muze se stat, ze jako uzivatelem napiseme polozku (jeji jmeno), ktere nebude
-skladem, nebo se jen prepiseme. Jak to opravit?
-
-### Ukoncit nebo ne?
-Vhodnejsi bude zuzitkovat nasi smycku a misto vypinani celeho kodu, bude
-upozorneni, ze nastala chyba a cekat na novy vstup.
-
-### Jak se vratim k smycce?
-Pokud je interpret Pythonu u cteni sady kodu, ktera nasleduje po zahlavi, musim
-pouzit specialni syntaxi pro preruseni.
-
-### Continue, ohlaseni
-Casto se muze hodit vraceni se k podmince smycky a jeji opetovne spusteni.
-Ukazeme si to na konkretnim prikladu:
-```python
-cislo = 0
-veta = "Příliš žluťoučký kůň úpěl ďábelské ódy"
-
-while cislo < len(veta):
-    pismeno = veta[cislo]
-
-    if pismeno in "říšžťčýůňúěďáéó":
-        cislo = cislo + 1
-        continue  # zakomentuj pro vysvetleni
-
-    print(pismeno)
-    cislo = cislo + 1
-```
-V nasem prikladu chceme vypisovat pouze pismena, ktera nemaji diakritiku
-(neobsahuji hacky a carky). Pokud takove pismeno v nasi promenne _VETA_ najdu,
-zamerne jej preskocim pomoci ohlaseni __continue__.
-
-### Break, ohlaseni
-Podobne ale muze nastat situace, kdy nase smycka na neco narazi a v takovem
-pripade chceme cyklus uplne ukoncit.
-```python
-cislo = 0
-veta = "Příliš žluťoučký kůň úpěl ďábelské ódy"
-
-while cislo < len(veta):
-    pismeno = veta[cislo]
-
-    if pismeno in "říšžťčýůňúěďáéó":
-        cislo = cislo + 1
-        break  # zakomentuj pro vysvetleni
-
-    print(pismeno)
-    cislo = cislo + 1
-
-else:
-    print("Preskakuji `else` vetev")
-
-print("Pokracuji!")
-```
-Ve druhem prikladu prochazim nasi vetu symbol za symbolem, jako v predchozi
-variante a pokud narazim na symbol s diakritikou, smycku ukoncim. Muzete si
-vsimnout, ze preskakuji i vetev _else_. Proto je potreba na to pri psani
-myslet.
-
-### Doplnime nas kod
-Ted, kdyz vime jaka dalsi ohlaseni pro smycky mame k dispozici, pojdme doplnit
-nas program. Chceme overit, jestli vybrane zbozi je mezi klici promenne 
-__ZBOZI__. Pokud ano, doplnim do __KOSIK__. Pokud ne, vypisu oznameni a
-pokracuji dalsi smyckou.
-
-## Walrus operator (Python3.8+!)
-Dalsi moznosti jak nas kod upravit je pomoci specialniho
-operatoru, tzv. _prirazovaciho_ operatoru (z angl. _walrus operator_).
-V prikladu nize si ukazeme jak funguje:
-```python
-DATA = dict()
-
-while ((dotaz:=input("JMENO? "))):
-    DATA[dotaz] = dotaz.isalpha()
-```
-## Zkusime zkratit zadavani zbozi
-Ted, kdyz tusime jak __prirazovaci operator__ funguje, jej zkusime doplnit do
-naseho kodu.
-__Po zapsani__:
-```python
-while (vyber_zbozi := input("VYBERTE ZBOZI: ")) != 'q':
-    if vyber_zbozi not in POTRAVINY.keys():
-        print(f"*{vyber_zbozi}* NEMAME SKLADEM!")
-    else:
-        KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
-else:
-    ...
-```
-Zapis se nam podstatne zkrati, podminka pro zadani potraviny a ukonceni nakupu
-se nam presune do zahlavi __while__ cyklu.
-
-## Lepsi vypis v uvodu
-Pomoci smycky bychom mohli vylepsit zapis v uvodu. Dovedete to?
-
-### Dalsi smycka
-Reseni spociva v pouziti dalsi (separatni smycky v uvodu). Nez ji ale zapiseme
-podivejme se jaky datovy typ je promenna __POTRAVINY__. Jde o slovnik, takze
-abychom jej mohli prochazet, budeme potrebovat metodu _pop_/_popitem_. Ty
-bohuzel puvodni slovnik promazou, takze si schvalne vytvorime jeho kopii.
-```python
-TABULKA = POTRAVINY.copy()
-```
-Staci pouzit metodu pro slovniky _copy()_, ktera nam zajisti vytvoreni
-duplicitniho slovniku.
-
-__Doplnim smycku__:
-```python
-while TABULKA:
-    radek_potravina = TABULKA.popitem()
-    print(f"POTRAVINA: {radek_potravina[0]},\tCENA: {radek_potravina[1][0]}")
-```
-
-## Co jednotlive kusy zbozi?
-Napada vas jak vyresit problem, kdy bude chtit vlozit opakovane nejakou
-potravinu do kosiku? Jak na to? 
-
-### Musime pocitat
-V zadani mame jako hodnotu seznam. Ten vzdy obsahuje:
-1. I. index -> cenu
-2. II. index -> pocet na sklade
-
-### Nejprve podminky
-Musime rozsirit nase podminky, aby odecitani zbozi bylo provadeno automaticky.
-```python
-    ... 
-    elif vyber_zbozi not in KOSIK and POTRAVINY[vyber_zbozi][1] > 0:
-        KOSIK[vyber_zbozi] = [
-            POTRAVINY[vyber_zbozi][0],
-            1
-        ]
-
-    elif vyber_zbozi in KOSIK and POTRAVINY[vyber_zbozi][1] > 0:
-        KOSIK[vyber_zbozi][1]  = KOSIK[vyber_zbozi][1] + 1
-        POTRAVINY[vyber_zbozi][1] = POTRAVINY[vyber_zbozi][1] - 1
-
-    elif POTRAVINY[vyber_zbozi][1] == 0:
-        print(f"*{vyber_zbozi.upper()}* NENI SKLADEM!")
-    ...
-```
-Podle nasich podminek nyni program zohledni, jestli je jeste zbozi skladem nebo
-nikoliv.
-
-### Nove vypocet ceny
-No a na zaver doplnim jeste posledni __while__ cyklus, ktery mi secte celkovou
-cenu. Soucasne doplnime metodu _center()_, ktera nam vystup zarovna na stred. 
-```python
-...
-else:
-    print(ODDELOVAC)
-    print("KOSIK JE PLNY! UKONCUJI".center(40, " "), end=f"\n{ODDELOVAC}\n")
-    index, vysledek = 0, 0
-
-    while index != len(muj_kosik:=list(KOSIK.values())):
-        zbozi = muj_kosik[index]
-        cena, pocet = zbozi[0], zbozi[1]
-        vysledek += cena * pocet
-        index += 1
-
-    else:
-        print(
-            f"CELKOVA CENA: {vysledek},-".center(40, " "),
-            end=f"\n{ODDELOVAC}\n"
-        )
+# IX. KROK
+# Upravit vystup abych mel hodnoty rozdelene
 
 ```
 
-Pokracovat na Lekci#05
+# Cheatsheet s priklady
+## For cyklus
+Jde o dalsi zpusob, kterym v Pythonu muzu opakovat casti kodu. Zatim co *while* se opakoval, pokud byla explicitne zadana podminka vyhodnocena jako *True*, for cyklus bezi, dokud neprojde celou zadanou sadu udaju. Pripadne, pokud jej jinak neukoncime.
 
+Teorie:
+```
+for <libovolny_parametr> in <sada_udaju>:
+    <telo_smycky>
+```
+
+Priklad:
+```
+>>> JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
+>>> 
+>>> for jmeno in JMENA:
+...     print(jmeno)
+... 
+Helmut
+Helga
+Harold
+Hammet
+Hetfield
+```
+
+## Metoda stringu split()
+Metoda *.split(sep=None, maxsplit=-1)* vraci seznam ze zadane promenne. Tuto zadanou promennou rozdeli podle zadaneho oddelovace.
+
+Priklad:
+```
+VETA1 = "Urcite na Linuxech. S casem, ktery nam zustane se budu gitu zrejme v Pycharmu."
+print(VETA1.split())
+print(VETA1.split("."))
+print(VETA1.split(".", maxsplit=1))
+```
+
+## Metoda stringu strip()
+Tato metoda vraci kopii zadaneho retezce (promenne), kdy z puvodniho udaje odstrani explicitne definovane symboly na zacatku/konci zadane promenne
+
+Priklad:
+```
+VETA2 = "   Není trapnější hloupost, než dutý zvuk krásných a vznešených slov, která však postrádají myšlenku a znalost.   "
+VETA3 = "Není trapnější hloupost,..."
+print(VETA2.strip())  # odstranime uvodni a zaverecne mezery
+print(VETA3.strip(".,"))  # odstranime uvodni a zaverecne carky/tecky
+```
+
+## Seznamova komprehence
+Jde o skladebni predpis na vytvoreni seznamu. Je to dalsi zpusob jak pouzit *for cyklus* ve zkracenem zapisu (nemusi byt prehlednejsi a pouzitelny vzdy).
+
+Priklad:
+```
+VETA2 = "   Není trapnější hloupost, než dutý zvuk krásných a vznešených slov, která však postrádají myšlenku a znalost.   "
+vycisteny_seznam = [slovo.strip(",.") for slovo in VETA2.split()]
+print(vycisteny_seznam)
+```
+## Trideni
+Pomoci zabudovane funkce *sorted()* muzeme docilit serazeni definovane promenne.
+
+Priklad:
+```
+HODNOTY = (1, 3, 4365, 23, 12, 90, 34, 7)
+print(sorted(HODNOTY))
+
+VYSKYT = {"A": 3, "B": 6, "C": 1, "D": 10}
+print(sorted(VYSKYT), key=VYSKYT.get, reversed=True)
+```
+## Nestovane smycky for
+Princip [nestovani](https://engeto.com/cs/kurz/online-python-akademie/studium/HX7RYlaNSk2AjSbGAM_kXw/range-a-smycka-for/smycka-for/vnorene-smycky), zanorovani je v podstate vkladani jedne smycky (vnitrni) do nejake jine (vnejsi).
+
+Priklad:
+```
+for number in range(0, 5):
+    print("=" * 14)
+    print(f"Radej cislo {number}")
+    print("=" * 14)
+
+    for cislo_bunky in range(1, 5):
+        print(f"Bunka cislo {cislo_bunky}")
+# Vystup
+--------------
+RADEK cislo 0
+--------------
+BUNKA cislo 1
+BUNKA cislo 2
+BUNKA cislo 3
+BUNKA cislo 4
+--------------
+RADEK cislo 1
+--------------
+BUNKA cislo 1
+BUNKA cislo 2
+BUNKA cislo 3
+BUNKA cislo 4
+--------------
+RADEK cislo 2
+--------------
+BUNKA cislo 1
+BUNKA cislo 2
+BUNKA cislo 3
+BUNKA cislo 4
+--------------
+RADEK cislo 3
+--------------
+BUNKA cislo 1
+BUNKA cislo 2
+BUNKA cislo 3
+BUNKA cislo 4
+--------------
+RADEK cislo 4
+--------------
+BUNKA cislo 1
+BUNKA cislo 2
+BUNKA cislo 3
+BUNKA cislo 4
+
+```
+## Range()
+Je v podstate [nezmenitelny datovy typ](https://engeto.com/cs/kurz/online-python-akademie/studium/PHnlRhS8RQK7xyKhRoEGlA/range-a-smycka-for/datovy-typ-range/range-vytvareni-a-princip), podobne jako string nebo tuple. Jde o interval hodnot, ktery se velice casto pouziva prave u for cyklu.
+
+Priklad:
+```
+# range(pocatek, konec-1, krok)
+# 1. zpusob
+print(list(range(10)))
+
+# 2. zpusob
+print(list(range(1, 10)))
+
+# 3. zpusob
+print(list(range(1, 10, 2)))
+```
+
+## Enumerate()
+Opet zabudovana funkce slouzici jako nejake [pocitadlo](https://engeto.com/cs/kurz/online-python-akademie/studium/wU-iRPKaQluG8Jz2HRA82A/range-a-smycka-for/smycka-for/for-loop-enumerate). Vraci nam tuply, ve kterych je v paru ulozeno cislo (poradove) a hodnota.
+
+Priklad:
+```
+JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
+ocislovane = enumerate(JMENA, 1)
+print(list(ocislovane))
+
+for cislo, jmeno in enumerate(JMENA, 1):
+    print(f"{cislo}.: {jmeno}")
+```
+
+# Cheatsheet, Git
+## Co to je Git?
+Open-source [verzovaci system](https://engeto.com/cs/kurz/git-zaklady-pro-uzivatele/studium/FlBFHaGbRGaeMDpPH9S4Yw/rychlokurz/ide-vs-terminal). Umoznuje verzovat zmeny naseho projektu, zaznamenava historii, umoznuje kolaboraci atd.
+
+## Jak zacit?
+1. Vytvorit si vlastni GitHub ucet [zde](https://github.com/)
+2. Vytvorit novy repozitar (pravy horni roh obrazovky)
+3. Vytvarim VZDALENY repozitar
+4. Download zip/ Pycharm --> VCS --> Get from version control
+5. Nova pracovni vetev
+6. Commit --> popis lokalnich zmen + push
+7. Zmena na vzdalenem repozitari
+8. git pull
+9. Zmenim, co je nutne opravit --> add + commit + push
+10. Vytvorim zadost o spojeni s hlavni master vetvi
