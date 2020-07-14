@@ -78,9 +78,8 @@ directly reserved packages you. Winter an silent favour of am tended mutual.
   <img src="https://media.giphy.com/media/nbMyAHO0PAVxJ5uJmG/source.gif"  width="300" height="300">
 </p>
 
-
 Preskocime na okamzik do naseho noveho souboru. Vlozime
-[pomocny text](#-co-budeme-potrebovat) a zkusime napsat prvni cyklus.
+[pomocny text](#co-budeme-potrebovat) a zkusime napsat prvni cyklus.
 ```python
 """ Lekce #5 - Uvod do programovani, nejcastejsi slova"""
 
