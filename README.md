@@ -78,9 +78,10 @@ directly reserved packages you. Winter an silent favour of am tended mutual.
   <img src="https://media.giphy.com/media/nbMyAHO0PAVxJ5uJmG/source.gif"  width="300" height="300">
 </p>
 
-
 Preskocime na okamzik do naseho noveho souboru. Vlozime
 [pomocny text](#-co-budeme-potrebovat) a zkusime napsat prvni cyklus.
+
+Nejprve nase zadani. To bude vypadat nasledovne:
 ```python
 """ Lekce #5 - Uvod do programovani, nejcastejsi slova"""
 
@@ -88,6 +89,53 @@ Preskocime na okamzik do naseho noveho souboru. Vlozime
 # Zadani nasi ulohy
 TEXT = ...
 ```
+Tak a ted je ta chvile, kdy si vysvetlime __for__ cyklus a jeho syntaxi.
+Jde o dalsi zpusob, kterym v Pythonu muzu opakovat casti kodu. Zatim co
+__while__ se opakoval, pokud byla explicitne zadana podminka vyhodnocena jako
+__True__, __for cyklu__s bezi, dokud neprojde celou zadanou sadu udaju.
+Pripadne, pokud jej jinak neukoncime.
+
+__Teorie__:
+```python
+for libovolny_jmeno in sada_udaju:
+    <telo_smycky>
+```
+
+__Priklad__:
+```python
+JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
+
+for jmeno in JMENA:
+    print(jmeno)  # Helmut, Helga, Harold, Hammet, Hetfield
+```
+Jakmile dojde k poslednimu udaji v nasem zadanem seznamu __JMENA__, uz nema
+do smycky co podavat. Takze proste ukonci celou proces opakovani a pokracuje
+kodem pod odsazenym telem smycky.
+
+## Doplnime prvni cast kodu
+```python
+# I. KROK
+for slovo in TEXT:
+    print(slovo)
+```
+Pojdme se podivat na vystup!
+
+## Takze mame cyklus
+A nyni prochazime nas text slovo za slov...
+
+## Opatrne na vstupni udaj cyklu
+Bohuzel nam smycka nevraci jedno slovo za druhym, jak jsme puvodne cekali.
+Duvod je prosty. Zadany udaj totiz neni seznam, jak byl v nasem vzoru ale
+retezec. S tim si ale umime poradit!
+```python
+# I. KROK
+jednotliva_slova = TEXT.split()  # opatrne na symbol rozdelovani
+
+for slovo in jednotliva_slova:
+    ...
+```
+## Slova mame!
+Dale bychom se chteli zbavit carek a tecek!
 
 # Cheatsheet s priklady
 ## For cyklus
