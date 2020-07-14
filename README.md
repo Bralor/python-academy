@@ -13,7 +13,13 @@ Vratit na [Uvodni lekci](https://github.com/Bralor/python-academy/blob/master/RE
 - [Repl.it](https://repl.it/)
 
 ## Co nas dnes ceka?
-Vytvorime jednoduchy skript pojmenovany "Destinatio". Tento program bude komunikovat s uzivatelem. Komunikaci rozumejme nejake predavani vstupu a vystupu s nasim programem. Jelikoz jde o nasi prvni spolecnou hodinu, vsechno se budeme snazit resit pomoci vzdaleneho online [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)(integrated development enviroment). Prejdeme tedy na [repl.it](#-dulezite-odkazy)!
+Vytvorime jednoduchy skript pojmenovany __Destinatio__. Tento program bude
+komunikovat s uzivatelem. Komunikaci rozumejme nejake predavani vstupu a
+vystupu s nasim programem. Jelikoz jde o nasi prvni spolecnou hodinu,
+vsechno se budeme snazit resit pomoci vzdaleneho online
+[IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)
+(integrated development enviroment). Prejdeme tedy na
+[repl.it](#-dulezite-odkazy)!
 
 ## Co bude vysledkem?
 Po spusteni by mela komunikace vypadat nasledovne:
@@ -59,7 +65,9 @@ Pripadne moznost vpravo nahore primo pouzit tlacitko a ihned psat kod:
 ```
 
 ## Upozorneni!
-S kodem, ktery dneska zapiseme pomoci [repl.it](#-dulezite-odkazy) budeme opet pracovat ve druhe hodine. Vysledek si proto muzete bud ulozit, nebo stahnout potom ode me.
+S kodem, ktery dneska zapiseme pomoci [repl.it](#-dulezite-odkazy) budeme opet
+pracovat ve druhe hodine. Vysledek si proto muzete bud ulozit, nebo stahnout
+potom ode me.
 
 ## Nas prvni kod
 Zadame promenne, se kterymi chceme pracovat. Ale jake?
@@ -73,21 +81,17 @@ Zadame promenne, se kterymi chceme pracovat. Ale jake?
 Hodnoty zapisujeme pomoci [celych cisel](https://engeto.com/cs/kurz/python-academy/studium/91lewpELSZaQ6CI_vGz9ng/1-intro-to-programming/basics/data-types-overview).
 ```bash
 # zapis pomoci Python interpretru
->>> type(1100)
-<class 'int'>  # -> zkratka pro integer
->>> 1100 + 100
-1200
->>> 5 - 2
-3
+type(1100)  # <class 'int'>
+1100 + 100  # 1200
+5 - 2       # 3
 ```
 
 ### Desetinna cisla, floats
-Hodnoty zapisujeme jako desetinna cisla. Oddelovac je __tecka__! Carka slouzi k jinym ucelum.
+Hodnoty zapisujeme jako desetinna cisla. Oddelovac je __tecka__! Carka slouzi
+k jinym ucelum.
 ```bash
->>> type(3.1415926536)
->>> 10/3; type(10/3)
-3.3333333333333335
-<class 'float'>
+type(3.1415926536)  # <class 'float'>
+10/3  # 3.3333333333333335
 ```
 
 ### Co jeste muzeme s cisly provadet?
@@ -96,36 +100,33 @@ V Pythonu pouzivame [zakladni matematicke operace](https://engeto.com/cs/kurz/py
 
 Zkousime jednotlive __operatory__:
 ```bash
->>> 10 + 5          # 15
->>> 10 - 5          # 5
->>> 10 * 5          # 50
->>> 10 / 5          # 2.0 (?)
->>> 10 // 3         # celociselne deleni
->>> 10 % 3          # ziskani zbytku po deleni
->>> -10             # negace
->>> 10 ** 3         # umocnovani
+10 + 5    # 15
+10 - 5    # 5
+10 * 5    # 50
+10 / 5    # 2.0 (?)
+10 // 3   # celociselne deleni
+10 % 3    # ziskani zbytku po deleni
+-10       # negace
+10 ** 3   # umocnovani
 ```
 
 ## Je libo i text? Retezce, strings!
-Jde o ruzne dlouhe uskupeni [znaku](https://engeto.com/cs/kurz/python-academy/studium/p1_xjnimSui6cpwn2nISBQ/1-intro-to-programming/sequence-data-types/strings) (cisla, pismena, specialni symboly,..), ohranicenych uvozovkami.
+Jde o ruzne dlouhe uskupeni [znaku](https://engeto.com/cs/kurz/python-academy/studium/p1_xjnimSui6cpwn2nISBQ/1-intro-to-programming/sequence-data-types/strings)
+(cisla, pismena, specialni symboly,..), ohranicenych uvozovkami.
 ```bash
->>> "Matous Holinka"; type("Matous Holinka")
-'Matous Holinka'
-<class 'str'>
->>> '1234566789'; type('1234566789')
-'1234566789'
-<class 'str'>
->>> "!@#$%%^&*"; type("!@#$%%^&*")
-'!@#$%%^&*'
-<class 'str'>
+"Matous Holinka"  # 'Matous Holinka'
+type("Matous Holinka")  # <class 'str'>
+'1234566789'  # <class 'str'>
+"!@#$%%^&*"  # <class 'str'>
 ```
 
 ## Jak tedy hodnotu uchovat a vyhledat? Promenne...
-[Promenne](https://engeto.com/cs/kurz/python-academy/studium/0ujrbVm0T_uX6LlvMP1D1g/1-intro-to-programming/data/variable) v Pythonu jsou je symbolickymi odkazy, ktere odkazuji na objekt v pameti.
+[Promenne](https://engeto.com/cs/kurz/python-academy/studium/0ujrbVm0T_uX6LlvMP1D1g/1-intro-to-programming/data/variable)
+v Pythonu jsou je symbolickymi odkazy, ktere odkazuji na objekt v pameti.
 
 __Predpis/syntaxe__ vypada nasledovne:
 ```python
-<jmeno_promenne> = <hodnota> (retezec, cele_cislo, desetinne_cislo, aj.)
+jmeno_promenne = hodnota  # retezec, cele_cislo, desetinne_cislo, aj.
 ```
 
 __Priklad__:
@@ -137,28 +138,31 @@ CENA = 1000.5       # desetinne_cislo, konstanta
 
 ## Promenne obsahujici vice udaju
 ### Seznam, list
-List neboli seznam je zmenitelna posloupnost prvku. Tzn. jednotlive prvku muzeme menit, muzeme pracovat s libovolnou casti seznamu, muzeme jej rozsirovat nebo promazavat.
+List neboli seznam je zmenitelna posloupnost prvku. Tzn. jednotlive prvku
+muzeme menit, muzeme pracovat s libovolnou casti seznamu, muzeme jej
+rozsirovat nebo promazavat.
 
 __Obecne__:
 ```python
-<jmeno_seznamu> = <[>"udaj_1"<,> "udaj_2"<,> "udaj_3"<,> "udaj_4"<]>
+jmeno_seznamu = ["udaj_1", "udaj_2", "udaj_3", "udaj_4"]
 ```
 __Priklad__:
 ```python
-JMENA = ["Matous", "Marek", "Lukas", "Jan"]; type(JMENA)  # seznam s retezci
+JMENA = ["Matous", "Marek", "Lukas", "Jan"]
 ```
 
 ## N-tice, tuple
-Tuple neboli n-tice je naopak nezmenitelna posloupnost prvku. Muzeme sice pouzivat jednotlive data, ale nemuzeme je menit.
+Tuple neboli n-tice je naopak nezmenitelna posloupnost prvku. Muzeme sice
+pouzivat jednotlive data, ale nemuzeme je menit.
 
 __Obecne__:
 ```python
-<jmeno_ntice> = <(>"udaj_1"<,> "udaj_2"<,> "udaj_3"<,> "udaj_4"<)>
+jmeno_ntice = ("udaj_1", "udaj_2", "udaj_3", "udaj_4")
 ```
 
 __Priklad__:
 ```python
-CISLICE = ("Biscuit", "in", "the", "basket"); type(numbers)  # n-tice s retezci
+SLOVA = ("Biscuit", "in", "the", "basket")
 ```
 
 ## Uz doopravdy muzeme zacit...
@@ -167,7 +171,8 @@ CISLICE = ("Biscuit", "in", "the", "basket"); type(numbers)  # n-tice s retezci
 </p>
 
 ## Promenne na uvod
-Zadame promenne, se kterymi chceme pracovat. Musime nekde uchovat jmena mest, cen a vizualni oddelovac.
+Zadame promenne, se kterymi chceme pracovat. Musime nekde uchovat jmena mest,
+cen a vizualni oddelovac.
 ```python
 """Lekce #1 - Uvod do programovani, 1/2 Destinatio"""
 MESTA = ("Praha", "Viden", "Olomouc", "Svitavy", "Zlin", "Ostrava")
@@ -176,14 +181,17 @@ ODDELOVAC = '==================================='
 ```
 
 ## Nas prvni vypis z programu
-Chceme oficialne uvitat uzivatele, oznamit mu nase umysly a ukazat aktualni nabidku. Jak to provedeme?
+Chceme oficialne uvitat uzivatele, oznamit mu nase umysly a ukazat aktualni
+nabidku. Jak to provedeme?
 
 ### Funce print()
-Je to [vestavena funkce](https://engeto.com/cs/kurz/python-academy/studium/GzlxQFyiSSuTLjE_B99htw/1-intro-to-programming/basics/input-output-data) Pythonu (s Pythonem nainstalovana, neni nutne ji tvorit). Ucelem teto funkce je vypsat informace, ktere ji vlozime do kulatych zavorek.
+Je to [vestavena funkce](https://engeto.com/cs/kurz/python-academy/studium/GzlxQFyiSSuTLjE_B99htw/1-intro-to-programming/basics/input-output-data)
+Pythonu (s Pythonem nainstalovana, neni nutne ji tvorit). Ucelem teto funkce
+je vypsat informace, ktere ji vlozime do kulatych zavorek.
 
 __Obecne__:
 ```python
-<jmeno_funce><(><hodnota_na_vypsani><)>
+jmeno_funce(hodnota_na_vypsani)
 ```
 
 __Priklad__:
@@ -210,7 +218,9 @@ print(ODDELOVAC)
 ```
 
 ## Vkladame hodnoty pomoci input()
-Jde opet o vestavenou funkci v Pythonu. Tato funkce ocekava od uzivatele nejakou vstupni informaci. Cokoliv do ni vlozime tato vestavena funkce standartne premeni na retezec!
+Jde opet o vestavenou funkci v Pythonu. Tato funkce ocekava od uzivatele
+nejakou vstupni informaci. Cokoliv do ni vlozime tato vestavena funkce
+standartne premeni na retezec!
 
 __Priklad__:
 ```python
@@ -225,6 +235,34 @@ Od uzivatele chceme tyto vyplnene udaje:
 6. Heslo
 
 Dopsany kod:
+```python
+por_cislo = input("Vyberte cislo lokality: ")
+jmeno = input("JMENO: ")
+prijmeni = input("PRIJMENI: ")
+rok_narozeni = input("ROK NAROZENI: ")
+email = input("EMAIL: ")
+heslo = input("HESLO: ")
+print(ODDELOVAC)
+```
+## Prevedeni retezcu
+Zkontrolujme nyni, jake datove typy nase prave vytvorene promenne obsahuji
+```python
+type(por_cislo)     # <class 'str'>
+type(jmeno)         # <class 'str'>
+type(rok_narozeni)  # <class 'str'>
+```
+Kdyz budu chtit nyni vypocitat soucet cisla v promenne __por cislo__ a cislem
+jedna. Jaky bude vysledek?
+```python
+por_cislo + 1  # TypeError?
+```
+Copak se stalo? Problem, ktery tu vznikl je, ze v jiste chvili scitam dva
+ruzne datove typy. Scitam retezec a cele cislo. Abych tomu zabranil, musim
+obe promenne prevest na stejny datovy typ, tedy cisla.
+```python
+int(por_cislo) + 1  # 2
+```
+Upraveny kod bude potom vypadat nasledovne:
 ```python
 por_cislo = int(input("Vyberte cislo lokality: "))
 jmeno = input("JMENO: ")
@@ -253,15 +291,16 @@ Vitejte u nasi aplikace Destinatio!
 Vyberte cislo lokality: 1
 ...
 ```
-Jake mesto ale dostaneme?
+Pokud ale v tuto chvili vybereme cislo __1__, dostaneme skutecne __Praha__?
 
-## Jak vse zachranit?
-### Pomoci _indexovani_
-Jde o [cislo](https://engeto.com/cs/kurz/python-academy/studium/ahOxRKnuRB2NB2HCqIqRKA/1-intro-to-programming/sequence-data-types/indexing) v hranatych zavorkach zapsane ihned za jmenem promenne. Vraci objekt na urcene pozici. Zapamatujte si, ze index pozice prvni polozky je 0 (posledni -1).
+## Indexovani seznamu/n-tic 
+Jde o [cislo](https://engeto.com/cs/kurz/python-academy/studium/ahOxRKnuRB2NB2HCqIqRKA/1-intro-to-programming/sequence-data-types/indexing)
+v hranatych zavorkach zapsane ihned za jmenem promenne. Vraci objekt na
+urcene pozici. Zapamatujte si, ze index pozice prvni polozky je 0 (posledni -1).
 
 __Obecne__:
 ```python
-<jmeno_promenne_kde_mohu_indexovat><[><index><]>
+jmeno_promenne_kde_mohu_indexovat[index]
 ```
 
 __Priklad__:
@@ -269,7 +308,11 @@ __Priklad__:
 CISLICE = ("Biscuit", "in", "the", "basket")  # chci ziskat prvni, posledni udaj v ntici
 CISLICE[0]; CISLICE[-1]
 ```
-Nyni muzeme udaj opravit. Uzivatel ma totiz k dispozici pouze nas vypis. O indexovani nema ani potuchy. Proto je potreba provest zmeny na pozadi.
+Takze ted umime pomoci indexovani udaj vybrat. Je ale skutecne v poradku?
+
+## Opraveni zvoleneho indexu
+Nyni muzeme udaj opravit. Uzivatel ma totiz k dispozici pouze nas vypis. O
+indexovani nema ani potuchy. Proto je potreba provest zmeny na pozadi.
 
 Doplnime zmeny s indexovanim:
 ```python
@@ -278,14 +321,18 @@ cena = CENY[por_cislo - 1]
 ```
 
 ## Nyni vratime, vypiseme uzivatelem vyplnene hodnoty
-K tomu budeme opet potrebovat funkci _print()_ a nejen ji. Ve vzorovem vystupu vypisuji nejen predepsany text, ale obsah konkretnich promennych. Toho docilime z pravidla tremi postupy:
+K tomu budeme opet potrebovat funkci _print()_ a nejen ji. Ve vzorovem vystupu
+vypisuji nejen predepsany text, ale obsah konkretnich promennych. Toho
+docilime z pravidla tremi postupy:
 
 1. [Konkatenace](#-konkatenace-spojovani)
 2. [Oddelovacem](#-oddelovac)
 3. [f-string formatovani](#f-string-formatovani)
 
 ### Konkatenace, spojovani
-Je to [proces](https://engeto.com/cs/kurz/python-academy/studium/1YyeD7QBTIuqU_BMzkcT_w/1-intro-to-programming/sequence-data-types/concatenation), ktery funguje jen u nekterych datovych typu (retezec, seznam, n-tice). Spoji dve ruzne promenne do jedne (pomoci "+" operatoru).
+Je to [proces](https://engeto.com/cs/kurz/python-academy/studium/1YyeD7QBTIuqU_BMzkcT_w/1-intro-to-programming/sequence-data-types/concatenation),
+ktery funguje jen u nekterych datovych typu (retezec, seznam, n-tice).
+Spoji dve ruzne promenne do jedne (pomoci "+" operatoru).
 
 __Priklad__:
 ```python
@@ -321,16 +368,19 @@ print(f"Jizdenku posleme na Vasi emailovou adresu: {email}")
 ```
 
 ## Malickost zaverem
-Zpusob zapsani oddelovace je malicko nesikovna. Muzeme cely proces vylepsit [opakovanim](https://engeto.com/cs/kurz/python-academy/studium/QnEydRFvSu2qmTCPIVEW0Q/1-intro-to-programming/sequence-data-types/repetition). Tento proces se sklada ze sekvence, kterou budeme opakovat, operatoru pro opakovani "*" a za nim cele cislo, ktere specifikuje pocet opakovani.
+Zpusob zapsani oddelovace je malicko nesikovna. Muzeme cely proces vylepsit
+[opakovanim](https://engeto.com/cs/kurz/python-academy/studium/QnEydRFvSu2qmTCPIVEW0Q/1-intro-to-programming/sequence-data-types/repetition).
+Tento proces se sklada ze sekvence, kterou budeme opakovat, operatoru pro
+opakovani "*" a za nim cele cislo, ktere specifikuje pocet opakovani.
 
 __Obecne__:
 ```python
-<uvozovky><co_opakovat><uvozovky> <operand> <kolikrat>
+"co_opakovat" * kolikrat
 ```
 
 __Priklad__:
 ```python
-"Matous" * 10
+"Matous" * 10  # MatousMatousMatous...
 ```
 
 Nahradime hodnotu promenne __ODDELOVAC__:
