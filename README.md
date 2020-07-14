@@ -13,12 +13,21 @@ Minula [lekce#04](https://github.com/Bralor/python-academy/tree/lekce04)
 - Seznamova [komprehence](http://howto.py.cz/cap08.htm#10)
 
 ## Co nas dneska ceka
-V ramci dnesni lekce budeme chtit dokoncit teorii o smyckach v Pythonu. Rekneme si obecne o jejich pouziti, doplnujici zpusob prace s nimi. Nakonec bychom si jeste ve zkratce ukazali praci s gitem.
+V ramci dnesni lekce budeme chtit dokoncit teorii o smyckach v Pythonu.  V 
+predchozi lekci jsme si povidali o __while__ cyklu. Dnes budeme mluvit o 
+_for cyklech_. Rekneme si obecne o jejich pouziti, doplnujici zpusob prace
+s nimi. Na zaver bychom si povedeli neco o rozdilu mezi temito dvema typy. 
 
 ## Hledani nejcastejsich slov
-Spolecne si zadame nahodny text, s nimz dnes budeme pracovat. Cilem bude zjistit pet nejcastejsich slov, ktere se v textu vyskytuji.
+Soucasne s dnesni tematikou si zadame opet spolecnou ulohu. V poznamkach nize
+si zkopirujeme nahodny text nekam do sveho lokalniho pracovniho souboru.
+Cilem bude zjistit pet nejcastejsich slov, ktere se v textu vyskytuji.
 
 ## Ukazka na uvod
+Spustime skript v tomto adresari:
+```
+$ ./nejcastejsi_slova.py
+```
 Vystup by na konci lekce mohl vypadat nasledovne:
 ```
 ==========================
@@ -32,11 +41,12 @@ Vystup by na konci lekce mohl vypadat nasledovne:
 ==========================
 5, SLOVO: *ye*, VYSKYT: 3x
 ```
+
 ## Co budeme potrebovat?
 - python 3.6+
 - text. editor
 - pomocny text:
-```
+```python
 TEXT = """
 Affronting imprudence do he he everything. Sex lasted dinner wanted indeed
 wished out law. Far advanced settling say finished raillery. Offered
@@ -63,42 +73,20 @@ directly reserved packages you. Winter an silent favour of am tended mutual.
 ```
 
 ## Jdeme na to!
-Opet si otevreme novy soubor *.py* a nakopirujeme sablonu nize:
-```
-#!/usr/bin/env python3
-""" Lekce #5 - Uvod do programovani, hledac slov """
+
+<p align="center">
+  <img src="https://media.giphy.com/media/nbMyAHO0PAVxJ5uJmG/source.gif"  width="300" height="300">
+</p>
+
+
+Preskocime na okamzik do naseho noveho souboru. Vlozime
+[pomocny text](#-co-budeme-potrebovat) a zkusime napsat prvni cyklus.
+```python
+""" Lekce #5 - Uvod do programovani, nejcastejsi slova"""
 
 # I. KROK
 # Zadani nasi ulohy
-XXXXXX
-
-# II. KROK
-# Prochazime promennou *text*
-
-# III. KROK
-# Rozdelime promennou *text*, abych prochazeli slova
-
-# IV. KROK
-# Zakomentuj krok 2.
-# Prochazime znovu
-
-# Zkusime napsat pomoci *while* cyklu
-
-# VI. KROK
-# Zakomentujeme krok 4.
-# Vyzkousime seznamovou komprehenci
-# Utridime slova do slovniku podle vyskytu
-
-# VII. KROK
-# Vytvorim pomocnou promennou *vyskyt_slov*
-# Pocitam vyskyt slov
-
-# VIII. KROK
-# Vybere 5 nejcastejsich slov
-
-# IX. KROK
-# Upravit vystup abych mel hodnoty rozdelene
-
+TEXT = ...
 ```
 
 # Cheatsheet s priklady
