@@ -1,11 +1,11 @@
-Minula [lekce#04](https://github.com/Bralor/online-python-academy/tree/master/lesson04)
+Minula [lekce#04](https://github.com/Bralor/python-academy/tree/lekce04)
 
 <p align="center">
   <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
 </p>
 
 ![](../images/engeto.png)
-# Online Python academy, lesson 05
+# Python academy, lesson 05
 ## Dulezite odkazy
 - Portal [Engeto.com](https://engeto.com/)
 - Python Academy [repozitar](https://github.com/Bralor/python-academy)
