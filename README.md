@@ -16,10 +16,10 @@ V navaznosti na minulou lekci se budeme snazit nas program (Destinatio) zdokonal
 ## Co bude vysledkem?
 Po spusteni by mel program vypadat nasledovne (nebo viz. demo):
 ```bash
-$ destinatio
+$ ./destinatio
 ```
 Dostaneme nasledny vypis:
-```bash
+```
 ===================================
 Vitejte u nasi aplikace Destinatio!
 ===================================
@@ -57,7 +57,7 @@ Jizdenku posleme na Vasi emailovou adresu: matous@matous.cz
 ## Co budeme potrebovat?
 - Python 3.6+
 - textovy editor (dle uvazeni/doporuceni)
-- vystup z [prvni lekce](https://github.com/Bralor/python-academy/blob/lekce01/destinatio_p1.py)
+- vystup z [prvni lekce](https://github.com/Bralor/python-academy/blob/lekce01/destinatio_part1)
 - vytvorit si novy soubor ve svem pracovnim adresari
 
 ## Pokracujeme s kodem!
