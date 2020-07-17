@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Lekce #2 - Uvod do programovani, 2/2 Destinatio """
 
-# ~~~~~~~~~~~~~~~~~~~ZAPIS Z LEKCE #01~~~~~~~~~~~~~~~~~~~
 SEZNAM_MEST = ("Praha", "Viden", "Olomouc", "Svitavy", "Zlin", "Ostrava")
 SEZNAM_CEN = (150, 200, 120, 120, 100, 180)
 ODDELOVAC = "=" * 35
@@ -22,7 +21,6 @@ print(
 
 print(ODDELOVAC)
 
-# ~~~~~~~~~~~~~~~~~~~KONEC ZAPISU Z LEKCE #01~~~~~~~~~~~~~~~~~~~
 # I. KROK:
 # Update/doplnit zadani
 SLEVY = ("Olomouc", "Ostrava")
