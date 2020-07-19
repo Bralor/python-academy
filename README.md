@@ -112,9 +112,8 @@ Jakmile dojde k poslednimu udaji v nasem zadanem seznamu __JMENA__, uz nema
 do smycky co podavat. Takze proste ukonci celou proces opakovani a pokracuje
 kodem pod odsazenym telem smycky.
 
-## Doplnime prvni cast kodu
+## Doplnime I. cast
 ```python
-# I. KROK
 for slovo in TEXT:
     print(slovo)
 ```
@@ -127,6 +126,20 @@ A nyni prochazime nas text slovo za slov...
 Bohuzel nam smycka nevraci jedno slovo za druhym, jak jsme puvodne cekali.
 Duvod je prosty. Zadany udaj totiz neni seznam, jak byl v nasem vzoru ale
 retezec. S tim si ale umime poradit!
+
+Metoda __split()__:
+Tato metoda vraci seznam ze zadane promenne. Tuto zadanou promennou rozdeli
+podle preddefinovaneho oddelovace.
+
+__Priklad__:
+```python
+VETA1 = "Dneska mame ale otresne pocasi. Jeste, ze muzeme kodit v Pythonu!"
+print(VETA1.split())  # rozdelime po slovech i radcich
+print(VETA1.split("."))  # rozdelime po vetach
+print(VETA1.split(".", maxsplit=1))  # rozdelime po vetach, 1x
+```
+
+Doplnime cast naseho kodu:
 ```python
 # I. KROK
 jednotliva_slova = TEXT.split()  # opatrne na symbol rozdelovani
@@ -134,131 +147,143 @@ jednotliva_slova = TEXT.split()  # opatrne na symbol rozdelovani
 for slovo in jednotliva_slova:
     ...
 ```
-## Slova mame!
-Dale bychom se chteli zbavit carek a tecek!
+## Slova mame! Mame?!
+Dale bychom se chteli zbavit carek a tecek! Pro odstraneni libovolnych vyrazu
+se musime seznamit s dalsi metodou rezecu _strip()_.
 
-# Cheatsheet s priklady
-## For cyklus
-Jde o dalsi zpusob, kterym v Pythonu muzu opakovat casti kodu. Zatim co *while* se opakoval, pokud byla explicitne zadana podminka vyhodnocena jako *True*, for cyklus bezi, dokud neprojde celou zadanou sadu udaju. Pripadne, pokud jej jinak neukoncime.
+Metoda __strip()__:
+Tato metoda vraci kopii zadaneho retezce (promenne), kdy z puvodniho udaje
+odstrani explicitne definovane symboly na zacatku/konci promenne.
 
-Teorie:
-```
-for <libovolny_parametr> in <sada_udaju>:
-    <telo_smycky>
-```
-
-Priklad:
-```
->>> JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
->>> 
->>> for jmeno in JMENA:
-...     print(jmeno)
-... 
-Helmut
-Helga
-Harold
-Hammet
-Hetfield
-```
-
-## Metoda stringu split()
-Metoda *.split(sep=None, maxsplit=-1)* vraci seznam ze zadane promenne. Tuto zadanou promennou rozdeli podle zadaneho oddelovace.
-
-Priklad:
-```
-VETA1 = "Urcite na Linuxech. S casem, ktery nam zustane se budu gitu zrejme v Pycharmu."
-print(VETA1.split())
-print(VETA1.split("."))
-print(VETA1.split(".", maxsplit=1))
-```
-
-## Metoda stringu strip()
-Tato metoda vraci kopii zadaneho retezce (promenne), kdy z puvodniho udaje odstrani explicitne definovane symboly na zacatku/konci zadane promenne
-
-Priklad:
-```
-VETA2 = "   Není trapnější hloupost, než dutý zvuk krásných a vznešených slov, která však postrádají myšlenku a znalost.   "
+__Priklad__:
+```python
+VETA2 = "   Není trapnější hloupost, než dutý zvuk krásných a vznešených slov,\
+        která však postrádají myšlenku a znalost.   "
 VETA3 = "Není trapnější hloupost,..."
-print(VETA2.strip())  # odstranime uvodni a zaverecne mezery
-print(VETA3.strip(".,"))  # odstranime uvodni a zaverecne carky/tecky
+print(VETA2.strip())        # odstranime uvodni a zaverecne mezery
+print(VETA3.strip(".,"))    # odstranime uvodni a zaverecne carky/tecky
 ```
 
-## Seznamova komprehence
-Jde o skladebni predpis na vytvoreni seznamu. Je to dalsi zpusob jak pouzit *for cyklus* ve zkracenem zapisu (nemusi byt prehlednejsi a pouzitelny vzdy).
+## Dopsana II. cast
+```python
+vycistena_slova = []
 
-Priklad:
+for slovo in jednotliva_slova:
+    ciste_slovo = slovo.strip(".,")
+    vycistena_slova.append(ciste_slovo)
 ```
-VETA2 = "   Není trapnější hloupost, než dutý zvuk krásných a vznešených slov, která však postrádají myšlenku a znalost.   "
-vycisteny_seznam = [slovo.strip(",.") for slovo in VETA2.split()]
-print(vycisteny_seznam)
+
+## Pocitame vyskyt
+Jakmile muzeme prochazet slova vycistena od carek, tecek atd., prichazi moment,
+kdy je zacneme pocitat. Nejprve musime vymyslet jaky datovy typ se nam pro
+evidenci slov a jejich vyskytu vubec hodi.
+```python
+vyskyt_slov = {}
 ```
-## Trideni
+
+## Jak zapisu vyskyt?
+Pokud pouzijeme k danemu ucelu slovnik, muzeme si vypomoct jednou z jeho metod.
+Pomoci _setdefault()_ muzu kazdy vyraz, ktery potkam zapsat do naseho slovniku
+__vyskyt_slov__.
+
+__Ukazka__:
+```python
+muj_slovnik = {}
+
+muj_slovnik.setdefault("Matous", 1)
+muj_slovnik.setdefault("Marek", 2)
+```
+Jak zmenim hodnotu, pri pristim vyskytu konkretniho klice? Jednoduse upravime
+zapis hodnot klicu.
+```python
+...
+muj_slovnik.setdefault("Matous", 0) + 1
+```
+Tim zajistim, ze pocatecni hodnota klice bude nula a hned v tom samem kroku,
+prictu hodnotu + 1. Takze po prvnim vyskytu dostanu hodnotu 1. Cyklus ale 
+bezi dal, takze pokazde, kdyz se objevi stejny klic, prictu k hodnote +1.
+
+## Dopsana III. cast
+```python
+...
+for ciste_slovo in vycistena_slova:
+    vyskyt_slov[ciste_slovo] = vyskyt_slov.setdefault(ciste_slovo, 0) + 1
+    ...
+```
+
+## Jak vypiseme nejvetsi klice?
+Ted uz mame vsechny udaje ohodnocene a potrebujeme je patricne vypsat.
 Pomoci zabudovane funkce *sorted()* muzeme docilit serazeni definovane promenne.
 
-Priklad:
-```
+__Ukazka__:
+```python
 HODNOTY = (1, 3, 4365, 23, 12, 90, 34, 7)
 print(sorted(HODNOTY))
 
 VYSKYT = {"A": 3, "B": 6, "C": 1, "D": 10}
-print(sorted(VYSKYT), key=VYSKYT.get, reversed=True)
+print(sorted(VYSKYT, key=VYSKYT.get, reversed=True)
 ```
-## Nestovane smycky for
-Princip [nestovani](https://engeto.com/cs/kurz/online-python-akademie/studium/HX7RYlaNSk2AjSbGAM_kXw/range-a-smycka-for/smycka-for/vnorene-smycky), zanorovani je v podstate vkladani jedne smycky (vnitrni) do nejake jine (vnejsi).
+Nakonec nam tato vestavena funkce vraci novy seznam s hodnotami. Takze jak
+mohu ziskat udaje na prvnich peti indexech?
 
-Priklad:
+## Dopsana IV. cast
+```python
+nejcastejsich_pet = sorted(vyskyt_slov, key=vyskyt_slov.get, reverse=True)[:5]
 ```
-for number in range(0, 5):
-    print("=" * 14)
-    print(f"Radej cislo {number}")
-    print("=" * 14)
+## Vracime vystup
+Nyni potrebujeme akorat ziskat upraveny vystup nasich vysledku. Pred prvnim
+vystupem chceme vypsat strucny uvod. Jak ale upravit jen nektery krok cyklu?
 
-    for cislo_bunky in range(1, 5):
-        print(f"Bunka cislo {cislo_bunky}")
-# Vystup
---------------
-RADEK cislo 0
---------------
-BUNKA cislo 1
-BUNKA cislo 2
-BUNKA cislo 3
-BUNKA cislo 4
---------------
-RADEK cislo 1
---------------
-BUNKA cislo 1
-BUNKA cislo 2
-BUNKA cislo 3
-BUNKA cislo 4
---------------
-RADEK cislo 2
---------------
-BUNKA cislo 1
-BUNKA cislo 2
-BUNKA cislo 3
-BUNKA cislo 4
---------------
-RADEK cislo 3
---------------
-BUNKA cislo 1
-BUNKA cislo 2
-BUNKA cislo 3
-BUNKA cislo 4
---------------
-RADEK cislo 4
---------------
-BUNKA cislo 1
-BUNKA cislo 2
-BUNKA cislo 3
-BUNKA cislo 4
+__enumerate__ je opet opet zabudovana funkce, kterou Python podporuje. Ukazme
+si jak funguje primo na prikladu.
 
+__Priklad__:
+```python
+JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
+ocislovane = enumerate(JMENA, 1)
+print(list(ocislovane))
+
+for cislo, jmeno in enumerate(JMENA, 1):
+    print(f"{cislo}.: {jmeno}")
 ```
-## Range()
-Je v podstate [nezmenitelny datovy typ](https://engeto.com/cs/kurz/online-python-akademie/studium/PHnlRhS8RQK7xyKhRoEGlA/range-a-smycka-for/datovy-typ-range/range-vytvareni-a-princip), podobne jako string nebo tuple. Jde o interval hodnot, ktery se velice casto pouziva prave u for cyklu.
-
-Priklad:
+## Dopiseme V. cast
+```python
+...
+for index, vysledek in enumerate(nejcastejsich_pet):
+    if index == 0:
+        print("VITEJTE U NASEHO POCITADLA!".center(35, " "), end=f"\n{ODDELOVAC}\n")
+    else:
+        print(
+            f"{index}. NEJCASTEJSI SLOVO: {vysledek}, VYSKYT: {vyskyt_slov[vysledek]}",
+            end=f"\n{ODDELOVAC}\n"
+        )
 ```
-# range(pocatek, konec-1, krok)
+Vyuzijeme funkcionalitu __enumerate__, abychom vypsali uvodni text a potom
+ocislovali nejcastejsi vystupy.
+
+## Muzeme zapis vylepsit?
+V nasem kodu mame nekolikrat zapsanou smycku typu __for__. V techto smyckach
+dost casto jen ukladame upravena data do nejakeho datoveho typu. V mnoha
+pripadech muzeme smycku sikovne zkratit pomoci _seznamove komprehence_ neboli
+zkraceneho zapisu smycky __for__.
+
+__Priklad__:
+```python
+VETA2 = "   Není trapnější hloupost, než dutý zvuk krásných a vznešených slov, která však postrádají myšlenku a znalost.   "
+vycisteny_seznam = [slovo.strip(",.") for slovo in VETA2.split()]
+print(vycisteny_seznam)
+```
+## Doplnime VI. cast
+```python
+vycistena_slova = [slovo.strip(",.") for slovo in jednotliva_slova]
+```
+## Intervaly v Pythonu
+Je v podstate [nezmenitelny datovy typ](https://engeto.com/cs/kurz/online-python-akademie/studium/PHnlRhS8RQK7xyKhRoEGlA/range-a-smycka-for/datovy-typ-range/range-vytvareni-a-princip),
+podobne jako string nebo tuple. Jde o interval hodnot, ktery se velice casto
+pouziva prave u for cyklu.
+
+__Priklad__:
+```python
 # 1. zpusob
 print(list(range(10)))
 
@@ -269,31 +294,19 @@ print(list(range(1, 10)))
 print(list(range(1, 10, 2)))
 ```
 
-## Enumerate()
-Opet zabudovana funkce slouzici jako nejake [pocitadlo](https://engeto.com/cs/kurz/online-python-akademie/studium/wU-iRPKaQluG8Jz2HRA82A/range-a-smycka-for/smycka-for/for-loop-enumerate). Vraci nam tuply, ve kterych je v paru ulozeno cislo (poradove) a hodnota.
+## Nestovane smycky
+Princip [nestovani](https://engeto.com/cs/kurz/online-python-akademie/studium/HX7RYlaNSk2AjSbGAM_kXw/range-a-smycka-for/smycka-for/vnorene-smycky),
+zanorovani je v podstate vkladani jedne smycky (vnitrni) do nejake jine
+(vnejsi).
 
-Priklad:
+__Priklad__:
+```python
+for number in range(0, 5):
+    print("=" * 14)
+    print(f"Radej cislo {number}")
+    print("=" * 14)
+
+    for cislo_bunky in range(1, 5):
+        print(f"Bunka cislo {cislo_bunky}")
 ```
-JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
-ocislovane = enumerate(JMENA, 1)
-print(list(ocislovane))
 
-for cislo, jmeno in enumerate(JMENA, 1):
-    print(f"{cislo}.: {jmeno}")
-```
-
-# Cheatsheet, Git
-## Co to je Git?
-Open-source [verzovaci system](https://engeto.com/cs/kurz/git-zaklady-pro-uzivatele/studium/FlBFHaGbRGaeMDpPH9S4Yw/rychlokurz/ide-vs-terminal). Umoznuje verzovat zmeny naseho projektu, zaznamenava historii, umoznuje kolaboraci atd.
-
-## Jak zacit?
-1. Vytvorit si vlastni GitHub ucet [zde](https://github.com/)
-2. Vytvorit novy repozitar (pravy horni roh obrazovky)
-3. Vytvarim VZDALENY repozitar
-4. Download zip/ Pycharm --> VCS --> Get from version control
-5. Nova pracovni vetev
-6. Commit --> popis lokalnich zmen + push
-7. Zmena na vzdalenem repozitari
-8. git pull
-9. Zmenim, co je nutne opravit --> add + commit + push
-10. Vytvorim zadost o spojeni s hlavni master vetvi
