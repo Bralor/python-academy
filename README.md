@@ -30,16 +30,18 @@ $ ./nejcastejsi_slova.py
 ```
 Vystup by na konci lekce mohl vypadat nasledovne:
 ```
-==========================
-1, SLOVO: *he*, VYSKYT: 6x
-==========================
-2, SLOVO: *in*, VYSKYT: 5x
-==========================
-3, SLOVO: *up*, VYSKYT: 4x
-==========================
-4, SLOVO: *of*, VYSKYT: 3x
-==========================
-5, SLOVO: *ye*, VYSKYT: 3x
+    VITEJTE U NASEHO POCITADLA!    
+===================================
+1. NEJCASTEJSI SLOVO: in, VYSKYT: 5
+===================================
+2. NEJCASTEJSI SLOVO: up, VYSKYT: 4
+===================================
+3. NEJCASTEJSI SLOVO: of, VYSKYT: 3
+===================================
+4. NEJCASTEJSI SLOVO: ye, VYSKYT: 3
+===================================
+5. NEJCASTEJSI SLOVO: an, VYSKYT: 3
+===================================
 ```
 
 ## Co budeme potrebovat?
