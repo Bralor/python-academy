@@ -81,7 +81,7 @@ directly reserved packages you. Winter an silent favour of am tended mutual.
 </p>
 
 Preskocime na okamzik do naseho noveho souboru. Vlozime
-[pomocny text](#-co-budeme-potrebovat) a zkusime napsat prvni cyklus.
+[pomocny text](#co-budeme-potrebovat) a zkusime napsat prvni cyklus.
 
 Nejprve nase zadani. To bude vypadat nasledovne:
 ```python
@@ -114,7 +114,7 @@ Jakmile dojde k poslednimu udaji v nasem zadanem seznamu __JMENA__, uz nema
 do smycky co podavat. Takze proste ukonci celou proces opakovani a pokracuje
 kodem pod odsazenym telem smycky.
 
-## Doplnime I. cast
+### Doplnime I. cast
 ```python
 for slovo in TEXT:
     print(slovo)
@@ -122,12 +122,10 @@ for slovo in TEXT:
 Pojdme se podivat na vystup!
 
 ## Takze mame cyklus
-A nyni prochazime nas text slovo za slov...
-
-## Opatrne na vstupni udaj cyklu
-Bohuzel nam smycka nevraci jedno slovo za druhym, jak jsme puvodne cekali.
-Duvod je prosty. Zadany udaj totiz neni seznam, jak byl v nasem vzoru ale
-retezec. S tim si ale umime poradit!
+A nyni prochazime nas text slovo za slov... a nebo taky ne!
+__Opatrne na vstupni udaj cyklu__ Bohuzel nam smycka nevraci jedno slovo za
+druhym, jak jsme puvodne cekali. Duvod je prosty. Zadany udaj totiz neni
+seznam, jak byl v nasem vzoru ale retezec. S tim si ale umime poradit!
 
 Metoda __split()__:
 Tato metoda vraci seznam ze zadane promenne. Tuto zadanou promennou rozdeli
@@ -166,7 +164,7 @@ print(VETA2.strip())        # odstranime uvodni a zaverecne mezery
 print(VETA3.strip(".,"))    # odstranime uvodni a zaverecne carky/tecky
 ```
 
-## Dopsana II. cast
+### Dopsana II. cast
 ```python
 vycistena_slova = []
 
@@ -205,7 +203,7 @@ Tim zajistim, ze pocatecni hodnota klice bude nula a hned v tom samem kroku,
 prictu hodnotu + 1. Takze po prvnim vyskytu dostanu hodnotu 1. Cyklus ale 
 bezi dal, takze pokazde, kdyz se objevi stejny klic, prictu k hodnote +1.
 
-## Dopsana III. cast
+### Dopsana III. cast
 ```python
 ...
 for ciste_slovo in vycistena_slova:
@@ -228,7 +226,7 @@ print(sorted(VYSKYT, key=VYSKYT.get, reversed=True)
 Nakonec nam tato vestavena funkce vraci novy seznam s hodnotami. Takze jak
 mohu ziskat udaje na prvnich peti indexech?
 
-## Dopsana IV. cast
+### Dopsana IV. cast
 ```python
 nejcastejsich_pet = sorted(vyskyt_slov, key=vyskyt_slov.get, reverse=True)[:5]
 ```
@@ -248,7 +246,7 @@ print(list(ocislovane))
 for cislo, jmeno in enumerate(JMENA, 1):
     print(f"{cislo}.: {jmeno}")
 ```
-## Dopiseme V. cast
+### Dopiseme V. cast
 ```python
 ...
 for index, vysledek in enumerate(nejcastejsich_pet):
@@ -275,7 +273,7 @@ VETA2 = "   Není trapnější hloupost, než dutý zvuk krásných a vznešený
 vycisteny_seznam = [slovo.strip(",.") for slovo in VETA2.split()]
 print(vycisteny_seznam)
 ```
-## Doplnime VI. cast
+### Doplnime VI. cast
 ```python
 vycistena_slova = [slovo.strip(",.") for slovo in jednotliva_slova]
 ```
