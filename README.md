@@ -310,3 +310,8 @@ for number in range(0, 5):
         print(f"Bunka cislo {cislo_bunky}")
 ```
 
+Pokracovat na [Lekci#06](https://github.com/Bralor/python-academy/tree/lekce06)
+ 
+
+
+
