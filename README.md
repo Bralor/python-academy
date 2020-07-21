@@ -26,7 +26,7 @@ Cilem bude zjistit pet nejcastejsich slov, ktere se v textu vyskytuji.
 ## Ukazka na uvod
 Spustime skript v tomto adresari:
 ```
-$ ./nejcastejsi_slova.py
+$ ./nejcastejsi_slova
 ```
 Vystup by na konci lekce mohl vypadat nasledovne:
 ```
