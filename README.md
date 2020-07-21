@@ -482,5 +482,6 @@ else:
 
 ```
 
-Pokracovat na Lekci#05
+Pokracovat na [Lekci#05](https://github.com/Bralor/python-academy/tree/lekce05)
+ 
 
