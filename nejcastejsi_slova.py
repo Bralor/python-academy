@@ -2,7 +2,6 @@
 """ Lekce #5 - Uvod do programovani, hledac slov """
 
 # I. KROK
-# Zadani nasi ulohy
 TEXT = """
 Affronting imprudence do he he everything. Sex lasted dinner wanted indeed
 wished out law. Far advanced settling say finished raillery. Offered
@@ -27,54 +26,37 @@ Express village evening prudent my as ye hundred forming. Thoughts she why not
 directly reserved packages you. Winter an silent favour of am tended mutual. 
 """
 
+ODDELOVAC = "=" * 35
+
 # II. KROK
-# Prochazime promennou *text*
-# for item in TEXT:
-#     print(item)
+# rozdeleni TEXT
+jednotliva_slova = TEXT.split()
 
 # III. KROK
-# Rozdelime promennou *text*, abych prochazeli slova
-jednotlive_slova = TEXT.split()
-
-# IV. KROK
-# Zakomentuj krok 2.
-# Prochazime znovu
-# for slovo in jednotlive_slova:
-# V. KROK
-# Ocistime slova, ktera obsahuji interpunkci
-# ciste_slovo = slovo.strip(",.")
-# print(ciste_slovo)
-
-# Zkusime napsat pomoci *while* cyklu
-# while jednotlive_slova:
-#     slovo = jednotlive_slova.pop()
-#     print(slovo)
-
-
-# VI. KROK
-# Zakomentujeme krok 4.
-# Vyzkousime seznamovou komprehenci
-# Utridime slova do slovniku podle vyskytu
-vycistena_slova = [slovo.strip(".,") for slovo in jednotlive_slova]
-
-# VII. KROK
-# Vytvorim pomocnou promennou *vyskyt_slov*
-# Pocitam vyskyt slov
+# ziskam ocistena slova
+vycistena_slova = [slovo.strip(",.") for slovo in jednotliva_slova]
 vyskyt_slov = {}
 
+# IV. KROK
+# Zjistim jejich vyskyt
 for ciste_slovo in vycistena_slova:
     vyskyt_slov[ciste_slovo] = vyskyt_slov.setdefault(ciste_slovo, 0) + 1
 
-# VIII. KROK
-# Vybere 5 nejcastejsich slov
-nejcastejsi = sorted(vyskyt_slov, key=vyskyt_slov.get, reverse=True)[:5]
+# V. KROK
+# Potrebuji 5 nejcastejsich
+nejcastejsich_pet = sorted(vyskyt_slov, key=vyskyt_slov.get, reverse=True)[:6]
 
-# IX. KROK
-# Upravit vystup abych mel hodnoty rozdelene
-for index, _ in enumerate(range(len(nejcastejsi), 0, -1), 1):
-    print("=" * 26)
-    print(f"{index}", end=", ")
-    for item in nejcastejsi:
-        print(f"SLOVO: *{item}*, VYSKYT: {vyskyt_slov[item]}x")
-        nejcastejsi.remove(item)
-        break
+# VI. KROK
+# Zaverecny vystup
+for index, vysledek in enumerate(nejcastejsich_pet):
+    if index == 0:
+        print(
+            "VITEJTE U NASEHO POCITADLA!".center(35, " "),
+            end=f"\n{ODDELOVAC}\n")
+    else:
+        print(
+            f"{index}. NEJCASTEJSI SLOVO: {vysledek}, VYSKYT: {vyskyt_slov[vysledek]}",
+            end=f"\n{ODDELOVAC}\n"
+        )
+
+
