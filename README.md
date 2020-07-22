@@ -94,7 +94,7 @@ TEXT = ...
 Tak a ted je ta chvile, kdy si vysvetlime __for__ cyklus a jeho syntaxi.
 Jde o dalsi zpusob, kterym v Pythonu muzu opakovat casti kodu. Zatim co
 __while__ se opakoval, pokud byla explicitne zadana podminka vyhodnocena jako
-__True__, __for cyklu__s bezi, dokud neprojde celou zadanou sadu udaju.
+__True__, __for__ cyklu s bezi, dokud neprojde celou zadanou sadu udaju.
 Pripadne, pokud jej jinak neukoncime.
 
 __Teorie__:
