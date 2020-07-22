@@ -94,7 +94,7 @@ TEXT = ...
 Tak a ted je ta chvile, kdy si vysvetlime __for__ cyklus a jeho syntaxi.
 Jde o dalsi zpusob, kterym v Pythonu muzu opakovat casti kodu. Zatim co
 __while__ se opakoval, pokud byla explicitne zadana podminka vyhodnocena jako
-__True__, __for cyklu__s bezi, dokud neprojde celou zadanou sadu udaju.
+__True__, __for__ cyklus bezi, dokud neprojde celou zadanou sadu udaju.
 Pripadne, pokud jej jinak neukoncime.
 
 __Teorie__:
@@ -134,7 +134,7 @@ podle preddefinovaneho oddelovace.
 __Priklad__:
 ```python
 VETA1 = "Dneska mame ale otresne pocasi. Jeste, ze muzeme kodit v Pythonu!"
-print(VETA1.split())  # rozdelime po slovech i radcich
+print(VETA1.split())     # rozdelime po slovech i radcich
 print(VETA1.split("."))  # rozdelime po vetach
 print(VETA1.split(".", maxsplit=1))  # rozdelime po vetach, 1x
 ```
