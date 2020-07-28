@@ -180,7 +180,7 @@ V nasem priklade chceme provest nasledujici:
 
 ### Doplnime zapis
 Zatim zkusime definovat jednoduchou funkci, podle vzoru
-[vyse](#-nase-prvni-funkce). Pokud bude vstupem `byt 0001` chceme z funkce
+[vyse](#nase-prvni-funkce). Pokud bude vstupem `byt 0001` chceme z funkce
 vratit `1+1`. Pokud bude vstupem cokoliv jineho, chceme vratit `Neplatny udaj`.
 ```python
 def preved_udaj(vstup: str) -> str:
@@ -295,7 +295,7 @@ i = i + 1
 print(i)  # 74
 ```
 ### Zkraceny zapis
-V Pythonu dale existuje forma [zkraceneho zapisu](#-dulezite-odkazy). Neplati
+V Pythonu dale existuje forma [zkraceneho zapisu](#dulezite-odkazy). Neplati
 pouze pro _scitani_ ale i pro dalsi operace (odcitani, nasobeni, aj.). Jde o
 podobny proces, jako obycejne prirazeni, jenom misto vytvoreni noveho objektu
 a jeho prirazeni k hodnote se zmeni stary objekt.
