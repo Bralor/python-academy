@@ -10,6 +10,7 @@ Minula [lekce#05](https://github.com/Bralor/python-academy/tree/lekce05)
 - Portal [Engeto.com](https://engeto.com/)
 - Python Academy [repozitar](https://github.com/Bralor/python-academy)
 - Generator [nahodnych dat](https://mockaroo.com/)
+- [Built-in funkce](https://docs.python.org/3/library/functions.html))
 
 ## Co nas dnes ceka?
 Jsme v pulce nasich setkani, a proto je uz nacase, povedet si neco o funkcich
