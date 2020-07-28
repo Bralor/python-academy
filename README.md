@@ -91,8 +91,12 @@ byt 0006,114 m2,Olomouc,ul.Přichystalová,
 ```
 
 ## Zacneme s ulohou
-<GIF>
-## Novy soubor + vstupni data
+<p align="center">
+  <img src="https://media.giphy.com/media/1pAeSRT0jM7KxY3J4r/source.mp4" width="300" height="300">
+</p>
+
+Vytvorime si v nasem pracovnim adresari novy soubor a do nej vlozime
+[udaje](#co-budeme-potrebovat) na zacatek.
 ```python
 #!/usr/bin/python3
 """Lekce #06 - Uvod do programovani, Uprav udaje"""
@@ -101,7 +105,10 @@ byt 0006,114 m2,Olomouc,ul.Přichystalová,
 UDAJE = """
     ...
 ```
+
 ## Jak prevadet
+Nejprve musime stanovit pravidla, na zaklade kterych budeme chtit zadany text
+upravit.
 ```python
 PREVOD_UDAJU = {
     "byt 0001": "1+1",
@@ -113,9 +120,58 @@ PREVOD_UDAJU = {
     "byt 0007": "4+kk",
 }
 ```
+Tuto promennou take pouzijeme v nasem kodu.
+
 ## Vlastni funkce
+Nez je zacneme vubec pouzivat, pojdme si rict, co to _funkce_ vubec je. V
+Pythonu je funkce kus kodu, jehoz zamerem je provest jednu souvislou akci, ukol.
+Umoznuji pouzivat kus kodu opakovane, na ruznych mistech a tim zachovavaji
+vysokou uroven citelnosti kodu.
+
 ### Jake mame funkce
-### ...
+Mozna si rikate, ze jsme uz o funkcich mluvili. Ano, je to tak. Python obsahuje
+celou sadu
+[zabudovanych funkci](https://docs.python.org/3/library/functions.html)
+se kterymi jsme se jiz seznamili.
+
+1. print()
+2. input()
+3. sum()
+4. sorted()
+
+V takovem pripade mluvime skupine funkci, ktere jsou jiz definovane ve
+strukture Pythonu. My je muzeme primo pouzivat.
+
+Dalsi typ funkci, ktere nas budou zajimat zejmena v dnesni casti jsou
+__definovane__ funkce. Tedy takove, ktere si budeme muset jako uzivatele
+definovat a pouzit.
+
+### Nase prvni funkce
+Obecne funkce muze vypadat nasledovne:
+```python
+def <jmeno_funkce>(<parametry_funkci>):
+    <vlastni_kod>
+    <ohlaseni vraceni hodnoty>  # volitelne
+```
+
+Podivejme se spolecne na prvni funkci:
+```python
+def umocnovani(cislo: int, exponent: int) -> int():
+    """
+    Funkce vezme dve cisla. Prvni bude hodnota, druhe exponent. Potom vrati
+    cislo umocnene exponentem
+    """
+    return cislo ** exponent
+```
+Mame definovanou funkci, ted ji staci jen _pouzit_.
+
+Funkci pouzijeme tak, ze ji _zavolame_. Tedy, ze ji oslovime jejim jmenem
+_umocnovani()_ a do kulate zavorky zadame dve vstupni hodnoty, jak rika jeji
+popisek. Napriklad:
+```
+umocnovani(2, 5)  # 32
+```
+
 ### Doplnime zapis
 ## Rozdelime radky
 ## Prirazovani vice promennych
@@ -228,19 +284,8 @@ Priklad:
 [Funkce](https://engeto.com/cs/kurz/online-python-akademie/studium/HHfElw5KQnGOEK4BMEvg8A/uvod-do-funkci/funkce/uvod-do-funkci) je predepsany postup, kdy vezmu libovolny vstup, upravim jej a vracim vystupni hodnotu. S funkcemi v Pythonu jsme se jiz setkali. print(), sorted(), input(), str(). To jsou tzv. zabudovane funkce (built-in). Funkce, ktere mame jiz v Pythonu k dispozici. Dalsi funkce, ktere v Pythonu nemame si musime definovat svepomoci.
 
 Teorie:
-```
-def <jmeno_funkce>(<parametry_funkci>):
- --><povinne_odsazeni+vlastni_kod>
-```
 
 Priklad:
-```
-def umocnovani(cislo: int, exponent: int) -> int():
-    """
-    Funkce vezme dva parametry a zapracuje vypocet s naslednym vracenim vystupni hodnoty
-    """
-    return cislo ** exponent
-```
 
 ## Uvod k modulum
 Neni nutne vsechny funkce psat na vlastni pest. Spousty uzitecnych z nich nekdo uz napsal! Ulozil je do tzv. [modulu](https://engeto.com/cs/kurz/online-python-akademie/studium/gY9XxQ32RYiSI1fe_SlmoA/uvod-do-funkci/python-knihovna/zakladni-moduly). Modul je v podstate nejaky soubor Pythonu (.py). K dispozici jsou dva typy modulu. Nas bude zatim zajimat pouze prvni skupina a to jsou predinstalovane moduly.
