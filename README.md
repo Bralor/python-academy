@@ -10,7 +10,8 @@ Minula [lekce#05](https://github.com/Bralor/python-academy/tree/lekce05)
 - Portal [Engeto.com](https://engeto.com/)
 - Python Academy [repozitar](https://github.com/Bralor/python-academy)
 - Generator [nahodnych dat](https://mockaroo.com/)
-- [Built-in funkce](https://docs.python.org/3/library/functions.html))
+- [Built-in funkce](https://docs.python.org/3/library/functions.html)
+- [Zkraceny zapis](https://docs.python.org/2.0/ref/augassign.html)
 
 ## Co nas dnes ceka?
 Jsme v pulce nasich setkani, a proto je uz nacase, povedet si neco o funkcich
@@ -135,10 +136,10 @@ celou sadu
 [zabudovanych funkci](https://docs.python.org/3/library/functions.html)
 se kterymi jsme se jiz seznamili.
 
-1. print()
-2. input()
-3. sum()
-4. sorted()
+1.__print()__
+2.__input()__
+3.__sum()__
+4.__sorted()__
 
 V takovem pripade mluvime skupine funkci, ktere jsou jiz definovane ve
 strukture Pythonu. My je muzeme primo pouzivat.
@@ -172,90 +173,141 @@ popisek. Napriklad:
 ```
 umocnovani(2, 5)  # 32
 ```
+V nasem priklade chceme provest nasledujici:
+```
+"byt 0001" -> funkce: preved_test -> "1+1"
+```
 
 ### Doplnime zapis
-## Rozdelime radky
+Zatim zkusime definovat jednoduchou funkci, podle vzoru
+[vyse](#-nase-prvni-funkce). Pokud bude vstupem `byt 0001` chceme z funkce
+vratit `1+1`. Pokud bude vstupem cokoliv jineho, chceme vratit `Neplatny udaj`.
+```python
+def preved_udaj(vstup: str) -> str:
+    """'byt 0001' -> funkce: preved_test -> '1+1'"""
+    return "1+1" if vstup == "byt 0001" else "Neplatny udaj!"
+```
+
+## Spojime nas kod
+V tomto okamziku jsme v pozici, kdy mame upravujici funkci a vstupni udaje.
+Musime proto tyto dve casti propojit. Zadany text je retezec, a proto jej
+musime upravit, nez jej budeme pouzivat ve funkci.
+
+### Rozdelime text
+Vidime, ze kus textu, ktery potrebujeme, je na kazdem radku:
+```
+...
+byt 0003,42 m2,Olomouc,ul.Nešverova,
+byt 0002,55 m2,Olomouc,ul.Dělnická,
+byt 0004,59 m2,Olomouc,ul.Zirmova,
+byt 0007,92 m2,Olomouc,ul.Nová Ulice,
+byt 0002,52 m2,Olomouc,ul.Nová Ulice,
+...
+```
+Prvnim krokem bude rozdelit text na retezce po jednotlivych radcich.
+```python
+for radek in UDAJE.split("\n"):
+    print(radek)
+```
+
+Ve vystupu si muzete vsimnout, ze prvni a posledni radek jsou prazdne. Tomu
+se chceme vyhnout do budoucna. Jak to provedeme?
+```python
+...
+    if radek != "":
+        print(radek)
+```
+Staci pouze doplnit podminku. Pri nasem rozdelovani metodou __split()__ dojde k
+rozdeleni i na zacatku a na konci, kde se nachazi symboly pro novy radek. Proto
+mame ve vyslednem textu prazdne radky v uvodu a zaveru.
+
+Posledni casti v nasem kodu bude rozdele radky pridat do libovolneho datoveho
+typu, ktery se nam hodi nejvice.
+```python
+jednotlive_udaje = []
+
+for radek in UDAJE.split("\n"):
+    if radek != "":
+        jednotlive_udaje.append(radek)
+```
+
 ## Prirazovani vice promennych
-## Vracime vysledek
-
-Pokracovat na [Lekci#07](https://github.com/Bralor/python-academy/tree/lekce07)
-
-# Postup
-Opet si otevreme novy soubor *.py* a nakopirujeme sablonu nize:
+Ve druhe casti, budeme potrebovat ziskat oznaceni bytu. Tedy prvni cast radku:
 ```
-# I. KROK
-# Vlozime zadani
-XXXX
-
-# II. KROK
-# Definujeme vzor, jak chceme *udaje* prevest
-
-
-# III. KROK
-# Prochazime promennou *udaj* jeden radek za druhym
-# Ukazat prazdne retezce na zacatku/ konci
-
-# IV. KROK
-# Napiseme seznamovou komprehenci s podminkou
-
-# V. KROK
-# Potrebujeme promennou *udaje* rozdelit
-# ukazka vicenasobneho prirazeni
-# Zkracene prirazovani
-    # VI. KROK
-    # Chybne prirazeni
-
-    # VII. KROK
-    # Spravne prirazeni
-
-    # VIII. KROK
-    # chceme pouze ic a zbytek
-    # rozbalovaci operator
-
-# IX. KROK
-# Potrebujeme menit oznaceni bytu za typ bytu
-# Uvod do funkci
-
-# X. KROK
-# vstupy do funkci
-# vystupy funkce
-
-
-# XI. KROK
-# Doplnime smycku s nasi novou funkci
-
-# XII. KROK
-# Uvod k modulum
+...
+byt 0003,... ,
+byt 0002,... ,
+byt 0004,... ,
+byt 0007,... ,
+byt 0002,... ,
+...
 ```
+Co budeme muset zmenit?
 
-# Cheatsheet s priklady
-## Promenne
-Pomoci znamenka *=* vytvorim cestu [ukazatele](https://engeto.com/cs/kurz/online-python-akademie/studium/3cEZRZUCQVqpU-31RZEfnw/zaciname-s-pythonem-datove-typy/mluvime-s-pythonem/pamatuj-si-informace-promenne) (jmena promenne) na jeho hodnotu.
+### Jednoduche prirazeni promenne
+Pomoci znamenka *=* vytvorim cestu do pameti pocitace. Takze promenna potom
+funguje jako nejaky ukazatel/odkaz.
 
-Priklad:
+__Priklad__:
 ```
 JMENO = "Matous"
 ```
+### Vicenasobne prirazeni
+Neni nutne prirazovat na jednom radku pouze jedne promenne. Pro takove pripady
+existuje specialni zapis:
+```
+JMENO1, JMENO2 = "Matous", "Lucie"
+print(JMENO1)  # "Matous"
+print(JMENO2)  # "Lucie"
+```
+Python si v podstate na pozadi udela z jmen promennych tuple. Potom k sobe
+zacne parovat jednotlive promenne se stejnym indexem.
 
-## Vicenasobne prirazeni jmena promenne
-Ovsem neni nutne prirazovat na jednom radku pouze jedno [jmeno promenne](https://engeto.com/cs/kurz/online-python-akademie/studium/gmVpTjfQQnmVcp9g8DKlmA/uvod-do-funkci/promenne-20/string-list).
+Ale __opatrne__:
+```python
+STREDNI_ROD = ("mesto", "more", "kure", "staveni")
+v1, v2, v3, v4, v5 = STREDNI_ROD  # ValueError
+```
 
-Priklad:
+### Rozdelime radek
+Kdyz uz tusime jak na to, pojdme si to vyzkouset. Uvnitr smycky, kterou jsme
+vytvorili v prvni casti chceme rozdelit promenne:
+1.  __oznaceni__,
+2. __plocha__,
+3. __mesto__,
+4. __ulice__
+```python
+    ...
+    if radek != "":
+        ozn, plocha, mesto, ulice = radek.split(",", maxsplit=3)
 ```
->>> JMENO1, JMENO2 = "Matous", "Lucie"
->>> JMENO1
-'Matous'
->>> JMENO2
-'Lucie'
+
+## Overime pocet
+Kazdy udaj, ktery bude prevedeny na novy format zapisu chceme evidovat. V
+podstate overime, ze pocet udaju, ktere jsme na zacatku meli, sedi s poctem
+uprav.
+
+### Pocitadlo
+Klasicky zapis pro pocitani ve smycce jsme si uz ukazovali:
+```python
+i = 73
+i = i + 1
+print(i)  # 74
 ```
-Ale opatrne:
+### Zkraceny zapis
+V Pythonu dale existuje forma [zkraceneho zapisu](#-dulezite-odkazy). Neplati
+pouze pro _scitani_ ale i pro dalsi operace (odcitani, nasobeni, aj.). Jde o
+podobny proces, jako obycejne prirazeni, jenom misto vytvoreni noveho objektu
+a jeho prirazeni k hodnote se zmeni stary objekt.
+```python
+i += 1; print(i)
+75
 ```
->>> STREDNI_ROD = ("mesto", "more", "kure", "staveni")
->>> v1, v2, v3, v4, v5 = STREDNI_ROD
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ValueError: not enough values to unpack (expected 5, got 4)
-```
+<TADY_KONEC>
+
+## Vracime vysledek
+
+Pokracovat na [Lekci#07](https://github.com/Bralor/python-academy/tree/lekce07)
 
 ## Rozbalovaci operator *
 Pokud nastane kolize s poctem identifikatoru promennych a skutecnymi hodnotami, muzeme si pomoci [hvezdickou](https://engeto.com/cs/kurz/online-python-akademie/studium/UCYPS8T2TVCDmGhv_dB8Vg/uvod-do-funkci/promenne-20/rozbalovani).
@@ -270,23 +322,6 @@ Priklad:
 ```
 
 ## Zkracene prirazovani
-Jde o [zkracenou](https://engeto.com/cs/kurz/online-python-akademie/studium/0F6aYvi8RFeXOnqGoDLQ1g/uvod-do-funkci/promenne-20/rozsirene-prirazeni) verzi predpisu u aritmetickych operaci.
-Priklad:
-```
->>> i = 73
->>> i = i + 1
->>> i
-74
->>> i += 1
-75
-```
-
-## Funkce
-[Funkce](https://engeto.com/cs/kurz/online-python-akademie/studium/HHfElw5KQnGOEK4BMEvg8A/uvod-do-funkci/funkce/uvod-do-funkci) je predepsany postup, kdy vezmu libovolny vstup, upravim jej a vracim vystupni hodnotu. S funkcemi v Pythonu jsme se jiz setkali. print(), sorted(), input(), str(). To jsou tzv. zabudovane funkce (built-in). Funkce, ktere mame jiz v Pythonu k dispozici. Dalsi funkce, ktere v Pythonu nemame si musime definovat svepomoci.
-
-Teorie:
-
-Priklad:
 
 ## Uvod k modulum
 Neni nutne vsechny funkce psat na vlastni pest. Spousty uzitecnych z nich nekdo uz napsal! Ulozil je do tzv. [modulu](https://engeto.com/cs/kurz/online-python-akademie/studium/gY9XxQ32RYiSI1fe_SlmoA/uvod-do-funkci/python-knihovna/zakladni-moduly). Modul je v podstate nejaky soubor Pythonu (.py). K dispozici jsou dva typy modulu. Nas bude zatim zajimat pouze prvni skupina a to jsou predinstalovane moduly.
