@@ -12,6 +12,7 @@ Minula [lekce#05](https://github.com/Bralor/python-academy/tree/lekce05)
 - Generator [nahodnych dat](https://mockaroo.com/)
 - [Built-in funkce](https://docs.python.org/3/library/functions.html)
 - [Zkraceny zapis](https://docs.python.org/2.0/ref/augassign.html)
+- Dalsi vyuziti [hvezdicky](https://note.nkmk.me/en/python-tuple-list-unpack/)
 
 ## Co nas dnes ceka?
 Jsme v pulce nasich setkani, a proto je uz nacase, povedet si neco o funkcich
@@ -39,56 +40,56 @@ Vystup by na konci lekce mohl vypadat nasledovne:
 - potrebne promenne:
 ```
 UDAJE = """
-byt 0001,55 m2,Olomouc,ul.Heyrovského,
-byt 0003,65 m2,Olomouc,ul.Novosadský dvůr,
-byt 0004,75 m2,Olomouc,ul.Wolkerova,
-byt 0004,68 m2,Olomouc,ul.Zikova,
-byt 0001,36 m2,Olomouc,ul.Nová Ulice,
-byt 0003,46 m2,Olomouc,ul.Nové sady,
-byt 0004,75 m2,Olomouc,ul.Nová Ulice,
-byt 0003,42 m2,Olomouc,ul.Nová Ulice,
-byt 0005,107 m2,Olomouc,ul.Nová Ulice,
-byt 0003,74 m2,Olomouc,ul.Uničovská,
-byt 0003,42 m2,Olomouc,ul.Nešverova,
-byt 0002,55 m2,Olomouc,ul.Dělnická,
-byt 0004,59 m2,Olomouc,ul.Zirmova,
-byt 0007,92 m2,Olomouc,ul.Nová Ulice,
-byt 0002,52 m2,Olomouc,ul.Nová Ulice,
-byt 0004,76 m2,Olomouc,ul.Nová Ulice,
-byt 0002,81 m2,Olomouc,ul.Nová Ulice,
-byt 0003,64 m2,Olomouc,ul.Za vodojemem,
-byt 0007,113 m2,Olomouc,ul.Jihoslovanská,
-byt 0005,94 m2,Olomouc,ul.Uničovská,
-byt 0003,42 m2,Olomouc,ul.Rošického,
-byt 0003,75 m2,Olomouc,ul.Rošického,
-byt 0004,48 m2,Olomouc,ul.Handského,
-byt 0004,68 m2,Olomouc,ul.Komenského,
-byt 0003,61 m2,Olomouc,ul.Jarmily Glazarové,
-byt 0004,39 m2,Olomouc,ul.Přichystalova,
-byt 0003,70 m2,Olomouc,ul.Foerstova,
-byt 0005,61 m2,Olomouc,ul.Nová Ulice,
-byt 0007,88 m2,Olomouc,ul.Nová Ulice,
-byt 0003,92 m2,Olomouc,ul.U cukrovaru,
-byt 0003,56 m2,Olomouc,ul.U cukrovaru,
-byt 0004,56 m2,Olomouc,ul.Paseka,
-byt 0002,74 m2,Olomouc,ul.Rokycanova,
-byt 0007,116 m2,Olomouc,ul.U cukrovaru,
-byt 0004,59 m2,Olomouc,ul.Řezáčova,
-byt 0004,100 m2,Olomouc,ul.Libušina,
-byt 0003,64 m2,Olomouc,ul.Řezáčova,
-byt 0001,33 m2,Olomouc,ul.Libušina,
-byt 0006,87 m2,Olomouc,ul.Černá cesta,
-byt 0007,95 m2,Olomouc,ul.Kaštanová,
-byt 0003,74 m2,Olomouc,ul.Nová Ulice,
-byt 0003,75 m2,Olomouc,ul.Nová Ulice,
-byt 0004,86 m2,Olomouc,ul.Hněvotínská,
-byt 0002,67 m2,Olomouc,ul.Polská,
-byt 0007,120 m2,Olomouc,ul.Dvořákova,
-byt 0004,90 m2,Olomouc,ul.Dvořákova,
-byt 0004,86 m2,Olomouc,ul.Nová Ulice,
-byt 0003,75 m2,Olomouc,ul.Nešverova,
-byt 0001,45 m2,Olomouc,ul.Zirmova,
-byt 0006,114 m2,Olomouc,ul.Přichystalová,
+byt0001,55m1,Olomouc,ul.Heyrovského,
+byt0003,65m2,Olomouc,ul.Novosadský_dvůr,
+byt0004,75m2,Olomouc,ul.Wolkerova,
+byt0004,68m2,Olomouc,ul.Zikova,
+byt0001,36m2,Olomouc,ul.Nová_Ulice,
+byt0003,46m2,Olomouc,ul.Nové_sady,
+byt0004,75m2,Olomouc,ul.Nová_Ulice,
+byt0003,42m2,Olomouc,ul.Nová_Ulice,
+byt0005,107m2,Olomouc,ul.Nová_Ulice,
+byt0003,74m2,Olomouc,ul.Uničovská,
+byt0003,42m2,Olomouc,ul.Nešverova,
+byt0002,55m2,Olomouc,ul.Dělnická,
+byt0004,59m2,Olomouc,ul.Zirmova,
+byt0007,92m2,Olomouc,ul.Nová_Ulice,
+byt0002,52m2,Olomouc,ul.Nová_Ulice,
+byt0004,76m2,Olomouc,ul.Nová_Ulice,
+byt0002,81m2,Olomouc,ul.Nová_Ulice,
+byt0003,64m2,Olomouc,ul.Za_vodojemem,
+byt0007,113m2,Olomouc,ul.Jihoslovanská,
+byt0005,94m2,Olomouc,ul.Uničovská,
+byt0003,42m2,Olomouc,ul.Rošického,
+byt0003,75m2,Olomouc,ul.Rošického,
+byt0004,48m2,Olomouc,ul.Handského,
+byt0004,68m2,Olomouc,ul.Komenského,
+byt0003,61m2,Olomouc,ul.Jarmily_Glazarové,
+byt0004,39m2,Olomouc,ul.Přichystalova,
+byt0003,70m2,Olomouc,ul.Foerstova,
+byt0005,61m2,Olomouc,ul.Nová_Ulice,
+byt0007,88m2,Olomouc,ul.Nová_Ulice,
+byt0003,92m2,Olomouc,ul.U_cukrovaru,
+byt0003,56m2,Olomouc,ul.U_cukrovaru,
+byt0004,56m2,Olomouc,ul.Paseka,
+byt0002,74m2,Olomouc,ul.Rokycanova,
+byt0007,116m2,Olomouc,ul.U_cukrovaru,
+byt0004,59m2,Olomouc,ul.Řezáčova,
+byt0004,100m2,Olomouc,ul.Libušina,
+byt0003,64m2,Olomouc,ul.Řezáčova,
+byt0001,33m2,Olomouc,ul.Libušina,
+byt0006,87m2,Olomouc,ul.Černá cesta,
+byt0007,95m2,Olomouc,ul.Kaštanová,
+byt0003,74m2,Olomouc,ul.Nová_Ulice,
+byt0003,75m2,Olomouc,ul.Nová_Ulice,
+byt0004,86m2,Olomouc,ul.Hněvotínská,
+byt0002,67m2,Olomouc,ul.Polská,
+byt0007,120m2,Olomouc,ul.Dvořákova,
+byt0004,90m2,Olomouc,ul.Dvořákova,
+byt0004,86m2,Olomouc,ul.Nová Ulice,
+byt0003,75m2,Olomouc,ul.Nešverova,
+byt0001,45m2,Olomouc,ul.Zirmova,
+byt0006,114m2,Olomouc,ul.Přichystalová,
 """
 ```
 
@@ -172,6 +173,12 @@ _umocnovani()_ a do kulate zavorky zadame dve vstupni hodnoty, jak rika jeji
 popisek. Napriklad:
 ```
 umocnovani(2, 5)  # 32
+```
+Pokud bychom chteli tuto hodnotu ulozit, musim vracenou hodnotu z funkce schovat
+do nejake promenne:
+```python
+vysledek = umocnovani(2, 5)
+print(vysledek)  # 32
 ```
 V nasem priklade chceme provest nasledujici:
 ```
@@ -282,6 +289,23 @@ vytvorili v prvni casti chceme rozdelit promenne:
         ozn, plocha, mesto, ulice = radek.split(",", maxsplit=3)
 ```
 
+### Potrebujeme zbytek?
+Jiste jste si polozili otazku, jestli je opravdu nutne, rozdelovat text na
+tolik oddilu, kdyz prakticky potrebujeme pouze __oznaceni__. Pomoci
+rozbalovaciho operatoru _*_ si muzeme usetrit vypisovani.
+```
+STREDNI_ROD = ("mesto", "more", "kure", "staveni")
+v1, *zbytek = STREDNI_ROD
+print(zbytek)  # ["more", "kure", "staveni"]
+```
+Uz jsme si o vyuziti tohoto symbolu nekolikrat povidali. Jejim dalsim vyuzitim
+muzeme [rozbalovat](#dulezite-odkazy) datove typy jako seznamy a tuply.
+```python
+    ...
+    ozn, *zbytek_dat = radek.split(",", maxsplit=1)
+    ...
+```
+
 ## Overime pocet
 Kazdy udaj, ktery bude prevedeny na novy format zapisu chceme evidovat. V
 podstate overime, ze pocet udaju, ktere jsme na zacatku meli, sedi s poctem
@@ -303,25 +327,90 @@ a jeho prirazeni k hodnote se zmeni stary objekt.
 i += 1; print(i)
 75
 ```
-<TADY_KONEC>
+
+## Zavolame nasi funkci
+Nyni, kdyz jsme schopni extrahovat oznaceni bytu (promenna __ozn__), muzeme
+pouzit nasi funkci! Jak jsem v uvodu naznacil, abychom definovanou funkci mohli
+pouzit, musime ji _zavolat_.
+
+### Ale kdy volat?
+Musime najit vhodne misto, kde funkci pouzit/zavolat. Pomoc k vyreseni teto
+otazky muze byt vstup do funkce, tzv. _parametr_:
+```python
+def jmeno_funkce(parametr) -> None:
+    ...
+```
+Vsimneme si, ze jako parametr si do funkce prejeme vkladat jednotliva oznaceni.
+Proto bude vhodne funkci zavolat, az promennou __ozn__ definujeme.
+```python
+    ... 
+    if radek != "":
+            ozn, *zbytek_dat = radek.split(",", maxsplit=1)
+            upravene = prevadec(ozn)
+            ...
+```
+Jelikoz ve funkci __prevadec__ pouzivame __return__, musime hodnotu vracenou z
+funkce ulozit do nejake promenne.
+
+### Doplnime scitani
+Doplnime nasi funkci dalsi funkcionalitu. Zajistime, ze bude pocitat,
+jednotlive upravy. Tedy, pokud dojde ze zmene, vrati 1 a pokud ne, vrati 0.
+```python
+...
+    return ("1+1", 1) if vstup == "byt 0001" else ("Nic", 0)
+    ...
+```
+Funkce nam v tento okamzik v obou variantach vraci tupl se dvema udaji. Proto
+budeme muset upravit i zapisovani techto hodnot do promennych.
+```python
+        ...
+        udaj, pocet = prevadec(ozn)
+        upravene += pocet
+        ...
+```
+
+## Spojime udaje
+V tento moment vsechno bezi jak na dratkach. Dalsim krokem bude spojeni noveho
+udaje a zbytku radku (promenna __zbytek_dat__).
+
+### Dalsi metoda?!
+Ano, pokud potrebujeme spojit retezce, pak nam prijde vhod metoda retezcu
+_join()_. Jak ji ale pouzivat:
+```python
+STREDNI_ROD = ("mesto", "more", "kure", "staveni")
+", ".join(STREDNI_ROD)
+```
+Do uvozovek napisu, cim chci jednotlive udaje spojit a tesne za uvozovky
+nalepim metodu pomoci tecky. Do kulatych zavorek potom zapiseme promennou,
+jejichz hodnoty chci spojovat.
+```python
+        ...
+        zbytek_dat = ",".join(zbytek_dat)
+        ...
+```
+V tuto chvili mame tedy pospojovane udaje z puvodniho __zbytek_dat__.
+
+### A jeste jednou
+Jakmile mame nove ulozenou promennou __zbytek_dat__, spojime tuto promennou a
+promennou __udaj__.
+```python
+        ...
+        jednotlive_udaje.append(",".join((udaj, zbytek_dat)))
+        ...
+```
+Nyni mame zpet seznam, ktery obsahuje prevedene oznaceni do citelne podoby i
+zbytek udaju na radku. Nicmene v zatim prevadime pouze jeden typ oznaceni.
+
+## Rozsirime funkci
+Abychom mohli opravovat vsechny typy bydleni, musime funkci ukazat nas slovnik
+__PREVOD_UDAJU__.
+
+
+
 
 ## Vracime vysledek
 
 Pokracovat na [Lekci#07](https://github.com/Bralor/python-academy/tree/lekce07)
-
-## Rozbalovaci operator *
-Pokud nastane kolize s poctem identifikatoru promennych a skutecnymi hodnotami, muzeme si pomoci [hvezdickou](https://engeto.com/cs/kurz/online-python-akademie/studium/UCYPS8T2TVCDmGhv_dB8Vg/uvod-do-funkci/promenne-20/rozbalovani).
-Priklad:
-```
->>> v1, *zbytek = STREDNI_ROD
->>> v1
-'mesto'
->>> zbytek
-['more', 'kure', 'staveni']
->>> 
-```
-
-## Zkracene prirazovani
 
 ## Uvod k modulum
 Neni nutne vsechny funkce psat na vlastni pest. Spousty uzitecnych z nich nekdo uz napsal! Ulozil je do tzv. [modulu](https://engeto.com/cs/kurz/online-python-akademie/studium/gY9XxQ32RYiSI1fe_SlmoA/uvod-do-funkci/python-knihovna/zakladni-moduly). Modul je v podstate nejaky soubor Pythonu (.py). K dispozici jsou dva typy modulu. Nas bude zatim zajimat pouze prvni skupina a to jsou predinstalovane moduly.
