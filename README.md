@@ -137,10 +137,10 @@ celou sadu
 [zabudovanych funkci](https://docs.python.org/3/library/functions.html)
 se kterymi jsme se jiz seznamili.
 
-1.__print()__
-2.__input()__
-3.__sum()__
-4.__sorted()__
+1. __print()__
+2. __input()__
+3. __sum()__
+4. __sorted()__
 
 V takovem pripade mluvime skupine funkci, ktere jsou jiz definovane ve
 strukture Pythonu. My je muzeme primo pouzivat.
