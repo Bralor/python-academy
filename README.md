@@ -1,5 +1,3 @@
-Minula [lekce#05](https://github.com/Bralor/python-academy/tree/lekce05)
-
 <p align="center">
   <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
 </p>
@@ -114,13 +112,13 @@ Nejprve musime stanovit pravidla, na zaklade kterych budeme chtit zadany text
 upravit.
 ```python
 PREVOD_UDAJU = {
-    "byt 0001": "1+1",
-    "byt 0002": "2+1",
-    "byt 0003": "2+kk",
-    "byt 0004": "3+1",
-    "byt 0005": "3+kk",
-    "byt 0006": "4+1",
-    "byt 0007": "4+kk",
+    "byt0001": "1+1",
+    "byt0002": "2+1",
+    "byt0003": "2+kk",
+    "byt0004": "3+1",
+    "byt0005": "3+kk",
+    "byt0006": "4+1",
+    "byt0007": "4+kk",
 }
 ```
 Tuto promennou take pouzijeme v nasem kodu.
@@ -204,11 +202,11 @@ musime upravit, nez jej budeme pouzivat ve funkci.
 Vidime, ze kus textu, ktery potrebujeme, je na kazdem radku:
 ```
 ...
-byt 0003,42 m2,Olomouc,ul.Nešverova,
-byt 0002,55 m2,Olomouc,ul.Dělnická,
-byt 0004,59 m2,Olomouc,ul.Zirmova,
-byt 0007,92 m2,Olomouc,ul.Nová Ulice,
-byt 0002,52 m2,Olomouc,ul.Nová Ulice,
+byt0003,42 m2,Olomouc,ul.Nešverova,
+byt0002,55 m2,Olomouc,ul.Dělnická,
+byt0004,59 m2,Olomouc,ul.Zirmova,
+byt0007,92 m2,Olomouc,ul.Nová Ulice,
+byt0002,52 m2,Olomouc,ul.Nová Ulice,
 ...
 ```
 Prvnim krokem bude rozdelit text na retezce po jednotlivych radcich.
@@ -242,11 +240,11 @@ for radek in UDAJE.split("\n"):
 Ve druhe casti, budeme potrebovat ziskat oznaceni bytu. Tedy prvni cast radku:
 ```
 ...
-byt 0003,... ,
-byt 0002,... ,
-byt 0004,... ,
-byt 0007,... ,
-byt 0002,... ,
+byt0003,... ,
+byt0002,... ,
+byt0004,... ,
+byt0007,... ,
+byt0002,... ,
 ...
 ```
 Co budeme muset zmenit?
