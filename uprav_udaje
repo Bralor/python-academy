@@ -1,57 +1,86 @@
 #!/usr/bin/python3
 """Lekce #06 - Uvod do programovani, Uprav udaje"""
 
-# I. KROK
 UDAJE = """
-byt 0001,55 m2,Olomouc,ul.Heyrovského,
-byt 0003,65 m2,Olomouc,ul.Novosadský dvůr,
-byt 0004,75 m2,Olomouc,ul.Wolkerova,
-byt 0004,68 m2,Olomouc,ul.Zikova,
-byt 0001,36 m2,Olomouc,ul.Nová Ulice,
-byt 0003,46 m2,Olomouc,ul.Nové sady,
-byt 0004,75 m2,Olomouc,ul.Nová Ulice,
-byt 0003,42 m2,Olomouc,ul.Nová Ulice,
-byt 0005,107 m2,Olomouc,ul.Nová Ulice,
-byt 0003,74 m2,Olomouc,ul.Uničovská,
-byt 0003,42 m2,Olomouc,ul.Nešverova,
-byt 0002,55 m2,Olomouc,ul.Dělnická,
-byt 0004,59 m2,Olomouc,ul.Zirmova,
-byt 0007,92 m2,Olomouc,ul.Nová Ulice,
-byt 0002,52 m2,Olomouc,ul.Nová Ulice,
-byt 0004,76 m2,Olomouc,ul.Nová Ulice,
-byt 0002,81 m2,Olomouc,ul.Nová Ulice,
-byt 0003,64 m2,Olomouc,ul.Za vodojemem,
-byt 0007,113 m2,Olomouc,ul.Jihoslovanská,
-byt 0005,94 m2,Olomouc,ul.Uničovská,
-byt 0003,42 m2,Olomouc,ul.Rošického,
-byt 0003,75 m2,Olomouc,ul.Rošického,
-byt 0004,48 m2,Olomouc,ul.Handského,
-byt 0004,68 m2,Olomouc,ul.Komenského,
-byt 0003,61 m2,Olomouc,ul.Jarmily Glazarové,
-byt 0004,39 m2,Olomouc,ul.Přichystalova,
-byt 0003,70 m2,Olomouc,ul.Foerstova,
-byt 0005,61 m2,Olomouc,ul.Nová Ulice,
-byt 0007,88 m2,Olomouc,ul.Nová Ulice,
-byt 0003,92 m2,Olomouc,ul.U cukrovaru,
-byt 0003,56 m2,Olomouc,ul.U cukrovaru,
-byt 0004,56 m2,Olomouc,ul.Paseka,
-byt 0002,74 m2,Olomouc,ul.Rokycanova,
-byt 0007,116 m2,Olomouc,ul.U cukrovaru,
-byt 0004,59 m2,Olomouc,ul.Řezáčova,
-byt 0004,100 m2,Olomouc,ul.Libušina,
-byt 0003,64 m2,Olomouc,ul.Řezáčova,
-byt 0001,33 m2,Olomouc,ul.Libušina,
-byt 0006,87 m2,Olomouc,ul.Černá cesta,
-byt 0007,95 m2,Olomouc,ul.Kaštanová,
-byt 0003,74 m2,Olomouc,ul.Nová Ulice,
-byt 0003,75 m2,Olomouc,ul.Nová Ulice,
-byt 0004,86 m2,Olomouc,ul.Hněvotínská,
-byt 0002,67 m2,Olomouc,ul.Polská,
-byt 0007,120 m2,Olomouc,ul.Dvořákova,
-byt 0004,90 m2,Olomouc,ul.Dvořákova,
-byt 0004,86 m2,Olomouc,ul.Nová Ulice,
-byt 0003,75 m2,Olomouc,ul.Nešverova,
-byt 0001,45 m2,Olomouc,ul.Zirmova,
-byt 0006,114 m2,Olomouc,ul.Přichystalová,
+byt0001,55m1,Olomouc,ul.Heyrovského,
+byt0003,65m2,Olomouc,ul.Novosadský_dvůr,
+byt0004,75m2,Olomouc,ul.Wolkerova,
+byt0004,68m2,Olomouc,ul.Zikova,
+byt0001,36m2,Olomouc,ul.Nová_Ulice,
+byt0003,46m2,Olomouc,ul.Nové_sady,
+byt0004,75m2,Olomouc,ul.Nová_Ulice,
+byt0003,42m2,Olomouc,ul.Nová_Ulice,
+byt0005,107m2,Olomouc,ul.Nová_Ulice,
+byt0003,74m2,Olomouc,ul.Uničovská,
+byt0003,42m2,Olomouc,ul.Nešverova,
+byt0002,55m2,Olomouc,ul.Dělnická,
+byt0004,59m2,Olomouc,ul.Zirmova,
+byt0007,92m2,Olomouc,ul.Nová_Ulice,
+byt0002,52m2,Olomouc,ul.Nová_Ulice,
+byt0004,76m2,Olomouc,ul.Nová_Ulice,
+byt0002,81m2,Olomouc,ul.Nová_Ulice,
+byt0003,64m2,Olomouc,ul.Za_vodojemem,
+byt0007,113m2,Olomouc,ul.Jihoslovanská,
+byt0005,94m2,Olomouc,ul.Uničovská,
+byt0003,42m2,Olomouc,ul.Rošického,
+byt0003,75m2,Olomouc,ul.Rošického,
+byt0004,48m2,Olomouc,ul.Handského,
+byt0004,68m2,Olomouc,ul.Komenského,
+byt0003,61m2,Olomouc,ul.Jarmily_Glazarové,
+byt0004,39m2,Olomouc,ul.Přichystalova,
+byt0003,70m2,Olomouc,ul.Foerstova,
+byt0005,61m2,Olomouc,ul.Nová_Ulice,
+byt0007,88m2,Olomouc,ul.Nová_Ulice,
+byt0003,92m2,Olomouc,ul.U_cukrovaru,
+byt0003,56m2,Olomouc,ul.U_cukrovaru,
+byt0004,56m2,Olomouc,ul.Paseka,
+byt0002,74m2,Olomouc,ul.Rokycanova,
+byt0007,116m2,Olomouc,ul.U_cukrovaru,
+byt0004,59m2,Olomouc,ul.Řezáčova,
+byt0004,100m2,Olomouc,ul.Libušina,
+byt0003,64m2,Olomouc,ul.Řezáčova,
+byt0001,33m2,Olomouc,ul.Libušina,
+byt0006,87m2,Olomouc,ul.Černá cesta,
+byt0007,95m2,Olomouc,ul.Kaštanová,
+byt0003,74m2,Olomouc,ul.Nová_Ulice,
+byt0003,75m2,Olomouc,ul.Nová_Ulice,
+byt0004,86m2,Olomouc,ul.Hněvotínská,
+byt0002,67m2,Olomouc,ul.Polská,
+byt0007,120m2,Olomouc,ul.Dvořákova,
+byt0004,90m2,Olomouc,ul.Dvořákova,
+byt0004,86m2,Olomouc,ul.Nová Ulice,
+byt0003,75m2,Olomouc,ul.Nešverova,
+byt0001,45m2,Olomouc,ul.Zirmova,
+byt0006,114m2,Olomouc,ul.Přichystalová,
 """
+
+PREVOD_UDAJU = {
+    "byt0001": "1+1",
+    "byt0002": "2+1",
+    "byt0003": "2+kk",
+    "byt0004": "3+1",
+    "byt0005": "3+kk",
+    "byt0006": "4+1",
+    "byt0007": "4+kk",
+}
+
+def prevadec(vstup: str, prevodnik: dict) -> tuple:
+    return (prevodnik.get(vstup, None), 1) if vstup in prevodnik else (None, 0)
+
+vysledky = []
+upravene = 0
+
+for radek in UDAJE.split("\n"):
+    if radek != "":
+        ozn, *zbytek_dat = radek.split(",", maxsplit=1)
+        udaj, pocet = prevadec(ozn, PREVOD_UDAJU)
+        upravene += pocet
+        zbytek_dat = ",".join(zbytek_dat)
+        vysledky.append(",".join((udaj, zbytek_dat)))
+
+if upravene == len(UDAJE.split("\n")) - 2:
+    from pprint import pprint
+    pprint(vysledky)
+else:
+    print("Prevod neprobehl uspesne. Zkontroluj udaje!")
 
