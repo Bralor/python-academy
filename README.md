@@ -39,7 +39,7 @@ Vystup by na konci lekce mohl vypadat nasledovne:
 - text. editor
 - potrebne promenne:
 ```
-UDAJE = """
+UDAJE = '''
 byt0001,55m1,Olomouc,ul.Heyrovského,
 byt0003,65m2,Olomouc,ul.Novosadský_dvůr,
 byt0004,75m2,Olomouc,ul.Wolkerova,
@@ -90,12 +90,12 @@ byt0004,86m2,Olomouc,ul.Nová Ulice,
 byt0003,75m2,Olomouc,ul.Nešverova,
 byt0001,45m2,Olomouc,ul.Zirmova,
 byt0006,114m2,Olomouc,ul.Přichystalová,
-"""
+'''
 ```
 
 ## Zacneme s ulohou
 <p align="center">
-  <img src="https://media.giphy.com/media/1pAeSRT0jM7KxY3J4r/source.mp4" width="480" height="270">
+  <img src="https://media.giphy.com/media/1pAeSRT0jM7KxY3J4r/giphy.gif" width="480" height="270">
 </p>
 
 Vytvorime si v nasem pracovnim adresari novy soubor a do nej vlozime
@@ -137,10 +137,10 @@ celou sadu
 [zabudovanych funkci](https://docs.python.org/3/library/functions.html)
 se kterymi jsme se jiz seznamili.
 
-1.__print()__
-2.__input()__
-3.__sum()__
-4.__sorted()__
+1. __print()__
+2. __input()__
+3. __sum()__
+4. __sorted()__
 
 V takovem pripade mluvime skupine funkci, ktere jsou jiz definovane ve
 strukture Pythonu. My je muzeme primo pouzivat.
