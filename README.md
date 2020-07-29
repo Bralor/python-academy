@@ -95,7 +95,7 @@ byt0006,114m2,Olomouc,ul.Přichystalová,
 
 ## Zacneme s ulohou
 <p align="center">
-  <img src="https://media.giphy.com/media/1pAeSRT0jM7KxY3J4r/source.mp4" width="480" height="270">
+  <img src="https://media.giphy.com/media/1pAeSRT0jM7KxY3J4r/giphy.gif" width="480" height="270">
 </p>
 
 Vytvorime si v nasem pracovnim adresari novy soubor a do nej vlozime
