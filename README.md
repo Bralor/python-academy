@@ -95,7 +95,7 @@ byt0006,114m2,Olomouc,ul.Přichystalová,
 
 ## Zacneme s ulohou
 <p align="center">
-  <img src="https://media.giphy.com/media/1pAeSRT0jM7KxY3J4r/source.mp4" width="300" height="300">
+  <img src="https://media.giphy.com/media/1pAeSRT0jM7KxY3J4r/source.mp4" width="480" height="270">
 </p>
 
 Vytvorime si v nasem pracovnim adresari novy soubor a do nej vlozime
@@ -169,8 +169,8 @@ def umocnovani(cislo: int, exponent: int) -> int():
 Mame definovanou funkci, ted ji staci jen _pouzit_.
 
 Funkci pouzijeme tak, ze ji _zavolame_. Tedy, ze ji oslovime jejim jmenem
-_umocnovani()_ a do kulate zavorky zadame dve vstupni hodnoty, jak rika jeji
-popisek. Napriklad:
+__umocnovani()__ a do kulate zavorky zadame dve vstupni hodnoty, jak rika jeji
+popisek:
 ```
 umocnovani(2, 5)  # 32
 ```
@@ -403,21 +403,27 @@ zbytek udaju na radku. Nicmene v zatim prevadime pouze jeden typ oznaceni.
 
 ## Rozsirime funkci
 Abychom mohli opravovat vsechny typy bydleni, musime funkci ukazat nas slovnik
-__PREVOD_UDAJU__.
-
-
-
+__PREVOD_UDAJU__. Takze jej vlozime jako argument, do volani funkce a soucasne
+mu nachystame promennou do definice funkce.
+```python
+def prevadec(vstup: str, prevodnik: dict) -> tuple:
+    return (prevodnik.get(vstup, None), 1) if vstup in prevodnik else (None, 0)
+```
+V tuto chvili pomoci metody __get__ nahradime vsechny potencialni pripady, ktere
+mohou nastat.
 
 ## Vracime vysledek
+Posledni vec, kterou dopiseme bude podminka. Ta overi, jestli jsou prevedena
+vsechna data a pokud ano, vypiseme je. Pokud nebude podminka splnena, vysledek
+netiskneme.
+```python
+...
+if upravene == len(UDAJE.split("\n")) - 2:
+    print(jednotlive_udaje)
+else:
+    print("Prevod neprobehl uspesne. Zkontroluj udaje!")
+
+```
 
 Pokracovat na [Lekci#07](https://github.com/Bralor/python-academy/tree/lekce07)
 
-## Uvod k modulum
-Neni nutne vsechny funkce psat na vlastni pest. Spousty uzitecnych z nich nekdo uz napsal! Ulozil je do tzv. [modulu](https://engeto.com/cs/kurz/online-python-akademie/studium/gY9XxQ32RYiSI1fe_SlmoA/uvod-do-funkci/python-knihovna/zakladni-moduly). Modul je v podstate nejaky soubor Pythonu (.py). K dispozici jsou dva typy modulu. Nas bude zatim zajimat pouze prvni skupina a to jsou predinstalovane moduly.
-
-Teorie:
-```
-import <jmeno_modulu>
-from <jmeno_modulu> import <jmeno_funkce/metody>
-from <jmeno_modulu> import <jmeno_funkce/metody> as <alias>
-```
