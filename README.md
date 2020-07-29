@@ -39,7 +39,7 @@ Vystup by na konci lekce mohl vypadat nasledovne:
 - text. editor
 - potrebne promenne:
 ```
-UDAJE = """
+UDAJE = '''
 byt0001,55m1,Olomouc,ul.Heyrovského,
 byt0003,65m2,Olomouc,ul.Novosadský_dvůr,
 byt0004,75m2,Olomouc,ul.Wolkerova,
@@ -90,7 +90,7 @@ byt0004,86m2,Olomouc,ul.Nová Ulice,
 byt0003,75m2,Olomouc,ul.Nešverova,
 byt0001,45m2,Olomouc,ul.Zirmova,
 byt0006,114m2,Olomouc,ul.Přichystalová,
-"""
+'''
 ```
 
 ## Zacneme s ulohou
