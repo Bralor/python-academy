@@ -200,7 +200,7 @@ def preved_udaj(vstup: str) -> str:
     if vstup == "byt0001":
         return "1+1"
     else:
-        "Neplatny udaj!"
+        return "Neplatny udaj!"
 ```
 
 ## Spojime nas kod
@@ -315,10 +315,35 @@ for radek in UDAJE.split("\n"):
     ...
 ```
 
-## Overime pocet
-Kazdy udaj, ktery bude prevedeny na novy format zapisu chceme evidovat. V
-podstate overime, ze pocet udaju, ktere jsme na zacatku meli, sedi s poctem
-uprav.
+## Zavolame nasi funkci
+Nyni, kdyz jsme schopni extrahovat oznaceni bytu (promenna `ozn`), muzeme
+pouzit nasi funkci! Abych ji pouzili, musime ji __zavolat__. 
+
+### Ale kdy volat?
+Musime najit vhodne misto, kde funkci pouzit. Pomoc k vyreseni teto otazky muze
+byt vstup do funkce, tzv. _parametr_:
+```python
+def jmeno_funkce(parametr) -> None:
+    ...
+```
+Pokud funkci definujeme, do zavorky zadavame __parametry__ funkce. Pokud ale
+funkci zavolame (tedy pouzivame), do kulate zavorky jiz zapisujeme _argument_.
+Tedy skutecnou promennou, kterou budeme pouzivat uvnitr funkce.
+
+Proto bude vhodne funkci zavolat, az promennou `ozn` vytvorime:
+```python
+for radek in UDAJE.split("\n"):
+    if radek != "":
+            ozn, *zbytek_dat = radek.split(",", maxsplit=1)
+            upravene_typ = preved_udaj(ozn)
+            ...
+```
+Jelikoz ve funkci `prevadec` pouzivame `return`, musime hodnotu vracenou z
+funkce ulozit do nejake promenne.
+
+## Doplnime scitani
+Doplnime nasi funkci dalsi funkcionalitu. Zajistime, ze bude pocitat,
+jednotlive upravy. Tedy, pokud dojde ze zmene, vrati 1 a pokud ne, vrati 0.
 
 ### Pocitadlo
 Klasicky zapis pro pocitani ve smycce jsme si uz ukazovali:
@@ -336,46 +361,24 @@ a jeho prirazeni k hodnote se zmeni stary objekt.
 i += 1; print(i)
 75
 ```
-
-## Zavolame nasi funkci
-Nyni, kdyz jsme schopni extrahovat oznaceni bytu (promenna `ozn`), muzeme
-pouzit nasi funkci! Jak jsem v uvodu naznacil, abychom definovanou funkci mohli
-pouzit, musime ji _zavolat_.
-
-### Ale kdy volat?
-Musime najit vhodne misto, kde funkci pouzit/zavolat. Pomoc k vyreseni teto
-otazky muze byt vstup do funkce, tzv. _parametr_:
+### Doplneni funkce
+Jaky udaj budeme pricitat pri pouziti funkce, nechame rozhodnout funkci
+samotnou.
 ```python
-def jmeno_funkce(parametr) -> None:
-    ...
+def preved_udaj(vstup: str) -> str:
+    if vstup == "byt0001":
+        return "1+1", 1
+    else:
+        return "Neplatny udaj!", 0
+...
 ```
-Vsimneme si, ze jako parametr si do funkce prejeme vkladat jednotliva oznaceni.
-Proto bude vhodne funkci zavolat, az promennou __ozn__ definujeme.
+`return` totiz muze vracet vice nez jeden udaj. V ukazce nam v tento okamzik
+v obou variantach vraci tuple se dvema udaji. Jak je zapsat?
 ```python
-    ... 
+for radek in UDAJE.split("\n"):
     if radek != "":
             ozn, *zbytek_dat = radek.split(",", maxsplit=1)
-            upravene = prevadec(ozn)
-            ...
-```
-Jelikoz ve funkci __prevadec__ pouzivame __return__, musime hodnotu vracenou z
-funkce ulozit do nejake promenne.
-
-### Doplnime scitani
-Doplnime nasi funkci dalsi funkcionalitu. Zajistime, ze bude pocitat,
-jednotlive upravy. Tedy, pokud dojde ze zmene, vrati 1 a pokud ne, vrati 0.
-```python
-...
-    return ("1+1", 1) if vstup == "byt 0001" else ("Nic", 0)
-    ...
-```
-Funkce nam v tento okamzik v obou variantach vraci tupl se dvema udaji. Proto
-budeme muset upravit i zapisovani techto hodnot do promennych.
-```python
-        ...
-        udaj, pocet = prevadec(ozn)
-        upravene += pocet
-        ...
+            upravene_typ, zmena = preved_udaj(ozn)
 ```
 
 ## Spojime udaje
