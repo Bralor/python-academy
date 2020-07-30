@@ -139,42 +139,44 @@ film4 = {
 ```
 
 ## Prvni krucek
-Vytvorime si novy soubor, pojmenujeme jej "movies.py" a zkopirujeme nasledujici
+Vytvorime si novy soubor, pojmenujeme jej `movies.py` a zkopirujeme nasledujici
 sablonu:
 ```python
 #!/usr/bin/python3
 """ Lekce #3 - Uvod do programovani, Movies """
 ```
-## Co je to slovnik?
-Jde opet o zabudovany datovy typ v Pythonu, ktery je tvoreny dvojicemi
-*klic: hodnota*. Je charakteristickym svym mapovanim (spojovani/hledanim)
-klicu a jejich hodnot. Od ntice a seznamu se lisi tim, ze neni mozne jej
-indexovat za ucelem ziskavat poradi (prvky nejsou razene, tak jak seznamy).
-Klice musi byt unikatni, za to hodnoty nemusi. Hodnoty mohou byt retezce,
-cisla, seznam, atd.
 
-## Vytvorime slovnik
-Zpusobu pro vytvoreni slovniku je vice. Dva nejjednodussi priklady:
+### Co je to slovnik?
+Jde opet o zabudovany datovy typ v Pythonu, ktery je tvoreny dvojicemi
+__klic: hodnota__. Je charakteristickym svym hledanim (nebo taky _mapovanim_)
+klicu a jejich hodnot. Od ntice a seznamu se lisi tim, ze neni mozne jej
+indexovat za ucelem ziskavat prvky poporade (prvky nejsou razene, tak jak
+seznamy). Klice musi byt unikatni, za to hodnoty nemusi. Hodnoty mohou byt
+retezce, cisla, seznam, atd.
+
+### Vytvorime slovnik
+Zpusobu pro vytvoreni prazdneho slovniku je vice. Dva nejjednodussi priklady:
 ```python
 novy_slovnik = dict()                 # pomoci konstruktoru
-novy_slovnik2 = {'Jmeno' : 'Marek'}   # predpis pomoci klice: hodnoty
+novy_slovnik2 = {'Jmeno' : 'Matous'}   # predpis pomoci klice: hodnoty
 ```
 
-__Doplnime nas slovnik__:
+### Prvni cast ulohy
 ```python
-...
+#!/usr/bin/python3
+""" Lekce #3 - Uvod do programovani, Movies """
+
 film1 = {}
 ```
 
-## Vytvorime klice
-Indexovat slovniky nemuzeme. Nicmene proces zapisu pomoci hranate zavorky slouzi k pridani klice a je hodnoty.
-
-__Priklad__:
+### Vytvorime klice
+Indexovat slovniky nemuzeme. Nicmene proces zapisu pomoci hranate zavorky
+slouzi k pridani klice a je hodnoty.
 ```python
 <jmeno_slovniku>["jmeno_klice"] = hodnota_klice
 ```
 
-__Vyzkousejte__:
+__Priklad__:
 ```python
 slovnik = {}
 slovnik["jmeno"] = "Matous"
@@ -182,9 +184,10 @@ slovnik["email"] = "matous@matous.cz"
 print(slovnik)
 ```
 
-Pro ucely nasi ulohy nejprve vytvorime prazdne klice a hodnoty pridame az v dalsim kroku.
+Pro ucely nasi ulohy nejprve vytvorime prazdne klice a hodnoty pridame az v
+dalsim kroku.
 
-__Doplnime nasi ulohu__:
+### Druha cast ulohy
 ```python
 film1["JMENO"] = ""
 film1["HODNOCENI"] = ""
@@ -193,10 +196,10 @@ film1["REZISER"] = ""
 film1["STOPAZ"] = None
 film1["HRAJI"] = ()
 ```
-## Vlozime hodnoty pro existujici klice
-Muzeme je vkladat primo s hodnotami ale pro ucely dnesni lekce je budeme zadavat separatne. Vsimnete si, ze poradi ktere nam Python vraci nemusi odpovidat poradi, ktere jsme zadavali.
-
-__Doplnime nasi ulohu__:
+### Vlozime hodnoty pro existujici klice
+Muzeme je vkladat primo s hodnotami ale pro ucely dnesni lekce je budeme
+zadavat separatne. Vsimnete si, ze poradi ktere nam Python vraci nemusi
+odpovidat poradi, ktere jsme zadavali.
 ```python
 film1["JMENO"] = "Shawshank Redemption"
 film1["HODNOCENI"] = "93/100"
@@ -216,22 +219,21 @@ film1["HRAJI"] = (
     "Larry Brandenburg"
 )
 ```
-## Aktualizovani hodnot klice
-Pomoci metody _.update()_ muzeme prepisovat aktualni hodnoty klicu. Sledujte priklad nize:
+### Aktualizovani hodnot
+Pomoci metody __.update()__ muzeme prepisovat aktualni hodnoty klicu:
 ```python
 slovnik = {"Jmeno": "Matous", "Prijmeni": "Holinka"}  # Vytvorime slovnik
 slovnik.update({"Jmeno": "Lukas"})                    # Prepiseme
 print(slovnik))                                       # Zobrazime
 ```
-Pojdme zamerne zkomolit jmena nami definovaneho klice _JMENO_.
-__Doplnime nasi ulohu__:
+Pojdme zamerne zkomolit jmena nami definovaneho klice `JMENO`.
 ```python
 film.update({"JMENO": "Shawnshak Redemption"})
 ```
 
-## Muzu klice s hodnotami odstranit?
+### Odstranovani
 Celkem muzeme vyuzit 3 zpusobu, ktere odstrani klice a jejich hodnoty:
-1. Zpusob jak [mazat](https://engeto.com/cs/kurz/online-python-akademie/studium/XV4c-mozS1WSYJyQhSMSGw/slovniky-a-mnoziny/slovniky/mazani-prvku-ze-slovniku) klic
+1. Zpusob jak mazat klice:
 ```python
 slovnik = dict()
 slovnik["JMENO"] = "Matous"
@@ -245,7 +247,7 @@ slovnik["JMENO"] = "Matous"
 slovnik["PRIJMENI"] = "Holinka"
 slovnik.pop("PRIJMENI")
 ```
-3. Zpusob *.popitem()* vrati naposledy pridanou polozku (par) do slovniku a odebere jej:
+3. Zpusob `.popitem()` vrati naposledy pridanou polozku (par) do slovniku a odebere jej:
 ```python
 slovnik = dict()
 slovnik["JMENO"] = "Matous"
@@ -253,8 +255,7 @@ slovnik["PRIJMENI"] = "Holinka"
 slovnik["EMAIL"] = "matous@matous.cz"
 slovnik.popitem()
 ```
-Takze nyni muzeme odstranit nami zkomoleny klice _JMENO_ a vytvorit jej poradne.
-__Doplnime__:
+Takze nyni muzeme odstranit nami zkomoleny klice `JMENO` a vytvorit jej poradne.
 ```python
 film.pop("JMENO")
 film["JMENO"] = "Shawshank Redemption"
