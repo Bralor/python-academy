@@ -14,7 +14,9 @@ Minula [lekce#02](https://github.com/Bralor/python-academy/tree/lekce02)
 - [The Prestige](https://www.imdb.com/title/tt0482571/?ref_=fn_al_tt_1)
 
 ## Co nas dneska ceka
-V treti lekci se budeme bavit o dvou novych datovych typech, o jejich metodach a praktickem vyuziti. V ramci celeho tohoto povidani si opet ukazeme radu nazornych prikladu a jedne souvisle ulohy.
+V treti lekci se budeme bavit o dvou novych datovych typech, o jejich metodach
+a praktickem vyuziti. V ramci celeho tohoto povidani si opet ukazeme radu
+nazornych prikladu a jedne souvisle ulohy.
 
 ## Co bude vysledkem
 Po spusteni by mel program vypadat nasledovne (viz. demo)
@@ -23,7 +25,7 @@ $ ./movies
 ```
 
 __Komunikace s programem__:
-```bash
+```
 ============================================================================
                   Vitejte v nasi skromne filmove databazi                   
 ============================================================================
@@ -57,8 +59,7 @@ VYBERTE FILM: The Dark Knight
 ## Co budeme potrebovat?
 - Python 3.6+
 - textovy editor
-- vytvorit si novy soubor ve svem pracovnim adresari
-- predem zadane vstupy nize
+- vstupni hodnoty
 ```python
 film1 = {
     'JMENO': 'Shawshank Redemption',
@@ -138,14 +139,19 @@ film4 = {
 ```
 
 ## Prvni krucek
-Vytvorime si novy soubor, pojmenujeme jej "movies.py" a zkopirujeme nasledujici sablonu:
-```
+Vytvorime si novy soubor, pojmenujeme jej "movies.py" a zkopirujeme nasledujici
+sablonu:
+```python
 #!/usr/bin/python3
 """ Lekce #3 - Uvod do programovani, Movies """
-from pprint import pprint  # -> vysvetlime pozdeji
 ```
 ## Co je to slovnik?
-Jde opet o zabudovany datovy typ v Pythonu, ktery je tvoreny dvojicemi *klic: hodnota*. Je charakteristickym svym mapovanim (spojovani/hledanim) klicu a jejich hodnot. Od ntice a seznamu se lisi tim, ze neni mozne jej indexovat za ucelem ziskavat poradi (prvky nejsou razene, tak jak seznamy). Klice musi byt unikatni, za to hodnoty nemusi. Hodnoty mohou byt retezce, cisla, seznam, atd.
+Jde opet o zabudovany datovy typ v Pythonu, ktery je tvoreny dvojicemi
+*klic: hodnota*. Je charakteristickym svym mapovanim (spojovani/hledanim)
+klicu a jejich hodnot. Od ntice a seznamu se lisi tim, ze neni mozne jej
+indexovat za ucelem ziskavat poradi (prvky nejsou razene, tak jak seznamy).
+Klice musi byt unikatni, za to hodnoty nemusi. Hodnoty mohou byt retezce,
+cisla, seznam, atd.
 
 ## Vytvorime slovnik
 Zpusobu pro vytvoreni slovniku je vice. Dva nejjednodussi priklady:
