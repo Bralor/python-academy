@@ -204,9 +204,9 @@ def preved_udaj(vstup: str) -> str:
 ```
 
 ## Spojime nas kod
-V tomto okamziku jsme v pozici, kdy mame upravujici funkci a vstupni udaje.
-Musime proto tyto dve casti propojit. Zadany text je retezec, a proto jej
-musime upravit, nez jej budeme pouzivat ve funkci.
+V tomto okamziku jsme v pozici, kdy mame __upravujici funkci__ a
+__vstupni udaje__. Musime proto tyto dve casti propojit. Zadany text je retezec,
+a proto jej musime upravit, nez jej budeme pouzivat ve funkci.
 
 ### Rozdelime text
 Vidime, ze kus textu, ktery potrebujeme, je na kazdem radku:
@@ -236,7 +236,7 @@ Staci pouze doplnit podminku. Pri nasem rozdelovani metodou __split()__ dojde k
 rozdeleni i na zacatku a na konci, kde se nachazi symboly pro novy radek. Proto
 mame ve vyslednem textu prazdne radky v uvodu a zaveru.
 
-Posledni casti v nasem kodu bude rozdele radky pridat do libovolneho datoveho
+Posledni casti v nasem kodu bude rozdelene radky pridat do libovolneho datoveho
 typu, ktery se nam hodi nejvice.
 ```python
 jednotlive_udaje = []
@@ -260,16 +260,16 @@ byt0002,... ,
 Co budeme muset zmenit?
 
 ### Jednoduche prirazeni promenne
-Pomoci znamenka *=* vytvorim cestu do pameti pocitace. Takze promenna potom
-funguje jako nejaky ukazatel/odkaz.
+Pomoci znamenka __=__ vytvorim cestu do pameti pocitace. Takze promenna potom
+funguje jako nejaky ukazatel.
 
 __Priklad__:
 ```
 JMENO = "Matous"
 ```
 ### Vicenasobne prirazeni
-Neni nutne prirazovat na jednom radku pouze jedne promenne. Pro takove pripady
-existuje specialni zapis:
+Neni nutne prirazovat na jednom radku hodnotu pouze jedne promenne. Pro takove
+pripady existuje specialni zapis:
 ```
 JMENO1, JMENO2 = "Matous", "Lucie"
 print(JMENO1)  # "Matous"
@@ -292,15 +292,15 @@ vytvorili v prvni casti chceme rozdelit promenne:
 3. __mesto__,
 4. __ulice__
 ```python
-    ...
+for radek in UDAJE.split("\n"):
     if radek != "":
         ozn, plocha, mesto, ulice = radek.split(",", maxsplit=3)
 ```
 
 ### Potrebujeme zbytek?
-Jiste jste si polozili otazku, jestli je opravdu nutne, rozdelovat text na
-tolik oddilu, kdyz prakticky potrebujeme pouze __oznaceni__. Pomoci
-rozbalovaciho operatoru _*_ si muzeme usetrit vypisovani.
+Je opravdu nutne rozdelovat text na tolik oddilu, kdyz prakticky potrebujeme
+pouze __oznaceni__. Pomoci rozbalovaciho operatoru __*__ si muzeme usetrit
+vypisovani.
 ```
 STREDNI_ROD = ("mesto", "more", "kure", "staveni")
 v1, *zbytek = STREDNI_ROD
@@ -309,8 +309,9 @@ print(zbytek)  # ["more", "kure", "staveni"]
 Uz jsme si o vyuziti tohoto symbolu nekolikrat povidali. Jejim dalsim vyuzitim
 muzeme [rozbalovat](#dulezite-odkazy) datove typy jako seznamy a tuply.
 ```python
-    ...
-    ozn, *zbytek_dat = radek.split(",", maxsplit=1)
+for radek in UDAJE.split("\n"):
+    if radek != "":
+        ozn, *zbytek_dat = radek.split(",", maxsplit=1)
     ...
 ```
 
@@ -328,7 +329,7 @@ print(i)  # 74
 ```
 ### Zkraceny zapis
 V Pythonu dale existuje forma [zkraceneho zapisu](#dulezite-odkazy). Neplati
-pouze pro _scitani_ ale i pro dalsi operace (odcitani, nasobeni, aj.). Jde o
+pouze pro __scitani__ ale i pro dalsi operace (odcitani, nasobeni, aj.). Jde o
 podobny proces, jako obycejne prirazeni, jenom misto vytvoreni noveho objektu
 a jeho prirazeni k hodnote se zmeni stary objekt.
 ```python
@@ -337,7 +338,7 @@ i += 1; print(i)
 ```
 
 ## Zavolame nasi funkci
-Nyni, kdyz jsme schopni extrahovat oznaceni bytu (promenna __ozn__), muzeme
+Nyni, kdyz jsme schopni extrahovat oznaceni bytu (promenna `ozn`), muzeme
 pouzit nasi funkci! Jak jsem v uvodu naznacil, abychom definovanou funkci mohli
 pouzit, musime ji _zavolat_.
 
