@@ -1,8 +1,9 @@
+Pokracovat na [Lekci#05](https://github.com/Bralor/python-academy/tree/lekce05)
+
 <p align="center">
   <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
 </p>
 
-![](../images/engeto.png)
 # Python academy, lesson 06
 ## Dulezite odkazy
 - Portal [Engeto.com](https://engeto.com/)
@@ -13,23 +14,30 @@
 - Dalsi vyuziti [hvezdicky](https://note.nkmk.me/en/python-tuple-list-unpack/)
 
 ## Co nas dnes ceka?
-Jsme v pulce nasich setkani, a proto je uz nacase, povedet si neco o funkcich
-v Pythonu. Soucasne se zamerime na prirazeni vicero promennych k prislusnym
+Jsme v pulce nasich setkani, a proto je nacase, povedet si neco o funkcich
+v Pythonu. Soucasne se zamerime na prirazeni vice promennych k prislusnym
 hodnotam aj.
 
 ## Vytvorime si vlastni funkci
 Na uvod dostaneme pseudo-data z webu. Jejich aktualni podoba resp. cislovani
-je samozrejme nepouzitelne pro bezneho uzivatele. Proto je musime upravit. Data
-oznacena v prvnim sloupci jsou nic nerikajici hodnota z weboveho zdroje. My si
-tyto hodnoty upravime.
+je samozrejme nepouzitelne pro bezneho uzivatele. Proto je musime upravit.
+Soucasne chceme evidovat pocet prevedenych dat pro zaverecny vystup.
 
 ## Ukazka na uvod
 Spustime skript v tomto adresari:
 ```
 $ ./uprav_udaje
 ```
-Vystup by na konci lekce mohl vypadat nasledovne:
+Za predpokladu, ze pocet vstupnich udaju odpovida poctu upravenych udaju, chceme
+nasledujici vystup:
 ```
+['1+1,55m2,Olomouc,ul.Heyrovského,',
+ '2+kk,65m2,Olomouc,ul.Novosadský_dvůr,',
+ '3+1,75m2,Olomouc,ul.Wolkerova,',
+ '3+1,68m2,Olomouc,ul.Zikova,',
+ '1+1,36m2,Olomouc,ul.Nová_Ulice,',
+ '2+kk,46m2,Olomouc,ul.Nové_sady,',
+ ...
 ```
 
 ## Co budeme potrebovat?
@@ -38,7 +46,7 @@ Vystup by na konci lekce mohl vypadat nasledovne:
 - potrebne promenne:
 ```
 UDAJE = '''
-byt0001,55m1,Olomouc,ul.Heyrovského,
+byt0001,55m2,Olomouc,ul.Heyrovského,
 byt0003,65m2,Olomouc,ul.Novosadský_dvůr,
 byt0004,75m2,Olomouc,ul.Wolkerova,
 byt0004,68m2,Olomouc,ul.Zikova,
@@ -102,7 +110,6 @@ Vytvorime si v nasem pracovnim adresari novy soubor a do nej vlozime
 #!/usr/bin/python3
 """Lekce #06 - Uvod do programovani, Uprav udaje"""
 
-# I. KROK
 UDAJE = """
     ...
 ```
@@ -130,10 +137,10 @@ Umoznuji pouzivat kus kodu opakovane, na ruznych mistech a tim zachovavaji
 vysokou uroven citelnosti kodu.
 
 ### Jake mame funkce
-Mozna si rikate, ze jsme uz o funkcich mluvili. Ano, je to tak. Python obsahuje
+Mozna si rikate, ze jsme uz o funkcich mluvili. Python obsahuje
 celou sadu
 [zabudovanych funkci](https://docs.python.org/3/library/functions.html)
-se kterymi jsme se jiz seznamili.
+se kterymi jsme se jiz seznamili a jeste se seznamime.
 
 1. __print()__
 2. __input()__
@@ -164,11 +171,11 @@ def umocnovani(cislo: int, exponent: int) -> int():
     """
     return cislo ** exponent
 ```
-Mame definovanou funkci, ted ji staci jen _pouzit_.
+Mame __definovanou__ funkci, ted ji staci jen __pouzit__.
 
-Funkci pouzijeme tak, ze ji _zavolame_. Tedy, ze ji oslovime jejim jmenem
-__umocnovani()__ a do kulate zavorky zadame dve vstupni hodnoty, jak rika jeji
-popisek:
+Funkci pouzijeme tak, ze zapiseme jeji jmeno a odpovidajici pocet vstupnich
+promennych. Casto pri pouzivani funkce mluvime o jejich _zavolani_. Zavolani
+muzete videt na radcich nize:
 ```
 umocnovani(2, 5)  # 32
 ```
@@ -188,15 +195,17 @@ Zatim zkusime definovat jednoduchou funkci, podle vzoru
 [vyse](#nase-prvni-funkce). Pokud bude vstupem `byt 0001` chceme z funkce
 vratit `1+1`. Pokud bude vstupem cokoliv jineho, chceme vratit `Neplatny udaj`.
 ```python
-def preved_udaj(vstup: str) -> str:
-    """'byt 0001' -> funkce: preved_test -> '1+1'"""
-    return "1+1" if vstup == "byt 0001" else "Neplatny udaj!"
+def prevadec(typ_bytu: str) -> str:
+    if typ_bytu == "byt0001":
+        return "1+1"
+    else:
+        return "NEZNAMY TYP BYTU!"
 ```
 
 ## Spojime nas kod
-V tomto okamziku jsme v pozici, kdy mame upravujici funkci a vstupni udaje.
-Musime proto tyto dve casti propojit. Zadany text je retezec, a proto jej
-musime upravit, nez jej budeme pouzivat ve funkci.
+V tomto okamziku jsme v pozici, kdy mame __upravujici funkci__ a
+__vstupni udaje__. Musime proto tyto dve casti propojit. Zadany text je retezec,
+a proto jej musime upravit, nez jej budeme pouzivat ve funkci.
 
 ### Rozdelime text
 Vidime, ze kus textu, ktery potrebujeme, je na kazdem radku:
@@ -226,14 +235,14 @@ Staci pouze doplnit podminku. Pri nasem rozdelovani metodou __split()__ dojde k
 rozdeleni i na zacatku a na konci, kde se nachazi symboly pro novy radek. Proto
 mame ve vyslednem textu prazdne radky v uvodu a zaveru.
 
-Posledni casti v nasem kodu bude rozdele radky pridat do libovolneho datoveho
+Posledni casti v nasem kodu bude rozdelene radky pridat do libovolneho datoveho
 typu, ktery se nam hodi nejvice.
 ```python
-jednotlive_udaje = []
+vysledky = []
 
 for radek in UDAJE.split("\n"):
     if radek != "":
-        jednotlive_udaje.append(radek)
+        vysledky.append(radek)
 ```
 
 ## Prirazovani vice promennych
@@ -250,16 +259,16 @@ byt0002,... ,
 Co budeme muset zmenit?
 
 ### Jednoduche prirazeni promenne
-Pomoci znamenka *=* vytvorim cestu do pameti pocitace. Takze promenna potom
-funguje jako nejaky ukazatel/odkaz.
+Pomoci znamenka __=__ vytvorim cestu do pameti pocitace. Takze promenna potom
+funguje jako nejaky ukazatel.
 
 __Priklad__:
 ```
 JMENO = "Matous"
 ```
 ### Vicenasobne prirazeni
-Neni nutne prirazovat na jednom radku pouze jedne promenne. Pro takove pripady
-existuje specialni zapis:
+Neni nutne prirazovat na jednom radku hodnotu pouze jedne promenne. Pro takove
+pripady existuje specialni zapis:
 ```
 JMENO1, JMENO2 = "Matous", "Lucie"
 print(JMENO1)  # "Matous"
@@ -277,20 +286,20 @@ v1, v2, v3, v4, v5 = STREDNI_ROD  # ValueError
 ### Rozdelime radek
 Kdyz uz tusime jak na to, pojdme si to vyzkouset. Uvnitr smycky, kterou jsme
 vytvorili v prvni casti chceme rozdelit promenne:
-1.  __oznaceni__,
+1.  __oznaceni_bytu__,
 2. __plocha__,
 3. __mesto__,
 4. __ulice__
 ```python
-    ...
+for radek in UDAJE.split("\n"):
     if radek != "":
-        ozn, plocha, mesto, ulice = radek.split(",", maxsplit=3)
+        oznaceni_bytu, plocha, mesto, ulice = radek.split(",", maxsplit=3)
 ```
 
 ### Potrebujeme zbytek?
-Jiste jste si polozili otazku, jestli je opravdu nutne, rozdelovat text na
-tolik oddilu, kdyz prakticky potrebujeme pouze __oznaceni__. Pomoci
-rozbalovaciho operatoru _*_ si muzeme usetrit vypisovani.
+Je opravdu nutne rozdelovat text na tolik oddilu, kdyz prakticky potrebujeme
+pouze __oznaceni__. Pomoci rozbalovaciho operatoru __*__ si muzeme usetrit
+vypisovani.
 ```
 STREDNI_ROD = ("mesto", "more", "kure", "staveni")
 v1, *zbytek = STREDNI_ROD
@@ -299,15 +308,41 @@ print(zbytek)  # ["more", "kure", "staveni"]
 Uz jsme si o vyuziti tohoto symbolu nekolikrat povidali. Jejim dalsim vyuzitim
 muzeme [rozbalovat](#dulezite-odkazy) datove typy jako seznamy a tuply.
 ```python
-    ...
-    ozn, *zbytek_dat = radek.split(",", maxsplit=1)
+for radek in UDAJE.split("\n"):
+    if radek != "":
+        oznaceni_bytu, *zbytek_dat = radek.split(",", maxsplit=1)
     ...
 ```
 
-## Overime pocet
-Kazdy udaj, ktery bude prevedeny na novy format zapisu chceme evidovat. V
-podstate overime, ze pocet udaju, ktere jsme na zacatku meli, sedi s poctem
-uprav.
+## Zavolame nasi funkci
+Nyni, kdyz jsme schopni extrahovat oznaceni bytu (promenna `ozn`), muzeme
+pouzit nasi funkci! Abych ji pouzili, musime ji __zavolat__. 
+
+### Ale kdy volat?
+Musime najit vhodne misto, kde funkci pouzit. Pomoc k vyreseni teto otazky muze
+byt vstup do funkce, tzv. _parametr_:
+```python
+def jmeno_funkce(parametr) -> None:
+    ...
+```
+Pokud funkci definujeme, do zavorky zadavame __parametry__ funkce. Pokud ale
+funkci zavolame (tedy pouzivame), do kulate zavorky jiz zapisujeme _argument_.
+Tedy skutecnou promennou, kterou budeme pouzivat uvnitr funkce.
+
+Proto bude vhodne funkci zavolat, az promennou `ozn` vytvorime:
+```python
+for radek in UDAJE.split("\n"):
+    if radek != "":
+            oznaceni_bytu, *zbytek_dat = radek.split(",", maxsplit=1)
+            upraveny_typ = prevadec(oznaceni_bytu)
+            ...
+```
+Jelikoz ve funkci `prevadec` pouzivame `return`, musime hodnotu vracenou z
+funkce ulozit do nejake promenne.
+
+## Doplnime scitani
+Doplnime nasi funkci dalsi funkcionalitu. Zajistime, ze bude pocitat,
+jednotlive upravy. Tedy, pokud dojde ze zmene, vrati 1 a pokud ne, vrati 0.
 
 ### Pocitadlo
 Klasicky zapis pro pocitani ve smycce jsme si uz ukazovali:
@@ -318,94 +353,98 @@ print(i)  # 74
 ```
 ### Zkraceny zapis
 V Pythonu dale existuje forma [zkraceneho zapisu](#dulezite-odkazy). Neplati
-pouze pro _scitani_ ale i pro dalsi operace (odcitani, nasobeni, aj.). Jde o
+pouze pro __scitani__ ale i pro dalsi operace (odcitani, nasobeni, aj.). Jde o
 podobny proces, jako obycejne prirazeni, jenom misto vytvoreni noveho objektu
 a jeho prirazeni k hodnote se zmeni stary objekt.
 ```python
 i += 1; print(i)
 75
 ```
-
-## Zavolame nasi funkci
-Nyni, kdyz jsme schopni extrahovat oznaceni bytu (promenna __ozn__), muzeme
-pouzit nasi funkci! Jak jsem v uvodu naznacil, abychom definovanou funkci mohli
-pouzit, musime ji _zavolat_.
-
-### Ale kdy volat?
-Musime najit vhodne misto, kde funkci pouzit/zavolat. Pomoc k vyreseni teto
-otazky muze byt vstup do funkce, tzv. _parametr_:
+### Doplneni funkce
+Jaky udaj budeme pricitat pri pouziti funkce, nechame rozhodnout funkci
+samotnou.
 ```python
-def jmeno_funkce(parametr) -> None:
-    ...
+def preved_udaj(vstup: str) -> str:
+    if vstup == "byt0001":
+        return "1+1", 1
+    else:
+        return "Neplatny udaj!", 0
+...
 ```
-Vsimneme si, ze jako parametr si do funkce prejeme vkladat jednotliva oznaceni.
-Proto bude vhodne funkci zavolat, az promennou __ozn__ definujeme.
+`return` totiz muze vracet vice nez jeden udaj. V ukazce nam v tento okamzik
+v obou variantach vraci tuple se dvema udaji. Jak je zapsat?
 ```python
-    ... 
+for radek in UDAJE.split("\n"):
     if radek != "":
             ozn, *zbytek_dat = radek.split(",", maxsplit=1)
-            upravene = prevadec(ozn)
-            ...
-```
-Jelikoz ve funkci __prevadec__ pouzivame __return__, musime hodnotu vracenou z
-funkce ulozit do nejake promenne.
-
-### Doplnime scitani
-Doplnime nasi funkci dalsi funkcionalitu. Zajistime, ze bude pocitat,
-jednotlive upravy. Tedy, pokud dojde ze zmene, vrati 1 a pokud ne, vrati 0.
-```python
-...
-    return ("1+1", 1) if vstup == "byt 0001" else ("Nic", 0)
-    ...
-```
-Funkce nam v tento okamzik v obou variantach vraci tupl se dvema udaji. Proto
-budeme muset upravit i zapisovani techto hodnot do promennych.
-```python
-        ...
-        udaj, pocet = prevadec(ozn)
-        upravene += pocet
-        ...
+            upravene_typ, zmena = preved_udaj(ozn)
 ```
 
 ## Spojime udaje
-V tento moment vsechno bezi jak na dratkach. Dalsim krokem bude spojeni noveho
-udaje a zbytku radku (promenna __zbytek_dat__).
+Dalsim krokem bude spojeni noveho udaje (promenna `upraveny_typ`) a zbytku
+radku (promenna `zbytek_dat`).
 
 ### Dalsi metoda?!
-Ano, pokud potrebujeme spojit retezce, pak nam prijde vhod metoda retezcu
-_join()_. Jak ji ale pouzivat:
+<p align="center">
+  <img src="https://media.giphy.com/media/14ooolmDKfgrO8/giphy-downsized.gif" width="480" height="270">
+</p>
+
+Pokud potrebujeme spojit retezce, pak nam prijde vhod metoda retezcu _join()_.
 ```python
 STREDNI_ROD = ("mesto", "more", "kure", "staveni")
 ", ".join(STREDNI_ROD)
 ```
 Do uvozovek napisu, cim chci jednotlive udaje spojit a tesne za uvozovky
-nalepim metodu pomoci tecky. Do kulatych zavorek potom zapiseme promennou,
+vlozim metodu s teckou. Do kulatych zavorek potom zapiseme promennou,
 jejichz hodnoty chci spojovat.
 ```python
-        ...
-        zbytek_dat = ",".join(zbytek_dat)
-        ...
+vysledky = []
+upravene = 0
+neupravene = 0
+
+for radek in UDAJE.split("\n"):
+    if radek != "":
+            oznaceni_bytu, *zbytek_dat = radek.split(",", maxsplit=1)
+            upraveny_typ, zmena = preved_udaj(ozn)
+            upravene += zmena
+
+            zbytek_dat = ",".join(zbytek_dat)
+    else:
+        neupravene += 1
 ```
-V tuto chvili mame tedy pospojovane udaje z puvodniho __zbytek_dat__.
+V tuto chvili mame tedy pospojovane udaje z puvodniho seznamu `zbytek_dat`.
 
 ### A jeste jednou
-Jakmile mame nove ulozenou promennou __zbytek_dat__, spojime tuto promennou a
-promennou __udaj__.
+Jakmile mame nove ulozenou promennou `zbytek_dat`, spojime tuto promennou a
+promennou `udaj`.
 ```python
-        ...
-        jednotlive_udaje.append(",".join((udaj, zbytek_dat)))
-        ...
+vysledky = []
+upravene = 0
+neupravene = 0
+
+for radek in UDAJE.split("\n"):
+    if radek != "":
+            oznaceni_bytu, *zbytek_dat = radek.split(",", maxsplit=1)
+            upraveny_typ, zmena = preved_udaj(ozn)
+            upravene += zmena
+
+            zbytek_dat = ",".join(zbytek_dat)
+            vysledky.append(",".join((ozn, zbytek_dat)))
+    else:
+        neupravene += 1
 ```
 Nyni mame zpet seznam, ktery obsahuje prevedene oznaceni do citelne podoby i
 zbytek udaju na radku. Nicmene v zatim prevadime pouze jeden typ oznaceni.
 
 ## Rozsirime funkci
 Abychom mohli opravovat vsechny typy bydleni, musime funkci ukazat nas slovnik
-__PREVOD_UDAJU__. Takze jej vlozime jako argument, do volani funkce a soucasne
-mu nachystame promennou do definice funkce.
+`PREVOD_UDAJU`. Takze jej vlozime jednak jako parametr, jednak jako argument.
 ```python
-def prevadec(vstup: str, prevodnik: dict) -> tuple:
-    return (prevodnik.get(vstup, None), 1) if vstup in prevodnik else (None, 0)
+def prevadec(typ_bytu: str, vzor: dict) -> str:
+    if typ_bytu in vzor:
+        return vzor.get(typ_bytu), 1
+    else:
+        return "NEZNAMY TYP BYTU!", 0
 ```
 V tuto chvili pomoci metody __get__ nahradime vsechny potencialni pripady, ktere
 mohou nastat.
@@ -416,11 +455,11 @@ vsechna data a pokud ano, vypiseme je. Pokud nebude podminka splnena, vysledek
 netiskneme.
 ```python
 ...
-if upravene == len(UDAJE.split("\n")) - 2:
-    print(jednotlive_udaje)
+if upravene == len(UDAJE.split("\n")) - neupravene:
+    from pprint import pprint
+    pprint(vysledky)
 else:
-    print("Prevod neprobehl uspesne. Zkontroluj udaje!")
-
+    print("POCET VSTUPNICH UDAJU A PREVEDENYCH UDAJE JE RUZNY!!")
 ```
 
 Pokracovat na [Lekci#07](https://github.com/Bralor/python-academy/tree/lekce07)

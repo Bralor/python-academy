@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Lekce #06 - Uvod do programovani, Uprav udaje"""
 
-UDAJE = """
-byt0001,55m1,Olomouc,ul.Heyrovského,
+UDAJE = '''
+byt0001,55m2,Olomouc,ul.Heyrovského,
 byt0003,65m2,Olomouc,ul.Novosadský_dvůr,
 byt0004,75m2,Olomouc,ul.Wolkerova,
 byt0004,68m2,Olomouc,ul.Zikova,
@@ -52,7 +52,7 @@ byt0004,86m2,Olomouc,ul.Nová Ulice,
 byt0003,75m2,Olomouc,ul.Nešverova,
 byt0001,45m2,Olomouc,ul.Zirmova,
 byt0006,114m2,Olomouc,ul.Přichystalová,
-"""
+'''
 
 PREVOD_UDAJU = {
     "byt0001": "1+1",
@@ -64,23 +64,30 @@ PREVOD_UDAJU = {
     "byt0007": "4+kk",
 }
 
-def prevadec(vstup: str, prevodnik: dict) -> tuple:
-    return (prevodnik.get(vstup, None), 1) if vstup in prevodnik else (None, 0)
+def prevadec(typ_bytu: str, vzor: dict) -> str:
+    if typ_bytu in vzor:
+        return vzor.get(typ_bytu), 1
+    else:
+        return "NEZNAMY TYP BYTU!", 0
 
 vysledky = []
 upravene = 0
+neupravene = 0
 
 for radek in UDAJE.split("\n"):
     if radek != "":
-        ozn, *zbytek_dat = radek.split(",", maxsplit=1)
-        udaj, pocet = prevadec(ozn, PREVOD_UDAJU)
-        upravene += pocet
-        zbytek_dat = ",".join(zbytek_dat)
-        vysledky.append(",".join((udaj, zbytek_dat)))
+            oznaceni_bytu, *zbytek_dat = radek.split(",", maxsplit=1)
+            upraveny_typ, zmena = prevadec(oznaceni_bytu, PREVOD_UDAJU)
+            upravene += zmena
 
-if upravene == len(UDAJE.split("\n")) - 2:
+            zbytek_dat = ",".join(zbytek_dat)
+            vysledky.append(",".join((oznaceni_bytu, zbytek_dat)))
+    else:
+        neupravene += 1
+
+if upravene == len(UDAJE.split("\n")) - neupravene:
     from pprint import pprint
     pprint(vysledky)
 else:
-    print("Prevod neprobehl uspesne. Zkontroluj udaje!")
+    print("POCET VSTUPNICH UDAJU A PREVEDENYCH UDAJE JE RUZNY!!")
 
