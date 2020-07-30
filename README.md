@@ -28,7 +28,8 @@ Spustime skript v tomto adresari:
 ```
 $ ./uprav_udaje
 ```
-Vystup by na konci lekce mohl vypadat nasledovne:
+Za predpokladu, ze pocet vstupnich udaju odpovida poctu upravenych udaju, chceme
+nasledujici vystup:
 ```
 ['1+1,55m1,Olomouc,ul.Heyrovského,',
  '2+kk,65m2,Olomouc,ul.Novosadský_dvůr,',
@@ -137,10 +138,10 @@ Umoznuji pouzivat kus kodu opakovane, na ruznych mistech a tim zachovavaji
 vysokou uroven citelnosti kodu.
 
 ### Jake mame funkce
-Mozna si rikate, ze jsme uz o funkcich mluvili. Ano, je to tak. Python obsahuje
+Mozna si rikate, ze jsme uz o funkcich mluvili. Python obsahuje
 celou sadu
 [zabudovanych funkci](https://docs.python.org/3/library/functions.html)
-se kterymi jsme se jiz seznamili.
+se kterymi jsme se jiz seznamili a jeste se seznamime.
 
 1. __print()__
 2. __input()__
@@ -171,11 +172,11 @@ def umocnovani(cislo: int, exponent: int) -> int():
     """
     return cislo ** exponent
 ```
-Mame definovanou funkci, ted ji staci jen _pouzit_.
+Mame __definovanou__ funkci, ted ji staci jen __pouzit__.
 
-Funkci pouzijeme tak, ze ji _zavolame_. Tedy, ze ji oslovime jejim jmenem
-__umocnovani()__ a do kulate zavorky zadame dve vstupni hodnoty, jak rika jeji
-popisek:
+Funkci pouzijeme tak, ze zapiseme jeji jmeno a odpovidajici pocet vstupnich
+promennych. Casto pri pouzivani funkce mluvime o jejich _zavolani_. Zavolani
+muzete videt na radcich nize:
 ```
 umocnovani(2, 5)  # 32
 ```
@@ -196,8 +197,10 @@ Zatim zkusime definovat jednoduchou funkci, podle vzoru
 vratit `1+1`. Pokud bude vstupem cokoliv jineho, chceme vratit `Neplatny udaj`.
 ```python
 def preved_udaj(vstup: str) -> str:
-    """'byt 0001' -> funkce: preved_test -> '1+1'"""
-    return "1+1" if vstup == "byt 0001" else "Neplatny udaj!"
+    if vstup == "byt0001":
+        return "1+1"
+    else:
+        "Neplatny udaj!"
 ```
 
 ## Spojime nas kod
