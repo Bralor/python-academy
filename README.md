@@ -1,8 +1,9 @@
+Pokracovat na [Lekci#05](https://github.com/Bralor/python-academy/tree/lekce05)
+
 <p align="center">
   <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
 </p>
 
-![](../images/engeto.png)
 # Python academy, lesson 06
 ## Dulezite odkazy
 - Portal [Engeto.com](https://engeto.com/)
@@ -13,15 +14,14 @@
 - Dalsi vyuziti [hvezdicky](https://note.nkmk.me/en/python-tuple-list-unpack/)
 
 ## Co nas dnes ceka?
-Jsme v pulce nasich setkani, a proto je uz nacase, povedet si neco o funkcich
-v Pythonu. Soucasne se zamerime na prirazeni vicero promennych k prislusnym
+Jsme v pulce nasich setkani, a proto je nacase, povedet si neco o funkcich
+v Pythonu. Soucasne se zamerime na prirazeni vice promennych k prislusnym
 hodnotam aj.
 
 ## Vytvorime si vlastni funkci
 Na uvod dostaneme pseudo-data z webu. Jejich aktualni podoba resp. cislovani
-je samozrejme nepouzitelne pro bezneho uzivatele. Proto je musime upravit. Data
-oznacena v prvnim sloupci jsou nic nerikajici hodnota z weboveho zdroje. My si
-tyto hodnoty upravime.
+je samozrejme nepouzitelne pro bezneho uzivatele. Proto je musime upravit.
+Soucasne chceme evidovat pocet prevedenych dat pro zaverecny vystup.
 
 ## Ukazka na uvod
 Spustime skript v tomto adresari:
@@ -30,6 +30,13 @@ $ ./uprav_udaje
 ```
 Vystup by na konci lekce mohl vypadat nasledovne:
 ```
+['1+1,55m1,Olomouc,ul.Heyrovského,',
+ '2+kk,65m2,Olomouc,ul.Novosadský_dvůr,',
+ '3+1,75m2,Olomouc,ul.Wolkerova,',
+ '3+1,68m2,Olomouc,ul.Zikova,',
+ '1+1,36m2,Olomouc,ul.Nová_Ulice,',
+ '2+kk,46m2,Olomouc,ul.Nové_sady,',
+ ...
 ```
 
 ## Co budeme potrebovat?
