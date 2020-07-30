@@ -31,7 +31,7 @@ $ ./uprav_udaje
 Za predpokladu, ze pocet vstupnich udaju odpovida poctu upravenych udaju, chceme
 nasledujici vystup:
 ```
-['1+1,55m1,Olomouc,ul.Heyrovského,',
+['1+1,55m2,Olomouc,ul.Heyrovského,',
  '2+kk,65m2,Olomouc,ul.Novosadský_dvůr,',
  '3+1,75m2,Olomouc,ul.Wolkerova,',
  '3+1,68m2,Olomouc,ul.Zikova,',
@@ -46,7 +46,7 @@ nasledujici vystup:
 - potrebne promenne:
 ```
 UDAJE = '''
-byt0001,55m1,Olomouc,ul.Heyrovského,
+byt0001,55m2,Olomouc,ul.Heyrovského,
 byt0003,65m2,Olomouc,ul.Novosadský_dvůr,
 byt0004,75m2,Olomouc,ul.Wolkerova,
 byt0004,68m2,Olomouc,ul.Zikova,
@@ -110,7 +110,6 @@ Vytvorime si v nasem pracovnim adresari novy soubor a do nej vlozime
 #!/usr/bin/python3
 """Lekce #06 - Uvod do programovani, Uprav udaje"""
 
-# I. KROK
 UDAJE = """
     ...
 ```
@@ -196,11 +195,11 @@ Zatim zkusime definovat jednoduchou funkci, podle vzoru
 [vyse](#nase-prvni-funkce). Pokud bude vstupem `byt 0001` chceme z funkce
 vratit `1+1`. Pokud bude vstupem cokoliv jineho, chceme vratit `Neplatny udaj`.
 ```python
-def preved_udaj(vstup: str) -> str:
-    if vstup == "byt0001":
+def prevadec(typ_bytu: str) -> str:
+    if typ_bytu == "byt0001":
         return "1+1"
     else:
-        return "Neplatny udaj!"
+        return "NEZNAMY TYP BYTU!"
 ```
 
 ## Spojime nas kod
@@ -239,11 +238,11 @@ mame ve vyslednem textu prazdne radky v uvodu a zaveru.
 Posledni casti v nasem kodu bude rozdelene radky pridat do libovolneho datoveho
 typu, ktery se nam hodi nejvice.
 ```python
-jednotlive_udaje = []
+vysledky = []
 
 for radek in UDAJE.split("\n"):
     if radek != "":
-        jednotlive_udaje.append(radek)
+        vysledky.append(radek)
 ```
 
 ## Prirazovani vice promennych
@@ -287,14 +286,14 @@ v1, v2, v3, v4, v5 = STREDNI_ROD  # ValueError
 ### Rozdelime radek
 Kdyz uz tusime jak na to, pojdme si to vyzkouset. Uvnitr smycky, kterou jsme
 vytvorili v prvni casti chceme rozdelit promenne:
-1.  __oznaceni__,
+1.  __oznaceni_bytu__,
 2. __plocha__,
 3. __mesto__,
 4. __ulice__
 ```python
 for radek in UDAJE.split("\n"):
     if radek != "":
-        ozn, plocha, mesto, ulice = radek.split(",", maxsplit=3)
+        oznaceni_bytu, plocha, mesto, ulice = radek.split(",", maxsplit=3)
 ```
 
 ### Potrebujeme zbytek?
@@ -311,7 +310,7 @@ muzeme [rozbalovat](#dulezite-odkazy) datove typy jako seznamy a tuply.
 ```python
 for radek in UDAJE.split("\n"):
     if radek != "":
-        ozn, *zbytek_dat = radek.split(",", maxsplit=1)
+        oznaceni_bytu, *zbytek_dat = radek.split(",", maxsplit=1)
     ...
 ```
 
@@ -334,8 +333,8 @@ Proto bude vhodne funkci zavolat, az promennou `ozn` vytvorime:
 ```python
 for radek in UDAJE.split("\n"):
     if radek != "":
-            ozn, *zbytek_dat = radek.split(",", maxsplit=1)
-            upravene_typ = preved_udaj(ozn)
+            oznaceni_bytu, *zbytek_dat = radek.split(",", maxsplit=1)
+            upraveny_typ = prevadec(oznaceni_bytu)
             ...
 ```
 Jelikoz ve funkci `prevadec` pouzivame `return`, musime hodnotu vracenou z
@@ -399,12 +398,19 @@ Do uvozovek napisu, cim chci jednotlive udaje spojit a tesne za uvozovky
 vlozim metodu s teckou. Do kulatych zavorek potom zapiseme promennou,
 jejichz hodnoty chci spojovat.
 ```python
+vysledky = []
+upravene = 0
+neupravene = 0
+
 for radek in UDAJE.split("\n"):
     if radek != "":
-            ozn, *zbytek_dat = radek.split(",", maxsplit=1)
-            upravene_typ, zmena = preved_udaj(ozn)
+            oznaceni_bytu, *zbytek_dat = radek.split(",", maxsplit=1)
+            upraveny_typ, zmena = preved_udaj(ozn)
+            upravene += zmena
+
             zbytek_dat = ",".join(zbytek_dat)
-            ...
+    else:
+        neupravene += 1
 ```
 V tuto chvili mame tedy pospojovane udaje z puvodniho seznamu `zbytek_dat`.
 
@@ -412,12 +418,20 @@ V tuto chvili mame tedy pospojovane udaje z puvodniho seznamu `zbytek_dat`.
 Jakmile mame nove ulozenou promennou `zbytek_dat`, spojime tuto promennou a
 promennou `udaj`.
 ```python
+vysledky = []
+upravene = 0
+neupravene = 0
+
 for radek in UDAJE.split("\n"):
     if radek != "":
-            ozn, *zbytek_dat = radek.split(",", maxsplit=1)
-            upravene_typ, zmena = preved_udaj(ozn)
+            oznaceni_bytu, *zbytek_dat = radek.split(",", maxsplit=1)
+            upraveny_typ, zmena = preved_udaj(ozn)
+            upravene += zmena
+
             zbytek_dat = ",".join(zbytek_dat)
             vysledky.append(",".join((ozn, zbytek_dat)))
+    else:
+        neupravene += 1
 ```
 Nyni mame zpet seznam, ktery obsahuje prevedene oznaceni do citelne podoby i
 zbytek udaju na radku. Nicmene v zatim prevadime pouze jeden typ oznaceni.
@@ -426,11 +440,11 @@ zbytek udaju na radku. Nicmene v zatim prevadime pouze jeden typ oznaceni.
 Abychom mohli opravovat vsechny typy bydleni, musime funkci ukazat nas slovnik
 `PREVOD_UDAJU`. Takze jej vlozime jednak jako parametr, jednak jako argument.
 ```python
-def preved_udaj(vstup: str, vzor: dict) -> str:
-    if vstup in vzor:
-        return vzor.get(vstup, "Spatny typ"), 1
+def prevadec(typ_bytu: str, vzor: dict) -> str:
+    if typ_bytu in vzor:
+        return vzor.get(typ_bytu), 1
     else:
-        return "Neplatny udaj!", 0
+        return "NEZNAMY TYP BYTU!", 0
 ```
 V tuto chvili pomoci metody __get__ nahradime vsechny potencialni pripady, ktere
 mohou nastat.
@@ -441,11 +455,11 @@ vsechna data a pokud ano, vypiseme je. Pokud nebude podminka splnena, vysledek
 netiskneme.
 ```python
 ...
-if upravene == len(UDAJE.split("\n")) - 2:
-    print(jednotlive_udaje)
+if upravene == len(UDAJE.split("\n")) - neupravene:
+    from pprint import pprint
+    pprint(vysledky)
 else:
-    print("Prevod neprobehl uspesne. Zkontroluj udaje!")
-
+    print("POCET VSTUPNICH UDAJU A PREVEDENYCH UDAJE JE RUZNY!!")
 ```
 
 Pokracovat na [Lekci#07](https://github.com/Bralor/python-academy/tree/lekce07)
