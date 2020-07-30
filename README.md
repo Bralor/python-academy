@@ -382,44 +382,55 @@ for radek in UDAJE.split("\n"):
 ```
 
 ## Spojime udaje
-V tento moment vsechno bezi jak na dratkach. Dalsim krokem bude spojeni noveho
-udaje a zbytku radku (promenna __zbytek_dat__).
+Dalsim krokem bude spojeni noveho udaje (promenna `upraveny_typ`) a zbytku
+radku (promenna `zbytek_dat`).
 
 ### Dalsi metoda?!
-Ano, pokud potrebujeme spojit retezce, pak nam prijde vhod metoda retezcu
-_join()_. Jak ji ale pouzivat:
+<p align="center">
+  <img src="https://media.giphy.com/media/14ooolmDKfgrO8/giphy-downsized.gif" width="480" height="270">
+</p>
+
+Pokud potrebujeme spojit retezce, pak nam prijde vhod metoda retezcu _join()_.
 ```python
 STREDNI_ROD = ("mesto", "more", "kure", "staveni")
 ", ".join(STREDNI_ROD)
 ```
 Do uvozovek napisu, cim chci jednotlive udaje spojit a tesne za uvozovky
-nalepim metodu pomoci tecky. Do kulatych zavorek potom zapiseme promennou,
+vlozim metodu s teckou. Do kulatych zavorek potom zapiseme promennou,
 jejichz hodnoty chci spojovat.
 ```python
-        ...
-        zbytek_dat = ",".join(zbytek_dat)
-        ...
+for radek in UDAJE.split("\n"):
+    if radek != "":
+            ozn, *zbytek_dat = radek.split(",", maxsplit=1)
+            upravene_typ, zmena = preved_udaj(ozn)
+            zbytek_dat = ",".join(zbytek_dat)
+            ...
 ```
-V tuto chvili mame tedy pospojovane udaje z puvodniho __zbytek_dat__.
+V tuto chvili mame tedy pospojovane udaje z puvodniho seznamu `zbytek_dat`.
 
 ### A jeste jednou
-Jakmile mame nove ulozenou promennou __zbytek_dat__, spojime tuto promennou a
-promennou __udaj__.
+Jakmile mame nove ulozenou promennou `zbytek_dat`, spojime tuto promennou a
+promennou `udaj`.
 ```python
-        ...
-        jednotlive_udaje.append(",".join((udaj, zbytek_dat)))
-        ...
+for radek in UDAJE.split("\n"):
+    if radek != "":
+            ozn, *zbytek_dat = radek.split(",", maxsplit=1)
+            upravene_typ, zmena = preved_udaj(ozn)
+            zbytek_dat = ",".join(zbytek_dat)
+            vysledky.append(",".join((ozn, zbytek_dat)))
 ```
 Nyni mame zpet seznam, ktery obsahuje prevedene oznaceni do citelne podoby i
 zbytek udaju na radku. Nicmene v zatim prevadime pouze jeden typ oznaceni.
 
 ## Rozsirime funkci
 Abychom mohli opravovat vsechny typy bydleni, musime funkci ukazat nas slovnik
-__PREVOD_UDAJU__. Takze jej vlozime jako argument, do volani funkce a soucasne
-mu nachystame promennou do definice funkce.
+`PREVOD_UDAJU`. Takze jej vlozime jednak jako parametr, jednak jako argument.
 ```python
-def prevadec(vstup: str, prevodnik: dict) -> tuple:
-    return (prevodnik.get(vstup, None), 1) if vstup in prevodnik else (None, 0)
+def preved_udaj(vstup: str, vzor: dict) -> str:
+    if vstup in vzor:
+        return vzor.get(vstup, "Spatny typ"), 1
+    else:
+        return "Neplatny udaj!", 0
 ```
 V tuto chvili pomoci metody __get__ nahradime vsechny potencialni pripady, ktere
 mohou nastat.
