@@ -374,10 +374,18 @@ def preved_udaj(vstup: str) -> str:
 `return` totiz muze vracet vice nez jeden udaj. V ukazce nam v tento okamzik
 v obou variantach vraci tuple se dvema udaji. Jak je zapsat?
 ```python
+vysledek = []
+upravene = 0
+neupravene = 0
+
 for radek in UDAJE.split("\n"):
     if radek != "":
             ozn, *zbytek_dat = radek.split(",", maxsplit=1)
             upravene_typ, zmena = preved_udaj(ozn)
+            upravene += zmena
+
+    else:
+        neupravene += 1
 ```
 
 ## Spojime udaje
