@@ -399,10 +399,10 @@ if vyber == "DETAILY FILMU".lower():
 Mnozina neboli set je opet neserazena kolekce udaju, ktera je typicka tim, ze
 uvnitr nenajdeme zadnou hodnotu dvakrat. Sety se pouzivaji zejmena kvuli svym
 matematickym operacim:
-1. __sjednoceni__
-2. __prunik__
-3. __rozdil__
-4. __sym. rozdil__
+1. __Sjednoceni__
+2. __Prunik__
+3. __Rozdil__
+4. __Sym. rozdil__
 
 ### Jak vytvorit mnozinu
 Vytvoreni mnozin je opet mozne pomoci dvou zpusobu:
@@ -457,16 +457,20 @@ elif vyber == "SPOLECNE".lower():
     print(
     f"SPOLECNI HERCI PRO *{filmovy_slovnik[vyber_film1]['JMENO']}* A *{filmovy_slovnik[vyber_film2]['JMENO']}*: {prunik}"
     )
-
 ```
 
-## Jde o podmnozinu?
-Timto dotazem zjistujeme, jestli prislusny set obsahuje prvky, ktere mu predkladame. Cela operace je spojena s metodou _.issubset()_, ktera vraci boolean hodnotu (True/False).
-__Priklad__:
+## Dalsi metody pro sety
+Dalsi metody, ktere se sety souvisi jsou `issubset()` a `disjoint()`.
+
+### Podmnozina
+Timto dotazem zjistujeme, jestli prislusna mnozina obsahuje prvky, ktere mu
+predkladame. Cela operace je spojena s vracenim boolean hodnoty
+(`True`/`False`):
 ```python
 set1 = {"a", "b", "c", "d", "e"}
 set2 = {"a", "b", "c"}
 set3 = {1, 2, 3, "a", "b"}
+
 set2.issubset(set1)  # True
 set3.issubset(set1)  # False
 set3.issubset(set1)  # False
@@ -481,13 +485,14 @@ elif vyber == "PODMNOZINA".lower():
     print(set(vzorek.split(", ")).issubset(set(filmovy_slovnik[vyber_film]["HRAJI"])))
 ```
 
-## Jsou tyto dva sety odlisne?
-_.isdisjoint()_ je opet metoda. Tato ma ale potvrdit, ze ani jediny udaj ve dvou setech neni stejny.
-__Priklad__:
+### Jsou tyto dva sety odlisne?
+Pomoci metody `disjoint()` jsme schopni vysetrit, ze ani jediny udaj ve dvou
+mnozinach neni stejny:
 ```python
 set5 = {"a", "b", "c", "d", "e"}
 set6 = {"f", "g", "h"}
 set7 = {"h", "i", "j", "k"}
+
 set5.isdisjoint(set6)  # True
 set6.isdisjoint(set7)  # False
 ```
