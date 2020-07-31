@@ -261,25 +261,27 @@ film.pop("JMENO")
 film["JMENO"] = "Shawshank Redemption"
 ```
 
-## Slovnik ve slovniku? Aneb nestovani
+### Slovnik ve slovniku? Aneb nestovani
+
 <p align="center">
   <img src="https://media.giphy.com/media/fpXxIjftmkk9y/source.gif" width="300" height="300">
 </p>
-Tento princip muzeme chapat jako vkladani slovniku do slovniku (plati i pro jine datove typy jako senzamy aj.). Pomoci tohoto principu muzeme vytvaret strukturovanejsi promenne.
 
-__Ukazka__:
+Tento princip muzeme chapat jako vkladani slovniku do slovniku (plati i pro
+jine datove typy jako senzamy aj.). Pomoci tohoto principu muzeme vytvaret
+strukturovanejsi promenne.
 ```python
 rodicovsky_slovnik = dict()
 potomek1 = {"Jmeno": "Matous"}
 potomek2 = {"Jmeno": "Lukas"}
 potomek3 = {"Jmeno": "Jan"}
+
 rodicovsky_slovnik["1_slovnik"] = potomek1
 rodicovsky_slovnik["2_slovnik"] = potomek2
 rodicovsky_slovnik["3_slovnik"] = potomek3
 ```
-Nejprve vlozime zadane slovniky (film2~film4) do naseho pracovniho souboru a pote vkladame do noveho prazdneho slovniku.
-
-__Doplneni__:
+Nejprve nakopirujeme zadane slovniky (`film1`~`film4`) do naseho pracovniho
+souboru a pote vkladame do noveho prazdneho slovniku.
 ```python
 filmovy_slovnik = {}
 filmovy_slovnik[film1["JMENO"]] = film1
@@ -289,10 +291,11 @@ filmovy_slovnik[film4["JMENO"]] = film4
 ```
 
 ## Vytvorime dotazovac
-Chceme, aby cela procedura fungovala opet na zaklade komunikace uzivatele a naseho programu. Vytvorime proto nejake dotazovaci prostredi uvnitr prikazove radky. Uvod by mel obsahovat pozdrav a nabidku nasich filmu (tudiz musime prochazet nas slovnik se slovniky).
-
-__Priklad__:
-```python
+Chceme, aby cela procedura fungovala opet na zaklade komunikace uzivatele a
+naseho programu. Vytvorime proto nejake dotazovaci prostredi uvnitr prikazove
+radky. Uvod by mel obsahovat pozdrav a nabidku nasich filmu (tudiz musime
+prochazet nas slovnik `filmovy_slovnik`).
+```
 ################
     Pozdrav
 ################
@@ -301,39 +304,43 @@ __Priklad__:
     Moznosti
 ################
 Vyberte moznost:
+################
+   Zobrazime
 ```
+
 ### Nejdriv oddelovani
-__Oddelovac__:
+Opet vytvorime promennou (konstantu), ktera nam pomuze text rozdelit:
 ```python
 ODDELOVAC = '=' * 76
 ```
 
 ### Jak mohu zarovnat text?
-Pro zarovnani retezcu mame k dispozici nektere z metod urcenych pro retezce. Mrknete na:
-```bash
-help(str)
-```
-__Zarovnani na stred__:
+Pomoci metody `center()` muzeme zarovnat nas text na stred urcite delky pole.
 ```python
 print("Vitejte v nasi skromne filmove databazi".center(76, " "))
 ```
+
 ### Pohledy
-Mezi dalsi metody slovniku patri takove, ktere nam umozni nahledy.
-- .items() -> vratim objekt s klici a hodnotami
-- .keys() -> vratim objekt jen s klici
-- .values() -> vratim objekt jen s hodnotami
-
-__Vracime klice__:
+Mezi dalsi metody slovniku patri takove, ktere nam umozni nahledy na jejich
+obsah:
+- `.items()` -> vratim objekt s klici a hodnotami
+- `.keys()` -> vratim objekt jen s klici
+- `.values()` -> vratim objekt jen s hodnotami
+Jelikoz budeme chtit uzivateli zobrazit pouze nabidku filmu (jejich jmen),
+pouzijeme proto prislusnou metodu:
 ```python
-{list(filmovy_slovnik.keys())}
+list(filmovy_slovnik.keys())
 ```
+Pomoci built-in funkce `list()` prevedeme objekt vraceny z metody `keys()` na
+obycejny seznam.
 
-### Doplnime do ulohy cele
+Cely zapis pro oznameni uzivateli bude potom vypadat nasledovne:
 ```python
 ODDELOVAC = '=' * 76
 
 print(ODDELOVAC)
 print("Vitejte v nasi skromne filmove databazi".center(76, " "))
+
 print(
 f"""{ODDELOVAC}
 Mame v nabidce tyto snimky:
@@ -342,49 +349,50 @@ Mame v nabidce tyto snimky:
 VYBERTE KATEGORII:
 {ODDELOVAC}
 {'DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE'.center(76, " ")}
-{ODDELOVAC}""")
-```
-## Doplnime strom podminek
-Ten nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat. Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky.
-__Podle teorie z 2. lekce__:
-```
-bud toto; nebo toto; nebo toto; nebo toto -> if elif elif elif
+{ODDELOVAC}"""
+)
 ```
 
-## Vypiseme detaily filmu
-Prvni podminka bude mit na starost obstarat vystup, ktery zahrnuje obsah jednotlivych vnitrnich slovniku (tedy detaily konkretniho filmu).
+## Strom podminek
+Podminky nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat.
+Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky:
+```
+bud TOTO; nebo TOTO; nebo TOTO; nebo TOTO -> if elif elif elif
+```
 
-Doplnime moznost zvolit si jeden rezim:
+### Vypiseme detaily filmu
+Prvni podminka bude mit na starost obstarat vystup, ktery zahrnuje obsah
+jednotlivych vnitrnich slovniku (tedy detaily konkretniho filmu).
+
+Nejprve doplnime moznost zvolit si jeden rezim:
 ```python
 vyber = input("VYBERTE MOZNOST: ")
 ```
-
-Dale doplnime prvni vetev s detaily:
+Dale doplnime prvni podminkovou vetev s detaily:
 ```python
 if vyber == "DETAILY FILMU":
     ...
 ```
-
-Film pak muzeme ziskat pomoci dalsi metody slovniku _.get()_. Tato metoda ma za cil jedine, najde klic, ktery ji zadame a ona vrati jeho hodnotu. Volitelne pak muzeme nastavit, co vrati, pokud hledany klic nenajde.
-
-__Priklad__:
+Film pak muzeme ziskat pomoci dalsi metody slovniku `.get()`. Tato metoda ma
+za cil jedine, najde klic, ktery ji zadame a ona vrati jeho hodnotu. Volitelne
+pak muzeme nastavit, co vrati, pokud hledany klic nenajde.
 ```python
 slovnik = dict()
 slovnik["JMENO"] = "Matous"
 slovnik["PRIJMENI"] = "Holinka"
 slovnik["EMAIL"] = "matous@matous.cz"
+
 print(slovnik)               # {'JMENO': 'Matous', ...
 print(slovnik.get("EMAIL"))  # 'matous@matous.cz'
 print(slovnik1.get("ADRESA", "Tento klic neni k dispozici")
-'Tento klic neni k dispozici'
 ```
-__Doplnime__:
+Dopiseme zbytek nasi podminky v uloze:
 ```python
 if vyber == "DETAILY FILMU".lower():
     print(ODDELOVAC)
     vyber_filmu = input("VYBERTE FILM: ")
     print(ODDELOVAC)
-    pprint(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
+    print(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
 ```
 
 # Mnoziny a.k.a sety
