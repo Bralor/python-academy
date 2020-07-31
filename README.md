@@ -24,36 +24,35 @@ Po spusteni by mel program vypadat nasledovne (viz. demo)
 $ ./movies
 ```
 
-__Komunikace s programem__:
+Pri vyberu moznosti `detaily filmu` a vyberu konkretniho filmu dostaneme
+naledujici vystup:
 ```
 ============================================================================
                   Vitejte v nasi skromne filmove databazi                   
 ============================================================================
-Mame v nabidce tyto snimky:
-['Shawshank Redemption', 'The Godfather', 'The Dark Knight', 'The Prestige']
-============================================================================
 VYBERTE KATEGORII:
-============================================================================ 
-              DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE              
+============================================================================
+     VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI      
 ============================================================================
 VYBERTE MOZNOST: detaily filmu
 ============================================================================
-VYBERTE FILM: The Dark Knight
-{'HODNOCENI': '90/100',
- 'HRAJI': ('Christian Bale',
-           'Heath Ledger',
-           'Aaron Eckhart',
-           'Michael Caine',
-           'Maggie Gyllenhaal',
-           'Gary Oldman',
-           'Morgan Freeman',
-           'Monique Gabriela',
-           'Ron Dean',
-           'Cillian Murphy'),
- 'JMENO': 'The Dark Knight',
- 'REZISER': 'Christopher Nolan',
- 'ROK': 2008,
- 'STOPAZ': 152}
+['Shawshank Redemption', 'The Godfather', 'The Dark Knight', 'The Prestige']
+============================================================================
+VYBERTE FILM: The Godfather
+============================================================================
+{'HODNOCENI': '92/100',
+ 'HRAJI': ('Marlon Brando',
+           'Al Pacino',
+           'James Caan',
+           'Richard S. Castellano',
+           'Robert Duvall',
+           'Sterling Hayden',
+           'John Marley',
+           'Richard Conte'),
+ 'JMENO': 'The Godfather',
+ 'REZISER': 'Francis Ford Coppola',
+ 'ROK': 1972,
+ 'STOPAZ': 175}
 ```
 
 ## Co budeme potrebovat?
@@ -219,6 +218,7 @@ film1["HRAJI"] = (
     "Larry Brandenburg"
 )
 ```
+
 ### Aktualizovani hodnot
 Pomoci metody __.update()__ muzeme prepisovat aktualni hodnoty klicu:
 ```python
@@ -284,6 +284,7 @@ Nejprve nakopirujeme zadane slovniky (`film1`~`film4`) do naseho pracovniho
 souboru a pote vkladame do noveho prazdneho slovniku.
 ```python
 filmovy_slovnik = {}
+
 filmovy_slovnik[film1["JMENO"]] = film1
 filmovy_slovnik[film2["JMENO"]] = film2
 filmovy_slovnik[film3["JMENO"]] = film3
@@ -311,14 +312,53 @@ Vyberte moznost:
 ### Nejdriv oddelovani
 Opet vytvorime promennou (konstantu), ktera nam pomuze text rozdelit:
 ```python
+filmovy_slovnik = {}
 ODDELOVAC = '=' * 76
 ```
 
 ### Jak mohu zarovnat text?
 Pomoci metody `center()` muzeme zarovnat nas text na stred urcite delky pole.
 ```python
+print(ODDELOVAC)
 print("Vitejte v nasi skromne filmove databazi".center(76, " "))
 ```
+
+Cely zapis pro oznameni uzivateli bude potom vypadat nasledovne:
+```python
+print(ODDELOVAC)
+print("Vitejte v nasi skromne filmove databazi".center(76, " "))
+
+print(
+f"""{ODDELOVAC}
+Mame v nabidce tyto snimky:
+{list(filmovy_slovnik.keys())}
+{ODDELOVAC}
+VYBERTE KATEGORII:
+{ODDELOVAC}
+{'VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI'.center(76, " ")}
+{ODDELOVAC}"""
+)
+```
+
+## Strom podminek
+Podminky nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat.
+Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky:
+```
+bud TOTO; nebo TOTO; nebo TOTO; nebo TOTO -> if elif elif elif
+```
+Nejprve doplnime moznost zvolit si jeden rezim:
+```python
+vyber = input("VYBERTE MOZNOST: ").lower()
+```
+Diky metode `lower()` je jedno, jestli uzivatel zada vstup velkym, nebo malym
+pismem. Dale doplnime prvni podminkovou vetev s detaily:
+```python
+if vyber == "vsechny filmy":
+    ...
+```
+### Vsechny filmy
+Prvni podminkou, kterou chceme vytvorit je vraceni vsech jmen filmu, ktere
+mame ve slovniku `filmovy_slovnik`.
 
 ### Pohledy
 Mezi dalsi metody slovniku patri takove, ktere nam umozni nahledy na jejich
@@ -333,46 +373,19 @@ list(filmovy_slovnik.keys())
 ```
 Pomoci built-in funkce `list()` prevedeme objekt vraceny z metody `keys()` na
 obycejny seznam.
-
-Cely zapis pro oznameni uzivateli bude potom vypadat nasledovne:
 ```python
-ODDELOVAC = '=' * 76
-
-print(ODDELOVAC)
-print("Vitejte v nasi skromne filmove databazi".center(76, " "))
-
-print(
-f"""{ODDELOVAC}
-Mame v nabidce tyto snimky:
-{list(filmovy_slovnik.keys())}
-{ODDELOVAC}
-VYBERTE KATEGORII:
-{ODDELOVAC}
-{'DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE'.center(76, " ")}
-{ODDELOVAC}"""
-)
+if vyber == "vsechny filmy":
+    print(ODDELOVAC)
+    print(f"Mame v nabidce tyto snimky:")
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC) 
 ```
 
-## Strom podminek
-Podminky nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat.
-Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky:
-```
-bud TOTO; nebo TOTO; nebo TOTO; nebo TOTO -> if elif elif elif
-```
-
-### Vypiseme detaily filmu
-Prvni podminka bude mit na starost obstarat vystup, ktery zahrnuje obsah
+### Detaily filmu
+Druha podminka bude mit na starost obstarat vystup, ktery zahrnuje obsah
 jednotlivych vnitrnich slovniku (tedy detaily konkretniho filmu).
 
-Nejprve doplnime moznost zvolit si jeden rezim:
-```python
-vyber = input("VYBERTE MOZNOST: ")
-```
-Dale doplnime prvni podminkovou vetev s detaily:
-```python
-if vyber == "DETAILY FILMU":
-    ...
-```
+### Pomocna metoda
 Film pak muzeme ziskat pomoci dalsi metody slovniku `.get()`. Tato metoda ma
 za cil jedine, najde klic, ktery ji zadame a ona vrati jeho hodnotu. Volitelne
 pak muzeme nastavit, co vrati, pokud hledany klic nenajde.
@@ -388,11 +401,14 @@ print(slovnik1.get("ADRESA", "Tento klic neni k dispozici")
 ```
 Dopiseme zbytek nasi podminky v uloze:
 ```python
-if vyber == "DETAILY FILMU".lower():
+elif vyber == "detaily filmu":
     print(ODDELOVAC)
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC)
+
     vyber_filmu = input("VYBERTE FILM: ")
     print(ODDELOVAC)
-    print(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
+    pprint(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
 ```
 
 ## Mnoziny
@@ -445,18 +461,44 @@ print(set1 & set2)  # "Martin"
 Spolecnym jmenem v obou mnozinach, v nasem prikladu vyse, je `Martin`. Takze
 ted muzeme dokoncit nasi druhou podminku:
 ```python
-elif vyber == "SPOLECNE".lower():
+elif vyber == "spolecni herci":
     print(ODDELOVAC)
-    vyber_film1 = input("Vyberte prvniho filmu: ")
-    vyber_film2 = input("Vyberte druheho filmu: ")
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC)
 
-    herci_film1 = set(filmovy_slovnik[vyber_film1]["HRAJI"])
-    herci_film2 = set(filmovy_slovnik[vyber_film2]["HRAJI"])
+    film1 = input("VYBERTE I. FILM: ")
+    film2 = input("VYBERTE II. FILM: ")
+
+    herci_film1 = set(filmovy_slovnik[film1]["HRAJI"])
+    herci_film2 = set(filmovy_slovnik[film2]["HRAJI"])
 
     prunik = herci_film1 & herci_film2
     print(
-    f"SPOLECNI HERCI PRO *{filmovy_slovnik[vyber_film1]['JMENO']}* A *{filmovy_slovnik[vyber_film2]['JMENO']}*: {prunik}"
+        f"SPOLECNI HERCI PRO *{filmovy_slovnik[film1]['JMENO']}* A *{filmovy_slovnik[film2]['JMENO']}*: {prunik}"
     )
+```
+### Vsichni reziseri?
+Posledni podminkovou vetvi, kterou chceme zapsat, je ziskani vsech jmen
+reziseru. Nejprve je pojdme najit:
+```python
+elif "reziseri" in vyber:
+    print(ODDELOVAC)
+    set_reziseri = (
+        filmovy_slovnik["The Dark Knight"]["REZISER"],
+        filmovy_slovnik["The Godfather"]["REZISER"],
+        filmovy_slovnik["Shawshank Redemption"]["REZISER"],
+        filmovy_slovnik["The Prestige"]["REZISER"]
+    )
+
+    print("VSICHNI REZISERI V NASEM SEZNAMU:")
+    print(f"{set_reziseri}")
+```
+Ovsem vidime, ze jedno jmeno se nam tu vyskytuje hned dvakrat. K tomu vyuzijeme
+vlastnosti mnozin a z naseho seznamu udelame mnozinu:
+```python
+    ...
+    print("VSICHNI REZISERI V NASEM SEZNAMU:")
+    print(f"{set(set_reziseri)}")
 ```
 
 ## Dalsi metody pro sety
@@ -476,15 +518,6 @@ set3.issubset(set1)  # False
 set3.issubset(set1)  # False
 ```
 
-__Doplnime__:
-```python
-elif vyber == "PODMNOZINA".lower():
-    print(ODDELOVAC)
-    vyber_film = input("Vyberte jmeno filmu: ")
-    vzorek = input("ZADEJTE JMENA: ")
-    print(set(vzorek.split(", ")).issubset(set(filmovy_slovnik[vyber_film]["HRAJI"])))
-```
-
 ### Jsou tyto dva sety odlisne?
 Pomoci metody `disjoint()` jsme schopni vysetrit, ze ani jediny udaj ve dvou
 mnozinach neni stejny:
@@ -497,13 +530,5 @@ set5.isdisjoint(set6)  # True
 set6.isdisjoint(set7)  # False
 ```
 
-__Doplnime__:
-```python
-elif vyber == "ROZDILNE".lower():
-    print(ODDELOVAC)
-    film1 = input("Vyberte jmeno filmu: ")
-    vzorek = input("ZADEJTE JMENA: ")
-    print(set(vzorek.split(", ")).isdisjoint(set(filmovy_slovnik[film1]["HRAJI"])))
-```
+Pokracovat na [Lekci#04](https://github.com/Bralor/python-academy/tree/lekce04)
 
-Pokracovat na Lekci#04

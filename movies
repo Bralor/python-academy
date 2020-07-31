@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Lekce #3 - Uvod do programovani, Movies """
+from pprint import pprint
 
 film1 = {}
 
@@ -123,7 +124,7 @@ elif vyber == "detaily filmu":
 
     vyber_filmu = input("VYBERTE FILM: ")
     print(ODDELOVAC)
-    print(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
+    pprint(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
 
 elif vyber == "spolecni herci":
     print(ODDELOVAC)
