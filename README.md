@@ -14,7 +14,9 @@ Minula [lekce#02](https://github.com/Bralor/python-academy/tree/lekce02)
 - [The Prestige](https://www.imdb.com/title/tt0482571/?ref_=fn_al_tt_1)
 
 ## Co nas dneska ceka
-V treti lekci se budeme bavit o dvou novych datovych typech, o jejich metodach a praktickem vyuziti. V ramci celeho tohoto povidani si opet ukazeme radu nazornych prikladu a jedne souvisle ulohy.
+V treti lekci se budeme bavit o dvou novych datovych typech, o jejich metodach
+a praktickem vyuziti. V ramci celeho tohoto povidani si opet ukazeme radu
+nazornych prikladu a jedne souvisle ulohy.
 
 ## Co bude vysledkem
 Po spusteni by mel program vypadat nasledovne (viz. demo)
@@ -22,43 +24,41 @@ Po spusteni by mel program vypadat nasledovne (viz. demo)
 $ ./movies
 ```
 
-__Komunikace s programem__:
-```bash
+Pri vyberu moznosti `detaily filmu` a vyberu konkretniho filmu dostaneme
+naledujici vystup:
+```
 ============================================================================
                   Vitejte v nasi skromne filmove databazi                   
 ============================================================================
-Mame v nabidce tyto snimky:
-['Shawshank Redemption', 'The Godfather', 'The Dark Knight', 'The Prestige']
-============================================================================
 VYBERTE KATEGORII:
-============================================================================ 
-              DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE              
+============================================================================
+     VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI      
 ============================================================================
 VYBERTE MOZNOST: detaily filmu
 ============================================================================
-VYBERTE FILM: The Dark Knight
-{'HODNOCENI': '90/100',
- 'HRAJI': ('Christian Bale',
-           'Heath Ledger',
-           'Aaron Eckhart',
-           'Michael Caine',
-           'Maggie Gyllenhaal',
-           'Gary Oldman',
-           'Morgan Freeman',
-           'Monique Gabriela',
-           'Ron Dean',
-           'Cillian Murphy'),
- 'JMENO': 'The Dark Knight',
- 'REZISER': 'Christopher Nolan',
- 'ROK': 2008,
- 'STOPAZ': 152}
+['Shawshank Redemption', 'The Godfather', 'The Dark Knight', 'The Prestige']
+============================================================================
+VYBERTE FILM: The Godfather
+============================================================================
+{'HODNOCENI': '92/100',
+ 'HRAJI': ('Marlon Brando',
+           'Al Pacino',
+           'James Caan',
+           'Richard S. Castellano',
+           'Robert Duvall',
+           'Sterling Hayden',
+           'John Marley',
+           'Richard Conte'),
+ 'JMENO': 'The Godfather',
+ 'REZISER': 'Francis Ford Coppola',
+ 'ROK': 1972,
+ 'STOPAZ': 175}
 ```
 
 ## Co budeme potrebovat?
 - Python 3.6+
 - textovy editor
-- vytvorit si novy soubor ve svem pracovnim adresari
-- predem zadane vstupy nize
+- vstupni hodnoty
 ```python
 film1 = {
     'JMENO': 'Shawshank Redemption',
@@ -138,37 +138,44 @@ film4 = {
 ```
 
 ## Prvni krucek
-Vytvorime si novy soubor, pojmenujeme jej "movies.py" a zkopirujeme nasledujici sablonu:
-```
+Vytvorime si novy soubor, pojmenujeme jej `movies.py` a zkopirujeme nasledujici
+sablonu:
+```python
 #!/usr/bin/python3
 """ Lekce #3 - Uvod do programovani, Movies """
-from pprint import pprint  # -> vysvetlime pozdeji
 ```
-## Co je to slovnik?
-Jde opet o zabudovany datovy typ v Pythonu, ktery je tvoreny dvojicemi *klic: hodnota*. Je charakteristickym svym mapovanim (spojovani/hledanim) klicu a jejich hodnot. Od ntice a seznamu se lisi tim, ze neni mozne jej indexovat za ucelem ziskavat poradi (prvky nejsou razene, tak jak seznamy). Klice musi byt unikatni, za to hodnoty nemusi. Hodnoty mohou byt retezce, cisla, seznam, atd.
 
-## Vytvorime slovnik
-Zpusobu pro vytvoreni slovniku je vice. Dva nejjednodussi priklady:
+### Co je to slovnik?
+Jde opet o zabudovany datovy typ v Pythonu, ktery je tvoreny dvojicemi
+__klic: hodnota__. Je charakteristickym svym hledanim (nebo taky _mapovanim_)
+klicu a jejich hodnot. Od ntice a seznamu se lisi tim, ze neni mozne jej
+indexovat za ucelem ziskavat prvky poporade (prvky nejsou razene, tak jak
+seznamy). Klice musi byt unikatni, za to hodnoty nemusi. Hodnoty mohou byt
+retezce, cisla, seznam, atd.
+
+### Vytvorime slovnik
+Zpusobu pro vytvoreni prazdneho slovniku je vice. Dva nejjednodussi priklady:
 ```python
 novy_slovnik = dict()                 # pomoci konstruktoru
-novy_slovnik2 = {'Jmeno' : 'Marek'}   # predpis pomoci klice: hodnoty
+novy_slovnik2 = {'Jmeno' : 'Matous'}   # predpis pomoci klice: hodnoty
 ```
 
-__Doplnime nas slovnik__:
+### Prvni cast ulohy
 ```python
-...
+#!/usr/bin/python3
+""" Lekce #3 - Uvod do programovani, Movies """
+
 film1 = {}
 ```
 
-## Vytvorime klice
-Indexovat slovniky nemuzeme. Nicmene proces zapisu pomoci hranate zavorky slouzi k pridani klice a je hodnoty.
-
-__Priklad__:
+### Vytvorime klice
+Indexovat slovniky nemuzeme. Nicmene proces zapisu pomoci hranate zavorky
+slouzi k pridani klice a je hodnoty.
 ```python
 <jmeno_slovniku>["jmeno_klice"] = hodnota_klice
 ```
 
-__Vyzkousejte__:
+__Priklad__:
 ```python
 slovnik = {}
 slovnik["jmeno"] = "Matous"
@@ -176,9 +183,10 @@ slovnik["email"] = "matous@matous.cz"
 print(slovnik)
 ```
 
-Pro ucely nasi ulohy nejprve vytvorime prazdne klice a hodnoty pridame az v dalsim kroku.
+Pro ucely nasi ulohy nejprve vytvorime prazdne klice a hodnoty pridame az v
+dalsim kroku.
 
-__Doplnime nasi ulohu__:
+### Druha cast ulohy
 ```python
 film1["JMENO"] = ""
 film1["HODNOCENI"] = ""
@@ -187,10 +195,10 @@ film1["REZISER"] = ""
 film1["STOPAZ"] = None
 film1["HRAJI"] = ()
 ```
-## Vlozime hodnoty pro existujici klice
-Muzeme je vkladat primo s hodnotami ale pro ucely dnesni lekce je budeme zadavat separatne. Vsimnete si, ze poradi ktere nam Python vraci nemusi odpovidat poradi, ktere jsme zadavali.
-
-__Doplnime nasi ulohu__:
+### Vlozime hodnoty pro existujici klice
+Muzeme je vkladat primo s hodnotami ale pro ucely dnesni lekce je budeme
+zadavat separatne. Vsimnete si, ze poradi ktere nam Python vraci nemusi
+odpovidat poradi, ktere jsme zadavali.
 ```python
 film1["JMENO"] = "Shawshank Redemption"
 film1["HODNOCENI"] = "93/100"
@@ -210,22 +218,22 @@ film1["HRAJI"] = (
     "Larry Brandenburg"
 )
 ```
-## Aktualizovani hodnot klice
-Pomoci metody _.update()_ muzeme prepisovat aktualni hodnoty klicu. Sledujte priklad nize:
+
+### Aktualizovani hodnot
+Pomoci metody __.update()__ muzeme prepisovat aktualni hodnoty klicu:
 ```python
 slovnik = {"Jmeno": "Matous", "Prijmeni": "Holinka"}  # Vytvorime slovnik
 slovnik.update({"Jmeno": "Lukas"})                    # Prepiseme
 print(slovnik))                                       # Zobrazime
 ```
-Pojdme zamerne zkomolit jmena nami definovaneho klice _JMENO_.
-__Doplnime nasi ulohu__:
+Pojdme zamerne zkomolit jmena nami definovaneho klice `JMENO`.
 ```python
 film.update({"JMENO": "Shawnshak Redemption"})
 ```
 
-## Muzu klice s hodnotami odstranit?
+### Odstranovani
 Celkem muzeme vyuzit 3 zpusobu, ktere odstrani klice a jejich hodnoty:
-1. Zpusob jak [mazat](https://engeto.com/cs/kurz/online-python-akademie/studium/XV4c-mozS1WSYJyQhSMSGw/slovniky-a-mnoziny/slovniky/mazani-prvku-ze-slovniku) klic
+1. Zpusob jak mazat klice:
 ```python
 slovnik = dict()
 slovnik["JMENO"] = "Matous"
@@ -239,7 +247,7 @@ slovnik["JMENO"] = "Matous"
 slovnik["PRIJMENI"] = "Holinka"
 slovnik.pop("PRIJMENI")
 ```
-3. Zpusob *.popitem()* vrati naposledy pridanou polozku (par) do slovniku a odebere jej:
+3. Zpusob `.popitem()` vrati naposledy pridanou polozku (par) do slovniku a odebere jej:
 ```python
 slovnik = dict()
 slovnik["JMENO"] = "Matous"
@@ -247,34 +255,36 @@ slovnik["PRIJMENI"] = "Holinka"
 slovnik["EMAIL"] = "matous@matous.cz"
 slovnik.popitem()
 ```
-Takze nyni muzeme odstranit nami zkomoleny klice _JMENO_ a vytvorit jej poradne.
-__Doplnime__:
+Takze nyni muzeme odstranit nami zkomoleny klice `JMENO` a vytvorit jej poradne.
 ```python
 film.pop("JMENO")
 film["JMENO"] = "Shawshank Redemption"
 ```
 
-## Slovnik ve slovniku? Aneb nestovani
+### Slovnik ve slovniku? Aneb nestovani
+
 <p align="center">
   <img src="https://media.giphy.com/media/fpXxIjftmkk9y/source.gif" width="300" height="300">
 </p>
-Tento princip muzeme chapat jako vkladani slovniku do slovniku (plati i pro jine datove typy jako senzamy aj.). Pomoci tohoto principu muzeme vytvaret strukturovanejsi promenne.
 
-__Ukazka__:
+Tento princip muzeme chapat jako vkladani slovniku do slovniku (plati i pro
+jine datove typy jako senzamy aj.). Pomoci tohoto principu muzeme vytvaret
+strukturovanejsi promenne.
 ```python
 rodicovsky_slovnik = dict()
 potomek1 = {"Jmeno": "Matous"}
 potomek2 = {"Jmeno": "Lukas"}
 potomek3 = {"Jmeno": "Jan"}
+
 rodicovsky_slovnik["1_slovnik"] = potomek1
 rodicovsky_slovnik["2_slovnik"] = potomek2
 rodicovsky_slovnik["3_slovnik"] = potomek3
 ```
-Nejprve vlozime zadane slovniky (film2~film4) do naseho pracovniho souboru a pote vkladame do noveho prazdneho slovniku.
-
-__Doplneni__:
+Nejprve nakopirujeme zadane slovniky (`film1`~`film4`) do naseho pracovniho
+souboru a pote vkladame do noveho prazdneho slovniku.
 ```python
 filmovy_slovnik = {}
+
 filmovy_slovnik[film1["JMENO"]] = film1
 filmovy_slovnik[film2["JMENO"]] = film2
 filmovy_slovnik[film3["JMENO"]] = film3
@@ -282,10 +292,11 @@ filmovy_slovnik[film4["JMENO"]] = film4
 ```
 
 ## Vytvorime dotazovac
-Chceme, aby cela procedura fungovala opet na zaklade komunikace uzivatele a naseho programu. Vytvorime proto nejake dotazovaci prostredi uvnitr prikazove radky. Uvod by mel obsahovat pozdrav a nabidku nasich filmu (tudiz musime prochazet nas slovnik se slovniky).
-
-__Priklad__:
-```python
+Chceme, aby cela procedura fungovala opet na zaklade komunikace uzivatele a
+naseho programu. Vytvorime proto nejake dotazovaci prostredi uvnitr prikazove
+radky. Uvod by mel obsahovat pozdrav a nabidku nasich filmu (tudiz musime
+prochazet nas slovnik `filmovy_slovnik`).
+```
 ################
     Pozdrav
 ################
@@ -294,39 +305,29 @@ __Priklad__:
     Moznosti
 ################
 Vyberte moznost:
+################
+   Zobrazime
 ```
+
 ### Nejdriv oddelovani
-__Oddelovac__:
+Opet vytvorime promennou (konstantu), ktera nam pomuze text rozdelit:
 ```python
+filmovy_slovnik = {}
 ODDELOVAC = '=' * 76
 ```
 
 ### Jak mohu zarovnat text?
-Pro zarovnani retezcu mame k dispozici nektere z metod urcenych pro retezce. Mrknete na:
-```bash
-help(str)
-```
-__Zarovnani na stred__:
+Pomoci metody `center()` muzeme zarovnat nas text na stred urcite delky pole.
 ```python
-print("Vitejte v nasi skromne filmove databazi".center(76, " "))
-```
-### Pohledy
-Mezi dalsi metody slovniku patri takove, ktere nam umozni nahledy.
-- .items() -> vratim objekt s klici a hodnotami
-- .keys() -> vratim objekt jen s klici
-- .values() -> vratim objekt jen s hodnotami
-
-__Vracime klice__:
-```python
-{list(filmovy_slovnik.keys())}
-```
-
-### Doplnime do ulohy cele
-```python
-ODDELOVAC = '=' * 76
-
 print(ODDELOVAC)
 print("Vitejte v nasi skromne filmove databazi".center(76, " "))
+```
+
+Cely zapis pro oznameni uzivateli bude potom vypadat nasledovne:
+```python
+print(ODDELOVAC)
+print("Vitejte v nasi skromne filmove databazi".center(76, " "))
+
 print(
 f"""{ODDELOVAC}
 Mame v nabidce tyto snimky:
@@ -334,152 +335,200 @@ Mame v nabidce tyto snimky:
 {ODDELOVAC}
 VYBERTE KATEGORII:
 {ODDELOVAC}
-{'DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE'.center(76, " ")}
-{ODDELOVAC}""")
-```
-## Doplnime strom podminek
-Ten nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat. Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky.
-__Podle teorie z 2. lekce__:
-```
-bud toto; nebo toto; nebo toto; nebo toto -> if elif elif elif
+{'VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI'.center(76, " ")}
+{ODDELOVAC}"""
+)
 ```
 
-## Vypiseme detaily filmu
-Prvni podminka bude mit na starost obstarat vystup, ktery zahrnuje obsah jednotlivych vnitrnich slovniku (tedy detaily konkretniho filmu).
-
-Doplnime moznost zvolit si jeden rezim:
+## Strom podminek
+Podminky nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat.
+Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky:
+```
+bud TOTO; nebo TOTO; nebo TOTO; nebo TOTO -> if elif elif elif
+```
+Nejprve doplnime moznost zvolit si jeden rezim:
 ```python
-vyber = input("VYBERTE MOZNOST: ")
+vyber = input("VYBERTE MOZNOST: ").lower()
 ```
-
-Dale doplnime prvni vetev s detaily:
+Diky metode `lower()` je jedno, jestli uzivatel zada vstup velkym, nebo malym
+pismem. Dale doplnime prvni podminkovou vetev s detaily:
 ```python
-if vyber == "DETAILY FILMU":
+if vyber == "vsechny filmy":
     ...
 ```
+### Vsechny filmy
+Prvni podminkou, kterou chceme vytvorit je vraceni vsech jmen filmu, ktere
+mame ve slovniku `filmovy_slovnik`.
 
-Film pak muzeme ziskat pomoci dalsi metody slovniku _.get()_. Tato metoda ma za cil jedine, najde klic, ktery ji zadame a ona vrati jeho hodnotu. Volitelne pak muzeme nastavit, co vrati, pokud hledany klic nenajde.
+### Pohledy
+Mezi dalsi metody slovniku patri takove, ktere nam umozni nahledy na jejich
+obsah:
+- `.items()` -> vratim objekt s klici a hodnotami
+- `.keys()` -> vratim objekt jen s klici
+- `.values()` -> vratim objekt jen s hodnotami
+Jelikoz budeme chtit uzivateli zobrazit pouze nabidku filmu (jejich jmen),
+pouzijeme proto prislusnou metodu:
+```python
+list(filmovy_slovnik.keys())
+```
+Pomoci built-in funkce `list()` prevedeme objekt vraceny z metody `keys()` na
+obycejny seznam.
+```python
+if vyber == "vsechny filmy":
+    print(ODDELOVAC)
+    print(f"Mame v nabidce tyto snimky:")
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC) 
+```
 
-__Priklad__:
+### Detaily filmu
+Druha podminka bude mit na starost obstarat vystup, ktery zahrnuje obsah
+jednotlivych vnitrnich slovniku (tedy detaily konkretniho filmu).
+
+### Pomocna metoda
+Film pak muzeme ziskat pomoci dalsi metody slovniku `.get()`. Tato metoda ma
+za cil jedine, najde klic, ktery ji zadame a ona vrati jeho hodnotu. Volitelne
+pak muzeme nastavit, co vrati, pokud hledany klic nenajde.
 ```python
 slovnik = dict()
 slovnik["JMENO"] = "Matous"
 slovnik["PRIJMENI"] = "Holinka"
 slovnik["EMAIL"] = "matous@matous.cz"
+
 print(slovnik)               # {'JMENO': 'Matous', ...
 print(slovnik.get("EMAIL"))  # 'matous@matous.cz'
 print(slovnik1.get("ADRESA", "Tento klic neni k dispozici")
-'Tento klic neni k dispozici'
 ```
-__Doplnime__:
+Dopiseme zbytek nasi podminky v uloze:
 ```python
-if vyber == "DETAILY FILMU".lower():
+elif vyber == "detaily filmu":
     print(ODDELOVAC)
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC)
+
     vyber_filmu = input("VYBERTE FILM: ")
     print(ODDELOVAC)
     pprint(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
 ```
 
-# Mnoziny a.k.a sety
-Mnozina/set je opet neserazena kolekce udaju, ktera je typicka tim, ze uvnitr nenajdeme zadnou hodnotu dvakrat. Sety se pouzivaji zejmena kvuli svym matematickym operacim:
-1. sjednoceni
-2. prunik
-3. rozdil
-4. sym. rozdil
+## Mnoziny
+Mnozina neboli set je opet neserazena kolekce udaju, ktera je typicka tim, ze
+uvnitr nenajdeme zadnou hodnotu dvakrat. Sety se pouzivaji zejmena kvuli svym
+matematickym operacim:
+1. __Sjednoceni__
+2. __Prunik__
+3. __Rozdil__
+4. __Sym. rozdil__
 
-## Jak vytvorit mnozinu
-[Vytvoreni](https://engeto.com/cs/kurz/online-python-akademie/studium/ArzFlswCT3qr8HS9R_oYbg/slovniky-a-mnoziny/mnoziny/vytvoreni-mnozin) pomoci dvou zpusobu:
+### Jak vytvorit mnozinu
+Vytvoreni mnozin je opet mozne pomoci dvou zpusobu:
 ```python
-novy_set = set(); type(novy_set)
-```
-__nebo__:
-```python
+novy_set1 = set(); type(novy_set1)
 novy_set2 = {"Matous", "Marek", "Lukas", "Jan"}; type(novy_set2)
 ```
 
-## Pridavani/odebirani clenu
-1. __.add()__ - pridavame udaj
-2. __.discard()__ - odebereme udaj
-
-__Priklad__:
+### Pridavani/odebirani clenu
+Pridavat data do mnoziny muzeme pomoci metody `add()` a odebirat
+pomoci `discard()`:
 ```python
 novy_set = set()
+
 novy_set.add("Matous")
 novy_set.add("Marek")
 print(novy_set)
+
 novy_set.discard("Matous")
 print(novy_set)
 ```
 
-## Spolecni herci
-Chceme u dvou libovolne zadanych filmu zjistit, kteri herci se nachazeji u obou zminenych.
+### Spolecni herci
+Chceme u dvou libovolne zadanych filmu zjistit, kteri herci se nachazeji u obou
+zminenych.
+
 <p align="center">
   <img src="https://media.giphy.com/media/11tKP5jvSJdLXi/source.gif" width="300" height="300">
 </p>
 
-## Jakou operaci vyuzijeme?
-Protoze nas zajima, ktere udaje (herci) se vyskytuji soucasne v prvnim setu a ve druhem setu, pouzijeme operator pro prunik __&__.
-
-__Priklad__:
+### Jakou operaci vyuzijeme?
+Protoze nas zajima, ktere udaje (herci) se vyskytuji soucasne v prvnim setu a
+ve druhem setu, pouzijeme operator pro prunik `&`.
 ```python
 set1 = {"Pavel", "Matous", "Tomas", "Martin"}
 set2 = {"Martin", "Petr", "Vojtech"}
+
 print(set1 & set2)  # "Martin"
 ```
-
-__Doplnime__:
+Spolecnym jmenem v obou mnozinach, v nasem prikladu vyse, je `Martin`. Takze
+ted muzeme dokoncit nasi druhou podminku:
 ```python
-elif vyber == "SPOLECNE".lower():
+elif vyber == "spolecni herci":
     print(ODDELOVAC)
-    vyber_film1 = input("Vyberte prvniho filmu: ")
-    vyber_film2 = input("Vyberte druheho filmu: ")
-    herci_film1 = set(filmovy_slovnik[vyber_film1]["HRAJI"])
-    herci_film2 = set(filmovy_slovnik[vyber_film2]["HRAJI"])
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC)
+
+    film1 = input("VYBERTE I. FILM: ")
+    film2 = input("VYBERTE II. FILM: ")
+
+    herci_film1 = set(filmovy_slovnik[film1]["HRAJI"])
+    herci_film2 = set(filmovy_slovnik[film2]["HRAJI"])
 
     prunik = herci_film1 & herci_film2
-    print(f"SPOLECNI HERCI PRO *{filmovy_slovnik[vyber_film1]['JMENO']}* A *{filmovy_slovnik[vyber_film2]['JMENO']}*: {prunik}")
+    print(
+        f"SPOLECNI HERCI PRO *{filmovy_slovnik[film1]['JMENO']}* A *{filmovy_slovnik[film2]['JMENO']}*: {prunik}"
+    )
+```
+### Vsichni reziseri?
+Posledni podminkovou vetvi, kterou chceme zapsat, je ziskani vsech jmen
+reziseru. Nejprve je pojdme najit:
+```python
+elif "reziseri" in vyber:
+    print(ODDELOVAC)
+    set_reziseri = (
+        filmovy_slovnik["The Dark Knight"]["REZISER"],
+        filmovy_slovnik["The Godfather"]["REZISER"],
+        filmovy_slovnik["Shawshank Redemption"]["REZISER"],
+        filmovy_slovnik["The Prestige"]["REZISER"]
+    )
 
+    print("VSICHNI REZISERI V NASEM SEZNAMU:")
+    print(f"{set_reziseri}")
+```
+Ovsem vidime, ze jedno jmeno se nam tu vyskytuje hned dvakrat. K tomu vyuzijeme
+vlastnosti mnozin a z naseho seznamu udelame mnozinu:
+```python
+    ...
+    print("VSICHNI REZISERI V NASEM SEZNAMU:")
+    print(f"{set(set_reziseri)}")
 ```
 
-## Jde o podmnozinu?
-Timto dotazem zjistujeme, jestli prislusny set obsahuje prvky, ktere mu predkladame. Cela operace je spojena s metodou _.issubset()_, ktera vraci boolean hodnotu (True/False).
-__Priklad__:
+## Dalsi metody pro sety
+Dalsi metody, ktere se sety souvisi jsou `issubset()` a `disjoint()`.
+
+### Podmnozina
+Timto dotazem zjistujeme, jestli prislusna mnozina obsahuje prvky, ktere mu
+predkladame. Cela operace je spojena s vracenim boolean hodnoty
+(`True`/`False`):
 ```python
 set1 = {"a", "b", "c", "d", "e"}
 set2 = {"a", "b", "c"}
 set3 = {1, 2, 3, "a", "b"}
+
 set2.issubset(set1)  # True
 set3.issubset(set1)  # False
 set3.issubset(set1)  # False
 ```
 
-__Doplnime__:
-```python
-elif vyber == "PODMNOZINA".lower():
-    print(ODDELOVAC)
-    vyber_film = input("Vyberte jmeno filmu: ")
-    vzorek = input("ZADEJTE JMENA: ")
-    print(set(vzorek.split(", ")).issubset(set(filmovy_slovnik[vyber_film]["HRAJI"])))
-```
-
-## Jsou tyto dva sety odlisne?
-_.isdisjoint()_ je opet metoda. Tato ma ale potvrdit, ze ani jediny udaj ve dvou setech neni stejny.
-__Priklad__:
+### Jsou tyto dva sety odlisne?
+Pomoci metody `disjoint()` jsme schopni vysetrit, ze ani jediny udaj ve dvou
+mnozinach neni stejny:
 ```python
 set5 = {"a", "b", "c", "d", "e"}
 set6 = {"f", "g", "h"}
 set7 = {"h", "i", "j", "k"}
+
 set5.isdisjoint(set6)  # True
 set6.isdisjoint(set7)  # False
 ```
 
-__Doplnime__:
-```python
-elif vyber == "ROZDILNE".lower():
-    print(ODDELOVAC)
-    film1 = input("Vyberte jmeno filmu: ")
-    vzorek = input("ZADEJTE JMENA: ")
-    print(set(vzorek.split(", ")).isdisjoint(set(filmovy_slovnik[film1]["HRAJI"])))
-```
+Pokracovat na [Lekci#04](https://github.com/Bralor/python-academy/tree/lekce04)
 
-Pokracovat na Lekci#04

@@ -2,12 +2,8 @@
 """ Lekce #3 - Uvod do programovani, Movies """
 from pprint import pprint
 
-# I. KROK
-# Vytvorim novy (prazdny) slovnik
 film1 = {}
 
-# II. KROK
-# Vlozim novy klice
 film1["JMENO"] = ""
 film1["HODNOCENI"] = ""
 film1["ROK"] = None
@@ -15,8 +11,6 @@ film1["REZISER"] = ""
 film1["STOPAZ"] = None
 film1["HRAJI"] = ()
 
-# III. KROK
-# Vlozim hodnoty klicum
 film1["JMENO"] = "Shawshank Redemption"
 film1["HODNOCENI"] = "93/100"
 film1["ROK"] = 1994
@@ -35,17 +29,11 @@ film1["HRAJI"] = (
     "Larry Brandenburg"
 )
 
-# IV. KROK
-# Aktualizujeme klic metodou .update()
 film1.update({"JMENO": "Shawnshak Redemption"})
 
-# V. KROK
-# Smazene klic JMENO
 film1.pop("JMENO")
 film1["JMENO"] = "Shawshank Redemption"
 
-# VI. KROK
-# Nestujeme slovniky
 film2 = {
     "JMENO": "The Godfather",
     "HODNOCENI": "92/100",
@@ -102,61 +90,65 @@ film4 = {
     )
 }
 filmovy_slovnik = {}
+ODDELOVAC = '=' * 76
+
 filmovy_slovnik[film1["JMENO"]] = film1
 filmovy_slovnik[film2["JMENO"]] = film2
 filmovy_slovnik[film3["JMENO"]] = film3
 filmovy_slovnik[film4["JMENO"]] = film4
 
-# VII. KROK
-# Vytvorime pomyslneho interpreta naseho slovniku
-ODDELOVAC = '=' * 76
 
 print(ODDELOVAC)
 print("Vitejte v nasi skromne filmove databazi".center(76, " "))
+
 print(
 f"""{ODDELOVAC}
-Mame v nabidce tyto snimky:
-{list(filmovy_slovnik.keys())}
-{ODDELOVAC}
 VYBERTE KATEGORII:
 {ODDELOVAC}
-{'DETAILY FILMU | SPOLECNE | PODMNOZINA | ROZDILNE'.center(76, " ")}
-{ODDELOVAC}""")
+{'VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI'.center(76, " ")}
+{ODDELOVAC}"""
+)
 
 vyber = input("VYBERTE MOZNOST: ").lower()
 
-# VIII. KROK
-# Pouzijeme metodu .get()
-if vyber == "detaily filmu":
+if vyber == "vsechny filmy":
     print(ODDELOVAC)
+    print(f"Mame v nabidce tyto snimky:")
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC) 
+
+elif vyber == "detaily filmu":
+    print(ODDELOVAC)
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC)
+
     vyber_filmu = input("VYBERTE FILM: ")
     print(ODDELOVAC)
     pprint(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
 
-# IX. KROK
-# Vytvorime set z klice herci u slovniku Shawshank Redemption
-elif vyber == "spolecne":
+elif vyber == "spolecni herci":
     print(ODDELOVAC)
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC)
+
     film1 = input("VYBERTE I. FILM: ")
     film2 = input("VYBERTE II. FILM: ")
+
     herci_film1 = set(filmovy_slovnik[film1]["HRAJI"])
     herci_film2 = set(filmovy_slovnik[film2]["HRAJI"])
 
     prunik = herci_film1 & herci_film2
     print(f"SPOLECNI HERCI PRO *{filmovy_slovnik[film1]['JMENO']}* A *{filmovy_slovnik[film2]['JMENO']}*: {prunik}")
 
-# X. KROK
-# Podmnozina
-elif vyber == "podmnozina":
+elif "reziseri" in vyber:
     print(ODDELOVAC)
-    film1 = input("VYBERTE FILM: ")
-    vzorek = input("ZADEJTE JMENA: ")
-    print(set(vzorek.split(", ")).issubset(set(filmovy_slovnik[film1]["HRAJI"])))
+    set_reziseri = (
+        filmovy_slovnik["The Dark Knight"]["REZISER"],
+        filmovy_slovnik["The Godfather"]["REZISER"],
+        filmovy_slovnik["Shawshank Redemption"]["REZISER"],
+        filmovy_slovnik["The Prestige"]["REZISER"]
+    )
 
-# XI. KROK
-# Rozdilnost
-elif vyber == "rozdilne":
-    print(ODDELOVAC)
-    film1 = input("VYBERTE FILM: ")
-    vzorek = input("ZADEJTE JMENA: ")
-    print(set(vzorek.split(", ")).isdisjoint(set(filmovy_slovnik[film1]["HRAJI"])))
+    print("VSICHNI REZISERI V NASEM SEZNAMU:")
+    print(f"{set(set_reziseri)}")
+
