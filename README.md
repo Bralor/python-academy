@@ -395,64 +395,68 @@ if vyber == "DETAILY FILMU".lower():
     print(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
 ```
 
-# Mnoziny a.k.a sety
-Mnozina/set je opet neserazena kolekce udaju, ktera je typicka tim, ze uvnitr nenajdeme zadnou hodnotu dvakrat. Sety se pouzivaji zejmena kvuli svym matematickym operacim:
-1. sjednoceni
-2. prunik
-3. rozdil
-4. sym. rozdil
+## Mnoziny
+Mnozina neboli set je opet neserazena kolekce udaju, ktera je typicka tim, ze
+uvnitr nenajdeme zadnou hodnotu dvakrat. Sety se pouzivaji zejmena kvuli svym
+matematickym operacim:
+1. __sjednoceni__
+2. __prunik__
+3. __rozdil__
+4. __sym. rozdil__
 
-## Jak vytvorit mnozinu
-[Vytvoreni](https://engeto.com/cs/kurz/online-python-akademie/studium/ArzFlswCT3qr8HS9R_oYbg/slovniky-a-mnoziny/mnoziny/vytvoreni-mnozin) pomoci dvou zpusobu:
+### Jak vytvorit mnozinu
+Vytvoreni mnozin je opet mozne pomoci dvou zpusobu:
 ```python
-novy_set = set(); type(novy_set)
-```
-__nebo__:
-```python
+novy_set1 = set(); type(novy_set1)
 novy_set2 = {"Matous", "Marek", "Lukas", "Jan"}; type(novy_set2)
 ```
 
-## Pridavani/odebirani clenu
-1. __.add()__ - pridavame udaj
-2. __.discard()__ - odebereme udaj
-
-__Priklad__:
+### Pridavani/odebirani clenu
+Pridavat data do mnoziny muzeme pomoci metody `add()` a odebirat
+pomoci `discard()`:
 ```python
 novy_set = set()
+
 novy_set.add("Matous")
 novy_set.add("Marek")
 print(novy_set)
+
 novy_set.discard("Matous")
 print(novy_set)
 ```
 
-## Spolecni herci
-Chceme u dvou libovolne zadanych filmu zjistit, kteri herci se nachazeji u obou zminenych.
+### Spolecni herci
+Chceme u dvou libovolne zadanych filmu zjistit, kteri herci se nachazeji u obou
+zminenych.
+
 <p align="center">
   <img src="https://media.giphy.com/media/11tKP5jvSJdLXi/source.gif" width="300" height="300">
 </p>
 
-## Jakou operaci vyuzijeme?
-Protoze nas zajima, ktere udaje (herci) se vyskytuji soucasne v prvnim setu a ve druhem setu, pouzijeme operator pro prunik __&__.
-
-__Priklad__:
+### Jakou operaci vyuzijeme?
+Protoze nas zajima, ktere udaje (herci) se vyskytuji soucasne v prvnim setu a
+ve druhem setu, pouzijeme operator pro prunik `&`.
 ```python
 set1 = {"Pavel", "Matous", "Tomas", "Martin"}
 set2 = {"Martin", "Petr", "Vojtech"}
+
 print(set1 & set2)  # "Martin"
 ```
-
-__Doplnime__:
+Spolecnym jmenem v obou mnozinach, v nasem prikladu vyse, je `Martin`. Takze
+ted muzeme dokoncit nasi druhou podminku:
 ```python
 elif vyber == "SPOLECNE".lower():
     print(ODDELOVAC)
     vyber_film1 = input("Vyberte prvniho filmu: ")
     vyber_film2 = input("Vyberte druheho filmu: ")
+
     herci_film1 = set(filmovy_slovnik[vyber_film1]["HRAJI"])
     herci_film2 = set(filmovy_slovnik[vyber_film2]["HRAJI"])
 
     prunik = herci_film1 & herci_film2
-    print(f"SPOLECNI HERCI PRO *{filmovy_slovnik[vyber_film1]['JMENO']}* A *{filmovy_slovnik[vyber_film2]['JMENO']}*: {prunik}")
+    print(
+    f"SPOLECNI HERCI PRO *{filmovy_slovnik[vyber_film1]['JMENO']}* A *{filmovy_slovnik[vyber_film2]['JMENO']}*: {prunik}"
+    )
 
 ```
 
