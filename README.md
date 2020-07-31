@@ -93,7 +93,7 @@ print("VITEJTE V NASEM VIRTUALNIM OBCHODE!")
 print(ODDELOVAC)
 print("VYBERTE SI Z NASEHO ZBOZI:")
 print(ODDELOVAC)
-pprint(POTRAVINY)
+print(POTRAVINY)
 print(ODDELOVAC)
 ```
 Kdyz se koukame na promennou `ODDELOVAC`, zacina byt malicko napadna. Proto
@@ -107,7 +107,7 @@ Nyni muzeme prvni vystupni sekci doplnit o nas novy atribut `end` a upravit
 tak nasi druhou sekci kodu:
 ```python
 print("VITEJTE V NASEM VIRTUALNIM OBCHODE!", end=f"\n{ODDELOVAC}\n")
-print("VYBERTE SI Z NASEHO ZBOZI:", end="\n{ODDELOVAC}\n")
+print("VYBERTE SI Z NASEHO ZBOZI:", end=f"\n{ODDELOVAC}\n")
 pprint(POTRAVINY) # nelze pouzivat *end* u `pprint`
 print(ODDELOVAC)
 ```
@@ -135,7 +135,6 @@ print(f"CELKEM: {sum(KOSIK.values())} CZK")
 Jakmile se nam podari cela procedura zapsat. Vyzkousejme si to cele zopakovat
 pro vyber 4 polozek ze zadaneho vyberu.
 ```python
-# III. KROK
 vyber1 = input("VYBERTE ZBOZI c.1: ")
 vyber2 = input("VYBERTE ZBOZI c.2: ")
 vyber3 = input("VYBERTE ZBOZI c.3: ")
@@ -274,16 +273,14 @@ while prepinac:
 Nyni pojdme upravit nas kod tak, aby bylo mozne vkladat polozky do nakupniho
 kosiku tak dlouho, jak jen uzivatel bude potrebovat.
 ```python
-pokracovat = True
-
-while pokracovat:
-    vyber_zbozi = input(f"VYBERTE ZBOZI ('q' -> KONEC): ")
-
-    if vyber_zbozi == "q":
-        pokracovat = False
-    elif vyber_zbozi not in POTRAVINY.keys():
-        print(f"*{vyber_zbozi}* NEMAME SKLADEM!")
-    else:
+pokracovat = True                                                               
+                                                                                
+while pokracovat:                                                               
+    vyber_zbozi = input(f"VYBERTE ZBOZI ('q' -> KONEC): ")                      
+                                                                                
+    if vyber_zbozi == "q":                                                      
+        pokracovat = False                                                      
+    else:                                                                       
         KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
 
 else:
@@ -301,6 +298,17 @@ naseho programu dostatecne stabilni.
 ### Co kdyz se spletu?
 Muze se stat, ze jako uzivatelem napiseme polozku (jeji jmeno), ktere nebude
 skladem, nebo se jen prepiseme. Jak to opravit?
+```python
+while pokracovat:
+    vyber_zbozi = input(f"VYBERTE ZBOZI ('q' -> KONEC): ")
+
+    if vyber_zbozi == "q":
+        pokracovat = False
+    elif vyber_zbozi not in POTRAVINY.keys():
+        print(f"*{vyber_zbozi}* NEMAME SKLADEM!")
+    else:
+        KOSIK[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
+```
 
 ### Ukoncit nebo ne?
 Vhodnejsi bude zuzitkovat nasi smycku a misto vypinani celeho kodu, bude
@@ -419,7 +427,10 @@ V zadani mame jako hodnotu seznam. Ten vzdy obsahuje:
 ### Nejprve podminky
 Musime rozsirit nase podminky, aby odecitani zbozi bylo provadeno automaticky.
 ```python
-    ... 
+while (vyber_zbozi := input("VYBERTE ZBOZI: ")) != 'q':
+    if vyber_zbozi not in POTRAVINY.keys():
+        print(f"*{vyber_zbozi}* NEMAME SKLADEM!")
+
     elif vyber_zbozi not in KOSIK and POTRAVINY[vyber_zbozi][1] > 0:
         KOSIK[vyber_zbozi] = [
             POTRAVINY[vyber_zbozi][0],
@@ -439,7 +450,6 @@ nikoliv.
 
 ### Nove vypocet ceny
 No a na zaver doplnim jeste posledni `while` cyklus, ktery mi secte celkovou
-cenu. Soucasne doplnime metodu `center()`, ktera nam vystup zarovna na stred. 
 ```python
 ...
 else:
@@ -463,4 +473,3 @@ else:
 
 Pokracovat na [Lekci#05](https://github.com/Bralor/python-academy/tree/lekce05)
  
-
