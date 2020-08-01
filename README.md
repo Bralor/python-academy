@@ -124,7 +124,7 @@ vyber_potravinu = input("VYBERTE ZBOZI: ")
 Jakmile jsme vybrali zbozi, musime jej vlozim do promenne `KOSIK` spolecne
 s jeho cenou (pouze cenou):
 ```python
-KOSIK[vyber_potravinu] = POTRAVINY[vyber_zbozi][0]
+KOSIK[vyber_potravinu] = POTRAVINY[vyber_potravinu][0]
 ```
 Jakmile je potravina v seznamu, zjistime cenu a vypiseme ji:
 ```python
