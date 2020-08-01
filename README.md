@@ -330,9 +330,6 @@ print("Vitejte v nasi skromne filmove databazi".center(76, " "))
 
 print(
 f"""{ODDELOVAC}
-Mame v nabidce tyto snimky:
-{list(filmovy_slovnik.keys())}
-{ODDELOVAC}
 VYBERTE KATEGORII:
 {ODDELOVAC}
 {'VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI'.center(76, " ")}
