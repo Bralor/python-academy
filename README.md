@@ -1,27 +1,44 @@
-![](../images/engeto.png)
+Minula [lekce#06](https://github.com/Bralor/python-academy/tree/lekce06)
+
+<p align="center">
+  <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
+</p>
+
 # Python academy, lesson 07
+## Dulezite odkazy
+- Portal [Engeto.com](https://engeto.com/)
+- Python Academy [repozitar](https://github.com/Bralor/python-academy)
+- [Anotace](https://www.python.org/dev/peps/pep-3107/) v Pythonu
 
-# Important links
-- [Python Academy](https://engeto.com/cs/kurz/online-python-akademie/studium/bVSNtM2eT7uxBrBeS8n14w/funkcni-ramce-a-vstupy/prehled-lekce)
+## Co nas dneska ceka?
+Ucelem dnesni lekce je rozsirit znalosti o funkcich v Pythonu. V minule lekci
+jsme si rekli neco o funkcich na uvod. Vsechno jsme si overili na nasi prvni
+definovane funkci. Dnes nas ceka:
+1. Pouziti vice funkci
+2. Namespaces
+3. Scopes
 
-# Dnesni ukol
-Ucelem dnesni lekce je rozsirit znalosti o funkcich v Pythonu. V minule lekci jsme si rekli neco o funkcich na uvod a aplikovali to na skutecne uloze, kde jsme pouzili prave nasi prvni vlastni funkci. Dnes se budeme snazit naucit zapis pomoci vice funkci, na sobe zavislych.
+## Kalkulacka
+Ulohou pro dnesni lekci bude napsat vlastni __kalkulacku__. Tady se budeme
+snazit pochopit, jak spolu muzou funkce vzajemne komunikovat a predavat si
+informace.
 
-# Kalkulator
-Praktickym prikladem ke dnesni teorii bude napsat vlastni kalkulacku. Na teto uloze se budeme snazit veskere koncepty aplikovat a ukazat si praci s vice ruznymi funkcemi, ktere spolu komunikuji.
-
-# Nas cil
-Vystup by na konci lekce mohl vypadat nasledovne:
+## Ukazka na zacatek
+Spustime skript v nasem adresari:
+```
+$ ./kalkulacka
+```
+Vystup muzeme vypadat nasledovne:
 ```
 DOSTUPNE OPERACE: 
 -------------------------
 +|-|*|/|prum|^
 -------------------------
-OPERACE ('q'- konec): +
-CISLO 1: 1234
-CISLO 2: 866
+OPERACE ('q'- konec): ^
+CISLO 1: 2
+CISLO 2: 5
 -------------------------
-1234 + 866 = 2100
+2 ^ 5 = 32
 -------------------------
 DOSTUPNE OPERACE: 
 -------------------------
@@ -30,8 +47,7 @@ DOSTUPNE OPERACE:
 OPERACE ('q'- konec): q
 Doufam, ze se Vam kalkulacka libila! ^.^
 ```
-
-# Prerequisites
+## Co budeme potrebovat?
 - python 3.6.9+
 - text. editor
 - [while smycky](https://github.com/Bralor/python_academy/tree/master/lesson04#while-cyklus)
@@ -40,49 +56,111 @@ Doufam, ze se Vam kalkulacka libila! ^.^
 Potrebne promenne:
 ```
 NABIDKA = "DOSTUPNE OPERACE: "
-OPERACE = "+", "-", "*", "/", "prum", "^"
-ODDELOVAC = "-" * 25
+ODDELOVAC = "-" * 50
 ```
 
-# Postup
-Opet si otevreme novy soubor *calculator.py* a nakopirujeme sablonu nize:
+## Zaciname!
+
+<p align="center">
+  <img src="https://media.giphy.com/media/Y5pJPmh9IWMKc/giphy-downsized.gif" width="300" height="300">
+</p>
+
+Nejprve si zkopirujeme uvod souboru a zadani, ktere najdete vyse:
+```python
+#!/usr/bin/python3
+"Lekce #7 - Uvod do programovani, kalkulacka"
+
+NABIDKA = "DOSTUPNE OPERACE: "
+ODDELOVAC = "=" * 50
 ```
-#!/usr/bin/env python3
-"""Lekce #7 - Uvod do programovani, kalkulacka"""
-
-# I. KROK
-# Zadame pomocne promenne
-XXX
-
-# II. KROK
-# Vytvorit hlavni ridici funkci
-
-# III. KROK
-# Uvadeci funkce
-
-# IV. KROK
-# Rozcestnik funkci
-
-# V. KROK
-# Potrebujeme dva vstupy
-
-# VI. KROK
-# Resime zakladni aritmeticke operatory
-
-# VII. KROK
-# Potrebujeme radu cisel pro prumer
-
-# VIII. KROK
-# Pocitam prumer z pomocne promenne
-
-# IX. KROK
-# Umocnim cislo, exponentem
-
-# ad. II. KROK
-# Volam svoji hlavni funkci
+Naformatujeme jednoduchy uvodni text a vracime jej pomoci `print`:
+```python
+print(f"KALKULACKA".center(50), end=f"\n{ODDELOVAC}\n")
+print(NABIDKA, end=f"\n{ODDELOVAC}\n")
 ```
 
-# Cheatsheet s priklady
+## Vytvorime hlavni funkci
+Nejprve vytvorime hlavni funkci, kterou si pojmenujeme `main`. Ta bude mit za
+ukol delegovat ukoly dal:
+```python
+def main() -> None:
+    "Hlavni ridici funkce nasi kalkulacky"
+    uvodni_text()
+```
+Budeme chtit cely prubeh opakovat. Prakticky budeme chtit tocit tyto kroky:
+1. Uvod do funkce
+2. Vyber operace
+3. Presmerovani k matematicke operaci a jeji provedeni
+```python
+    while True:
+        # dostupne_operace()
+        # zadana_operace()
+        # vyber_proces()
+```
+Tim mame uvod nachystany a muzeme se soustredit na dilci funkce.
+
+## Uvodni text
+Nejprve presuneme cast kodu, kterou jsme jiz napsali v uvodu:
+```python
+...
+NABIDKA = "DOSTUPNE OPERACE: "
+ODDELOVAC = "=" * 50
+
+print(NABIDKA, end=f"\n{ODDELOVAC}\n")
+
+def main() -> "None":
+    "Hlavni ridici funkce nasi kalkulacky"
+    uvodni_text(ODDELOVAC)
+
+
+def uvodni_text(text: "str") -> "str":
+    "Uvodni text pred zacatkem cyklu"
+    print(f"KALKULACKA".center(50), end=f"\n{ODDELOVAC}\n")
+
+```
+Nyni muzeme vyzkouset jak se nas program bude chovat po teto uprave. Vsimnete
+si pouziti anotaci u funkce. Jednak jejich __parametru__, jednak vracene
+__promenne__.
+```
+jmeno_funkce.__annotations__
+```
+Timto zpusobem si mohu nechat zobrazit moje anotace.
+
+## Dostupne operace
+Dalsim krokem bude vypsat operaci, kterymi nase kalkulacka disponuje. Napiseme
+proto novou funkci, ktera bude vypisovat tyto informace:
+```python
+def dostupne_operace(text: 'tuple') -> "str":
+    "Vypisovani dostupnych operaci uvnitr cyklu"
+    print(f"{' | '.join(text)}".center(50), end=f"\n{ODDELOVAC}\n")
+```
+Takovouto definici muzeme pouzit za predpokladu, ze zname vstupni promennou.
+Pokud ale predem nevime, kolik budeme argumentu, musime na to jinak.
+
+### Pozicni argumenty
+Pokud nemame poneti, kolik toho bude nase funkce zpracovavat, muzeme pouzit
+pozicni argumenty (`*args`). Jejich pouziti je pomerne snadne:
+```
+def func(*args) -> "str":
+    print(f"{'|'.join(args)}")
+```
+Pojdme zkusit nasi funkci zavolat se tremi argumenty:
+```
+func("+", "-", "*")  # +|-|*
+```
+Nyni s peti argumenty:
+```
+func("+", "-", "*", "/", "**")  # +|-|*|/|**
+```
+### Prepiseme funkci `dostupne_operace`
+Ted, kdyz umime pozicni argumenty, muzeme prepsat funkci `dostupne_operace`:
+```python
+def dostupne_operace(*args) -> "str":
+    "Vypisovani dostupnych operaci uvnitr cyklu"
+    print(f"{' | '.join(args)}".center(50), end=f"\n{ODDELOVAC}\n")
+```
+Jakmile ji mame vytvorenou, muzeme ji zavolat v nasi hlavni funkci `main`.
+
 ## Metoda .join()
 Metoda vracejici retezec spojeny preddefinovanym symbolem.
 
