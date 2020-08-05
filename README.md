@@ -147,7 +147,7 @@ Pythonu. Pomoci techto prostredi v Pythonu spravujeme a uchovavame promenne.
 Kazdy soubor, kazda funkce maji vlastni prostredi, aby zabranili potencialni
 kolizi se jmeny promennych.
 ```
-# Jedno globalni jmenne prostredi
+# Globalni jmenne prostredi
 JMENO = "Matous"
 VEK = 45
 
@@ -168,6 +168,8 @@ namespace_1 = {"EMAIL": "matous@matous.cz", "ziskej_domenu": ""}
 # Lokalni jmenne prostredi
 namespace_2 = {"mail": ""}
 ```
+Pokud bych mel lokalnich prostredi vic, melo by kazde svoje vlastni jmenne
+prostredi.
 
 ### Ramce v Pythonu
 Aby byl Python schopen dohledat konrektni promennou, existuji na to 4 typy
@@ -177,7 +179,51 @@ prostredi (hierarchie):
 3. Uzavrene prostredi (enclosing scope) - funkce uvnitr funkce
 4. Lokalni prostredi (local scope) - napr. parametry funkci, promenne ve funkci
 
+### Priklad uzavreneho prostredi
+Mame tu na ukazku jeden pohled na uzavrenou funkci (funkci uvnitr funkce):
+```python
+def vnejsi_func(em):
+    mail = em.split("@")
+    def vnitrni_func():
+            return mail[1].split(".")
+    domena, *zbytek = vnitrni_func()
+    return domena
+```
+Pokud zavolame funkci `vnejsi_func` s argumentem `matous@matous.cz`, ziskame
+samotnou domenu. Pokud ale budu chtit pouzit vnitrni funkci `vnitrni_func`,
+Python nas nenecha.
 
+### Proc to?
+Nasledujici priklad nam objasni, proc vubec vsechna ta jmenna prostredi a
+ramcove celky musime resit:
+```python
+JMENO = "Matous"
+
+def func():
+    print(JMENO)
+```
+Pokud spustime tuto funkci, vypise nas interpret hodnotu `Matous`.
+```python
+def func():
+    JMENO = "Lukas"
+
+print(JMENO)
+```
+Ale pokud zapiseme tuto funkci a budeme chtit pouzit `print` a vypsat promennou
+`JMENO`, dostaneme `NameError`. V podstate si staci pamatovat,
+ze __globalni__ promenne jsou viditelne v celem nasem kodu. Zatim co
+__lokalni__ promenne jsou viditelne pouze v prostredi, ve kterem vznikly.
+
+### Z toho vyplyva?
+Pokud volame z lokalniho jmenneho prostredi promennou z globalniho jmenneho
+prostredi, Python ji umi naleznout, ale obracene to neplati.
+
+### Zaverem k hierarchii
+Pokud tedy Python hleda promennou, postupuje nasledovne:
+1. Nejprve prohlizi __lokalni__ jmenne prostredi (napr. ve funkci)
+2. Pokud nenajde, pokracuje do __globalniho__ prostredi (v nasem souboru)
+3. Pokud nenajde, pokracuje do __built-in__ prostredi (predefinovane)
+4. Pokud nenajde, nasleduje `NameError`
 
 ## Dostupne operace
 Dalsim krokem bude vypsat operaci, kterymi nase kalkulacka disponuje. Napiseme
@@ -190,7 +236,15 @@ def dostupne_operace(text: 'tuple') -> "str":
 Takovouto definici muzeme pouzit za predpokladu, ze zname vstupni promennou.
 Pokud ale predem nevime, kolik budeme argumentu, musime na to jinak.
 
-### Pozicni argumenty
+## Jak zapisovat parametry?
+Variant pro zadavani parametru do funkce je cela skala:
+1. Podle pozice
+2. Podle __klice__
+3. __Defaultni__ parametr
+4. __*args__ (list, tuple)
+5. __**kwargs__ (slovnik)
+
+### Co se nam hodi?
 Pokud nemame poneti, kolik toho bude nase funkce zpracovavat, muzeme pouzit
 pozicni argumenty (`*args`). Jejich pouziti je pomerne snadne:
 ```
