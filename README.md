@@ -326,6 +326,12 @@ def vyber_operace(op: "str") -> "none":
         x1, x2 = vyber_cisla()
         print(f"x1 + x2: {x1} + {x2} = {x1 + x2}")
 ```
+Jakmile budeme mit hotovou cast, kde promenne `x1`, `x2` ukladame z funkce,
+musime doplnit funkci `vyber_cisla`:
+```python
+def vyber_cisla() -> "tuple":
+    return float(input("x1: ")), float(input("x2: "))
+```
 Jeste musime doplnit nas vystup a potrebne `ODDELOVAC`. Zatim zname uvod k
 formatovani pomoci __f-string__. Dale vime o nepovinnem argumentu `end`. Dneska
 si ukazeme dalsi nepovinny argument pro funkci `print` a tim je `sep`.
