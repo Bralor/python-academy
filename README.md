@@ -15,8 +15,8 @@ Ucelem dnesni lekce je rozsirit znalosti o funkcich v Pythonu. V minule lekci
 jsme si rekli neco o funkcich na uvod. Vsechno jsme si overili na nasi prvni
 definovane funkci. Dnes nas ceka:
 1. Pouziti vice funkci
-2. Namespaces
-3. Scopes
+2. Jmenna prostredi (namespaces)
+3. Ramce funkci (function scopes)
 4. Anotace funkci
 5. Typy argumentu
  
@@ -45,7 +45,7 @@ x1 + x2: 123.0 + 326.0 = 449.0
 ==================================================
                + | - | * | / | abs                
 ==================================================
-VYBER MATEMATICKOU OPERACI: prum
+VYBER MATEMATICKOU OPERACI: abs
 ==================================================
 VLOZTE CISLA ODDELENA CARKOU: 1,2,3,4,
 ==================================================
@@ -64,6 +64,7 @@ UKONCUJI...
 - [while smycky](https://github.com/Bralor/python_academy/tree/master/lesson04#while-cyklus)
 - [for cyklus](https://github.com/Bralor/python_academy/tree/master/lesson05#for-cyklus)
 - [funkce](https://github.com/Bralor/python_academy/tree/master/lesson06#funkce)
+- [Anotace funkci](https://www.python.org/dev/peps/pep-3107/#parameters)
 Potrebne promenne:
 ```
 NABIDKA = "DOSTUPNE OPERACE: "
@@ -122,7 +123,7 @@ print(NABIDKA, end=f"\n{ODDELOVAC}\n")
 
 def main() -> "None":
     "Hlavni ridici funkce nasi kalkulacky"
-    uvodni_text(ODDELOVAC)
+    uvodni_text()
 
 
 def uvodni_text(text: "str")-> "str":
@@ -394,7 +395,7 @@ Takze by mozna stalo za to setrit zapisem podminek a napsat pro to jinou funkci.
 Nejprve musime prizpusobit nasemu zapisu podminku v uvodu funkce
 `vyber_operace`. Jakmile mame opraveny uvod, muzeme dodelat potrebnou funkci:
 ```python
-def zakladni_operace(x: "float", y: "float", op: "str") -> "str":
+def zakladni_operace(x: "float", y: "float", op: "str") -> "float":
     return {
         "+": x + y,
         "-": x - y,
@@ -455,7 +456,7 @@ Aby bylo mozna kalkulacku pouzivat na vice operaci, pridame na uvod nasi funkce
 ```python
 def main() -> "None":
     "Hlavni ridici funkce nasi kalkulacky"
-    uvodni_text(ODDELOVAC)
+    uvodni_text()
 
     while True:
         dostupne_operace("+", "-", "*", "/", "abs")
@@ -467,6 +468,7 @@ k nasim podminkam pridame dalsi podminkovou vetev, ktera bude obsahovat funkci
 `exit` (pripadne `quit`):
 ```python
     elif op in ("quit", "exit", "q", "e"):
+        print(ODDELOVAC)
         print("UKONCUJI...")
         exit()
 ```
@@ -474,6 +476,7 @@ A uplne posledni detail na zaver by mel osetrit scenar, kdy uzivatel zada jiny
 vstup nez mame v nabidce:
 ```python
     else:
+        print(ODDELOVAC)
         print(f"*{op}* NENI V NABIDCE")
 ```
 Tim by byl nas program kalkulacka kompletni!
