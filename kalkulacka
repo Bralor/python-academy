@@ -15,7 +15,7 @@ def main() -> "None":
         vyber_operace(operace)
 
 
-def uvodni_text(text: "str")-> "str":
+def uvodni_text(text: "str")-> "None":
     "Uvodni text pred zacatkem cyklu"
     print(f"{text}".center(50), end=f"\n{ODDELOVAC}\n")
 
@@ -52,18 +52,20 @@ def vyber_operace(op: "str") -> "none":
         )
 
     elif op in ("quit", "exit", "q", "e"):
+        print(ODDELOVAC)
         print("UKONCUJI...")
         exit()
 
     else:
+        print(ODDELOVAC)
         print(f"*{op}* NENI V NABIDCE")
 
 
-def vyber_cisla() -> "float":
+def vyber_cisla() -> "tuple":
     return float(input("x1: ")), float(input("x2: "))
 
 
-def zakladni_operace(x: "float", y: "float", op: "str") -> "str":
+def zakladni_operace(x: "float", y: "float", op: "str") -> "float":
     return {
         "+": x + y,
         "-": x - y,
@@ -74,11 +76,11 @@ def zakladni_operace(x: "float", y: "float", op: "str") -> "str":
     
 def vyber_radu_cisel() -> "list":
     rada_cisel = input("VLOZTE CISLA ODDELENA CARKOU: ")
-    prevedene = [
-        float(cislo.strip())
-        for cislo in rada_cisel.split(",")
-        if cislo != ""
-    ]
+    prevedene = []
+
+    for cislo in rada_cisel.split(","):
+        if cislo != "":
+                prevedene.append(float(cislo))
     return prevedene
 
 
