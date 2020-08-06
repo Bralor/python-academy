@@ -64,7 +64,7 @@ UKONCUJI...
 - [while smycky](https://github.com/Bralor/python_academy/tree/master/lesson04#while-cyklus)
 - [for cyklus](https://github.com/Bralor/python_academy/tree/master/lesson05#for-cyklus)
 - [funkce](https://github.com/Bralor/python_academy/tree/master/lesson06#funkce)
-- [Anotace funkci](https://www.python.org/dev/peps/pep-3107/#parameters)
+
 Potrebne promenne:
 ```
 NABIDKA = "DOSTUPNE OPERACE: "
