@@ -1,90 +1,62 @@
-![](../images/engeto.png)
+Minula [lekce#07](https://github.com/Bralor/python-academy/tree/lekce07)
+
+<p align="center">
+  <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
+</p>
+
 # Python academy, lesson 08
+## Dulezite odkazy
+- Portal [Engeto.com](https://engeto.com/)
+- Python Academy [repozitar](https://github.com/Bralor/python-academy)
+- [Anotace](https://www.python.org/dev/peps/pep-3107/) v Pythonu
+- Monkaroo (generator nahodnych udaju - testovaci data)
 
-# Important links
-- [Python Academy](https://engeto.com/cs/kurz/online-python-akademie/studium/5BmOjpMWQXetDW5lEWZVlw/formatovani-stringu-a-textove-soubory/prehled-lekce)
-- [Formatovani retezcu](https://realpython.com/python-f-strings/)
+## Co nas dneska ceka?
+Hlavnim cilem dnesni lekce bude prace s textovymi soubory pomoci Pythonu. Dale
+si povime neco vic k formatovani retezcu. Tuto problematiku jsme jiz castecne
+nacnuli, ale dneska zabrousime do detailu. V bodech:
+1. Prace s .txt soubory
+2. Kontextovy manazer
+3. Formatovaci vyraz
+4. Formatovaci metoda
+5. f-strings
 
+## Obesenec
+Dalsim ukolem bude napsat v Pythonu hru v prikazovem radku. Hra se jmenuje
+__obesenec__. Opet se budeme snazit aplikovat maximum z nove ziskanych
+teoretickych znalosti.
 
-# Dnesni ukol
-V dnesnim webinari nas ceka opet prakticka uloha, kde si budeme trochu hrat s formatovanim retezcu. Soucasne si rekneme neco o praci s textovymi soubory pomoci Pythonu.
-
-# Hangman
-Ukol, ktery bude treba vyresit, je napsat pomoci Pythonu hru obesenec. Soucasne je to skvela moznost aplikovat oba nase dnesni teoreticke celky. Zpusobu jak tuto hru napsat jak spousta. My zalezi samozrejme na mnozstvi znalosti, ktera mame k dispozici.
-
-# Nas cil
-Hra je hodne zalozena na komunikace pocitace a hrace. Takze aplikace nejakeho formatovani retezcu je vazne nutna. Vystup by na konci lekce mohl vypadat nasledovne:
+## Ukazka na zacatek
+Spustime skript v nasem adresari:
 ```
-ZADEJTE JMENO: Matous
----------------------------------------------
-HRAC: Matous | STAV: _ _ _ _ _ | ZBYVA: 6.0 |
----------------------------------------------
-HADEJ PISMENO: a
----------------------------------------------
-HRAC: Matous | STAV: _ a _ _ _ | ZBYVA: 5.0 |
----------------------------------------------
-HADEJ PISMENO: m
----------------------------------------------
-HRAC: Matous | STAV: m a _ _ _ | ZBYVA: 4.0 |
----------------------------------------------
-HADEJ PISMENO: n
----------------------------------------------
-HRAC: Matous | STAV: m a n _ _ | ZBYVA: 3.0 |
----------------------------------------------
-HADEJ PISMENO: g
----------------------------------------------
-HRAC: Matous | STAV: m a n g _ | ZBYVA: 2.0 |
----------------------------------------------
-HADEJ PISMENO: o
----------------------------------------------
-HRAC: Matous | STAV: m a n g o | ZBYVA: 1.0 |
----------------------------------------------
-VYBORNE, Matous! UHADL JSI!
+$ ./obesenec
+```
+Vystup muzeme vypadat nasledovne:
+```
+KOD
 ```
 
-# Prerequisites
+## Co budeme potrebovat?
 - python 3.6.9+
 - text. editor
-- [while smycky](https://github.com/Bralor/python_academy/tree/master/lesson04#while-cyklus)
-- [for smycky](https://github.com/Bralor/python_academy/tree/master/lesson05#for-cyklus)
-- [funkce v Pythonu](https://github.com/Bralor/python_academy/tree/master/lesson06#funkce)
+- while smycky
+- for smycky
+- funkce v Pythonu
 
-# Postup
-Opet si otevreme novy soubor *hangman.py* a nakopirujeme sablonu nize:
-```
-#!/usr/bin/env python3
-"""Lekce #8 - Uvod do programovani, obesenec"""
+## Co nejdriv?
 
-# I. KROK
-# Hlavni funkce + vymyslet postup
-
-# II. KROK
-# Pridame hrace
-
-# III. KROK
-# Zvolime slovo pro hadani + nacteme jej
-
-# IV. KROK
-# Schovame jej!
-
-# V. KROK
-# Vypisujeme stav hry
-
-# VI. KROK
-# Hrac hada pismeno
-
-# VII. KROK
-# Posouzeni hadaneho pismena
-
-# VIII. KROK
-# Prubeh kazdeho kola
-
-# IX. KROK
-# Zaverecny vystup
-```
-
-# Cheatsheet s priklady
+## Otevreme novy soubor
+## Ridici funkce
+## Novy hrac
+## Otevirani txt souboru
+## Schovani slova
+## Stav hry
+## Tah hrace
+## Overeni tahu
+## Dalsi a dalsi kolo
+## Zaver hry
 ## Formatovani retezcu
+
 Formatovani retezcu muzeme chapat jako operaci, ktera udela retezce vizualne prehlednejsi a umozni nam jednodussi manipulaci s nimi.
 
 Teorie:
