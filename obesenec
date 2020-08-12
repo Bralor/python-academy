@@ -1,0 +1,65 @@
+#!/usr/bin/python3
+"""Lekce #8 - Uvod do programovani, obesenec"""
+
+def main() -> None:
+    "Hlavni ridici funkce nasi hry"
+    hrac = pridej_hrace()
+    vybrane_slovo = vyber_slovo("slova.txt")
+    tajne_slovo, pokusy = schovej_slovo(vybrane_slovo)
+
+    while pokusy:
+        hraci_kolo(hrac, tajne_slovo, pokusy, vybrane_slovo)
+        pokusy -= 1
+        ukonceni_hry(hrac, tajne_slovo, pokusy)
+
+
+def pridej_hrace() -> str:
+    return input("ZADEJTE JMENO HRACE: ")
+
+
+def vyber_slovo(soubor) -> str:
+    import random
+    with open(soubor, "r") as txt:
+        slova = txt.readlines()
+    return random.choice(slova).strip()
+
+
+def schovej_slovo(slovo: str) -> list:
+    "Nahradime pismena symbolem `_` a soucasne vypocitame pokusy"
+    return ["_"] * len(slovo), round(1.3 * len(slovo), 0)
+
+
+def vypis_hry(hrac: str, stav: str, zbyva: int) -> None:
+    zprava = f"HRAC: {hrac} | STAV: {stav} | ZBYVA TAHU: {zbyva}"
+    oddelovac = len(zprava) * "-"
+    print(oddelovac, zprava, oddelovac, sep="\n")
+
+
+def vyber_pismena() -> str:
+    return input("HADEJ PISMENO: ")
+
+
+def overeni_pismena(pism: str, tajne: str, vybrane: str) -> None:
+    for index, pismeno in enumerate(vybrane):
+        if pismeno in pism:
+            tajne[index] = pism
+
+
+def hraci_kolo(hrac: str, slovo: str, pokusy: int, vybrane_sl: str) -> None:
+    vypis_hry(hrac, slovo, pokusy)
+    hadani = vyber_pismena()
+    overeni_pismena(hadani, slovo, vybrane_sl)
+
+
+def ukonceni_hry(hrac: str, stav: str, pokusy: int) -> None:
+    if "_" not in stav:
+        vypis_hry(hrac, slovo, pokusy)
+        print(f"VYBORNE, {hrac}, UHADL JSI!")
+        exit()
+    elif "_" in stav and pokusy == 0:
+        print(f"PROHRALS, {hrac}, TREBA PRISTE!")
+        exit()
+
+
+main()
+

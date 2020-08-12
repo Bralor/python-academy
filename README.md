@@ -34,7 +34,22 @@ $ ./obesenec
 ```
 Vystup muzeme vypadat nasledovne:
 ```
-KOD
+ZADEJTE JMENO HRACE: matt
+------------------------------------------------------------------------------
+HRAC: matt | STAV: ['_', '_', '_', '_', '_', '_', '_', '_'] | ZBYVA TAHU: 10.0
+------------------------------------------------------------------------------
+HADEJ PISMENO: a
+-----------------------------------------------------------------------------
+HRAC: matt | STAV: ['_', '_', '_', '_', '_', '_', '_', '_'] | ZBYVA TAHU: 9.0
+-----------------------------------------------------------------------------
+HADEJ PISMENO: e
+-----------------------------------------------------------------------------
+HRAC: matt | STAV: ['_', 'e', '_', '_', '_', '_', '_', '_'] | ZBYVA TAHU: 8.0
+-----------------------------------------------------------------------------
+HADEJ PISMENO: r
+-----------------------------------------------------------------------------
+HRAC: matt | STAV: ['_', 'e', '_', '_', 'r', '_', '_', '_'] | ZBYVA TAHU: 7.0
+...
 ```
 
 ## Co budeme potrebovat?
@@ -44,7 +59,7 @@ KOD
 - for smycky
 - funkce v Pythonu
 
-## Co nejdriv?
+## Rozjezd?
 
 <p align="center">
   <img src="https://media.giphy.com/media/i34oXbluCO0G4/giphy-downsized.gif" width="300" height="300">
@@ -85,9 +100,9 @@ def main() -> None:
 
 main()
 ```
-Nakonec nasi hlavni funkci `main()` s jednotlivymi `print()` funkcemi spustime.
-Kdyz se podivame na aktualni kod, muzeme rict, ze co `print()`, to jedna dilci
-funkce.
+Nakonec nasi hlavni funkci `main()`, s jednotlivymi `print()` funkcemi,
+spustime. Kdyz se podivame na aktualni kod, muzeme rict, ze co `print()`, to
+jedna dilci funkce.
 
 ## Pridame hrace
 Prvni funkce bude obstaravat jmeno hrace:
@@ -204,7 +219,7 @@ def vyber_slovo(soubor) -> str:
         slova = txt.readlines()
     return random.choice(slova).strip()
 ```
-Klicovyum slovem `import` oznamim interpretu, ze potrebuji nahrat modul
+Klicovym slovem `import` oznamim interpretu, ze potrebuji nahrat modul
 `random`. Nakonec pri vraci pouziju metodu `choice()`, kterou zajistim, ze si
 vyberu pseudonahodny retezec z puvodniho seznamu `slova`. Opatrne presuneme
 `strip()`, abychom jej aplikovali na retezec, ne seznam.
@@ -308,7 +323,7 @@ Nova funkce, ktera zajisti informativni vypisovat se sklada ze tri casti:
     while pokusy:
         vypis_hry(hrac, tajne_slovo, pokusy)
 ```
-Jeste pripiseme volani nasi nove funkce, kam doplnime prislusne argumenty.
+Funkci budeme ale volat az za chvili.
 
 ## Tah hrace
 Na pocatku kazdeho kola, jakmile se se vypise stav pomoci funkce `vypis_hry()`,
@@ -317,13 +332,13 @@ bude hrac volit pismeno:
 def vyber_pismena() -> str:
     return input("HADEJ PISMENO: ")
 ```
-Funkci definujeme ale zatim ji nebudeme volat.
+Opet funkci definujeme ale zatim ji nebudeme volat.
 
 ## Overeni tahu
 Dalsi funkce, souvisejici s predchozi funkci `vyber_pismena`, je posouzeni,
 jestli se pismeno doopravdy nachazi v tajnem slove:
 ```python
-def overeni_pismena(pism: str, slovo: str, stav: str) -> None:
+def overeni_pismena(pism: str, slovo: str) -> None:
     for index, pismeno in enumerate(slovo):
         if pismeno in pism:
             slovo[index] = pism
@@ -354,7 +369,7 @@ Nakonec jeste po kazdem kole snizime hodnotu promenne `pokusy`.
 Nakonec zbyva posoudit posledni, a to podminku, zda hrac vyhraje, pripadne
 prohraje:
 ```python
-def ukonceni_hry(hrac: str, stav: str, pokusy: int) -> bool:
+def ukonceni_hry(hrac: str, stav: str, pokusy: int) -> None:
     if "_" not in stav:
         vypis_hry(hrac, slovo, pokusy)
         print(f"VYBORNE, {hrac}, UHADL JSI!")
@@ -363,6 +378,12 @@ def ukonceni_hry(hrac: str, stav: str, pokusy: int) -> bool:
         print(f"PROHRALS, {hrac}, TREBA PRISTE!")
         exit()
 ```
+A dopiseme posledni volani, nasi ukoncujici funkce `ukonceni_hry()`:
+```python
+    ...
+    ukonceni_hry(hrac, tajne_slovo, pokusy)
+```
+
 Pokracovat na [lekci#09](https://github.com/Bralor/python-academy/tree/lekce09)
 
 
