@@ -13,9 +13,9 @@ Minula [lekce#07](https://github.com/Bralor/python-academy/tree/lekce07)
 - [Formatovani](https://realpython.com/python-string-formatting/) retezcu
 
 ## Co nas dneska ceka?
-Hlavnim cilem dnesni lekce bude prace s textovymi soubory pomoci Pythonu. Dale
-si povime neco vic k formatovani retezcu. Tuto problematiku jsme jiz castecne
-nacnuli, ale dneska zabrousime do detailu. V bodech:
+Hlavnim cilem dnesni lekce bude prace s __textovymi soubory__ pomoci Pythonu.
+Dale si povime neco vic k __formatovani retezcu__. Tuto problematiku jsme
+jiz castecne nacnuli, ale dneska zabrousime do detailu. V bodech:
 1. Prace s .txt soubory
 2. Kontextovy manazer
 3. Formatovaci vyraz
