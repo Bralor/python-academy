@@ -16,7 +16,7 @@ Minula [lekce#07](https://github.com/Bralor/python-academy/tree/lekce07)
 Hlavnim cilem dnesni lekce bude prace s __textovymi soubory__ pomoci Pythonu.
 Dale si povime neco vic k __formatovani retezcu__. Tuto problematiku jsme
 jiz castecne nacnuli, ale dneska zabrousime do detailu. V bodech:
-1. Prace s .txt soubory
+1. Prace s textovymi soubory
 2. Kontextovy manazer
 3. Formatovaci vyraz
 4. Formatovaci metoda
