@@ -32,7 +32,7 @@ Spustime skript v nasem adresari:
 ```
 $ ./obesenec
 ```
-Vystup muzeme vypadat nasledovne:
+Vystup muze vypadat nasledovne:
 ```
 ZADEJTE JMENO HRACE: matt
 ------------------------------------------------------------------------------
@@ -67,8 +67,9 @@ HRAC: matt | STAV: ['_', 'e', '_', '_', 'r', '_', '_', '_'] | ZBYVA TAHU: 7.0
 
 ## Otevreme novy soubor
 Otevreme pracovni adresar pro dnesni lekci a nakopirujeme do nej soubor se
-slovy (`slova.txt`). Potom klasicky vytvorime soubor, kam budeme zapisovat nasi
-hru (__obesenec__).
+slovy (`slova.txt`). Tento soubor si muzete stahnout v ramci materialu,
+v uvodu dnesni lekce. Potom klasicky vytvorime soubor, kam budeme zapisovat
+nasi hru (__obesenec__):
 ```python
 #!/usr/bin/python3
 """Lekce #8 - Uvod do programovani, obesenec"""
@@ -76,7 +77,7 @@ hru (__obesenec__).
 
 ## Ridici funkce
 Aplikujeme podobnou mechaniku jako v minule lekci, tedy na zacatek vytvorime
-hlavni ridici funkci `main()`.
+hlavni ridici funkci `main()`:
 ```python
 def main() -> None:
     "Hlavni ridici funkce nasi hry"
@@ -86,15 +87,16 @@ ktere budou zapotrebi.
 ```python
 def main() -> None:
     "Hlavni ridici funkce nasi hry"
-    print("Pridavam hrace")
-    print("Vybirame slovo")
-    print("Schovavam slovo")
+    print("Pridavam hrace..")
+    print("Vybirame slovo..")
+    print("Schovavam slovo..")
 
     i = 1
 
-    while i < 5:  # apple
+    while i < 6:  # apple
         print(f"Kolo: {i}")
         i += 1
+
     else:
         print("Konec hry!")
 
@@ -115,14 +117,17 @@ A nasledne volani teto funkce z nasi hlavni funkce `main()`:
 def main() -> None:
     "Hlavni ridici funkce nasi hry"
     hrac = pridej_hrace()
+    print(f"HRAC: {hrac}")
+
     print("Vybirame slovo")
     print("Schovavam slovo")
 
     i = 1
 
-    while i < 5:  # apple
+    while i < 6:  # apple
         print(f"Kolo: {i}")
         i += 1
+
     else:
         print("Konec hry!")
 ```
@@ -143,7 +148,7 @@ muzeme jeho obsah otevrit. Dale si vsimnete `"r"`, ktery symbolizuje spusteni
 rezimu pro cteni.
 
 ### Cteme udaje
-Ted mame soubor nacteny, potrebujeme jej precist:
+Ted mame soubor nacteny, potrebujeme precist jeho obsah:
 ```
 obsah_txt = moje_slova.read()
 ```
@@ -152,8 +157,8 @@ vypsat promennou `obsah_txt`:
 ```
 'arrival\neffort\nfact\nanxiety\nhousing...
 ```
-Vidime, ze jsem dostal ponekud nerozdeleny retezec. Pokud vime, ze jsou udaje
-umistene na radcich pod sebou, muzeme zkusit metodu `readlines()`:
+Vidime, ze jsme dostali ponekud celistvy retezec. Pokud vime, ze jsou udaje
+umistene na radcich pod sebou, muzeme pouzit vhodnejsi metodu `readlines()`:
 ```
 muj_txt.close()
 muj_txt = open("slova.txt", "r")
@@ -172,7 +177,7 @@ obsah = muj_txt.readlines()
 print(obsah)
 []
 ```
-Kurzor muzeme posunout pomoci prikazu `seek()`, kdy do kulate zavorky nastavime
+Kurzor muzeme posunout pomoci metody `seek()`, kdy do kulate zavorky nastavime
 pozici, na ktere jej chceme nastavit:
 1. __seek(0)__ - pro zacatek souboru
 2. __seek(0, 2)__ - pro konec souboru
@@ -207,7 +212,8 @@ Dalsim krokem bude vybrane slovo ulozit do promenne a vypsat si jej:
     print(f"HLEDANE SLOVO: {vybrane_slovo}")
     ...
 ```
-Jak ale muzeme zajistit, abychom pokazde vybrali nahodne slovo?
+Jak ale muzeme zajistit, abychom pokazde vybrali nahodne slovo a ne slovo, ktere
+se nachazi na nultem indexu v nasem seznamu?
 
 ## Modul random
 Na moduly a jejich vyuziti jeste rec prijde. Nam ted staci pouze vyuziti
@@ -220,13 +226,13 @@ def vyber_slovo(soubor) -> str:
     return random.choice(slova).strip()
 ```
 Klicovym slovem `import` oznamim interpretu, ze potrebuji nahrat modul
-`random`. Nakonec pri vraci pouziju metodu `choice()`, kterou zajistim, ze si
-vyberu pseudonahodny retezec z puvodniho seznamu `slova`. Opatrne presuneme
+`random`. Nakonec pri vraceni pouziju metodu `choice()`, kterou zajistim, ze si
+vyberu pseudonahodny retezec z puvodniho seznamu `slova`. Dale presuneme
 `strip()`, abychom jej aplikovali na retezec, ne seznam.
 
 ## Schovani slova
-Jakmile je slovo vybrane, musime jej pro uzivatele schovat. Zvolime si akorat
-symbol, ktery se bude zobrazovat misto jednotlivych slov:
+Jakmile je slovo vybrane, musime jej pro uzivatele schovat. Zvolime si symbol,
+ktery se bude zobrazovat misto jednotlivych slov:
 ```python
 def schovej_slovo(slovo: str) -> list:
     "Nahradime pismena symbolem `_` a soucasne vypocitame pokusy"
@@ -236,15 +242,16 @@ Je dost mozne, ze druhy udaj, tedy pocet pokusu bude desetinne cislo. Pouzijeme
 proto funkci `round()`, abychom jej zaokrouhlili:
 ```python
     ...
-    return ["_"] * len(slovo), round(1.3 * len(slovo), 0)
+    return ["_"] * len(slovo), round(1.3 * len(slovo))
 ```
 Jeste doplnime volani nasi nove funkce:
 ```python
     ...
     tajne_slovo, pokusy = schovej_slovo(vybrane_slovo)
-    print(f"SCHOVANE SLOVO: {tajne_slovo}")
+    print(f"POCET POKUSU: {pokusy}")
 ```
-Jeste je mozne doplnit vypis slova pomoci metody `join()`
+Jeste je mozne doplnit vypis slova pomoci metody `join()`, abychom spojili
+podtrzitka v seznamu `tajne_slovo`.
 
 ## Stav hry
 Nyni, kdyz mame vsechny udaje pohromade, muzeme zacit upravovat cyklus, uvnitr
@@ -291,11 +298,12 @@ JMENO = "Eliska"
 VEK = 25
 "Ahoj, jmenuji se {} a je mi {} let" .format(JMENO, VEK)
 ```
-Pouziti je mene upovidane, nicmene pokud bych chtel vypsat vice promennych,
-porad by byl tento zpusob pomerne narocny na vypisovani.
+Pouziti je porad pomerne upovidane. Pokud bych chtel vypsat vice promennych,
+porad by byl tento zpusob pomerne narocny na vypisovani. Jeho vyhoda spociva
+v pomerne sirokem spektru moznosti formatovani uvnitr zavorek `{}`.
 
 ### F-string
-Od verze Pythonu 3.6 mame k dispozici dalsi metodu pro formatovani:
+Od verze Pythonu 3.6 mame k dispozici jeste jednu metodu pro formatovani:
 ```
 JMENO = "Lucie"
 VEK = 27
@@ -310,7 +318,7 @@ jednoduche, abych ty puvodni predcasne neukoncoval.
 Vyberte si zpusob formatovani, ktery se vam nejvice hodi a pojdme jej pouzit:
 ```python
 def vypis_hry(hrac: str, stav: str, zbyva: int) -> None:
-    zprava = f"HRAC: {hrac} | STAV: {stav} | ZBYVA TAHU: {zbyva}"
+    zprava = f"|HRAC: {hrac} | STAV: {stav} | ZBYVA TAHU: {zbyva}|"
     oddelovac = len(zprava) * "-"
     print(oddelovac, zprava, oddelovac, sep="\n")
 ```
@@ -323,7 +331,7 @@ Nova funkce, ktera zajisti informativni vypisovat se sklada ze tri casti:
     while pokusy:
         vypis_hry(hrac, tajne_slovo, pokusy)
 ```
-Funkci budeme ale volat az za chvili.
+Funkci zavolame jiz v ramci nasi smycky.
 
 ## Tah hrace
 Na pocatku kazdeho kola, jakmile se se vypise stav pomoci funkce `vypis_hry()`,
@@ -332,48 +340,41 @@ bude hrac volit pismeno:
 def vyber_pismena() -> str:
     return input("HADEJ PISMENO: ")
 ```
-Opet funkci definujeme ale zatim ji nebudeme volat.
+Opet funkci definujeme a zavolame uvnitr `while` cyklu.
 
 ## Overeni tahu
 Dalsi funkce, souvisejici s predchozi funkci `vyber_pismena`, je posouzeni,
 jestli se pismeno doopravdy nachazi v tajnem slove:
 ```python
-def overeni_pismena(pism: str, slovo: str) -> None:
-    for index, pismeno in enumerate(slovo):
-        if pismeno in pism:
-            slovo[index] = pism
+def overeni_pismena(pismeno: str, tajne: list, puvodni: str) -> None:
+    for index, pism in enumerate(slovo):
+        if pism == pismeno:
+            tajne[index] = pism
 ```
 Principem je zkontrolovat jedno pismeno za druhym, jestli nesedi k pismenu,
-ktere hrac tipoval. Do teto funkce zadame dva parametry:
+ktere hrac tipoval. Do teto funkce zadame 3 parametry:
 1. __Pismeno__, ktere zvolil hrac
+2. __Tajenku__, tedy seznam s podtrzitky
 2. __Slovo__, ktere hada hrac
-
-## Dalsi a dalsi kolo
-Predchozi funkce jsme jen definovali a nyni je pouzijeme. Vsechny tyto dilci
-funkce, ktere se opakuji v kazdem kole sdruzime pod jednu vetsi:
 ```python
-def hraci_kolo(hrac: str, pokusy: str, slovo: str) -> None:
-    vypis_hry(hrac, slovo, pokusy)
-    hadani = vyber_pismena()
-    overeni_pismena(hadani, slovo)
-```
-Finalni volani teto funkce uvnitr smycky doplnime nasledovne:
-```python
+    ...
     while pokusy:
-        hraci_kolo(hrac, pokusy, tajne_slovo)
-        pokusy -= 1
+        vypis_hry(hrac, tajne_slovo, pokusy)
+        vybrane_pismeno = vyber_pismena()
+        overeni_pismena(vybrane_pismeno, tajne_slovo, vybrane_slovo)
+        ...
 ```
-Nakonec jeste po kazdem kole snizime hodnotu promenne `pokusy`.
+Nakonec nesmime zapomenout na snizeni hodnoty ulozene v promenne `pokusy`.
 
 ## Zaver hry
-Nakonec zbyva posoudit posledni, a to podminku, zda hrac vyhraje, pripadne
-prohraje:
+Posledni vec, ktera nam zbyva, je posoudit podminku, zda hrac vyhraje:
 ```python
 def ukonceni_hry(hrac: str, stav: str, pokusy: int) -> None:
     if "_" not in stav:
         vypis_hry(hrac, slovo, pokusy)
         print(f"VYBORNE, {hrac}, UHADL JSI!")
         exit()
+
     elif "_" in stav and pokusy == 0:
         print(f"PROHRALS, {hrac}, TREBA PRISTE!")
         exit()
@@ -385,5 +386,4 @@ A dopiseme posledni volani, nasi ukoncujici funkce `ukonceni_hry()`:
 ```
 
 Pokracovat na [lekci#09](https://github.com/Bralor/python-academy/tree/lekce09)
-
 
