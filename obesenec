@@ -8,56 +8,56 @@ def main() -> None:
     tajne_slovo, pokusy = schovej_slovo(vybrane_slovo)
 
     while pokusy:
-        hraci_kolo(hrac, tajne_slovo, pokusy, vybrane_slovo)
+        vypis_hry(hrac, tajne_slovo, pokusy)
+        vybrane_pismeno = vyber_pismena()
+        overeni_pismena(vybrane_pismeno, tajne_slovo, vybrane_slovo)
         pokusy -= 1
-        ukonceni_hry(hrac, tajne_slovo, pokusy)
+        ukonceni_hry(tajne_slovo, hrac, pokusy)
 
 
 def pridej_hrace() -> str:
     return input("ZADEJTE JMENO HRACE: ")
 
 
-def vyber_slovo(soubor) -> str:
+def vyber_slovo(soubor: str) -> str:
     import random
     with open(soubor, "r") as txt:
-        slova = txt.readlines()
-    return random.choice(slova).strip()
+        vsechna_slova = txt.readlines()
+    return random.choice(vsechna_slova).strip()
 
 
-def schovej_slovo(slovo: str) -> list:
-    "Nahradime pismena symbolem `_` a soucasne vypocitame pokusy"
-    return ["_"] * len(slovo), round(1.3 * len(slovo), 0)
+def schovej_slovo(slovo: str) -> tuple:
+    return (
+        len(slovo) * ["_"],
+        round(len(slovo) * 1.4)
+    )
 
 
-def vypis_hry(hrac: str, stav: str, zbyva: int) -> None:
-    zprava = f"HRAC: {hrac} | STAV: {stav} | ZBYVA TAHU: {zbyva}"
+def vypis_hry(jmeno: str, tajenka: list, pokusy: int) -> None:
+    zprava = \
+    f"|HRAC: {jmeno} | SLOVO: {' '.join(tajenka)} | ZBYVA POKUSU: {pokusy} |"
     oddelovac = len(zprava) * "-"
     print(oddelovac, zprava, oddelovac, sep="\n")
 
 
 def vyber_pismena() -> str:
-    return input("HADEJ PISMENO: ")
+    return input("VYBER PISMENO: ")
 
 
-def overeni_pismena(pism: str, tajne: str, vybrane: str) -> None:
-    for index, pismeno in enumerate(vybrane):
-        if pismeno in pism:
-            tajne[index] = pism
+def overeni_pismena(pismeno: str, tajne: list, puvodni: str) -> None:
+    for index, pism in enumerate(puvodni):
+        if pism == pismeno:
+            tajne[index] = pismeno
 
 
-def hraci_kolo(hrac: str, slovo: str, pokusy: int, vybrane_sl: str) -> None:
-    vypis_hry(hrac, slovo, pokusy)
-    hadani = vyber_pismena()
-    overeni_pismena(hadani, slovo, vybrane_sl)
-
-
-def ukonceni_hry(hrac: str, stav: str, pokusy: int) -> None:
-    if "_" not in stav:
-        vypis_hry(hrac, slovo, pokusy)
-        print(f"VYBORNE, {hrac}, UHADL JSI!")
+def ukonceni_hry(tajne_slovo: list, hrac: str, pokusy: int) -> None:
+    if "_" not in tajne_slovo:
+        vypis_hry(hrac, tajne_slovo, pokusy)
+        print(f"VYHRALS, {hrac}, GRATULACE")
         exit()
-    elif "_" in stav and pokusy == 0:
-        print(f"PROHRALS, {hrac}, TREBA PRISTE!")
+
+    elif "_" in tajne_slovo and pokusy == 0:
+        print(f"PROHRALS, {hrac}, NEKDY JINDY!")
         exit()
 
 
