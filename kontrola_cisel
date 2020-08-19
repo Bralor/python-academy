@@ -1,46 +1,34 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """Lekce #9 - Uvod do programovani, kontrola cisel"""
 
-def hlavni():
-    nactena_cisla = nacitani_udaju("numbers.txt")
-    ostripovana_data = ocisti_ciselne_udaje(nactena_cisla)
-    zkontroluj_typ_udaje(ostripovana_data)
+     
+def hlavni() -> None:
+    nactene_udaje = nacitani_udaju("cisla.txt")
+    preved_udaje(nactene_udaje)
 
 
-def nacitani_udaju(soubor):
-    with open(soubor, "r") as txt:
+def nacitani_udaju(soubor: str, rezim="r") -> str:
+    with open(soubor, rezim) as txt:
         return txt.readlines()
 
 
-def ocisti_ciselne_udaje(neupravene):
-    return [naformatuj_data(radek.strip()) for radek in neupravene]
+def preved_udaje(data: list) -> None:
+    prevedeno = set()
+    
+    for udaj in data:
+        try:
+            udaj = int(udaj.strip())
 
+        except ValueError:
+            print(f"NELZE PREVEST --> {udaj}")
 
-def naformatuj_data(udaj):
-    return f"ID: {udaj}, TYPE: {type(udaj)}"
+        else:
+            print(f"{udaj} --> OK, POKRACUJI..")
+            prevedeno.add(udaj)
 
-
-def zkontroluj_typ_udaje(upravene):
-    overene_udaje = []
-
-    while upravene:
-        uvereni_typu(overene_udaje, upravene)
-
-
-def uvereni_typu(uloziste, detail):
-    try:
-        vyber_cislo = detail.pop().split()[1][:-1]
-        prevedena_hodnota = int(vyber_cislo)
-
-    except ValueError as ve:
-        print(f"NEKONVERTOVATELNE --> {vyber_cislo}, {ve.__class__.__name__}")
-
-    else:
-        print(f"{vyber_cislo} --> OK, pokracuji...")
-        uloziste.append(prevedena_hodnota)
-
-    finally:
-        print("-" * 39)
+        finally:
+            print("-" * 39)
 
 
 hlavni()
+
