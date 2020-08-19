@@ -18,7 +18,7 @@ se mohou objevit, co znamenaji a jak s nimi pracovat. V bodech:
 1. __Typy__ chyb
 2. __Vyjimky__
 3. __try/except__
-4. __Debuggovani__
+4. __Debugovani__
 
 ## Zkontroluj vstupni data #1
 Nas dnesni program bude mit za ukol kontrolat datove typy, ktere do nej nacteme.
@@ -304,17 +304,15 @@ Nakonec doplnime vetev s __finally__, ktera se spusti v kazdem pripade:
 Nyni muzeme program opet spustit a meli bychom dostat vystup stejny, jako
 v ukazce na uvod.
 
-## Debuggovani
+## Debugovani [#2](https://github.com/Bralor/python-academy/blob/lekce09/debugovani_mesta.py)
 Predstavme si situaci. Nas vedouci nam zada ukol, zpracovat textovy soubor s
 udaji. Chceme jej cely projit a naformatovat vystup jako `Udaj1, Udaj2, ...`
 (pocatecni pismeno velke, zbytek malym pismem a oba udaje oddelene carkou).
-Udaju je hromada a rekne, ze jakmile dojdeme po vyraz `quit`, chceme hledani
-ukoncit.
 
 ## Ukazka druha
 Spustime druhy soubor:
 ```
-$ ./kontrola_mest
+$ ./debugovani_mest
 ```
 Jakmile spustime druhy soubor, chceme vystup zakonceny nasledovne:
 ```
@@ -328,7 +326,7 @@ Zimbabwe,Harare
 ```
 
 ## Druhy ukol
-Nejprve si sepsat strukturu naseho kodu. Tedy jednotlive body, co by mel kod
+Nejprve si sepiseme strukturu naseho kodu. Tedy jednotlive body, co by mel kod
 delat:
 ```python
 # nacist udaje ze souboru
@@ -379,7 +377,7 @@ def prepis_udaje(nacteny_soubor: list) -> None:
 ```
 Obe funkce pak zavolame. Treba v ridici funkci `main()`.
 
-## Jak zacit s debuggovanim?
+## Jak zacit s debugovanim?
 Nejlepsim zpusobem jak overit, jestli nas kod funguje jak ma, je spustit jej.
 Cim vice ruznych variant spusteni vyzkousim, tim mene chyb objevime pozdeji.
 Presto se muze stat, ze vsechny moznosti dostatecne neosetrime.
@@ -401,7 +399,7 @@ silnejsi kalibr. Vetsina textovych editoru ma vlastni __debugger__. My si ale
 povime neco o standartnim debuggeru pojmenovanem __pdb__.
 
 ## Spoustime Pdb
-__Pdb__ je modul v pythonu, ktery nas pusti do interaktivniho prohlizece prubehu
+__Pdb__ je modul v Pythonu, ktery nas pusti do interaktivniho prohlizece prubehu
 naseho kodu. Spustime nas kod s __pdb__ nasledovne:
 ```
 python3 -m pdb <jmeno_souboru>.py
@@ -414,7 +412,7 @@ Dostaneme se do interaktivniho profilu uvnitr terminalu:
 ```
 
 ## Dostupne prikazy
-Na uvod si muzeme vypsat napovedu:
+Na uvod si muzeme vypsat __napovedu__:
 ```
 (Pdb) ?
 ```
@@ -447,7 +445,7 @@ podminka. Obvykle u `return` ohlaseni, pokud je k dispozici.
 V nasem kodu `return` mame, takze nastavime sledovani radku, na kterem se
 klicove slovo nachazi.
 ```
-(Pdb) b 22
+(Pdb) b <cislo_radku_s_return>
 ```
 Pomoci `b` nastavim tzv. _breakpoint_, coz je klicovy prvek modulu `pdb`, ktery
 nam nastavi v kodu misto, na ktere pokud v prubehu kodu narazim, tak jej
@@ -468,14 +466,13 @@ Dominican Republic,Santo Domingo
 > /home/matous/projects/python-academy/debugging_mesta.py(22)prepis_udaje()
 -> return
 ```
-Prubeh se zastavil na radku 22, na nasem `breakpointu`. Pojdme si vypsat obsah
-promenne `udaj`:
+Prubeh se zastavil na radku, kde jsme nastavili nas `breakpoint`. Pojdme si
+vypsat obsah promenne `udaj`:
 ```
 (Pdb) p udaj
 ```
 Ten by nam mohl aspon trochu objasnit, proc se spustila podminka predcasne:
 ```
-(Pdb) p udaj
 'ECUADOR, QUITO'
 ```
 Cast vyrazu obsahuje __quit__. Tim padem neni mozne nase udaje proverit vsechny,
