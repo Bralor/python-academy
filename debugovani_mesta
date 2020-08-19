@@ -1,0 +1,35 @@
+#!/usr/bin/python3
+"""Lekce #10 - Uvod do programovani, debugging"""
+
+def nacti_soubor(soubor: str, mod: str = "r") -> list:
+    try:
+        with open(soubor, mod) as txt:
+            obsah = txt.readlines()
+        return obsah
+
+    except FileNotFoundError:
+        print("SOUBOR NELZE NAJIT")
+
+
+def prepis_udaje(nacteny_soubor: list) -> None:
+    for udaj in nacteny_soubor:
+        try:
+            udaj = udaj.strip()
+        except AttributeError:
+            print(f"NELZE STRIPOVAT TYP {type(udaj)}")
+        else:
+            if "quit" in udaj.lower():
+                return
+            zeme, mesto = udaj.split(",")
+            mesto = mesto.strip()
+            zeme = zeme.strip()
+
+            print(zeme.title(), mesto.title(), sep=",")
+
+def main() -> None:
+    moje_udaje = nacti_soubor("mesta.txt")
+    prepis_udaje(moje_udaje)
+
+
+main()
+
