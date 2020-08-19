@@ -20,7 +20,7 @@ se mohou objevit, co znamenaji a jak s nimi pracovat. V bodech:
 3. __try/except__
 4. __Debugovani__
 
-## Zkontroluj vstupni data #1
+## Zkontroluj vstupni data [#1](https://github.com/Bralor/python-academy/blob/lekce09-fixes/zkontroluj_vstupni_data)
 Nas dnesni program bude mit za ukol kontrolat datove typy, ktere do nej nacteme.
 Budeme chtit vedet, jestli vstupni udaje obsahuji pouze hodnoty, ktere lze
 prevadet na celociselne udaje (integer), prip. jestli data neobsahuji nejake
@@ -54,8 +54,8 @@ NEKONVERTOVATELNE --> mmnnoo, ValueError
 - soubor __cisla.txt__
 - [while smycky](https://github.com/Bralor/python-academy/tree/lekce04)
 - [for smycky](https://github.com/Bralor/python-academy/tree/lekce05)
-- [funkce v Pythonu](https://github.com/Bralor/python_academy/tree/lekce06)
-- [prace s text. soubory](https://github.com/Bralor/python_academy/tree/lekce08)
+- [funkce v Pythonu](https://github.com/Bralor/python-academy/tree/lekce06)
+- [prace s text. soubory](https://github.com/Bralor/python-academy/tree/lekce08)
 
 ## Zacneme s ulohou
 
@@ -65,10 +65,7 @@ NEKONVERTOVATELNE --> mmnnoo, ValueError
 
 ## Chyby v Pythonu
 Chyby udela prakticky kazdy. Mohou zpusobit selhani naseho programu nebo
-minimalne nebude fungovat tak, jak ocekavame.
-
-## Jake mame chyby?
-Nejprve je vhodne udelat se v tom vsem poradek:
+minimalne nebude fungovat tak, jak ocekavame. Nejprve jednotlive typy chyb.
 
 ### Syntakticke chyby
 Jde o prohresek proti pravidlum skladebnich predpisu jazyka Python.
@@ -114,9 +111,9 @@ Pokud chceme ziskat spravnou hodnotu, musime vlozit scitance do zavorek.
 
 ## Souhrn
 Pokud tedy resime __typ__ chyb, bavime se o:
-1. Syntakticke chyby
-2. Behova chyby
-3. Logicke chyby
+1. __Syntakticke__ chyby
+2. __Behove__ chyby
+3. __Logicke__ chyby
 
 ## Zacneme s ukolem
 Opet si do pracovniho adresare nakopirujeme soubor s hodnotami:
@@ -302,7 +299,7 @@ Nakonec doplnime vetev s __finally__, ktera se spusti v kazdem pripade:
             print("-" * 39)
 ```
 Nyni muzeme program opet spustit a meli bychom dostat vystup stejny, jako
-v ukazce na uvod.
+v [ukazce](#ukazka-na-uvod).
 
 ## Debugovani [#2](https://github.com/Bralor/python-academy/blob/lekce09/debugovani_mesta.py)
 Predstavme si situaci. Nas vedouci nam zada ukol, zpracovat textovy soubor s
@@ -312,7 +309,7 @@ udaji. Chceme jej cely projit a naformatovat vystup jako `Udaj1, Udaj2, ...`
 ## Ukazka druha
 Spustime druhy soubor:
 ```
-$ ./debugovani_mest
+$ ./debugovani_mesta
 ```
 Jakmile spustime druhy soubor, chceme vystup zakonceny nasledovne:
 ```
@@ -484,7 +481,7 @@ opravovani.
         return
 ```
 Ted by mel nas kod probehnout az do konce, jak jsme videli v
-[ukazce](#-ukazka-druha).
+[ukazce](#ukazka-druha).
 
 ## Zaverem
 Ucelne se snazime psat vice testu a overovani, abychom debugovani predchazeli.
