@@ -20,7 +20,7 @@ se mohou objevit, co znamenaji a jak s nimi pracovat. V bodech:
 3. __try/except__
 4. __Debugovani__
 
-## Zkontroluj vstupni data [#1](https://github.com/Bralor/python-academy/blob/lekce09-fixes/zkontroluj_vstupni_data)
+## Zkontroluj vstupni data [#1](https://github.com/Bralor/python-academy/blob/lekce09-fixes/kontrola_cisel)
 Nas dnesni program bude mit za ukol kontrolat datove typy, ktere do nej nacteme.
 Budeme chtit vedet, jestli vstupni udaje obsahuji pouze hodnoty, ktere lze
 prevadet na celociselne udaje (integer), prip. jestli data neobsahuji nejake
@@ -301,7 +301,7 @@ Nakonec doplnime vetev s __finally__, ktera se spusti v kazdem pripade:
 Nyni muzeme program opet spustit a meli bychom dostat vystup stejny, jako
 v [ukazce](#ukazka-na-uvod).
 
-## Debugovani [#2](https://github.com/Bralor/python-academy/blob/lekce09/debugovani_mesta.py)
+## Debugovani [#2](https://github.com/Bralor/python-academy/blob/lekce09/debugovani_mesta)
 Predstavme si situaci. Nas vedouci nam zada ukol, zpracovat textovy soubor s
 udaji. Chceme jej cely projit a naformatovat vystup jako `Udaj1, Udaj2, ...`
 (pocatecni pismeno velke, zbytek malym pismem a oba udaje oddelene carkou).
