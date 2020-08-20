@@ -24,7 +24,7 @@ def prepis_udaje(nacteny_soubor: list) -> None:
             mesto = mesto.strip()
             zeme = zeme.strip()
 
-            print(zeme.title(), mesto.title(), sep=",")
+            print(zeme.title, mesto.title, sep=",")
 
 def main() -> None:
     moje_udaje = nacti_soubor("mesta.txt")
