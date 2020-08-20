@@ -32,15 +32,15 @@ Vystup by na konci lekce mohl vypadat nasledovne:
 ```
     VITEJTE U NASEHO POCITADLA!    
 ===================================
-1. NEJCASTEJSI SLOVO: in, VYSKYT: 5
+1. NEJCASTEJSI SLOVO: he, VYSKYT: 6
 ===================================
-2. NEJCASTEJSI SLOVO: up, VYSKYT: 4
+2. NEJCASTEJSI SLOVO: in, VYSKYT: 5
 ===================================
-3. NEJCASTEJSI SLOVO: of, VYSKYT: 3
+3. NEJCASTEJSI SLOVO: up, VYSKYT: 4
 ===================================
-4. NEJCASTEJSI SLOVO: ye, VYSKYT: 3
+4. NEJCASTEJSI SLOVO: of, VYSKYT: 3
 ===================================
-5. NEJCASTEJSI SLOVO: an, VYSKYT: 3
+5. NEJCASTEJSI SLOVO: ye, VYSKYT: 3
 ===================================
 ```
 
@@ -87,8 +87,6 @@ Nejprve nase zadani. To bude vypadat nasledovne:
 ```python
 """ Lekce #5 - Uvod do programovani, nejcastejsi slova"""
 
-# I. KROK
-# Zadani nasi ulohy
 TEXT = ...
 ```
 Tak a ted je ta chvile, kdy si vysvetlime __for__ cyklus a jeho syntaxi.
@@ -141,11 +139,10 @@ print(VETA1.split(".", maxsplit=1))  # rozdelime po vetach, 1x
 
 Doplnime cast naseho kodu:
 ```python
-# I. KROK
 jednotliva_slova = TEXT.split()  # opatrne na symbol rozdelovani
 
 for slovo in jednotliva_slova:
-    ...
+    print(slovo)
 ```
 ## Slova mame! Mame?!
 Dale bychom se chteli zbavit carek a tecek! Pro odstraneni libovolnych vyrazu
@@ -205,7 +202,8 @@ bezi dal, takze pokazde, kdyz se objevi stejny klic, prictu k hodnote +1.
 
 ### Dopsana III. cast
 ```python
-...
+vyskyt_slov = {}
+
 for ciste_slovo in vycistena_slova:
     vyskyt_slov[ciste_slovo] = vyskyt_slov.setdefault(ciste_slovo, 0) + 1
     ...
@@ -249,14 +247,13 @@ for cislo, jmeno in enumerate(JMENA, 1):
 ### Dopiseme V. cast
 ```python
 ...
+print("VITEJTE U NASEHO POCITADLA!".center(35, " "), end=f"\n{ODDELOVAC}\n")
+
 for index, vysledek in enumerate(nejcastejsich_pet):
-    if index == 0:
-        print("VITEJTE U NASEHO POCITADLA!".center(35, " "), end=f"\n{ODDELOVAC}\n")
-    else:
-        print(
-            f"{index}. NEJCASTEJSI SLOVO: {vysledek}, VYSKYT: {vyskyt_slov[vysledek]}",
-            end=f"\n{ODDELOVAC}\n"
-        )
+    print(
+        f"{index+1}. NEJCASTEJSI SLOVO: {vysledek}, VYSKYT: {vyskyt_slov[vysledek]}",
+        end=f"\n{ODDELOVAC}\n"
+    )
 ```
 Vyuzijeme funkcionalitu __enumerate__, abychom vypsali uvodni text a potom
 ocislovali nejcastejsi vystupy.
@@ -312,6 +309,3 @@ for number in range(0, 5):
 
 Pokracovat na [Lekci#06](https://github.com/Bralor/python-academy/tree/lekce06)
  
-
-
-
