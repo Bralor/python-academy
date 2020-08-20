@@ -249,9 +249,9 @@ for cislo, jmeno in enumerate(JMENA, 1):
 ...
 print("VITEJTE U NASEHO POCITADLA!".center(35, " "), end=f"\n{ODDELOVAC}\n")
 
-for index, vysledek in enumerate(nejcastejsich_pet):
+for index, vysledek in enumerate(nejcastejsich_pet, 1):
     print(
-        f"{index+1}. NEJCASTEJSI SLOVO: {vysledek}, VYSKYT: {vyskyt_slov[vysledek]}",
+        f"{index}. NEJCASTEJSI SLOVO: {vysledek}, VYSKYT: {vyskyt_slov[vysledek]}",
         end=f"\n{ODDELOVAC}\n"
     )
 ```
