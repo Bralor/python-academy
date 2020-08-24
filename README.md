@@ -8,103 +8,107 @@ Minula [lekce#09](https://github.com/Bralor/python-academy/tree/lekce09)
 ## Dulezite odkazy
 - Portal [Engeto.com](https://engeto.com/)
 - Python Academy [repozitar](https://github.com/Bralor/python-academy)
-- [Soubor \_\_init\_\_.py](https://pythontips.com/2013/07/28/what-is-__init__-py/)
-- [Hledani modulu](https://docs.python.org/3/tutorial/modules.html#the-module-search-path)
-- [Instalator balicku pip](https://pypi.org/project/pip/)
+- Soubor [\_\_init\_\_.py](https://pythontips.com/2013/07/28/what-is-__init__-py/)
+- Hledani [modulu](https://docs.python.org/3/tutorial/modules.html#the-module-search-path)
+- Instalator balicku [pip](https://pypi.org/project/pip/)
 - [Pycharm importing](https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html)
 - [Name == '__main__'](https://www.geeksforgeeks.org/what-does-the-if-__name__-__main__-do/)
 
-# Dnesni ukol
-Cilem dnesni lekce je povedet si vic o modulech. Rozlisovat mezi moduly a baliky. Umet nacist nejenom moduly standartni ale i moduly tretich stran a s tim problematika souvisejici. Dale se budeme snazit rozdelit nasi praci do nekolika souboru. Po celou dobu jsme pracovali v prostredi jednoho souboru. Ale dnes se budeme snazit pouzit na praci i vice spolupracujicich souboru.
+## Dnesni ukol
+Cilem dnesni lekce je povedet si vic o modulech. Rozlisovat mezi moduly a
+baliky. Umet nacist nejenom moduly standartni ale i moduly tretich stran a
+s tim problematika souvisejici. Dale se budeme snazit rozdelit nasi praci do
+nekolika souboru.
+1. Moduly, v Pythonu
+2. Baliky, v Pythonu
 
-# Vytvareni souboru
-Budeme v situaci, kdy dostaneme jako vstupni udaj textovy soubor. V tomto souboru jsou jmena a jejich pripony. Za pomoci tohoto souboru budeme chtit vytvorit skutecne soubory (staci prazdne) do uzivatelem zadaneho adresare.
 
-# Nas cil
-Vystupy pro ruzne scenare budou vypadat nasledovne (nebo podobne).
+## Vytvareni souboru
+Budeme v situaci, kdy dostaneme jako vstupni udaj textovy soubor. V tomto
+souboru jsou jmena a jejich pripony. Za pomoci tohoto souboru budeme chtit
+vytvorit skutecne soubory (staci prazdne) do uzivatelem zadaneho adresare.
 
-Spousteni:
+## Ukazka na uvod
+Spustime skript v adresari:
 ```
-$ python <jmeno_souboru> "<prazdna_slozka>" "<txt_s_jmeny>"  # obecne
-$ python hlavni.py "/home/mholinka/projects/python_academy/lesson11/pokus" "/home/mholinka/projects/python_academy/lesson11/jmena_souboru.txt"
+$ ./soubory_z_txt
 ```
-
-Uspech:
+A dostaneme nasledujici vystup, pokud jsme adresar se soubory jeste nevytvorili:
 ```
+<USPECH>
 Vytvarim /home/mholinka/projects/python_academy/lesson11/pokus/outlook_2016.pptx
 Vytvarim /home/mholinka/projects/python_academy/lesson11/pokus/icon_53456.jpg
 Vytvarim /home/mholinka/projects/python_academy/lesson11/pokus/summary_2019.pptx
 ...
 ```
-Neuspech:
+...pripadne takovy vystup, pokud slozka jiz existuje.
 ```
-$ python hlavni.py "/home/mholinka/projects/python_academy/lesson11/pokus" "/home/mholinka/projects/python_academy/lesson11/jmena_souboru.txt"
+<NEUSPECH>
 ADRESAR JIZ EXISTUJE! (/home/mholinka/projects/python_academy/lesson11/pokus)
 SOUBORY NELZE VYTVORIT! VRACENA HODNOTA --> False
 ```
 
-# Prerequisites
+#Spousteni:
+#```
+#$ python <jmeno_souboru> "<prazdna_slozka>" "<txt_s_jmeny>"  # obecne
+#$ python hlavni.py "/home/mholinka/projects/python_academy/lesson11/pokus" "/home/mholinka/projects/python_academy/lesson11/jmena_souboru.txt"
+#```
+
+
+## Co budeme potrebovat?
 - python 3.6+
-- text. editor
-- [handlovani chyb](https://github.com/Bralor/python_academy/tree/master/lesson09#zachazeni-s-chybami)
-- [prace s text. soubory](https://github.com/Bralor/python_academy/tree/master/lesson08#prace-se-soubory-pomoci-pythonu)
+- text. editor/IDE
+- [for smycky](https://github.com/Bralor/python-academy/tree/lekce05)
+- [funkce v Pythonu](https://github.com/Bralor/python-academy/tree/lekce06)
+- [prace s text. soubory](https://github.com/Bralor/python-academy/tree/lekce08)
+- [handlovani chyb](https://github.com/Bralor/python-academy/tree/lekce09)
 
-
-# Postup
-Do pracovniho adresare si nakopirujeme vstupni textovy soubor, se kterym budeme chtit pracovat. Dale si otevreme novy soubor, ktery pojmenujeme __hlavni.py__ a dalsi soubor __pomocne\_funkce.py__.
-
-Hlavni soubor:
+## Postup
+Do pracovniho adresare si nakopirujeme vstupni textovy soubor, se kterym
+budeme chtit pracovat `jmena_souboru.txt`. Dale si otevreme novy soubor,
+ktery pojmenujeme `hlavni.py` a dalsi soubor `pomocne`.
+```python
+#!/usr/bin/python3
+"""Lekce #11 - Uvod do programovani, importovani - hlavni"""
 ```
-#!/usr/local/bin/python3.8
-"""Lekce #11 - Uvod do programovani, importovani - hlavni funkce"""
-
-# I. KROK
-# Vytvorime hlavni funkci
-
-# II. KROK
-# Volame funkci *hlavni()*
-# __name__ == "__main__"
+Pro pomocne funkce vytvorime dalsi soubor:
 ```
-Pomocne funkce:
-```
-#!/usr/local/bin/python3.8
-"""Lekce #11 - Uvod do programovani, importovani - pomocne funkce"""
-
-# ad. III. KROK
-# Funkce zkontroluje jestli je cesta validni
-
-# ad. III. KROK
-# Funkce vytvori prazdny adresar
-
-# ad IV. KROK
-# Funkce najde soubor, otevre jej a precte jeho obsah
-
-# ad V. KROK
-# Funkce se pokus vytvorit jednotlive soubory
+#!/usr/bin/python3
+"""Lekce #11 - Uvod do programovani, importovani - pomocne"""
 ```
 
-# Teorie s priklady
-## Nazvoslovi
-1. __Modul__ (module) - v jednoduchosti jde o [soubor](https://engeto.com/cs/kurz/online-python-akademie/studium/TV769pARQ8GJsa-X_ykhug/importovani/importujeme-moduly/co-je-to-modul) s priponou ".py". Obsahuje promenne, funkce, aj.
-
-Priklad:
-```
+## Na uvod 
+### Modul
+V podstate jde o soubor s priponou ".py". Obsahuje promenne, funkce, aj. Tak
+jak jsme psali kod doposud.
+```python
 import <muj_modul>      # obecne
 import os               # konkretni priklad
 ```
 
-2. __Balik__ (package) - je cela sbirka modulu (tedy *.py* souboru) umistena ve spolecnem adresari, ktery ma navic jistou hierarchii. Uvnitr adresare najdeme soubor [__\_\_init\_\_.py__](#important-links) (oznacuji adresare na disku, ktere Python pouziva jako baliky). Dale obsahuji soubor __\_\_pycache\_\_.py__. To je soubor, ktery vznika kdyz spoustime koda interpret jej zkompiluje na __bytecode__ a schova je do toho adresare. Ucel je spustit program, co mozna nejrychleji (za predpokladu, ze jej neupravime).
+### Balik
+Je cela sbirka modulu (tedy *.py* souboru) umistena ve spolecnem adresari,
+ktery ma navic jistou hierarchii. Uvnitr adresare najdeme soubor:
+1. [__\_\_init\_\_.py__](#important-links)
+2.  __\_\_pycachce\_\_.py__
 
-Priklad:
-```
+### init
+Oznacuji adresare na disku, ktere Python pouziva jako baliky.
+
+### pycache
+To je soubor, ktery vznika kdyz spoustime kod a interpret jej zkompiluje na
+__bytecode__ a schova je do toho adresare. Ucel je spustit program, co mozna
+nejrychleji (za predpokladu, ze jej neupravime).
+```python
 from <package> import <modul>   # obecne
 from collections import List    # konkr. priklad
 ```
 
-## Ucel
-- nemusim jej psat, ale aplikovat
-- muzu jej opakovane pouzivat v ruznych souborech
-- kod je prehlednejsi
+## Souhrn
+Dulezite poznamky k modulum/balikum v ramci Pythonu:
+1. Nemusim jej opakovane zapisovat
+2. Muzu jej pouzivat na ruznych mistech (v souborech)
+3. Kod je prehlednejsi
 
 ## Importovani, obecne
 Pokud chci modul [pouzit](https://engeto.com/cs/kurz/online-python-akademie/studium/XTUm-WCsSbW1AxOucXXwWA/importovani/importujeme-moduly/jednoduchy-import), musim jej nahrat (*importovat*):
