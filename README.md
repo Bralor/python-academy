@@ -21,7 +21,10 @@ s tim problematika souvisejici. Dale se budeme snazit rozdelit nasi praci do
 nekolika souboru.
 1. Moduly, v Pythonu
 2. Baliky, v Pythonu
-
+3. Proces importovani v Pythonu
+4. Standartni moduly
+5. Moduly tretich stran
+6. if \_\_name\_\_ == "\_\_main\_\_", konstrukce
 
 ## Vytvareni souboru
 Budeme v situaci, kdy dostaneme jako vstupni udaj textovy soubor. V tomto
@@ -76,6 +79,30 @@ Pro pomocne funkce vytvorime dalsi soubor:
 #!/usr/bin/python3
 """Lekce #11 - Uvod do programovani, importovani - pomocne"""
 ```
+Jakmile mame oba soubory otevrene, nachystame si hlavni body pro `hlavni.py`:
+```python
+# hlavni.py
+
+def hlavni() -> None:
+    # volani funkce pro nahrati souboru
+    # volani funkce vytvoreni souboru
+```
+...a hlavni body pro soubor `pomocne.py`:
+```python
+# pomocny.py
+
+# Funkce pro nahrani souboru
+# Funkce pro vytvoreni souboru
+```
+Takze nas soubor `pomocne.py` by mohl zacit nasledovne:
+```python
+def nacti_soubor(soubor: str, mod: str = "r") -> list:
+    print(f"Nacitam soubor: {soubor}")
+
+def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
+    print(f"Vytvarim soubor: {jmeno_soubor}")
+```
+Nez si ale zacneme importovat pojdme si o importovani neco rict.
 
 ## Na uvod 
 ### Modul
@@ -84,6 +111,29 @@ jak jsme psali kod doposud.
 ```python
 import <muj_modul>      # obecne
 import os               # konkretni priklad
+```
+Dale muzeme _importovat_ pomoci ohlaseni `from ... import ...`:
+```python
+from pprint import pprint
+```
+Je mozne doplnit i __alias__ pomoci klicoveho slova `as`:
+```python
+from pprint import pprint as pp
+```
+Pokud se importovanych objektu vice, je vhodne dbat na mnozstvi aliasu, aby byl
+ctenar naseho kodu schopen dohledat dany objekt.
+
+Doplnime importovani do naseho souboru `hlavni.py`:
+```python
+# hlavni.py
+from pomocne import nacti_soubor, vytvor_soubor
+
+def hlavni() -> None:
+    nacti_soubor("soubor.txt")
+    vytvor_soubor("zamestnanci.csv", "/home/Documents")
+
+
+hlavni()
 ```
 
 ### Balik
@@ -111,52 +161,55 @@ Dulezite poznamky k modulum/balikum v ramci Pythonu:
 3. Kod je prehlednejsi
 
 ## Importovani, obecne
-Pokud chci modul [pouzit](https://engeto.com/cs/kurz/online-python-akademie/studium/XTUm-WCsSbW1AxOucXXwWA/importovani/importujeme-moduly/jednoduchy-import), musim jej nahrat (*importovat*):
+Pokud chci modul pouzit, musim jej nejprve _importovat_. Cela procedura hledani
+modulu nebo baliku probiha nasledovne:
 1. Python kontroluje jestli neni modul jiz nacteny
 2. Pokud neni, [hleda](#important-links) jej:
-3. V built-in modulech
+2. V built-in modulech
 4. V aktualnim adresari
-5. Pomoci sys.path
-6. ModulNotFoundError -> soubor jsme nenasli vyse
+5. Pomoci `sys.path`
+6. `ModulNotFoundError` -> soubor nenalezen
 7. Kompilace + spusteni -> soubor nalezen
-
-Priklad:
-```
+```python
 import sys
 sys.modules         # slovnik s zabudovanymi moduly
 sys.path            # adresare, kde algorytmus hleda
 ```
 
 ## Moduly tretich stran
-Pro praci s moduly tretich stran muzeme pracovat v __terminalu__ nebo primo v __editoru__:
+Pro praci s moduly tretich stran muzeme pracovat v __terminalu__ nebo primo v
+__editoru__:
 
 ### Terminal
-1. Vytvorim si virtualni pracovni prostredi
+Vytvorim si virtualni pracovni prostredi:
 ```
-python3.8 -m venv <jmeno_prostredi>     # obecne
-python3.8 -m venv python_academy        # priklad
+python3 -m venv <jmeno_prostredi>     # obecne
+python3 -m venv python_academy        # priklad
 ```
-
-2. Aktivuji moje pracovni virtualni prostredi
+Aktivuji moje pracovni virtualni prostredi:
 ```
 source <jmeno_prostredi>/bin/activate       # obecne
 source python_academy/bin/activate          # v nasem pripade
 ```
-
-Priklad s ukoncenim:
+Jakmile prostredi aktivujeme, muzeme si vsimnout kulate zavorky na zacatku
+radku s jmenem prostredi uvnitr.
 ```
 (python_academy) matous@matous:~/$ deactivate   # ukoncim virt. prostredi
-matous@matous:~/projects/python_academy$        # -> jmena prostredi nevidim
+matous@matous:~/projects/python_academy        # -> jmena prostredi nevidim
 ```
+__Pozn.__ Pro ukonceni prace ve virtualnim prostredi staci napsat prikaz
+`deactivate`.
 
-3. Najdu modul, ktery se mi hodi
-4. Stahuji + instaluji (pomoci [pip](#important-links) -> package installer)
+Najdu modul, ktery se mi hodi. Bud mame vime, co hledame, pripadne pouzijeme
+[pypi.org](https://pypi.org).
+
+Stahuji + instaluji (pomoci [pipu](#important-links) -> package installer):
 ```
 pip install requests-html       # instalace
 pip uninstall requests-html     # odstraneni
 ```
-
-5. Zkontroluji, ktere moduly mam pro svuj aktualni projekt dostupne a zapisu je do .txt souboru
+Zkontroluji, ktere moduly mam pro svuj aktualni projekt dostupne a zapisu je
+do .txt souboru:
 ```
 pip freeze > requirements.txt
 ```
@@ -170,11 +223,13 @@ pip freeze > requirements.txt
 - Vyhledame modul/balik
 
 ## if __name__ == "__main__"
-[Konstrukce](https://engeto.com/cs/kurz/online-python-akademie/studium/V1BsukdUSrS2lSP5T2-1wg/importovani/moduly-do-podrobna/co-je-to-__name__-), ktera nam umozni bezkonfliktne [importovat](#important-links) soubory i jejich obsah a pritom nedojde ke spusteni celeho souboru. Pri spusteni .py souboru ulozim do promenne __\_\_name\_\_.py__ hodnotu __\_\_main\_\_.py__.
-
-Priklad:
-```
+Konstrukce, ktera nam umozni bezkonfliktne [importovat](#important-links)
+soubory i jejich obsah a pritom nedojde ke spusteni celeho souboru. Takze pokud
+spoustim __.py__ soubor, ulozim do promenne `__name__` hodnotu `__main__`.
+Naopak pokud soubor importuji, tato situace nenastane.
+```python
 def hlavni():
+    print("Spoustim hlavni funkci()")
     print("Volani prvni funkce...")
     funkce_1()
     print("Volani druhe funkce...")
@@ -194,11 +249,8 @@ def funkce_2():
 def funkce_3():
     print("Spousteni treti funkce...")
 ```
-
-Pokud soubor importuji (.py!) nastavi hodnotu __\_\_name\_\_.py__ jako jmeno souboru.
-
-Reseni:
-```
+Pokud soubor importuji (.py!) nastavi hodnotu `__name__` jako jmeno souboru.
+```python
 if __name__ == "__main__":
     print("Spousteni pres importovani")
     hlavni()
