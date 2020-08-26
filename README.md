@@ -151,7 +151,7 @@ __bytecode__ a schova je do toho adresare. Ucel je spustit program, co mozna
 nejrychleji (za predpokladu, ze jej neupravime).
 ```python
 from <package> import <modul>   # obecne
-from collections import List    # konkr. priklad
+from typing import List    # konkr. priklad
 ```
 
 ## Souhrn
@@ -175,6 +175,88 @@ import sys
 sys.modules         # slovnik s zabudovanymi moduly
 sys.path            # adresare, kde algorytmus hleda
 ```
+
+## Jak vytvorime soubory
+Nyni se podivame na funkci `vytvor_soubor()`. K tomy abychom vytvorili soubor
+potrebujeme dve veci:
+1. __Jmeno__ souboru
+2. __Absolutni cestu__ pro umisteni
+
+Rekneme tedy, ze chceme vytvorit soubor `tabulky.csv` do aktualniho pracovniho
+adresare:
+```
+/home/absolutni_cesta/lekce10
+```
+Takze pomoci pseudokodu bude prikaz vypadat nasledovne:
+```python
+novy_soubor = <absolutni_cesta> + <jmeno>
+
+with open(novy_soubor, "w") as soub:
+    ...
+```
+Takze ted doplnime teorii vys do opravdoveho kodu:
+```python
+import os
+from typing import List
+
+...
+def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
+    try:
+        novy_soubor = os.path.join(abs_cesta, jmeno_soubor)
+        with open(novy_soubor, "w") as nf:
+            print(f"VYTVARIM: {novy_soubor}")
+
+    except FileExistsError:
+        print(f"SOUBOR: {novy_soubor} JIZ EXISTUJE!")
+
+    else:
+        print("HOTOVO!")
+```
+Pomoci modulu `os` muzeme pouzit metodu `join()` a spojit absolutni cestu
+`abs_cesta` a jmeno souboru `jmeno_souboru`. Doplnime cast kodu v souboru
+`hlavni.py`:
+```python
+    ...
+    jmena = nacti_soubor("jmena_souboru.txt")
+    print(jmena)
+```
+Nyni muzeme vyzkouset program spustit. Meli bychom dostat `list` s jednotlivymi
+jmeny
+
+## Pro poradek
+Dalsi vec, ktere chceme zabranit, aby se nam soubory samovolne vytvorily primo
+do pracovni slozky. Budeme je chtit umistit do slozky `vystupni_soubory`:
+```python
+def vytvor_adresar(jmeno: str, abs_cesta: str) -> str:
+    try:
+        os.mkdir(os.path.join(abs_cesta, jmeno))
+
+    except FileExistsError:
+        print(f"ADRESAR: {jmeno} EXISTUJE!")
+
+    except FileNotFoundError:
+        print(f"ABSOLUTNI CESTA: {abs_cesta} NEEXISTUJE!")
+
+
+    else:
+        return os.path.join(abs_cesta, jmeno)
+```
+Posledni vec, kterou doplnime je v souboru `hlavni.py` importovani a volani
+nasich funkcich.
+
+## Doplnime hlavni funkci
+Nase funkce funguji pro jednotlive soubory, takze budeme muset nejprve doplnit
+cyklus:
+```python
+def hlavni() -> None:
+    jmena = nacti_soubor("jmena_souboru.txt")
+    cil_adresar = vytvor_adresar("vystupni_soubory", os.getcwd())
+
+    for jmeno in jmena:
+        vytvor_soubor(jmeno.strip(), cil_adresar)
+```
+Po spusteni by se nam v aktualnim adresari mel vytvorit novy adresar
+`vystupni_soubory` a v nem vsechny soubory.
 
 ## Moduly tretich stran
 Pro praci s moduly tretich stran muzeme pracovat v __terminalu__ nebo primo v
@@ -257,4 +339,20 @@ if __name__ == "__main__":
 else:
     print("Naimportovano!")
 ```
+
+## Jak toho vyuzit
+Mrkneme se na nas program. Nebylo by prijmnejsi zadavani jmena textoveho souboru
+se jmeny zadat rucne? Pripadne jmeno slozky pro nase soubory? Pomoci modulu
+`sys` si muzeme upravit nas program:
+```python
+if __name__ == "__main__":
+    if len(sys.argv) == 2:
+        txt_soubor = sys.argv[1]
+        cilovy_adresar = sys.argv[2]
+        hlavni()
+    else:
+        print("INCORRECT USAGE: python <file>.py <txt_file> <dir>")
+```
+Spravne promenne pak doplnime do predchoziho kodu:
+```python
 
