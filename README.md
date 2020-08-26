@@ -18,45 +18,36 @@ Minula [lekce#09](https://github.com/Bralor/python-academy/tree/lekce09)
 Cilem dnesni lekce je povedet si vic o modulech. Rozlisovat mezi moduly a
 baliky. Umet nacist nejenom moduly standartni ale i moduly tretich stran a
 s tim problematika souvisejici. Dale se budeme snazit rozdelit nasi praci do
-nekolika souboru.
-1. Moduly, v Pythonu
-2. Baliky, v Pythonu
-3. Proces importovani v Pythonu
-4. Standartni moduly
-5. Moduly tretich stran
+nekolika souboru. Celkem tedy projedeme:
+1. __Moduly__, v Pythonu
+2. __Baliky__, v Pythonu
+3. __Proces importovani__ v Pythonu
+4. __Standartni__ moduly a baliky
+5. Moduly a baliky __tretich stran__
 6. if \_\_name\_\_ == "\_\_main\_\_", konstrukce
 
 ## Vytvareni souboru
-Budeme v situaci, kdy dostaneme jako vstupni udaj textovy soubor. V tomto
-souboru jsou jmena a jejich pripony. Za pomoci tohoto souboru budeme chtit
-vytvorit skutecne soubory (staci prazdne) do uzivatelem zadaneho adresare.
+Budeme v situaci, kdy dostaneme jako vstupni udaj textovy soubor
+[`jmena_souboru.txt`](https://github.com/Bralor/python-academy/blob/lekce10/jmena_souboru.txt)
+. V tomto souboru jsou jmena a jejich pripony. Za pomoci tohoto souboru budeme
+chtit vytvorit skutecne soubory (staci prazdne) do uzivatelem zadaneho adresare.
 
 ## Ukazka na uvod
 Spustime skript v adresari:
 ```
-$ ./soubory_z_txt
+$ python hlavni.py jmena_souboru.txt vystupni_adresar 
 ```
 A dostaneme nasledujici vystup, pokud jsme adresar se soubory jeste nevytvorili:
 ```
 <USPECH>
-Vytvarim /home/mholinka/projects/python_academy/lesson11/pokus/outlook_2016.pptx
-Vytvarim /home/mholinka/projects/python_academy/lesson11/pokus/icon_53456.jpg
-Vytvarim /home/mholinka/projects/python_academy/lesson11/pokus/summary_2019.pptx
+VYTVARIM: /home/matous/projects/python-academy/vystupni_soubory/rofl.gif
+HOTOVO!
+VYTVARIM: /home/matous/projects/python-academy/vystupni_soubory/paths.png
+HOTOVO!
+VYTVARIM: /home/matous/projects/python-academy/vystupni_soubory/icon_53333.jpg
+HOTOVO!
 ...
 ```
-...pripadne takovy vystup, pokud slozka jiz existuje.
-```
-<NEUSPECH>
-ADRESAR JIZ EXISTUJE! (/home/mholinka/projects/python_academy/lesson11/pokus)
-SOUBORY NELZE VYTVORIT! VRACENA HODNOTA --> False
-```
-
-#Spousteni:
-#```
-#$ python <jmeno_souboru> "<prazdna_slozka>" "<txt_s_jmeny>"  # obecne
-#$ python hlavni.py "/home/mholinka/projects/python_academy/lesson11/pokus" "/home/mholinka/projects/python_academy/lesson11/jmena_souboru.txt"
-#```
-
 
 ## Co budeme potrebovat?
 - python 3.6+
@@ -67,9 +58,10 @@ SOUBORY NELZE VYTVORIT! VRACENA HODNOTA --> False
 - [handlovani chyb](https://github.com/Bralor/python-academy/tree/lekce09)
 
 ## Postup
-Do pracovniho adresare si nakopirujeme vstupni textovy soubor, se kterym
-budeme chtit pracovat `jmena_souboru.txt`. Dale si otevreme novy soubor,
-ktery pojmenujeme `hlavni.py` a dalsi soubor `pomocne`.
+Do pracovniho adresare si nakopirujeme vstupni textovy soubor
+`jmena_souboru.txt`, se kterym budeme chtit pracovat `jmena_souboru.txt`.
+Dale si otevreme novy soubor, ktery pojmenujeme `hlavni.py` a dalsi soubor
+`pomocne`:
 ```python
 #!/usr/bin/python3
 """Lekce #11 - Uvod do programovani, importovani - hlavni"""
@@ -101,6 +93,19 @@ def nacti_soubor(soubor: str, mod: str = "r") -> list:
 
 def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
     print(f"Vytvarim soubor: {jmeno_soubor}")
+```
+Nahrati souboru do promenne muzeme definovat v souboru `pomocne.py`:
+```python
+def nacti_soubor(soubor: str, mod: str = "r") -> List[str]:
+    try:
+        with open(soubor, mod) as txt:
+            obsah = txt.readlines()
+
+    except FileNotFoundError:
+        print(f"SOUBOR: {soubor} NEEXISTUJE!")
+
+    else:
+        return obsah
 ```
 Nez si ale zacneme importovat pojdme si o importovani neco rict.
 
@@ -248,6 +253,9 @@ nasich funkcich.
 Nase funkce funguji pro jednotlive soubory, takze budeme muset nejprve doplnit
 cyklus:
 ```python
+import os
+from pomocne import nacti_soubor, vytvor_soubor, vytvor_adresar
+
 def hlavni() -> None:
     jmena = nacti_soubor("jmena_souboru.txt")
     cil_adresar = vytvor_adresar("vystupni_soubory", os.getcwd())
@@ -346,7 +354,7 @@ se jmeny zadat rucne? Pripadne jmeno slozky pro nase soubory? Pomoci modulu
 `sys` si muzeme upravit nas program:
 ```python
 if __name__ == "__main__":
-    if len(sys.argv) == 2:
+    if len(sys.argv) == 3:
         txt_soubor = sys.argv[1]
         cilovy_adresar = sys.argv[2]
         hlavni()
@@ -355,4 +363,12 @@ if __name__ == "__main__":
 ```
 Spravne promenne pak doplnime do predchoziho kodu:
 ```python
+import sys
+
+def hlavni() -> None:
+    jmena = nacti_soubor(txt_soubor)
+    cil_adresar = vytvor_adresar(cilovy_adresar, os.getcwd())
+
+    for jmeno in jmena:
+        vytvor_soubor(jmeno.strip(), cil_adresar)
 
