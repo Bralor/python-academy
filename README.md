@@ -61,7 +61,7 @@ HOTOVO!
 Do pracovniho adresare si nakopirujeme vstupni textovy soubor
 `jmena_souboru.txt`, se kterym budeme chtit pracovat `jmena_souboru.txt`.
 Dale si otevreme novy soubor, ktery pojmenujeme `hlavni.py` a dalsi soubor
-`pomocne`:
+`pomocne.py`:
 ```python
 #!/usr/bin/python3
 """Lekce #11 - Uvod do programovani, importovani - hlavni"""
@@ -107,11 +107,10 @@ def nacti_soubor(soubor: str, mod: str = "r") -> List[str]:
     else:
         return obsah
 ```
-Nez si ale zacneme importovat pojdme si o importovani neco rict.
 
 ## Na uvod 
 ### Modul
-V podstate jde o soubor s priponou ".py". Obsahuje promenne, funkce, aj. Tak
+V podstate jde o soubor s priponou __.py__. Obsahuje promenne, funkce, aj. Tak
 jak jsme psali kod doposud.
 ```python
 import <muj_modul>      # obecne
@@ -125,7 +124,7 @@ Je mozne doplnit i __alias__ pomoci klicoveho slova `as`:
 ```python
 from pprint import pprint as pp
 ```
-Pokud se importovanych objektu vice, je vhodne dbat na mnozstvi aliasu, aby byl
+Pokud je importovanych objektu vice, je vhodne dbat na mnozstvi aliasu, aby byl
 ctenar naseho kodu schopen dohledat dany objekt.
 
 Doplnime importovani do naseho souboru `hlavni.py`:
@@ -143,9 +142,9 @@ hlavni()
 
 ### Balik
 Je cela sbirka modulu (tedy *.py* souboru) umistena ve spolecnem adresari,
-ktery ma navic jistou hierarchii. Uvnitr adresare najdeme soubor:
+ktery ma navic jistou hierarchii. Uvnitr adresare najdeme:
 1. [__\_\_init\_\_.py__](#important-links)
-2.  __\_\_pycachce\_\_.py__
+2.  __\_\_pycache\_\_.py__
 
 ### init
 Oznacuji adresare na disku, ktere Python pouziva jako baliky.
@@ -182,7 +181,7 @@ sys.path            # adresare, kde algorytmus hleda
 ```
 
 ## Jak vytvorime soubory
-Nyni se podivame na funkci `vytvor_soubor()`. K tomy abychom vytvorili soubor
+Nyni se podivame na funkci `vytvor_soubor()`. K tomu abychom vytvorili soubor
 potrebujeme dve veci:
 1. __Jmeno__ souboru
 2. __Absolutni cestu__ pro umisteni
@@ -190,7 +189,7 @@ potrebujeme dve veci:
 Rekneme tedy, ze chceme vytvorit soubor `tabulky.csv` do aktualniho pracovniho
 adresare:
 ```
-/home/absolutni_cesta/lekce10
+/home/absolutni_cesta/lekce10/
 ```
 Takze pomoci pseudokodu bude prikaz vypadat nasledovne:
 ```python
@@ -217,9 +216,8 @@ def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
     else:
         print("HOTOVO!")
 ```
-Pomoci modulu `os` muzeme pouzit metodu `join()` a spojit absolutni cestu
-`abs_cesta` a jmeno souboru `jmeno_souboru`. Doplnime cast kodu v souboru
-`hlavni.py`:
+Pomoci modulu `os` muzeme pouzit metodu `join()` a `abs_cesta` a
+`jmeno_souboru`. Doplnime cast kodu v souboru `hlavni.py`:
 ```python
     ...
     jmena = nacti_soubor("jmena_souboru.txt")
@@ -251,7 +249,7 @@ nasich funkcich.
 
 ## Doplnime hlavni funkci
 Nase funkce funguji pro jednotlive soubory, takze budeme muset nejprve doplnit
-cyklus:
+cyklus, aby kod platit pro cely seznam `jmena`:
 ```python
 import os
 from pomocne import nacti_soubor, vytvor_soubor, vytvor_adresar
@@ -287,13 +285,10 @@ radku s jmenem prostredi uvnitr.
 (python_academy) matous@matous:~/$ deactivate   # ukoncim virt. prostredi
 matous@matous:~/projects/python_academy        # -> jmena prostredi nevidim
 ```
-__Pozn.__ Pro ukonceni prace ve virtualnim prostredi staci napsat prikaz
-`deactivate`.
-
-Najdu modul, ktery se mi hodi. Bud mame vime, co hledame, pripadne pouzijeme
-[pypi.org](https://pypi.org).
-
-Stahuji + instaluji (pomoci [pipu](#important-links) -> package installer):
+Pro ukonceni prace ve virtualnim prostredi staci napsat prikaz `deactivate`.
+Najdu modul, ktery se mi hodi. Bud vime, co hledame, pripadne pouzijeme
+[pypi.org](https://pypi.org). Stahuji + instaluji (pomoci
+[pipu](#important-links) -> package installer):
 ```
 pip install requests-html       # instalace
 pip uninstall requests-html     # odstraneni
@@ -371,4 +366,7 @@ def hlavni() -> None:
 
     for jmeno in jmena:
         vytvor_soubor(jmeno.strip(), cil_adresar)
+```
+
+Pokracovat na [Lekci#11](https://github.com/Bralor/python-academy/tree/lekce11)
 
