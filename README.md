@@ -91,21 +91,11 @@ Takze nas soubor `pomocne.py` by mohl zacit nasledovne:
 def nacti_soubor(soubor: str, mod: str = "r") -> list:
     print(f"Nacitam soubor: {soubor}")
 
+def vytvor_adresar(jmeno: str) -> None:
+    print(f"VYTVORIM ADR.: {jmeno}")
+
 def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
     print(f"Vytvarim soubor: {jmeno_soubor}")
-```
-Nahrati souboru do promenne muzeme definovat v souboru `pomocne.py`:
-```python
-def nacti_soubor(soubor: str, mod: str = "r") -> List[str]:
-    try:
-        with open(soubor, mod) as txt:
-            obsah = txt.readlines()
-
-    except FileNotFoundError:
-        print(f"SOUBOR: {soubor} NEEXISTUJE!")
-
-    else:
-        return obsah
 ```
 
 ## Na uvod 
@@ -138,6 +128,19 @@ def hlavni() -> None:
 
 
 hlavni()
+```
+Pro nahrati souboru do promenne definujeme v souboru `pomocne.py` novou funkci:
+```python
+def nacti_soubor(soubor: str, mod: str = "r") -> List[str]:
+    try:
+        with open(soubor, mod) as txt:
+            obsah = txt.readlines()
+
+    except FileNotFoundError:
+        print(f"SOUBOR: {soubor} NEEXISTUJE!")
+
+    else:
+        return obsah
 ```
 
 ### Balik
@@ -179,6 +182,26 @@ import sys
 sys.modules         # slovnik s zabudovanymi moduly
 sys.path            # adresare, kde algorytmus hleda
 ```
+
+## Pro poradek
+Dalsi vec, ktere chceme zabranit, aby se nam soubory samovolne vytvorily primo
+do pracovni slozky. Budeme je chtit umistit do slozky `vystupni_soubory`:
+```python
+def vytvor_adresar(jmeno: str, abs_cesta: str) -> str:
+    try:
+        os.mkdir(os.path.join(abs_cesta, jmeno))
+
+    except FileExistsError:
+        print(f"ADRESAR: {jmeno} EXISTUJE!")
+
+    except FileNotFoundError:
+        print(f"ABSOLUTNI CESTA: {abs_cesta} NEEXISTUJE!")
+
+    else:
+        return os.path.join(abs_cesta, jmeno)
+```
+Posledni vec, kterou doplnime je v souboru `hlavni.py` importovani a volani
+nasich funkcich.
 
 ## Jak vytvorime soubory
 Nyni se podivame na funkci `vytvor_soubor()`. K tomu abychom vytvorili soubor
@@ -225,27 +248,6 @@ Pomoci modulu `os` muzeme pouzit metodu `join()` a `abs_cesta` a
 ```
 Nyni muzeme vyzkouset program spustit. Meli bychom dostat `list` s jednotlivymi
 jmeny
-
-## Pro poradek
-Dalsi vec, ktere chceme zabranit, aby se nam soubory samovolne vytvorily primo
-do pracovni slozky. Budeme je chtit umistit do slozky `vystupni_soubory`:
-```python
-def vytvor_adresar(jmeno: str, abs_cesta: str) -> str:
-    try:
-        os.mkdir(os.path.join(abs_cesta, jmeno))
-
-    except FileExistsError:
-        print(f"ADRESAR: {jmeno} EXISTUJE!")
-
-    except FileNotFoundError:
-        print(f"ABSOLUTNI CESTA: {abs_cesta} NEEXISTUJE!")
-
-
-    else:
-        return os.path.join(abs_cesta, jmeno)
-```
-Posledni vec, kterou doplnime je v souboru `hlavni.py` importovani a volani
-nasich funkcich.
 
 ## Doplnime hlavni funkci
 Nase funkce funguji pro jednotlive soubory, takze budeme muset nejprve doplnit
