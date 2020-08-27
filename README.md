@@ -39,7 +39,6 @@ $ python hlavni.py jmena_souboru.txt vystupni_adresar
 ```
 A dostaneme nasledujici vystup, pokud jsme adresar se soubory jeste nevytvorili:
 ```
-<USPECH>
 VYTVARIM: /home/matous/projects/python-academy/vystupni_soubory/rofl.gif
 HOTOVO!
 VYTVARIM: /home/matous/projects/python-academy/vystupni_soubory/paths.png
@@ -57,49 +56,67 @@ HOTOVO!
 - [prace s text. soubory](https://github.com/Bralor/python-academy/tree/lekce08)
 - [handlovani chyb](https://github.com/Bralor/python-academy/tree/lekce09)
 
-## Postup
+## Pro zacatek
 Do pracovniho adresare si nakopirujeme vstupni textovy soubor
-`jmena_souboru.txt`, se kterym budeme chtit pracovat `jmena_souboru.txt`.
-Dale si otevreme novy soubor, ktery pojmenujeme `hlavni.py` a dalsi soubor
-`pomocne.py`:
+`jmena_souboru.txt`. Dale si otevreme novy soubor, ktery pojmenujeme
+`hlavni.py` na jehoz uvod zapiseme:
 ```python
 #!/usr/bin/python3
 """Lekce #11 - Uvod do programovani, importovani - hlavni"""
 ```
-Pro pomocne funkce vytvorime dalsi soubor:
-```
+Pro pomocne funkce vytvorime dalsi soubor `pomocne.py`:
+```python
 #!/usr/bin/python3
 """Lekce #11 - Uvod do programovani, importovani - pomocne"""
 ```
+
+## Jak budeme postupovat
 Jakmile mame oba soubory otevrene, nachystame si hlavni body pro `hlavni.py`:
+```python
+# hlavni.py
+
+# hlavni funkce
+    # volani funkce pro nahrati souboru
+    # volani funkce pro vytvoreni noveho adresare
+    # volani funkce vytvoreni souboru
+```
+...a hlavni body pro soubor `pomocne.py`:
+```python
+# pomocne.py
+
+# Funkce pro nahrani souboru
+# Funkce pro vytvoreni adresare
+# Funkce pro vytvoreni souboru
+```
+
+## Prvni krucky
+Nasi soubor `hlavni.py` muzeme doplnit o definice funkce `hlavni()`:
 ```python
 # hlavni.py
 
 def hlavni() -> None:
     # volani funkce pro nahrati souboru
+    # volani funkce pro vytvoreni noveho adresare
     # volani funkce vytvoreni souboru
 ```
-...a hlavni body pro soubor `pomocne.py`:
+V souboru `pomocne.py` muzeme doplnit definice funkci s kratkou `print()`
+funkci:
 ```python
-# pomocny.py
+# pomocne.py
 
-# Funkce pro nahrani souboru
-# Funkce pro vytvoreni souboru
-```
-Takze nas soubor `pomocne.py` by mohl zacit nasledovne:
-```python
-def nacti_soubor(soubor: str, mod: str = "r") -> list:
-    print(f"Nacitam soubor: {soubor}")
+def nacti_soubor(soubor: str) -> None:
+    print(f"NACITAM SOUBOR: {soubor}")
 
 def vytvor_adresar(jmeno: str) -> None:
-    print(f"VYTVORIM ADR.: {jmeno}")
+    print(f"VYTVORIM ADRESAR: {jmeno}")
 
-def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
-    print(f"Vytvarim soubor: {jmeno_soubor}")
+def vytvor_soubor(jmeno_soubor: str) -> None:
+    print(f"VYTVARIM SOUBOR: {jmeno_soubor}")
 ```
+Jde o jednoduchou abstrakci toho, jak by mely oba soubory spolupracovat. Pozdeji
+funkcim doplnime radny kod.
 
-## Na uvod 
-### Modul
+## Modul v Pythonu
 V podstate jde o soubor s priponou __.py__. Obsahuje promenne, funkce, aj. Tak
 jak jsme psali kod doposud.
 ```python
@@ -117,21 +134,63 @@ from pprint import pprint as pp
 Pokud je importovanych objektu vice, je vhodne dbat na mnozstvi aliasu, aby byl
 ctenar naseho kodu schopen dohledat dany objekt.
 
-Doplnime importovani do naseho souboru `hlavni.py`:
+### Doplnime nasi ulohu
+Doplnime importovani funkci ze souboru `pomocne.py` do naseho souboru
+`hlavni.py` a funkce ve spravnem poradi zavolame:
 ```python
 # hlavni.py
-from pomocne import nacti_soubor, vytvor_soubor
+from pomocne import nacti_soubor, vytvor_adresar, vytvor_soubor
 
 def hlavni() -> None:
     nacti_soubor("soubor.txt")
-    vytvor_soubor("zamestnanci.csv", "/home/Documents")
-
+    vytvor_adresar("vystupni soubory")
+    vytvor_soubor("zamestnanci.csv")
 
 hlavni()
 ```
-Pro nahrati souboru do promenne definujeme v souboru `pomocne.py` novou funkci:
+Po doplneni oznameni o importovani muzeme spustit soubor `hlavni.py`.
+
+## Balik v Pythonu
+Je cela sbirka modulu (tedy *.py* souboru) umistena ve spolecnem adresari,
+ktery ma navic jistou hierarchii. Prikladem muze byt standartni balik Pythonu
+`json`. Uvnitr adresare s balikem najdeme:
+1. [__init.py__](#important-links)
+2.  __pycache__
+3. Nekolik ruznych __modulu__
+
+### init
+Oznacuji adresare na disku, ktere Python pouziva jako baliky.
+
+### pycache
+To je slozka, ktera vznika kdyz spoustime kod a interpret jej zkompiluje na
+__bytecode__. Nasledne schova zkompilovany kod do tohoto adresare. Ucel je
+spustit program, co mozna nejrychleji (za predpokladu, ze jej neupravime).
 ```python
-def nacti_soubor(soubor: str, mod: str = "r") -> List[str]:
+from <package> import <modul>   # obecne
+from json import dumps          # konkr. priklad
+```
+
+## Souhrn
+Dulezite poznamky k modulum/balikum v ramci Pythonu:
+1. Nemusim jej opakovane zapisovat
+2. Muzu jej pouzivat na ruznych mistech (v souborech)
+3. Kod je prehlednejsi
+
+## Hledani modulu/baliku
+Cela procedura hledani modulu ci baliku probiha nasledovne:
+1. Python kontroluje jestli neni modul jiz nacteny
+2. Pokud nenajde, [hleda](#important-links) jej nejprve pomoci `sys.modules`
+3. Pokud nenajde, hleda jej v aktualnim adresari
+4. Pokud nenajde, hleda jej v `sys.path`
+5. Pokud nenajde, `ModulNotFoundError`
+6. Pokud najde, kompilovani + spusteni
+
+## Nacitani souboru
+Prvni funkce, kterou chceme definovat je `nacti_soubor()`:
+```python
+# pomocne.py
+
+def nacti_soubor(soubor: str, mod: str = "r") -> list: 
     try:
         with open(soubor, mod) as txt:
             obsah = txt.readlines()
@@ -142,90 +201,109 @@ def nacti_soubor(soubor: str, mod: str = "r") -> List[str]:
     else:
         return obsah
 ```
-
-### Balik
-Je cela sbirka modulu (tedy *.py* souboru) umistena ve spolecnem adresari,
-ktery ma navic jistou hierarchii. Uvnitr adresare najdeme:
-1. [__\_\_init\_\_.py__](#important-links)
-2.  __\_\_pycache\_\_.py__
-
-### init
-Oznacuji adresare na disku, ktere Python pouziva jako baliky.
-
-### pycache
-To je soubor, ktery vznika kdyz spoustime kod a interpret jej zkompiluje na
-__bytecode__ a schova je do toho adresare. Ucel je spustit program, co mozna
-nejrychleji (za predpokladu, ze jej neupravime).
+Nasledne doplnime nas soubor `hlavni.py`:
 ```python
-from <package> import <modul>   # obecne
-from typing import List    # konkr. priklad
+# hlavni.py
+
+def hlavni() -> None:
+    jmena = nacti_soubor("jmena_souboru.txt")
+    print(jmena)
+
+
+hlavni()
 ```
 
-## Souhrn
-Dulezite poznamky k modulum/balikum v ramci Pythonu:
-1. Nemusim jej opakovane zapisovat
-2. Muzu jej pouzivat na ruznych mistech (v souborech)
-3. Kod je prehlednejsi
-
-## Importovani, obecne
-Pokud chci modul pouzit, musim jej nejprve _importovat_. Cela procedura hledani
-modulu nebo baliku probiha nasledovne:
-1. Python kontroluje jestli neni modul jiz nacteny
-2. Pokud neni, [hleda](#important-links) jej:
-2. V built-in modulech
-4. V aktualnim adresari
-5. Pomoci `sys.path`
-6. `ModulNotFoundError` -> soubor nenalezen
-7. Kompilace + spusteni -> soubor nalezen
-```python
-import sys
-sys.modules         # slovnik s zabudovanymi moduly
-sys.path            # adresare, kde algorytmus hleda
+## Vytvoreni prazdne slozky
+Dalsi vec, ktere chceme zabranit, aby se nam soubory vytvorily primo
+do pracovni slozky. Budeme je chtit umistit do specialni slozky. Nejprve
+chceme overit, jestli slozka, kterou chceme vytvorit, neexistuje:
 ```
-
-## Pro poradek
-Dalsi vec, ktere chceme zabranit, aby se nam soubory samovolne vytvorily primo
-do pracovni slozky. Budeme je chtit umistit do slozky `vystupni_soubory`:
+os.path.isdir(<jmeno_slozky>)
+```
+Pomoci modulu `os` muzeme pouzit metodu `isdir()`. Ta vraci `True`, pokud je
+zadane jmeno opravdu adresar (podobne funguje `isfile()`):
 ```python
-def vytvor_adresar(jmeno: str, abs_cesta: str) -> str:
-    try:
-        os.mkdir(os.path.join(abs_cesta, jmeno))
+# pomocne.py
+import os
 
-    except FileExistsError:
-        print(f"ADRESAR: {jmeno} EXISTUJE!")
-
-    except FileNotFoundError:
-        print(f"ABSOLUTNI CESTA: {abs_cesta} NEEXISTUJE!")
+def hlavni() -> None:
+    jmena = nacti_soubor("jmena_souboru.txt")
+    if os.path.isdir(cil_adresar):
+        print(f"SLOZKA: {cil_adresar} EXISTUJE!")
 
     else:
-        return os.path.join(abs_cesta, jmeno)
-```
-Posledni vec, kterou doplnime je v souboru `hlavni.py` importovani a volani
-nasich funkcich.
+        vytvor_adresar(cil_adresar)
 
-## Jak vytvorime soubory
+
+cil_adresar = "vytvorene_soubory"
+hlavni()
+```
+Timto zajistime, ze pokud slozka jiz existuje, muzeme ji pouzit. Pokud ne,
+vytvorime novou. Novou prazdnou slozku opet vytvorime pomoci modulu `os`.
+Pomoci funkce `mkdir` muzeme specifikovat jmeno adresare do kulate zavorky:
+```
+os.mkdir(<jmeno>)
+```
+Funkci v `pomocne.py` definujeme takhle:
+```python
+# pomocne.py
+
+def vytvor_adresar(jmeno: str) -> str:
+    os.mkdir(os.path.join(abs_cesta, jmeno))
+    return os.getcwd(), jmeno
+```
+Z funkce si necham vratit promennou `jmeno`, ktera obsahuje ulozeny `str` se
+jmenem. Soucasne pouzijeme `getcwd()` funkci, ktera nam vypise absolutni
+cestu k aktualnimu pracovnimu adresari (neni povinne).
+
+## Jak vytvorim soubor
 Nyni se podivame na funkci `vytvor_soubor()`. K tomu abychom vytvorili soubor
 potrebujeme dve veci:
 1. __Jmeno__ souboru
-2. __Absolutni cestu__ pro umisteni
+2. __Absolutni cestu__ pro umisteni nebo __jmeno__ slozky
 
 Rekneme tedy, ze chceme vytvorit soubor `tabulky.csv` do aktualniho pracovniho
 adresare:
 ```
-/home/absolutni_cesta/lekce10/
+abs_cesta = "/home/absolutni/cesta/lekce10/"
+jmeno = "tabulky.csv"
 ```
 Takze pomoci pseudokodu bude prikaz vypadat nasledovne:
 ```python
-novy_soubor = <absolutni_cesta> + <jmeno>
+novy_soubor = abs_cesta + jmeno
 
 with open(novy_soubor, "w") as soub:
     ...
 ```
-Takze ted doplnime teorii vys do opravdoveho kodu:
-```python
-import os
-from typing import List
 
+### Skutecna funkce
+Nejprve musime v souboru `hlavni.py` spojit absolutni cestu do pracovni slozky
+a jmeno cilove slozky:
+```
+os.path.join(<abs_cesta>, <cil_adresar>)
+```
+Pomoci funkce `join()` doplnime soubor:
+```python
+# hlavni.py
+import os
+
+def hlavni() -> None:
+    jmena = nacti_soubor("jmena_souboru.txt")
+    if os.path.isdir(cil_adresar):
+        print(f"SLOZKA: {cil_adresar} EXISTUJE!")
+
+    else:
+        abs_cesta, slozka = vytvor_adresar(cil_adresar)
+    
+    for jmeno in jmena:
+        vytvor_soubor(jmeno,.strip(), os.path.join(abs_cesta, slozka))
+
+
+cil_adresar = "vytvorene_soubory"
+hlavni()
+```
+Zbyva definovat funkci v souboru `pomocne.py`:
+```python
 ...
 def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
     try:
@@ -239,32 +317,6 @@ def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
     else:
         print("HOTOVO!")
 ```
-Pomoci modulu `os` muzeme pouzit metodu `join()` a `abs_cesta` a
-`jmeno_souboru`. Doplnime cast kodu v souboru `hlavni.py`:
-```python
-    ...
-    jmena = nacti_soubor("jmena_souboru.txt")
-    print(jmena)
-```
-Nyni muzeme vyzkouset program spustit. Meli bychom dostat `list` s jednotlivymi
-jmeny
-
-## Doplnime hlavni funkci
-Nase funkce funguji pro jednotlive soubory, takze budeme muset nejprve doplnit
-cyklus, aby kod platit pro cely seznam `jmena`:
-```python
-import os
-from pomocne import nacti_soubor, vytvor_soubor, vytvor_adresar
-
-def hlavni() -> None:
-    jmena = nacti_soubor("jmena_souboru.txt")
-    cil_adresar = vytvor_adresar("vystupni_soubory", os.getcwd())
-
-    for jmeno in jmena:
-        vytvor_soubor(jmeno.strip(), cil_adresar)
-```
-Po spusteni by se nam v aktualnim adresari mel vytvorit novy adresar
-`vystupni_soubory` a v nem vsechny soubory.
 
 ## Moduly tretich stran
 Pro praci s moduly tretich stran muzeme pracovat v __terminalu__ nebo primo v
@@ -274,20 +326,17 @@ __editoru__:
 Vytvorim si virtualni pracovni prostredi:
 ```
 python3 -m venv <jmeno_prostredi>     # obecne
-python3 -m venv python_academy        # priklad
 ```
 Aktivuji moje pracovni virtualni prostredi:
 ```
 source <jmeno_prostredi>/bin/activate       # obecne
-source python_academy/bin/activate          # v nasem pripade
 ```
 Jakmile prostredi aktivujeme, muzeme si vsimnout kulate zavorky na zacatku
 radku s jmenem prostredi uvnitr.
 ```
-(python_academy) matous@matous:~/$ deactivate   # ukoncim virt. prostredi
+(jmeno_prostredi) matous@matous:~/$ deactivate   # ukoncim virt. prostredi
 matous@matous:~/projects/python_academy        # -> jmena prostredi nevidim
 ```
-Pro ukonceni prace ve virtualnim prostredi staci napsat prikaz `deactivate`.
 Najdu modul, ktery se mi hodi. Bud vime, co hledame, pripadne pouzijeme
 [pypi.org](https://pypi.org). Stahuji + instaluji (pomoci
 [pipu](#important-links) -> package installer):
@@ -350,10 +399,15 @@ Mrkneme se na nas program. Nebylo by prijmnejsi zadavani jmena textoveho souboru
 se jmeny zadat rucne? Pripadne jmeno slozky pro nase soubory? Pomoci modulu
 `sys` si muzeme upravit nas program:
 ```python
+# hlavni.py
+import sys
+
+...
+
 if __name__ == "__main__":
     if len(sys.argv) == 3:
         txt_soubor = sys.argv[1]
-        cilovy_adresar = sys.argv[2]
+        cil_adresar = sys.argv[2]
         hlavni()
     else:
         print("INCORRECT USAGE: python <file>.py <txt_file> <dir>")
@@ -364,10 +418,14 @@ import sys
 
 def hlavni() -> None:
     jmena = nacti_soubor(txt_soubor)
-    cil_adresar = vytvor_adresar(cilovy_adresar, os.getcwd())
+    if os.path.isdir(cil_adresar):
+        print(f"SLOZKA: {cil_adresar} EXISTUJE!")
 
+    else:
+        abs_cesta, slozka = vytvor_adresar(cil_adresar)
+    
     for jmeno in jmena:
-        vytvor_soubor(jmeno.strip(), cil_adresar)
+        vytvor_soubor(jmeno,.strip(), os.path.join(abs_cesta, slozka))
 ```
 
 Pokracovat na [Lekci#11](https://github.com/Bralor/python-academy/tree/lekce11)
