@@ -249,8 +249,7 @@ Funkci v `pomocne.py` definujeme takhle:
 # pomocne.py
 
 def vytvor_adresar(jmeno: str) -> str:
-    os.mkdir(os.path.join(abs_cesta, jmeno))
-    return os.getcwd(), jmeno
+    os.mkdir(jmeno)
 ```
 Z funkce si necham vratit promennou `jmeno`, ktera obsahuje ulozeny `str` se
 jmenem. Soucasne pouzijeme `getcwd()` funkci, ktera nam vypise absolutni
@@ -293,10 +292,10 @@ def hlavni() -> None:
         print(f"SLOZKA: {cil_adresar} EXISTUJE!")
 
     else:
-        abs_cesta, slozka = vytvor_adresar(cil_adresar)
+        vytvor_adresar(cil_adresar)
     
     for jmeno in jmena:
-        vytvor_soubor(jmeno,.strip(), os.path.join(abs_cesta, slozka))
+        vytvor_soubor(jmeno.strip(), os.path.join(os.getcwd(), cil_adresar))
 
 
 cil_adresar = "vytvorene_soubory"
@@ -308,10 +307,14 @@ Zbyva definovat funkci v souboru `pomocne.py`:
 def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
     try:
         novy_soubor = os.path.join(abs_cesta, jmeno_soubor)
-        with open(novy_soubor, "w") as nf:
-            print(f"VYTVARIM: {novy_soubor}")
 
-    except FileExistsError:
+        if not os.path.isfile(novy_soubor):
+            with open(novy_soubor, "w") as nf:
+                print(f"VYTVARIM: {novy_soubor}")
+        else:
+            raise Exception()
+
+    except Exception:
         print(f"SOUBOR: {novy_soubor} JIZ EXISTUJE!")
 
     else:
@@ -414,7 +417,11 @@ if __name__ == "__main__":
 ```
 Spravne promenne pak doplnime do predchoziho kodu:
 ```python
+import os
 import sys
+
+from pomocne import nacti_soubor, vytvor_soubor, vytvor_adresar
+
 
 def hlavni() -> None:
     jmena = nacti_soubor(txt_soubor)
@@ -422,10 +429,19 @@ def hlavni() -> None:
         print(f"SLOZKA: {cil_adresar} EXISTUJE!")
 
     else:
-        abs_cesta, slozka = vytvor_adresar(cil_adresar)
+        vytvor_adresar(cil_adresar)
     
     for jmeno in jmena:
-        vytvor_soubor(jmeno,.strip(), os.path.join(abs_cesta, slozka))
+        vytvor_soubor(jmeno.strip(), os.path.join(os.getcwd(), cil_adresar))
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 3:
+        txt_soubor = sys.argv[1]
+        cil_adresar = sys.argv[2]
+        hlavni()
+    else:
+        print("INCORRECT USAGE: python <file>.py <txt_file> <dir>")
 ```
 
 Pokracovat na [Lekci#11](https://github.com/Bralor/python-academy/tree/lekce11)
