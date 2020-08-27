@@ -518,7 +518,7 @@ set3.issubset(set1)  # False
 set3.issubset(set1)  # False
 ```
 
-### Jsou tyto dva sety odlisne?
+### Jsou dva sety odlisne?
 Pomoci metody `disjoint()` jsme schopni vysetrit, ze ani jediny udaj ve dvou
 mnozinach neni stejny:
 ```python
