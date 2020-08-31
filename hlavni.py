@@ -1,28 +1,26 @@
-#!/usr/bin/python3
-"""Lekce #11 - Uvod do programovani, importovani - hlavni"""
-import os
+#!/usr/local/bin/python3.8
+"""Lekce #12 - Uvod do programovani, csv/json - hlavni funkce"""
 import sys
 
-from pomocne import nacti_soubor, vytvor_soubor, vytvor_adresar
-
+from json_funkce import nacti_json, zapis_json
+from csv_funkce import nacti_csv, zapis_csv
+from spolecne_funkce import uprav_obsah
 
 
 def hlavni() -> None:
-    jmena = nacti_soubor(txt_soubor)
-    if os.path.isdir(cil_adresar):
-        print(f"SLOZKA: {cil_adresar} EXISTUJE!")
+    if FORMAT == "2csv":
+        obsah_json = nacti_json(SOUBOR)
+        upravene = uprav_obsah(obsah_json)
+        zapis_csv(upravene)
 
-    else:
-        vytvor_adresar(cil_adresar)
-
-    for jmeno in jmena:
-        vytvor_soubor(jmeno.strip(), os.path.join(os.getcwd(), cil_adresar))
+    elif FORMAT == "2json":
+        seznam_json = nacti_csv(SOUBOR)
+        zapis_json(seznam_json)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 3:
-        txt_soubor = sys.argv[1]
-        cil_adresar = sys.argv[2]
-        hlavni()
-    else:
-        print("INCORRECT USAGE: python <file>.py <txt_file> <dir>")
+    SOUBOR = sys.argv[1]
+    FORMAT = sys.argv[2]
+    hlavni()
+else:
+    print("SPUSTENI SOUBORU VYZADUJE ZADANI CESTU K JSON SOUBORU")
