@@ -15,8 +15,8 @@ Dnes se budeme bavit o dalsich typech souboru, se kterymi muzeme v ramci
 Pythonu pracovat. Povime si neco o formatu, jehoz hlavnim ucelem je snadny
 prenos dat (tedy [JSON](#important-links)) a tabulkovem formatu (tedy
 [CSV](#important-links)). V bodech:
-1. Neco
-2. Neco2
+1. json
+2. csv
 
 ## Prevodnik json2csv
 Ukolem pro dnesek je napsat program, ktery bude umet prevadet `JSON`
