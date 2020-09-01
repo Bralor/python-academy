@@ -1,28 +1,18 @@
-#!/usr/bin/python3
-"""Lekce #11 - Uvod do programovani, importovani - hlavni"""
-import os
+#!/usr//bin/python3.8
+"""Lekce #11 - Uvod do programovani, csv/json - hlavni funkce"""
 import sys
 
-from pomocne import nacti_soubor, vytvor_soubor, vytvor_adresar
-
+from pomocne import nacti_json, uprav_obsah, zapis_csv
 
 
 def hlavni() -> None:
-    jmena = nacti_soubor(txt_soubor)
-    if os.path.isdir(cil_adresar):
-        print(f"SLOZKA: {cil_adresar} EXISTUJE!")
-
-    else:
-        vytvor_adresar(cil_adresar)
-
-    for jmeno in jmena:
-        vytvor_soubor(jmeno.strip(), os.path.join(os.getcwd(), cil_adresar))
+    if prevod == "do-csv":
+        nacteny_json = nacti_json("ORIG.json")
+        zkracene_udaje = uprav_obsah(nacteny_json)
+        zapis_csv("vystupni.csv", zkracene_udaje)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 3:
-        txt_soubor = sys.argv[1]
-        cil_adresar = sys.argv[2]
-        hlavni()
-    else:
-        print("INCORRECT USAGE: python <file>.py <txt_file> <dir>")
+    prevod = sys.argv[1]
+    hlavni()
+
