@@ -173,7 +173,7 @@ from pomocne import nacti_json
 
 def hlavni() -> None:
     if prevod == "do-csv":
-        nacteny_json = nacti_json()
+        nacteny_json = nacti_json("ORIG.json")
         print(f"JSON: {nacteny_json}")
 
         print("Zpracovavam...")
@@ -228,7 +228,7 @@ from pomocne import nacti_json, uprav_obsah
 
 def hlavni() -> None:
     if prevod == "do-csv":
-        nacteny_json = nacti_json()
+        nacteny_json = nacti_json("ORIG.json")
         print(f"JSON: {nacteny_json}")
 
         zkracene_udaje = uprav_obsah(nacteny_json)
@@ -238,14 +238,123 @@ def hlavni() -> None:
 
 ...
 ```
-#!/usr/local/bin/python3.8
-"""Lekce #12 - Uvod do programovani, csv/json - spolecne funkce"""
+
+## Zapisujeme!
+Nyni, kdyz jsme si nacetli udaje z `json` a zpravili jejich obsah, muzeme nova
+data ukladat do `csv`.
+
+## Csv (~ comma-separated values)
+Tedy format zalozeny na hodnotach obecne oddelenych oddelovacem, psany v jistem
+dialektu. Zakladni stavebni jednotkou jsou bunky (MS Excel), ktere jsou
+situovany do radku a sloupcu.
+
+## Prace s csv
+Nejprve nahrajeme modul `csv`, abychom mohli pouzivat vse, co obsahuje.
+Zakladni dva procesy, ktere muzeme provadet jsou:
+1. __Cteni__ souboru `csv`
+2. __Zapis__ do souboru `csv`
+Udaje na procvicovani:
+```python
+zahlavi = ["jmeno", "prijmeni", "vek"]
+osoba1 = ["Matous", "Holinka", "28"]
+osoba2 = ["Petr", "Svetr", "27"]
+
+osoba3 = {"jmeno": "Matous", "prijmeni": "Holinka", "vek": 28}
+osoba4 = {"jmeno": "Petr", "prijmeni": "Svetr", "vek": 27}
 ```
 
-# Cheatsheet s priklady
-## JSON
+### Zapis do souboru
+Tak jako u `txt` a `json` vyuzijeme funkcionality kontext. manazeru. Prakticky
+muzeme pro zapis pouzit funkci `writer`, se kterou muzeme zapsat seznamy aj.
+Nebo `DictWriter`, kdy zapisujeme udaje ulozene ve slovnicich.
 
-## CSV
-1. Comma-separated values ruzneho dialektu (delimiter, header, newline)
-2. Bunky rozdelene oddelovacem (delimiter, volitelny), radky newliny
-3. Muzeme zapisovat (pomoci *writer/DictWriter* objektu), cist (pomoci *reader/DictReader* objektu)
+### writer
+Nejprve zkusime ulozit seznamy:
+```python
+import csv
+
+with open("prvni_csv.csv", mode="w") as csv_f:
+    zapisovac = csv.writer(csv_f, delimiter=',')
+
+    zapisovac.writer(zahlavi)
+    zapisovac.writer(osoba1)
+    zapisovac.writer(osoba2)
+```
+Nakonec v aktualnim adresari zkontrolujeme soubor `prvni_csv.csv`.
+```python
+# eventualni reseni
+    ...
+    zapisovac.writerows((zahlavi, osoba1, osoba2))
+```
+
+### DictWriter
+Soucasne muzeme ukladat do `csv` take slovniky:
+```python
+import csv
+
+with open("treti_csv.csv", mode="w") as csv_f:
+    zahlavi = osoba3.keys()
+    zapisovac = csv.DictWriter(csv_f, fieldnames=zahlavi)
+
+    zapisovac.writeheader()
+    zapisovac.writerow(osoba3)
+    zapisovac.writerow(osoba4)
+```
+Opet muzeme pouzit variantu `writerows`.
+
+### Cteni ze souboru
+Analogicky k procesu zapisovani funguje proces cteni ze souboru `csv`. Tentokrat
+pomoci:
+1. Funkce __reader__ (seznamy)
+2. Funkce __DictReader__ (slovniky)
+```python
+import csv
+
+with open("treti_csv.csv", mode="r") as csv_f:
+    cteni = csv.DictReader(csv_f, delimiter=",")
+
+    for radek in cteni:
+        print(f"RADEK: {radek}")
+```
+
+## Ulozime slovnik
+Pomoci funkci v modulu `csv` muzeme ulozit udaje v nasi promenne
+`zkracene_udaje`. Doplnime proto soubor `pomocne.py` o novou definici funkce:
+```python
+# pomocne.py
+import csv
+...
+def zapis_csv(soubor: str, udaje: dict) -> None:
+    try:
+        with open(soubor, mode="w", newline="") as csv_f:
+            zahlavi = udaje["id_1"].keys()
+            zapisovac = csv.DictWriter(csv_f, fieldnames=zahlavi)
+
+            zapisovac.writeheader()
+            for zamestnanec in udaje:
+                zapisovac.writerow({
+                    "jmeno": udaje[zamestnanec]["jmeno"],
+                    "prijmeni": udaje[zamestnanec]["prijmeni"],
+                    "email": udaje[zamestnanec]["email"]
+                })
+    except KeyError:
+        print("NESPRAVNY HODNOTA PRO SLOVNIK")
+```
+Doplnime jeste soubor `hlavni.py`, kde funkci `zapis_csv` zavolame:
+```python
+# hlavni.py
+...
+from pomocne import nacti_json, uprav_obsah, zapis_csv
+...
+def hlavni() -> None:
+    if prevod == "do-csv":
+        nacteny_json = nacti_json()
+        zkracene_udaje = uprav_obsah(nacteny_json)
+        zapis_csv("vystupni.csv", zkracene_udaje)
+...
+```
+Dalsi variantou jak ulohu vylepsit je doplnit podminkovou vetev pro prevedeni
+`csv` souboru do `json`(soucasne doplnit potrebne funkce).
+
+Pokracovat na [Lekci#12](https://github.com/Bralor/python-academy/tree/lekce12)
+
