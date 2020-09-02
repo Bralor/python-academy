@@ -19,7 +19,8 @@ prenos dat (tedy [JSON](#important-links)) a tabulkovem formatu (tedy
 2. csv
 
 ## Prevodnik json2csv
-Ukolem pro dnesek je napsat program, ktery bude umet prevadet `JSON`
+Ukolem pro dnesek je napsat program, ktery bude umet prevadet
+[`JSON`](https://github.com/Bralor/python-academy/blob/lekce11-fixes/ORIG.json)
 na `CSV` (moznost doplnit i obracene). Na uvod dostaneme `JSON` s
 fiktivnimi udaji zamestnancu, ktere budeme chtit ukladat do `CSV`. Logicky
 chceme usporadat strukturu programu nasledovne:
@@ -29,9 +30,11 @@ Spustime skript v adresari:
 ```
 $ python hlavni.py <do-csv> <puvodni.json>
 ```
-Dostaneme nasledujici vystup:
+V pracovnim adresari se objevi `csv` soubor s vypracovanymi udaji:
 ```
-
+...
+README.md
+vystupni.csv
 ```
 
 ## Co budeme potrebovat?
@@ -90,7 +93,7 @@ Na zacatek staci jednotlive funkce nahradit pouhymi vystupy z funkci `print`.
 ## Nacitame!
 Nacitani souboru `.txt` uz ovladame. Dneska nam to ale stacit nebude.
 
-## Json (~javaScript object notation)
+## Json (~JavaScript object notation)
 Ucelne zjednoduseny format, urceny pro prenos dat. Snadno citelny, lehce
 formatovatelny. Velice podobny Pythonovskemu slovniku, ale ma svoji
 charakteristickou sadu pravidel:
@@ -137,8 +140,8 @@ with open("novy_json.json", "r") as cteni_js:
 Pote staci vypsat promennou `udaje`.
 
 ### Dalsi argumenty
-1. __indent__ - odsadi zapsany `json` o N mist
-2. __sort\_keys__ - seradi klice
+1. __indent=4__ - odsadi zapsany `json` o 4 pozice
+2. __sort\_keys__ - seradi klice (`True`/`False`)
 
 ### dump/dumps, load/loads
 Opatrne na jmena funkci. `dump/load` zapisuje(cte) `json` do(z) souboru.
@@ -187,6 +190,7 @@ zredukovat, protoze nas zajimaji jen tyto klice:
 1. __first\_name__
 2. __last\_name__
 3. __email__
+
 Proto musime nyni napsat funkci, ktera vytvori novy slovnik, ktery bude mit
 unikatni jmeno klice a tyto tri hodnoty:
 ```
@@ -243,7 +247,7 @@ def hlavni() -> None:
 Nyni, kdyz jsme si nacetli udaje z `json` a zpravili jejich obsah, muzeme nova
 data ukladat do `csv`.
 
-## Csv (~ comma-separated values)
+## Csv (~ Comma-separated values)
 Tedy format zalozeny na hodnotach obecne oddelenych oddelovacem, psany v jistem
 dialektu. Zakladni stavebni jednotkou jsou bunky (MS Excel), ktere jsou
 situovany do radku a sloupcu.
@@ -253,6 +257,7 @@ Nejprve nahrajeme modul `csv`, abychom mohli pouzivat vse, co obsahuje.
 Zakladni dva procesy, ktere muzeme provadet jsou:
 1. __Cteni__ souboru `csv`
 2. __Zapis__ do souboru `csv`
+
 Udaje na procvicovani:
 ```python
 zahlavi = ["jmeno", "prijmeni", "vek"]
