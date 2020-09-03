@@ -28,7 +28,7 @@ chceme usporadat strukturu programu nasledovne:
 ## Ukazka na uvod
 Spustime skript v adresari:
 ```
-$ python hlavni.py <do-csv> <puvodni.json>
+$ python hlavni.py <do-csv>
 ```
 V pracovnim adresari se objevi `csv` soubor s vypracovanymi udaji:
 ```
@@ -68,7 +68,7 @@ Bodove by mela struktura obsahovat tyto kroky:
 Prvni vec, co nas skript v ramci souboru `hlavni.py` musi vysetrit je, jaky
 typ souboru budeme zapisovat. Chceme soubor spoustet nasledovne:
 ```
-$ python hlavni.py to-csv <jmeno_souboru>
+$ python hlavni.py do-csv
 ```
 Takze nejprve nahrajeme modul `sys` a pouzijeme funkcionalitu spousteni s
 argumenty:
