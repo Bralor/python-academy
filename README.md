@@ -12,8 +12,8 @@ Minula [lekce#12](https://github.com/Bralor/python-academy/tree/lekce12)
 
 ## Co nas ceka?
 V ramci dnesniho webinare se budeme snazit _scrapovat_, tzn. ze za pomoci
-Pythonu se budeme snazit shromazdovat nejake informace umistene ve formatu HTML
-nekde na webu. Dale si povime:
+Pythonu se budeme snazit shromazdovat nejake informace umistene ve formatu
+`html` nekde na webu. Dale si povime:
 1. Co je to __HTML__
 2. __Kde__ jej najdeme
 3. Jak s nim __ziskat__, v Pythonu
@@ -21,11 +21,11 @@ nekde na webu. Dale si povime:
 
 ## Scrapuj tabulku hracu
 Cilem bude extrahovat data z [webu](http://heroes3.cz/) a ulozit je lokalne
-do nejakeho textoveho souboru (optimalne CSV).
+do nejakeho textoveho souboru (optimalne `csv`).
 
 ## Ukazka na uvod
-Spustime skript v adresari s prislusnym argumentem (tedy URL stranky, ze ktere
-chceme HTML ziskat):
+Spustime skript v adresari s prislusnym argumentem (tim bude adresa stranky, ze
+ktere chceme `html` ziskat):
 ```
 $ python scraper.py <url>
 ```
@@ -103,7 +103,7 @@ Vidime, ze format se hodne podoba slovnikum v Pythonu, tedy:
 
 ## Jak tedy ziskat potrebne udaje?
 Abychom mohli s udaji, ktere jsou k dispozici na webu, pracovat, je potreba
-ziskat konkretni _HTML_ soubor. Tedy soubor, ve kterem jsou informace, co my
+ziskat konkretni `html` soubor. Tedy soubor, ve kterem jsou informace, co my
 chceme zapsana.
 
 ## Python a Html
@@ -117,8 +117,9 @@ na server, kde se web nachazi(tedy standartni ukon prohlizece).
 
 ### Python a requesty
 Za timto ucelem budeme pracovat s modulem __requests__(jejich samozrejme vice).
-Ve svem aktivovanem prostredi nainstalujeme balicek `requests`(pomoci `venv`,
-nebo __PyCharm__(doporucene)).
+Ve svem aktivovanem prostredi nainstalujeme balicek
+[`requests`](https://requests.readthedocs.io/en/master/)(pomoci `venv`, nebo
+__PyCharm__(doporucene)).
 
 ### Terminal
 Bud prikazem:
@@ -155,7 +156,7 @@ Obe funkce slouzi k tomu, abychom ziskali odpoved serveru, ktera obsahuje nase
 
 ### Get
 Pomoci prohlizece, pojdme vysetrit, kterou funkci aplikovat. Vyuzijeme nastroje
-`inspect element`. V nem se nam v zahlavi zobrazi hned nekolik moznych funkci:
+`Inspect Element`. V nem se nam v zahlavi zobrazi hned nekolik moznych funkci:
 1. __Inspektor__
 2. Console
 3. Debugger
@@ -222,7 +223,7 @@ def hlavni() -> None:
     uloz_csv()
 
 
-def vytvor_pozadavek()  # vytvor pozadavek na server
+def vytvor_pozadavek():  # vytvor pozadavek na server
     print("VYTVARIM POZADAVEK")
 
 
@@ -251,17 +252,17 @@ hodnoty ukladat:
 import requests
 
 def hlavni() -> None:
-    odpoved_serveru = vytvor_pozadavek()
+    odpoved_serveru = vytvor_pozadavek("https://bezrealitky.cz")
 
     if odpoved_serveru:
         naparsovane = zpracuj_pozadavek(odpoved_serveru)
 
-    hraci = hledej_hrace(naparsovane)
+    hraci = hledej_hrace()
     uloz_csv()
 
 
-def vytvor_pozadavek() -> str:  
-    print("VYTVARIM POZADAVEK")
+def vytvor_pozadavek(url: str) -> str:  
+    print(f"VYTVARIM POZADAVEK NA: {url}")
     return "odpoved"
 
 
@@ -282,193 +283,251 @@ def uloz_csv() -> None:
 hlavni()
 ```
 
+## Vlozeni argumentu
+Odkaz webu, ktery chceme scrapovat (resp. stranka hracu 1-xy), chceme zadavat
+jako argument:
+```python
+#!/usr/bin/python3.8
+"""Lekce #12 - Uvod do programovani, web scraping"""
+
+import sys
+import requests
+...
+def hlavni() -> None:
+    odpoved_serveru = vytvor_pozadavek(url)
+    ...
+
+if __name__ == "__main__":
+    url = sys.argv[1]
+    hlavni()
+```
+Vytvorime promennou `url`, do ktere budu pri spousteni _py_ souboru ukladat
+hodnotu argumentu z terminalu.
+
 ## Vytvoreni pozadavku
-Zadane konkretni adresu:
+Nahradime _junk_ kod ve funkci `vytvor_pozadavek` radnym kodem v Pythonu. Mame
+v podstate 2 moznosti jak tuto funkci zapsat:
+1. Pomoci __Kontextoveho manazeru__
+2. Reseni v [__uvodu__](#get)
+
+Vyzkousime si jeste kont.manazer:
 ```python
-url = "XXX"
+def vytvor_pozadavek(url: str) -> str:
+    with requests.Session() as se:
+        return se.get(url)
 ```
-Ukazeme si, kde najit parametry:
+Finalni objekt si nechame vypsat, at vidime s cim je potreba pracovat:
 ```python
-params = {
-    'kraj': -1,
-    'okres': -1,
-    'razeni': 1, 'archiv': 0,
-    'typ_polozky': -1,
-    'page': 1
-}
+#!/usr/bin/python3.8
+"""Lekce #12 - Uvod do programovani, web scraping"""
+
+import sys
+import requests
+...
+def hlavni() -> None:
+    odpoved_serveru = vytvor_pozadavek(url)
+    print(odpoved_serveru.text)
+    ...
+
+if __name__ == "__main__":
+    url = sys.argv[1]
+    hlavni()
 ```
 
-Odesleme pozadavek pomoci metody _post_ na server, ktery jej vyhodnoti a zpracuje:
+## Raw Html
+Vidime, ze podoba, ve ktere jsme v Pythonu nase `html` ziskali neni moc
+uzitecna. Bude je potreba vhodne _parsovat_ (jinak receno rozdelit).
+
+### BeautifulSoup
+Asi nejznamejsim balickem, ktery v Pythonu slouzi jako pomocnik pro _parsovani_
+`html` (a `xml`) je `bs4`.
+
+### Nahravani
+Jde o balik, tudiz jej musime nejprve importovat:
 ```python
-odpoved_serveru = requests.post(url, params=params)
-odpoved_serveru.status_code
-odpoved_serveru.text
+from bs4 import BeautifulSoup
+```
+Velmi casto doplnujeme __alias__, protoze jde o dlouhe jmeno:
+```python
+from bs4 import BeautifulSoup as bs
 ```
 
-## Mame zdroj!
-Jakmile se nam konecne podari udaje nashromazdit. Musime se nimi probrat.
+### Aplikace
+Pro pouziti objektu `BeautifulSoup` potrebujeme dve veci:
+1. __Promennou__, kterou chceme parsovat.
+2. __Typ__ parseru
 
+Protoze budeme chtit rozdelovat `html`, budeme pouzivat `html.parser` (vice
+typu si ukazeme v napovede `help(BeautifulSoup.__init__)`
 ```python
-odpoved_serveru = requests.get(URL)
-odpoved_serveru.text  # metoda text nam umozni prohlednout obsah
+parsovane = BeautifulSoup(odpoved_serveru.text, "html.parser")
+type(parsovane)  # bs4.BeautifulSoup
 ```
+Jakmile si budeme chtit projit nyni obsah promenne `parsovane`, uvidime
+prehlednou strukturu.
 
-## Aplikujeme v nasi uloze
+## Vratme se k nasemu kodu
+Nyni, kdyz vime, jak ve strucnosti balik `bs4` pracuje, pojdme zapsat dalsi
+funkci naseho kodu:
 ```python
-"""Lekce #15 - Uvod do programovani, web scraping"""
+from bs4 import BeautifulSoup
+...
 
-import csv
-from typing import List
+def zpracuj_pozadavek(odpoved: str) -> bs4.BeautifulSoup:
+    return BeautifulSoup(odpoved, "html.parser")
+    ...
+```
+A prepiseme cast funkce `hlavni`:
+```python
+#!/usr/bin/python3.8
+"""Lekce #12 - Uvod do programovani, web scraping"""
+
+import sys
 
 import requests
 from bs4 import BeautifulSoup
 
-URL = "http://heroes3.cz/hraci"
-
 
 def hlavni() -> None:
-    pass
+    odpoved_serveru = vytvor_pozadavek(url).text
+    naparsovana_odp = zpracuj_pozadavek(odpoved_serveru)
+    ...
 
 if __name__ == "__main__":
+    url = sys.argv[1]
     hlavni()
 ```
-Pomocna funkce:
+
+## Hledani tagu
+V tento okamzik mame kompletni `html` cele stranky. Nicmene nepotrebujeme uplne
+vsechno. Hlavni okamzik _scrapovani_ spociva v hledani presne tech `tagu`, ktere
+obsahuji informace, co potrebujeme.
+
+### Analyza Html
+Pojdme se jeste jednou podivat na cileny web. Zacneme tim, ze si dohledame
+(pomoci `Inspect Element` nastroje), rodice, ve kterem mame ulozene jmeno hrace.
+Abychom se posunuli dal, musime si udelat poradek v nasledujicim:
+1. Co predstavuje tag `<td></td>`?
+2. Co predstavuje tag `<tr></tr>`?
+3. Co predstavuje tag `<tbody></tbody>`?
+4. Co predstavuje tag `<table></table>`?
+
+Hierarchii jsme prosli a ted musime redukovat obsah promenne `naparsovana_odp`,
+abychom mohli lepe pracovat s informacemi, ktere nas zajimaji.
+
+## Rodicovsky element
+Prvnim elementem (tedy tagem), ktery muzeme snadno identifikovat je `table`.
+Duvodem, proc je snadne ho najit je jeho atribut `class`, ktery jej dela
+jedinecnym.
+
+### Table
+Dalsi vec, kterou nam balik `bs4` nabizi, je moznost vyhledavat:
+1. __BeautifulSoup.find()__ - `help(BeautifulSoup.find)` 
+2. __BeautifulSoup.find()__ - `help(BeautifulSoup.find_all)`
+
+Jelikoz se tabulek v nasem puvodnim `html` vyskytuje hodne, chceme najit prave
+takovou, ktera disponuje atributem `class = "tab_top"`:
 ```python
-def ziskej_odpoved():
-    return requests.get(URL)
+def hledej_hrace(data: bs4.BeautifulSoup) -> dict:
+    table = data.find("table", {"class": "tab_top"})
 ```
+Tim padem zredukujeme puvodni promenne `naparsovana_odp` o vsechno, krome
+nasi tabulky.
 
-## Jak jej prochazet?
-Zkusime z naseho zdroje neco dohledat:
-```python
-odpoved_serveru.text[0]  # ...
-odpoved_serveru.text[1]  # ...
-odpoved_serveru.text.split()  # ...
-```
-Nami zname zpusoby, kterymi muzeme text [parsovat](https://en.wikipedia.org/wiki/Parsing)(prochazet) tady nejsou moc platne. Budeme potrebovat silnejsi kalibr.
-
-## Beautiful Soup
-Nainstalujeme si do naseho prostredi dalsi [balicek](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
-
-```bash
-(env) matous@matous:~/projects/$ pip install beautifulsoup4
-```
-
-Modul BeautifulSoup se postara, abychom vytahli ze ziskaneho HTML (dale podporuje i XMLka) strom, skrze ktery je mozne snadno navigovat a vyhledavat.
-
-Nacteme z balicku modul:
-```python
-from bs4 import BeautifulSoup
-```
-
-Pouziti obsahuje aplikaci dvou parametru. Prvnim je objekt, kde se syrove HTML nachazi, druhy je typ parseru:
-```python
-naparsovane = BeautifulSoup(odpoved_serveru.text, "html.parser")
-```
-
-## Aplikujeme v uloze
-Doplnime dalsi pomocnou funkci a dopiseme hlavni():
-```python
-def vytahni_udaje(resp):
-    return BeautifulSoup(resp.text, "html.parser")
-```
-## Musime najit konkretni tag!
-Musime se zorientovat v nasem HTML-ku a uvedomit si, ve kterem elementu hledat. V prohlizeci, pomoci rezimu _inspect_ zjistime, o ktery jde.
-
-```html
-    <table class="tab_top">
-        <tr></tr>
-    </table>
-```
-
-## Mame vybrano, jak hledat?
-Vyhledavat budeme zejmena pomoci typu elementu (_div_,_table_,..) v kombinaci s metodou __.find()__.  Pomocne pro nas mohou byt zejmena attributy (_"tab\_top"_). 
-
+## Tr
+Mame samotnou tabulku a vime, ze hraci (a informace o nich), jsou situovany
+do jednotlivych radku (tedy tag `tr`). Chceme tedy projit a posbirat vsechny
+`tr`:
 ```python
 ...
-naparsovane.find("table", {"class": "tab_top"})
-...
+trs = table.find_all("tr")[1:]
 ```
-## Opet aplikujeme
+Nyni mame pouze radky se jmeny, ktera se nachazi v tabulce a muzeme se zamerit
+na extrakci jednotlivych udaju.
+
+## Td
+Udaje, ktere nas zajimaji jsou nasledujici:
+1. __Poradi__
+2. __Jmeno__
+3. __Body__
+4. __Celkem her__
+5. __Vitezstvi__
+6. __Uspesnost__
+
+Nejprve zkontrolujeme, jak jsou usporadane v radku:
 ```python
-def hledej_tabulku(cont):
-    return cont.find("table", {"class": "tab_top"})
+    ...
+    print(tr)
 ```
-
-Timto nase puvodni HTML orezeme a dostaneme pouze obsah <table></table>
-
-## Jak ziskat info o hraci?
-Vidime, ze na kazdem radku mame jednoho hrace. Takze se musime probrat k jednotlivym radkum. Takze musime prochazet promennou, kam jsme ulozili tabulku a znovu projit. Muzeme si vsimnout, ze radku je tu hodne a proto nam klasicke __.find()__ nepomuze. To, totiz vrati pouze prvni nalezenou hodnotu.
-
+Jde o seznam, takze pomoci indexu mohu jednotliva data vyuzit:
 ```python
-radky = tabulka.find("tr")  # nelze pouzit, pokud je vice radku
-```
-
-Pouzijeme __.find\_all()__, ktera nam vrati vsechny elementy v zadanem objektu.
-
-```python
-radky = tabulka.find_all("tr")
-radky[0]; radky[1]  # muzeme vytahovat pomoci indexu
-```
-## Aplikujeme...
-Opatrne na zahlavi v _HTML_. To muze komplikovat situaci:
-```python
-def hledej_radky(tabl) -> list:
-    return tabl.find_all("tr")[1:]
-```
-
-## Ziskejme konkretni bunku!
-Podobne jako u radku v tabulce musime premyslet o bunce v radku. Opet je pro ni typicky konkretni element a na nej se musim zamerit.
-
-```python
-hrac_1 = radky.find_all("td")[1]
-```
-
-Nami vyfiltrovane HTML nyni obsahuje udaje, patrici prvnimu hraci tabulky. Jak se ale dostaneme ke konkretnimu textovemu udaji?
-
-## Jake bunky tabulky?
-V tabulce je porad spousta udaju. Potrebujeme nas vyber jeste malicko zuzit. Rekneme, ze mame zajem pouze o poradi, nickname, body a uspesnost.
-
-## Vrat hodnotu elementu
-Pomuze nam metoda __.text__, ktera vraci pouze hodnotu elementu.
-
-```python
-hrac_1 = radky.find_all("td")[0]  # poradi
-hrac_1 = radky.find_all("td")[2]  # nickname
-hrac_1 = radky.find_all("td")[3]  # body
-hrac_1 = radky.find_all("td")[7]  # uspesnost
-```
-
-## Doplnime...
-Doplnujici funkce. Opet musime doplnit i funkci hlavni:
-```python
-def hraci_info(tr) -> dict:
-    try:
+    ...
+    for tr in trs:
         poradi = tr.find_all("td")[0].text
-        ...
-
-    except AttributeError:
-        print("Indexy u jednotlivych bunek v radku nejsou v poradku")
+        jmeno = tr.find_all("td")[2].text
+        body = tr.find_all("td")[3].text
+        celkem = tr.find_all("td")[6].text
+        vitezstvi = tr.find_all("td")[5].text
+        uspesnost = tr.find_all("td")[7].text
+        
+        return {
+            "poradi": poradi,
+            "jmeno": jmeno,
+            "body": body,
+            "celkem": celkem,
+            "vitezstvi": vitezstvi,
+            "uspesnost": uspesnost,
+        }
 ```
-## Ukladani do souboru
-Vytvorime si doplnujici funkce. S pomoci modulu __csv__:
-```python
-def uloz_csv(data: List[dict]):
-    with open("players.csv", "a", newline="") as csv_f:
-        zahlavi = ["PORADI", "UZIVATEL", "BODY", "USPESNOST"]
-        writer = csv.DictWriter(csv_f, fieldnames=zahlavi)
-        writer.writeheader()
+Nakonec vratim slovnik, ktery vsechno potrebne ulozi.
 
+## Ukladani Csv
+Nyni ziskavame vse potrebne a zbyva nam posledni krok. Tedy ulozit scrapovana
+data do souboru na disk.
+```python
+def uloz_csv(data: dict, jmeno: str) -> None:
+    with open(jmeno, "w", newline="") as csv_s:
+        zahlavi = data[0].keys()
+        writer = csv.DictWriter(csv_s, fieldnames=zahlavi)
+
+        writer.writeheader()
         for index, _ in enumerate(data):
             writer.writerow(
                 {
                     "PORADI": data[index]["poradi"],
-                    "UZIVATEL": data[index]["hrac"],
+                    "JMENO": data[index]["jmeno"],
                     "BODY": data[index]["body"],
+                    "CELKEM": data[index]["celkem"],
+                    "VITEZSTVI": data[index]["vitezstvi"],
                     "USPESNOST": data[index]["uspesnost"],
                 }
             )
+
 ```
+Jeste doplnime funkci `hlavni`:
+```python
+#!/usr/bin/python3.8
+"""Lekce #12 - Uvod do programovani, web scraping"""
+
+...
+import csv
+...
+
+def hlavni() -> None:
+    odpoved_serveru = vytvor_pozadavek(url).text
+
+    if odpoved_serveru:
+        naparsovana_odp = zpracuj_pozadavek(odpoved_serveru)
+
+    hraci = hledej_hrace(naparsovana_odp)
+    uloz_csv(hraci, "hraci1.csv")
+    ...
+```
+
+## Prvni hrac
+Kdyz se podivame na vysledek, vidime ze zatim ziskavam pouze informace o prvnim
+hraci.
+
 
 ## Generator nebo seznam?
 Na zacatku, ve funkce _hlavni()_ se nabizi otazka. Je lepsi pouzit seznamovou komprehenci nebo generator?
