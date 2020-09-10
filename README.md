@@ -1,4 +1,4 @@
-Minula [lekce#12](https://github.com/Bralor/python-academy/tree/lekce12)
+Minula [lekce#11](https://github.com/Bralor/python-academy/tree/lekce11)
 
 <p align="center">
   <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
@@ -335,8 +335,8 @@ if __name__ == "__main__":
     hlavni()
 ```
 
-## Raw Html
-Vidime, ze podoba, ve ktere jsme v Pythonu nase `html` ziskali neni moc
+## Raw html
+Vidime, ze podoba, ve ktere jsme v Pythonu nase `html` ziskali, neni moc
 uzitecna. Bude je potreba vhodne _parsovat_ (jinak receno rozdelit).
 
 ### BeautifulSoup
@@ -421,7 +421,7 @@ Prvnim elementem (tedy tagem), ktery muzeme snadno identifikovat je `table`.
 Duvodem, proc je snadne ho najit je jeho atribut `class`, ktery jej dela
 jedinecnym.
 
-### Table
+## Table
 Dalsi vec, kterou nam balik `bs4` nabizi, je moznost vyhledavat:
 1. __BeautifulSoup.find()__ - `help(BeautifulSoup.find)` 
 2. __BeautifulSoup.find()__ - `help(BeautifulSoup.find_all)`
@@ -435,7 +435,7 @@ def hledej_hrace(data: bs4.BeautifulSoup) -> dict:
 Tim padem zredukujeme puvodni promenne `naparsovana_odp` o vsechno, krome
 nasi tabulky.
 
-## Tr
+## tr
 Mame samotnou tabulku a vime, ze hraci (a informace o nich), jsou situovany
 do jednotlivych radku (tedy tag `tr`). Chceme tedy projit a posbirat vsechny
 `tr`:
@@ -459,7 +459,7 @@ def hlavni() -> None:
         ...
 ```
 
-## Td
+## td
 Udaje, ktere nas zajimaji jsou nasledujici:
 1. __Poradi__
 2. __Jmeno__
