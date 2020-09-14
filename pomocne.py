@@ -1,36 +1,39 @@
 #!/usr/bin/python3
-"""Lekce #11 - Uvod do programovani, importovani - pomocne"""
+"""Lekce #11 - Uvod do programovani, importovani - pomocne.py"""
 import os
 
-def nacti_soubor(soubor: str, mod: str = "r") -> list:
+
+def nacti_soubor(soubor: str) -> list:
     try:
-        with open(soubor, mod) as txt:
+        with open(soubor, "r", encoding="utf-8") as txt:
             obsah = txt.readlines()
 
     except FileNotFoundError:
-        print(f"SOUBOR: {soubor} NEEXISTUJE!")
+        print(f"TXT SOUBOR: {soubor}, NEEXISTUJE!")
 
     else:
         return obsah
 
 
-def vytvor_adresar(jmeno: str) -> str:
-    os.mkdir(jmeno)
+def vytvor_adresar(jmeno_sl: str) -> None:
+    os.mkdir(jmeno_sl)
 
 
-def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
-    try:
-        novy_soubor = os.path.join(abs_cesta, jmeno_soubor)
-
-        if not os.path.isfile(novy_soubor):
-            with open(novy_soubor, "w") as nf:
-                print(f"VYTVARIM: {novy_soubor}")
-        else:
-            raise Exception()
-
-    except Exception:
-        print(f"SOUBOR: {novy_soubor} JIZ EXISTUJE!")
+def vytvor_soubor(jmeno_so: str) -> None:
+    if not os.path.isfile(jmeno_so):
+        with open(jmeno_so, "w") as soub:
+            print(f"VYTVARIM: {jmeno_so}")
+        print("HOTOVO!")
 
     else:
-        print("HOTOVO!")
+        print(f"SOUBOR: {jmeno_so} EXISTUJE!")
+
+
+def vytvor_vsechny_soubory(vsechna_jm: list, jmeno_adresare: str) -> None:
+    for jmeno in vsechna_jm:
+        vytvor_soubor(
+            os.path.join(
+                os.path.abspath(jmeno_adresare),
+                jmeno.strip())
+        )
 

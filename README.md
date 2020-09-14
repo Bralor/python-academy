@@ -207,7 +207,7 @@ Nasledne doplnime nas soubor `hlavni.py`:
 
 def hlavni() -> None:
     jmena = nacti_soubor("jmena_souboru.txt")
-    print(jmena)
+    print(f"JMENA: {jmena}")
 
 
 hlavni()
@@ -227,15 +227,15 @@ zadane jmeno opravdu adresar (podobne funguje `isfile()`):
 import os
 
 def hlavni() -> None:
-    jmena = nacti_soubor("jmena_souboru.txt")
-    if os.path.isdir(cil_adresar):
-        print(f"SLOZKA: {cil_adresar} EXISTUJE!")
+    jmena = nacti_soubor(jmena_souboru)
+    if not os.path.isdir(jmeno_adresare):
+        pass
 
     else:
-        vytvor_adresar(cil_adresar)
+        print(f"SLOZKA: {jmeno_adresare} EXISTUJE!")
 
-
-cil_adresar = "vytvorene_soubory"
+jmena_souboru = "jmena_souboru.txt"
+jmeno_adresare = "vystup"
 hlavni()
 ```
 Timto zajistime, ze pokud slozka jiz existuje, muzeme ji pouzit. Pokud ne,
@@ -248,7 +248,7 @@ Funkci v `pomocne.py` definujeme takhle:
 ```python
 # pomocne.py
 
-def vytvor_adresar(jmeno: str) -> str:
+def vytvor_adresar(jmeno: str) -> None:
     os.mkdir(jmeno)
 ```
 Z funkce si necham vratit promennou `jmeno`, ktera obsahuje ulozeny `str` se
@@ -281,44 +281,81 @@ a jmeno cilove slozky:
 ```
 os.path.join(<abs_cesta>, <cil_adresar>)
 ```
-Pomoci funkce `join()` doplnime soubor:
+Definujeme funkci v souboru `pomocne.py`:
+```python
+...
+def vytvor_soubor(jmeno_so: str) -> None:
+    if not os.path.isfile(jmeno_so):
+        with open(jmeno_so, "w") as soub:
+            print(f"VYTVARIM: {jmeno_so}")
+        print("HOTOVO!")
+
+    else:
+        print(f"SOUBOR: {jmeno_so} EXISTUJE!")
+```
+Po te doplnime funkci `hlavni` v souboru `hlavni.py`:
 ```python
 # hlavni.py
 import os
 
+from pomocne import nacti_soubor
+from pomocne import vytvor_adresar
+from pomocne import vytvor_soubor
+
+
 def hlavni() -> None:
-    jmena = nacti_soubor("jmena_souboru.txt")
-    if os.path.isdir(cil_adresar):
-        print(f"SLOZKA: {cil_adresar} EXISTUJE!")
+    jmena = nacti_soubor(jmena_souboru)
+
+    if not os.path.isdir(jmeno_adresare):
+        vytvor_adresar(jmeno_adresare)
+        vytvor_soubor(os.path.join(jmeno_adresare, jmena[0])
 
     else:
-        vytvor_adresar(cil_adresar)
+        print(f"SLOZKA: {jmeno_adresare}, EXISTUJE!")
     
-    for jmeno in jmena:
-        vytvor_soubor(jmeno.strip(), os.path.join(os.getcwd(), cil_adresar))
 
-
-cil_adresar = "vytvorene_soubory"
+jmena_souboru = sys.argv[1]
+jmeno_adresare = sys.argv[2]
 hlavni()
 ```
-Zbyva definovat funkci v souboru `pomocne.py`:
+
+## Existujici soubory
+Muze nastat situace, kdy existuje nejenom adresar `vystup` ale i nektere soubory
+v nem. Proto je nutne situaci osetret vsestrannejsi funkci:
 ```python
+# pomocne.py
 ...
-def vytvor_soubor(jmeno_soubor: str, abs_cesta: str) -> None:
-    try:
-        novy_soubor = os.path.join(abs_cesta, jmeno_soubor)
+def vytvor_vsechny_soubory(vsechna_jm: list, jmeno_adresare: str) -> None:
+    for jmeno in vsechna_jm:
+        vytvor_soubor(
+            os.path.join(os.path.abspath(jmeno_adresare), jmeno.strip()))
+```
+Predchozi kod je nova funkce do souboru `pomocne.py`. Nyni importujeme a
+zavolame tuto funkci uvnitr soubor `hlavni.py`:
+```python
+# hlavni.py
+import os
 
-        if not os.path.isfile(novy_soubor):
-            with open(novy_soubor, "w") as nf:
-                print(f"VYTVARIM: {novy_soubor}")
-        else:
-            raise Exception()
+from pomocne import nacti_soubor
+from pomocne import vytvor_adresar
+from pomocne import vytvor_vsechny_soubory
 
-    except Exception:
-        print(f"SOUBOR: {novy_soubor} JIZ EXISTUJE!")
+
+def hlavni() -> None:
+    jmena = nacti_soubor(jmena_souboru)
+
+    if not os.path.isdir(jmeno_adresare):
+        vytvor_adresar(jmeno_adresare)
+        vytvor_vsechny_soubory(jmena, jmeno_adresare)
 
     else:
-        print("HOTOVO!")
+        print(f"SLOZKA: {jmeno_adresare}, EXISTUJE!")
+        vytvor_vsechny_soubory(jmena, jmeno_adresare)
+    
+
+jmena_souboru = sys.argv[1]
+jmeno_adresare = sys.argv[2]
+hlavni()
 ```
 
 ## Moduly tretich stran
@@ -407,41 +444,43 @@ import sys
 
 ...
 
-if __name__ == "__main__":
-    if len(sys.argv) == 3:
-        txt_soubor = sys.argv[1]
-        cil_adresar = sys.argv[2]
-        hlavni()
-    else:
-        print("INCORRECT USAGE: python <file>.py <txt_file> <dir>")
+if len(sys.argv) != 3:
+    print("POUZITI: python hlavni.py <txt_soubor> <jmeno_adresare>")
+
+else:
+    jmena_souboru = sys.argv[1]
+    jmeno_adresare = sys.argv[2]
+    hlavni()
 ```
-Spravne promenne pak doplnime do predchoziho kodu:
+Cely soubor `hlavni.py` pak bude vypadat nasledovne:
 ```python
 import os
 import sys
 
-from pomocne import nacti_soubor, vytvor_soubor, vytvor_adresar
+from pomocne import nacti_soubor
+from pomocne import vytvor_adresar
+from pomocne import vytvor_vsechny_soubory
 
 
 def hlavni() -> None:
-    jmena = nacti_soubor(txt_soubor)
-    if os.path.isdir(cil_adresar):
-        print(f"SLOZKA: {cil_adresar} EXISTUJE!")
+    jmena = nacti_soubor(jmena_souboru)
+
+    if not os.path.isdir(jmeno_adresare):
+        vytvor_adresar(jmeno_adresare)
+        vytvor_vsechny_soubory(jmena, jmeno_adresare)
 
     else:
-        vytvor_adresar(cil_adresar)
-    
-    for jmeno in jmena:
-        vytvor_soubor(jmeno.strip(), os.path.join(os.getcwd(), cil_adresar))
+        print(f"SLOZKA: {jmeno_adresare}, EXISTUJE!")
+        vytvor_vsechny_soubory(jmena, jmeno_adresare)
 
 
-if __name__ == "__main__":
-    if len(sys.argv) == 3:
-        txt_soubor = sys.argv[1]
-        cil_adresar = sys.argv[2]
-        hlavni()
-    else:
-        print("INCORRECT USAGE: python <file>.py <txt_file> <dir>")
+if len(sys.argv) != 3:
+    print("POUZITI: python hlavni.py <txt_soubor> <jmeno_adresare>")
+
+else:
+    jmena_souboru = sys.argv[1]
+    jmeno_adresare = sys.argv[2]
+    hlavni()
 ```
 
 Pokracovat na [Lekci#11](https://github.com/Bralor/python-academy/tree/lekce11)

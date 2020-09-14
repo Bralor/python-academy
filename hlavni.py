@@ -1,28 +1,30 @@
 #!/usr/bin/python3
-"""Lekce #11 - Uvod do programovani, importovani - hlavni"""
+"""Lekce #11 - Uvod do programovani, importovani - hlavni.py"""
 import os
 import sys
 
-from pomocne import nacti_soubor, vytvor_soubor, vytvor_adresar
-
+from pomocne import nacti_soubor
+from pomocne import vytvor_adresar
+from pomocne import vytvor_vsechny_soubory
 
 
 def hlavni() -> None:
-    jmena = nacti_soubor(txt_soubor)
-    if os.path.isdir(cil_adresar):
-        print(f"SLOZKA: {cil_adresar} EXISTUJE!")
+    jmena = nacti_soubor(jmena_souboru)
+
+    if not os.path.isdir(jmeno_adresare):
+        vytvor_adresar(jmeno_adresare)
+        vytvor_vsechny_soubory(jmena, jmeno_adresare)
 
     else:
-        vytvor_adresar(cil_adresar)
-
-    for jmeno in jmena:
-        vytvor_soubor(jmeno.strip(), os.path.join(os.getcwd(), cil_adresar))
+        print(f"SLOZKA: {jmeno_adresare}, EXISTUJE!")
+        vytvor_vsechny_soubory(jmena, jmeno_adresare)
 
 
-if __name__ == "__main__":
-    if len(sys.argv) == 3:
-        txt_soubor = sys.argv[1]
-        cil_adresar = sys.argv[2]
-        hlavni()
-    else:
-        print("INCORRECT USAGE: python <file>.py <txt_file> <dir>")
+if len(sys.argv) != 3:
+    print("POUZITI: python hlavni.py <txt_soubor> <jmeno_adresare>")
+
+else:
+    jmena_souboru = sys.argv[1]
+    jmeno_adresare = sys.argv[2]
+    hlavni()
+
