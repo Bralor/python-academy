@@ -27,7 +27,7 @@ do nejakeho textoveho souboru (optimalne `csv`).
 Spustime skript v adresari s prislusnym argumentem (tim bude adresa stranky, ze
 ktere chceme `html` ziskat):
 ```
-$ python scraper.py <url>
+$ python scraper.py <url> <jmeno_souboru>
 ```
 Nasledne by se mel objevit komentar v prikazovem radku a `csv` soubor
 v aktualnim adresari:
