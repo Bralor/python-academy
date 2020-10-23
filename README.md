@@ -1,4 +1,4 @@
-Vratit na [Uvodni lekci](https://github.com/Bralor/python-academy/blob/master/README.md)
+Vratit na [:star:Uvodni lekci:start:](https://github.com/Bralor/python-academy/blob/master/README.md)
 
 <p align="center">
   <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
@@ -6,11 +6,10 @@ Vratit na [Uvodni lekci](https://github.com/Bralor/python-academy/blob/master/RE
 
 # Python academy, lekce 01
 ## Dulezite odkazy
-- [Python Academy, lekce](https://engeto.com/cs/kurz/online-python-akademie/lekce)
-- [Python Academy, cviceni](https://engeto.com/cs/kurz/online-python-akademie/praxe)
 - [Python Academy, Git](https://engeto.com/cs/kurz/git-zaklady-pro-uzivatele/lekce)
 - [Python Academy, zaciname!](https://engeto.com/cs/kurz/python-academy/studium/SpmtH-mVRY6zPL9alhruMQ/home-set-up/basics-of-command-line)
 - [Repl.it](https://repl.it/)
+- [Engeto.com](https://engeto.com/cs/)
 
 ## Co nas dnes ceka?
 Vytvorime jednoduchy skript pojmenovany "Destinatio". Tento program bude komunikovat s uzivatelem. Komunikaci rozumejme nejake predavani vstupu a vystupu s nasim programem. Jelikoz jde o nasi prvni spolecnou hodinu, vsechno se budeme snazit resit pomoci vzdaleneho online [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)(integrated development enviroment). Prejdeme tedy na [repl.it](#-dulezite-odkazy)!
