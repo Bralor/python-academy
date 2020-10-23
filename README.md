@@ -1,4 +1,4 @@
-Vratit na [:star:Uvodni lekci:start:](https://github.com/Bralor/python-academy/blob/master/README.md)
+Vratit na [:star:Uvodni lekci:star:](https://github.com/Bralor/python-academy/blob/master/README.md)
 
 <p align="center">
   <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
