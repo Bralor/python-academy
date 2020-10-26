@@ -1,11 +1,13 @@
 ### Welcome to the course [Engeto, Python academy](https://engeto.cz/python-akademie/) 👋
 
-### ❓ What is Engeto [<img align="right" alt="engeto-logo" width="30px" 
-  src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png"/>](https://engeto.cz/o-nas/)
+### ❓ What is [Engeto](https://engeto.cz/o-nas/)
+[<img align="left" alt="engeto-logo" width="30px"
+  src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png"/>](https://engeto.cz)
 It is a company that helps to educate people in the field of information
 technologies.
 
-### ❓ What is Python [<img align="center" alt="python-logo" width="25px" 
+### ❓ What is [Python](https://www.python.org)
+[<img align="center" alt="python-logo" width="25px" 
   src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>](https://www.python.org)
 It is an ideal programming language for complete beginners.
 
@@ -24,7 +26,6 @@ The best place is the official website
 - lesson#07-12: trying to comprehend more difficult features
 ---
 <br />
-
 ### 📺 Goodies
 - [IDE in your browser](https://repl.it)
 - [Communication hub](https://slack.com/intl/en-cz/)
