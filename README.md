@@ -1,14 +1,14 @@
 ### Welcome to the course [Engeto, Python academy](https://engeto.cz/python-akademie/) 👋
 
-### ❓ What is [Engeto](https://engeto.cz/o-nas/)
 [<img align="right" alt="engeto-logo" width="55px"
   src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png"/>](https://engeto.cz)
+### ❓ What is [Engeto](https://engeto.cz/o-nas/)
 It is a company that helps to educate people in the field of information
 technologies.
 
-### ❓ What is [Python](https://www.python.org)
 [<img align="right" alt="python-logo" width="50px" 
   src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>](https://www.python.org)
+### ❓ What is [Python](https://www.python.org)
 It is an ideal programming language for complete beginners.
 
 ### ❓ Even in 2020
@@ -28,11 +28,11 @@ The best place is the official website
 ---
 
 ### 📺 Goodies
-- [IDE in your browser](https://repl.it)
-- [Communication hub](https://slack.com/intl/en-cz/)
-- [Large typing](https://large-type.com/#*hello*)
-- [Chat](https://tlk.io/)
-- [First lesson](https://docs.google.com/presentation/d/1BKgmTrre-Go78OjExTP2JfaXTgUZ1KX2RRoayX6grsk/edit#slide=id.ga479756cdf_0_6)
+- [chat application](https://tlk.io/)
+- [large typing, online](https://large-type.com/#*hello*)
+- [slack, communication hub](https://slack.com/intl/en-cz/)
+- [repl.it, IDE in your browser](https://repl.it)
+- [introduction to the first lesson](https://docs.google.com/presentation/d/1BKgmTrre-Go78OjExTP2JfaXTgUZ1KX2RRoayX6grsk/edit#slide=id.ga479756cdf_0_6)
 ---
 <br />
 
