@@ -177,7 +177,7 @@ ODDELOVAC = '==================================='
 ## Nas prvni vypis z programu
 Chceme oficialne uvitat uzivatele, oznamit mu nase umysly a ukazat aktualni nabidku. Jak to provedeme?
 
-### Funce print()
+### Funkce print()
 Je to [vestavena funkce](https://engeto.com/cs/kurz/python-academy/studium/GzlxQFyiSSuTLjE_B99htw/1-intro-to-programming/basics/input-output-data) Pythonu (s Pythonem nainstalovana, neni nutne ji tvorit). Ucelem teto funkce je vypsat informace, ktere ji vlozime do kulatych zavorek.
 
 __Obecne__:
