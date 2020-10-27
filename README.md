@@ -2,8 +2,8 @@
 <br />
 
 <p align="center">
-  <img align="center" alt="engeto-logo" width="55px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
-  <img aling="center" alt="python-logo" width="50px" src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>
+  <img alt="engeto-logo" width="75px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
+  <img alt="python-logo" width="75px" src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png" />
 </p>
 
 ### What is [Engeto](https://engeto.cz/o-nas/)❓
@@ -64,9 +64,10 @@ The best place is the official website
 
 <details>
   <summary>🔽 Others</summary>
+
 <!--START_SECTION:details-->
+- 🐍 [Install Python](https://docs.python.org/3/using/index.html)
 - 🗒 [LinkedIn](https://www.linkedin.com/in/matous-holinka/)
-- 🐍[Install Python](https://docs.python.org/3/using/index.html)
 <!--END_SECTION:details-->
 
 </details>
