@@ -1,13 +1,14 @@
 ### Welcome to the course [Engeto, Python academy](https://engeto.cz/python-akademie/) 👋
 <br />
 
-[<img align="center" alt="engeto-logo" width="55px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />](https://engeto.cz)
+<p align="center">
+  <img align="center" alt="engeto-logo" width="55px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
+  <img aling="center" alt="python-logo" width="50px" src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>
+</p>
 
 ### What is [Engeto](https://engeto.cz/o-nas/)❓
 It is a company that helps to educate people in the field of information
 technologies.
-
-[<img aling="center" alt="python-logo" width="50px" src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>](https://www.python.org)
 
 ### What is [Python](https://www.python.org)❓
 It is an ideal programming language for complete beginners.
@@ -62,7 +63,7 @@ The best place is the official website
 ➡ [let's go to the first lesson..](https://github.com/Bralor/python-academy/tree/lekce01)
 
 <details>
-  <summary>🔽 About me</summary>
+  <summary>🔽 Others</summary>
 <!--START_SECTION:details-->
 - 🗒 [LinkedIn](https://www.linkedin.com/in/matous-holinka/)
 - 🐍[Install Python](https://docs.python.org/3/using/index.html)
