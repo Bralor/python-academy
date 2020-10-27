@@ -21,22 +21,19 @@
 - dalsi podminky
 ---
 
-<details>
-  <summary>🔽 Slovniky<summary/>
+<details><summary>🔽 Slovniky<summary/>
+<p>
 
 <!--DICTIONARIES:START-->
-- Co toe?
-- Jak jej poznam?
-- Prvni krucky
-
 #### Prvni zapis
 Tady neco o slovnicich.
 
-#### Uloha
-Tady doplnime ulohu.
-
+```python
+print(type({}))
+```
 <!--DICTIONARIES:END-->
 
+</p>
 </details>
 
 
