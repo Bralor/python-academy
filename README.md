@@ -1,7 +1,7 @@
-➡ [Vratit se na druhou lekci](https://github.com/Bralor/python-academy/tree/lekce02)
+➡ [vratit se na druhou lekci](https://github.com/Bralor/python-academy/tree/lekce02)
 
 <p align="center">
-  <img alt="engeto-logo" width="80px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
+  <img alt="engeto-logo" width="100px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
 </p>
 
 ## 3⃣ Python akademie
@@ -12,22 +12,23 @@
 - [The Godfather](https://www.imdb.com/title/tt0068646/?ref_=fn_al_tt_1)
 - [The Dark Knight](https://www.imdb.com/title/tt0468569/?ref_=fn_al_tt_1)
 - [The Prestige](https://www.imdb.com/title/tt0482571/?ref_=fn_al_tt_1)
+---
 
-### 🔵 Co nas dneska ceka
-<!--V treti lekci se budeme bavit o dvou novych datovych typech, o jejich metodach
-a praktickem vyuziti. V ramci celeho tohoto povidani si opet ukazeme radu
-nazornych prikladu a jedne souvisle ulohy.-->
+### 🗒 Obsah lekce
+- slovniky
+- mnoziny
+- dalsi metody
+- dalsi podminky
+---
+
 <dictionary>
   <summary>🔽 Slovniky<summary/>
 
+<!--START_SECTION:dictionaries-->
 Tady neco o slovnicich
+<!--END_SECTION:dictionaries-->
+
 </dictionary>
-
-<sets>
-  <summary>🔽 Mnoziny</summary>
-
-Tady neco o mnozinach
-</sets>
 
 <!--
 ## Co bude vysledkem
