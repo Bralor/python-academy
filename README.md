@@ -2,7 +2,7 @@
 <br />
 
 <p align="center">
-  <img alt="engeto-logo" width="75px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
+  <img alt="engeto-logo" width="80px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
   <img alt="python-logo" width="75px" src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png" />
 </p>
 
