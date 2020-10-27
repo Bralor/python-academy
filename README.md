@@ -1,16 +1,13 @@
 ### Welcome to the course [Engeto, Python academy](https://engeto.cz/python-akademie/) 👋
 <br />
 
-<p align="center">
-  [<img alt="engeto-logo" width="55px"
-    src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png"/>](https://engeto.cz)
-  [<img alt="python-logo" width="50px" 
-    src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>](https://www.python.org)
-</p>
+[<img align="center" alt="engeto-logo" width="55px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />](https://engeto.cz)
 
 ### What is [Engeto](https://engeto.cz/o-nas/)❓
 It is a company that helps to educate people in the field of information
 technologies.
+
+[<img aling="center" alt="python-logo" width="50px" src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>](https://www.python.org)
 
 ### What is [Python](https://www.python.org)❓
 It is an ideal programming language for complete beginners.
@@ -48,7 +45,7 @@ The best place is the official website
 
 ### 🆕 Updates
 <!--START_SECTION:activities-->
-1. ✅ Issue [#107](https://github.com/Bralor/python-academy/issues/107) in [Bralor/python-academy](https://github.com/Bralor/python-academy)
+1. 🏁 Issue [#107](https://github.com/Bralor/python-academy/issues/107) in [Bralor/python-academy](https://github.com/Bralor/python-academy)
 <!--END_SECTION:activities-->
 
 ---
