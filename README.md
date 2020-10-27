@@ -1,21 +1,21 @@
 ### Welcome to the course [Engeto, Python academy](https://engeto.cz/python-akademie/) 👋
 <br />
 
-[<img align="center" alt="engeto-logo" width="55px"
-  src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png"/>](https://engeto.cz)
-[<img align="center" alt="python-logo" width="50px" 
-  src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>](https://www.python.org)
+<p align="center">
+  [<img alt="engeto-logo" width="55px"
+    src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png"/>](https://engeto.cz)
+  [<img alt="python-logo" width="50px" 
+    src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>](https://www.python.org)
+</p>
 
-### What is [Engeto](https://engeto.cz/o-nas/) ❓
+### What is [Engeto](https://engeto.cz/o-nas/)❓
 It is a company that helps to educate people in the field of information
 technologies.
 
-[<img align="right" alt="python-logo" width="50px" 
-  src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>](https://www.python.org)
-### What is [Python](https://www.python.org) ❓
+### What is [Python](https://www.python.org)❓
 It is an ideal programming language for complete beginners.
 
-### Even in 2020 ❓
+### Even in 2020❓
 Sure, still belongs among the top 4
 (➡ [check the source](https://www.codingame.com/work/codingame-developer-survey-2020/#page6))
 
@@ -31,7 +31,7 @@ The best place is the official website
 - lesson#07-12: trying to comprehend more difficult features
 ---
 
-### 🗒Lessons
+### 🗒 Lessons
 1. [Introduction](https://github.com/Bralor/python-academy/tree/lekce01)
 2. [Conditions](https://github.com/Bralor/python-academy/blob/lekce02/README.md)
 3. [Dictionaries & sets](https://github.com/Bralor/python-academy/tree/lekce03)
@@ -46,9 +46,9 @@ The best place is the official website
 12. [Web-scraping](https://github.com/Bralor/python-academy/tree/lekce12)
 ---
 
-### 🆕Updates
+### 🆕 Updates
 <!--START_SECTION:activities-->
-1. ✅[#107](https://github.com/Bralor/python-academy/issues/107) in [Bralor/python-academy](https://github.com/Bralor/python-academy)
+1. ✅ Issue [#107](https://github.com/Bralor/python-academy/issues/107) in [Bralor/python-academy](https://github.com/Bralor/python-academy)
 <!--END_SECTION:activities-->
 
 ---
