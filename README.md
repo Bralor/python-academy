@@ -24,24 +24,21 @@
 <details>
   <summary>🔽 Slovniky<summary/>
 
-<!--START_SECTION:dictionaries-->
-### Prvni zapis
-Tady neco o slovnicich
-<!--END_SECTION:dictionaries-->
+<!--DICTIONARIES:START-->
+- Co toe?
+- Jak jej poznam?
+- Prvni krucky
+
+#### Prvni zapis
+Tady neco o slovnicich.
+
+#### Uloha
+Tady doplnime ulohu.
+
+<!--DICTIONARIES:END-->
 
 </details>
 
-<details>
-  <summary>🔽 Mnoziny<summary/>
-
-<!--START_SECTION:dictionaries-->
-### Co je to mnozina
-Tady neco o nich
-
-### Prvni zapis
-Prvni priklad
-<!--END_SECTION:dictionaries-->
-</details>
 
 <!--
 ## Co bude vysledkem
