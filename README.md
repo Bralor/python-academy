@@ -1,21 +1,25 @@
 ### Welcome to the course [Engeto, Python academy](https://engeto.cz/python-akademie/) 👋
+<br />
 
-[<img align="right" alt="engeto-logo" width="55px"
+[<img align="center" alt="engeto-logo" width="55px"
   src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png"/>](https://engeto.cz)
-### ❓ What is [Engeto](https://engeto.cz/o-nas/)
+[<img align="center" alt="python-logo" width="50px" 
+  src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>](https://www.python.org)
+
+### What is [Engeto](https://engeto.cz/o-nas/) ❓
 It is a company that helps to educate people in the field of information
 technologies.
 
 [<img align="right" alt="python-logo" width="50px" 
   src="https://hackaday.com/wp-content/uploads/2019/09/python-logo.png"/>](https://www.python.org)
-### ❓ What is [Python](https://www.python.org)
+### What is [Python](https://www.python.org) ❓
 It is an ideal programming language for complete beginners.
 
-### ❓ Even in 2020
+### Even in 2020 ❓
 Sure, still belongs among the top 4
 (➡ [check the source](https://www.codingame.com/work/codingame-developer-survey-2020/#page6))
 
-### ❓ Where to start
+### Where to start ❓
 The best place is the official website
 (➡ [especially the community section](https://www.python.org/community/))
 
@@ -25,6 +29,28 @@ The best place is the official website
 - the goal is to learn think like a programmer
 - lesson#01-06: we will focus on the basics
 - lesson#07-12: trying to comprehend more difficult features
+---
+
+### 🗒Lessons
+1. [Introduction](https://github.com/Bralor/python-academy/tree/lekce01)
+2. [Conditions](https://github.com/Bralor/python-academy/blob/lekce02/README.md)
+3. [Dictionaries & sets](https://github.com/Bralor/python-academy/tree/lekce03)
+4. [While loop](https://github.com/Bralor/python-academy/tree/lekce04)
+5. [For loop](https://github.com/Bralor/python-academy/tree/lekce05)
+6. [Functions, basics](https://github.com/Bralor/python-academy/tree/lekce06)
+7. [Functions, advanced](https://github.com/Bralor/python-academy/tree/lekce07)
+8. [Text files](https://github.com/Bralor/python-academy/tree/lekce08)
+9. [Error handling, debugging](https://github.com/Bralor/python-academy/tree/lekce09)
+10. [Importing, modules & packages](https://github.com/Bralor/python-academy/tree/lekce10)
+11. [Json & csv files](https://github.com/Bralor/python-academy/tree/lekce11)
+12. [Web-scraping](https://github.com/Bralor/python-academy/tree/lekce12)
+---
+
+### 🆕Updates
+<!--START_SECTION:activities-->
+1. ✅[#107](https://github.com/Bralor/python-academy/issues/107) in [Bralor/python-academy](https://github.com/Bralor/python-academy)
+<!--END_SECTION:activities-->
+
 ---
 
 ### 📺 Goodies
