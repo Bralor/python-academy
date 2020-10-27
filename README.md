@@ -14,18 +14,17 @@
 ---
 
 ### Obsah lekce
-<details><summary>🔽 Slovniky<summary/>
-<p>
+<details>
+  <summary>🔽 Slovniky<summary/>
 
-<!--DICTIONARIES:START-->
-- coe slovnik
-- jak vypada
-- co umi
-- vyhody
-- nevyhody
-<!--DICTIONARIES:END-->
+  <!--DICTIONARIES:START-->
+  - coe slovnik
+  - jak vypada
+  - co umi
+  - vyhody
+  - nevyhody
+  <!--DICTIONARIES:END-->
 
-</p>
 </details>
 
 <!--
