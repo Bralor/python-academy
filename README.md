@@ -13,19 +13,20 @@
 - [The Prestige](https://www.imdb.com/title/tt0482571/?ref_=fn_al_tt_1)
 ---
 
-### Obsah lekce
+### 🗒 Obsah lekce
 <details>
   <summary>🔽 Slovniky<summary/>
 
-  <!--DICTIONARIES:START-->
+
+  #### Slovniky
   - coe slovnik
   - jak vypada
   - co umi
   - vyhody
   - nevyhody
-  <!--DICTIONARIES:END-->
 
 </details>
+
 
 <!--
 ## Co bude vysledkem
