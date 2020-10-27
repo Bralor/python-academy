@@ -15,12 +15,6 @@
 ---
 
 ### 🗒 Obsah lekce
-- slovniky
-- mnoziny
-- dalsi metody
-- dalsi podminky
----
-
 <details><summary>🔽 Slovniky<summary/>
 <p>
 
@@ -37,7 +31,6 @@ print(type({}))
 </details>
 
 
-<!--
 ## Co bude vysledkem
 Po spusteni by mel program vypadat nasledovne (viz. demo)
 ```bash
@@ -551,4 +544,4 @@ set6.isdisjoint(set7)  # False
 ```
 
 Pokracovat na [Lekci#04](https://github.com/Bralor/python-academy/tree/lekce04)
--->
+
