@@ -18,11 +18,11 @@
 <p>
 
 <!--DICTIONARIES:START-->
-#### Prvni zapis
-
-```python
-print(type({}))
-```
+- coe slovnik
+- jak vypada
+- co umi
+- vyhody
+- nevyhody
 <!--DICTIONARIES:END-->
 
 </p>
