@@ -7,20 +7,18 @@
 ## 3⃣ Python akademie
 ### 🗒 Dulezite odkazy
 - [Python Academy, Engeto](https://engeto.com)
-- [Python Academy, minula lekce, repozitar](https://github.com/Bralor/python-academy/tree/lekce02)
 - [The Shawshank Redemption](https://www.imdb.com/title/tt0111161/?ref_=fn_al_tt_1)
 - [The Godfather](https://www.imdb.com/title/tt0068646/?ref_=fn_al_tt_1)
 - [The Dark Knight](https://www.imdb.com/title/tt0468569/?ref_=fn_al_tt_1)
 - [The Prestige](https://www.imdb.com/title/tt0482571/?ref_=fn_al_tt_1)
 ---
 
-### 🗒 Obsah lekce
+### Obsah lekce
 <details><summary>🔽 Slovniky<summary/>
 <p>
 
 <!--DICTIONARIES:START-->
 #### Prvni zapis
-Tady neco o slovnicich.
 
 ```python
 print(type({}))
@@ -30,7 +28,7 @@ print(type({}))
 </p>
 </details>
 
-
+<!--
 ## Co bude vysledkem
 Po spusteni by mel program vypadat nasledovne (viz. demo)
 ```bash
@@ -544,4 +542,4 @@ set6.isdisjoint(set7)  # False
 ```
 
 Pokracovat na [Lekci#04](https://github.com/Bralor/python-academy/tree/lekce04)
-
+-->
