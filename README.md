@@ -6,11 +6,10 @@ Vratit na [Uvodni lekci](https://github.com/Bralor/python-academy/blob/master/RE
 
 # Python academy, lekce 01
 ## Dulezite odkazy
-- [Python Academy, lekce](https://engeto.com/cs/kurz/online-python-akademie/lekce)
-- [Python Academy, cviceni](https://engeto.com/cs/kurz/online-python-akademie/praxe)
 - [Python Academy, Git](https://engeto.com/cs/kurz/git-zaklady-pro-uzivatele/lekce)
 - [Python Academy, zaciname!](https://engeto.com/cs/kurz/python-academy/studium/SpmtH-mVRY6zPL9alhruMQ/home-set-up/basics-of-command-line)
 - [Repl.it](https://repl.it/)
+- [Engeto.com](https://engeto.com/cs/)
 
 ## Co nas dnes ceka?
 Vytvorime jednoduchy skript pojmenovany __Destinatio__. Tento program bude
@@ -184,10 +183,8 @@ ODDELOVAC = '==================================='
 Chceme oficialne uvitat uzivatele, oznamit mu nase umysly a ukazat aktualni
 nabidku. Jak to provedeme?
 
-### Funce print()
-Je to [vestavena funkce](https://engeto.com/cs/kurz/python-academy/studium/GzlxQFyiSSuTLjE_B99htw/1-intro-to-programming/basics/input-output-data)
-Pythonu (s Pythonem nainstalovana, neni nutne ji tvorit). Ucelem teto funkce
-je vypsat informace, ktere ji vlozime do kulatych zavorek.
+### Funkce print()
+Je to [vestavena funkce](https://engeto.com/cs/kurz/python-academy/studium/GzlxQFyiSSuTLjE_B99htw/1-intro-to-programming/basics/input-output-data) Pythonu (s Pythonem nainstalovana, neni nutne ji tvorit). Ucelem teto funkce je vypsat informace, ktere ji vlozime do kulatych zavorek.
 
 __Obecne__:
 ```python
@@ -389,3 +386,4 @@ ODDELOVAC = "=" * 35
 ```
 
 Pokracovat na [Lekci#02](https://github.com/Bralor/python-academy/blob/lekce02/README.md)
+
