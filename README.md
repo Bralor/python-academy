@@ -129,11 +129,62 @@
   mkdir python-akademie/lekce03
   ```
 
-  ##### 🗄 Vytvorime novy soubor
-  Vytvorime prazdny soubor:
+  ##### 🗄  Vytorime novy soubor
   ```
   touch movies.py       # Linux
   copy nul "movies.py"  # Windows
+  ```
+
+  ##### ❓Co je to slovnik
+  - **standartni datovy typ** Pythonu
+  - tvoreny pary **klic: hodnota**
+  - podle **klice** vratim (mapuji) **hodnotu** (ne naopak)
+  - klic je **unikatni** (napr. retezec, cislo)
+  - hodnota nemusi byt (napr. retezec, cislo, seznam, ntice, jiny slovnik)
+  - nelze indexovat jako seznamy/ntice
+  - nemaji poradi jako seznamy/ntice
+
+  ##### 📓 Vytvorime prazdny slovnik
+  ```python
+  filmovy_slovnik = {}      # 1. zpusob
+  filmovy_slovnik = dict()  # 2. zpusob
+  ```
+
+  ##### 🗝 Vlozime prvni klic
+  Tak jak jsme pouzivali hranate zavorky u seznamu, je pouzijeme i u slovniku.
+  Ale v tentokrat pro vytvoreni **klice a jeho **hodnoty**.
+  ```python
+  filmovy_slovnik["jmeno"] = None
+  ```
+  ##### 👑 Pridame hodnotu
+  ```python
+  filmovy_slovnik["jmeno"] = "Matous"
+  ```
+
+  ##### 😱 Pridame seznam jako hodnotu
+  ```python
+  PISMENA = ["a", "b", "c", "d"]
+  filmovy_slovnik["pismena"] = PISMENA
+  ```
+
+  ##### 🤦 Slovnik ve slovniku
+  Tento princip muzeme chapat jako vkladani slovniku do slovniku (plati i pro
+  jine datove typy jako senzamy aj.)
+  ```python
+  vnoreny_slovnik_1 = {"jmeno": "Lukas"}
+  vnoreny_slovnik_2 = {"jmeno": "Jan"}
+
+  filmovy_slovnik["1_slovnik"] = vnoreny_slovnik_1
+  filmovy_slovnik["2_slovnik"] = vnoreny_slovnik_2
+  ```
+
+  ##### ⏪ Odstranime klice & hodnoty
+  - funkce `del`
+  - metoda `pop`
+  - metoda `popitem`
+  ```python
+  del filmovy_slovnik["1_slovnik"]
+  filmovy_slovnik.pop("2_slovnik")
   ```
 
 </details>
