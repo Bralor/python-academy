@@ -129,7 +129,7 @@
   mkdir python-akademie/lekce03
   ```
 
-  ##### 🗄  Vytorime novy soubor
+  ##### 🗄  Vytvorime novy soubor
   ```
   touch movies.py       # Linux
   copy nul "movies.py"  # Windows
@@ -189,4 +189,75 @@
 
 </details>
 
+---
+
+<details>
+  <summary>🔽 Komunikace s uzivatelem</summary>
+
+  #### 📡 Pozdravime uzivatele
+  Nejprve pozdravime uzivatele:
+  ```python
+  print("VITEJTE V NASEM FILMOVEM SLOVNIKU!")
+  ```
+  #### 📖 Doplnime oddelovac
+  Jde jen o vizualni prvek v ramci prikazoveho radku:
+  ```python
+  ODDELOVAC = "=" * 76
+
+  print("VITEJTE V NASEM FILMOVEM SLOVNIKU!")
+  print(ODDELOVAC)
+  ```
+
+  #### 🔄 Zarovnani textu
+  Retezec muzeme zarovnat pomoci **metod**:
+  - metoda `center`
+  - metoda `ljust`
+  - metoda `rjust`
+  ```python
+  ODDELOVAC = "=" * 76
+
+  print("VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "))
+  print(ODDELOVAC)
+  ```
+
+  #### 🔝 Vypiseme nabidku
+  Vypiseme nabidku, kterou bude mit uzivatel k dispozici (pozdeji doplnime):
+  ```python
+  print(ODDELOVAC)
+  print("Vitejte v nasi skromne filmove databazi".center(76, " "))
+
+  print(
+  f"""{ODDELOVAC}
+  VYBERTE KATEGORII:
+  {ODDELOVAC}
+  {'VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI'.center(76, " ")}
+  {ODDELOVAC}"""
+  )
+  ```
+
+  #### ☠  Volitelne klicove argumenty
+  U funkce `print` nas budou zajimat tyto:
+  - `end`
+  - `sep`
+
+  Pouziti argumentu `end`:
+  ```python
+  ODDELOVAC = "=" * 76
+
+  print(
+    "VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "),
+    end=f"\n{ODDELOVAC}"
+  )
+  ```
+
+  Pouziti argumentu `sep`:
+  ```python
+  ODDELOVAC = "=" * 76
+
+  print(
+    "VYBERTE KATEGORII:",
+    f"{'VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI'.center(76, " ")}",
+    sep=f"\n{ODDELOVAC}"
+  )
+  ```
 
