@@ -23,9 +23,8 @@
 7. Dalsi metody
 ---
 
-#### 📔 Odkazy
 <details>
-  <summary>🔽 Zobrazit vsechny odkazy</summary>
+  <summary>📔 Odkazy</summary>
 
   - [Vzdelavaci platforma Engeta](https://engeto.com)
   - [Vstupni data, Shawshank Redemption](https://www.imdb.com/title/tt0111161/?ref_=fn_al_tt_1)
@@ -37,9 +36,8 @@
 
 ---
 
-#### ⏯  Ukazka programu
 <details>
-  <summary>🔽 Zobrazit ukazku</summary>
+  <summary>⏯  Ukazka programu</summary>
 
   1. ✌  [Stahnete si treti lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce03.zip)
   2. 💪 Presunte se ke stazenemu souboru
@@ -51,9 +49,8 @@
 
 ---
 
-#### 📥 Vstupni data
 <details>
-  <summary>🔽 Zobrazit vstupni data</summary>
+  <summary>📥 Vstupni data</summary>
 
   ##### The Shawshank redemption
   ```python
@@ -118,9 +115,8 @@
 
 ---
 
-#### 📔 Slovniky v Pythonu
 <details>
-  <summary>🔽 Zobrazit slovniky v Pythonu</summary>
+  <summary>📔 Slovniky v Pythonu</summary>
 
   ##### 📂 Vytvorime pracovni adresar
   Vytvorime prazdny adresar pro jednotlive lekce a do nej dalsi:
@@ -192,7 +188,7 @@
 ---
 
 <details>
-  <summary>🔽 Komunikace s uzivatelem</summary>
+  <summary>📞 Komunikace s uzivatelem</summary>
 
   #### 📡 Pozdravime uzivatele
   Nejprve pozdravime uzivatele:
@@ -260,4 +256,72 @@
     sep=f"\n{ODDELOVAC}"
   )
   ```
+---
+
+<details>
+  <summary>🆎 Podminkovy zapis</summary>
+
+  #### 🌲 Strom podminek
+  Podminky nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat.
+  Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky:
+  ```python
+  # bud TOTO
+  # nebo TOTO
+  # nebo TOTO
+  # jinak TOTO
+  ```
+
+  #### ✅ Vyber uzivatele
+  Uzivatel si musi nejprve vybrat jednu moznost. Kod musi fungovat jak pro mala,
+  tak pro velka pismena:
+  ```python
+  vyber = input("VYBERTE MOZNOST: ").lower()
+  ```
+
+  #### 🎬 Vypis vsechny filmy
+  Prvni vetev naseho podminkoveho zapisu vrati jmena vsech filmu. Pomohou nam
+  pohledy slovniku (metody slovniku):
+  - `items` - vrati objekt s klici a jejich hodnotami
+  - `keys` - vrati objekt s klici
+  - `values` - vrati objekt s hodnotami
+  
+  Nasledne prevedeme vysledny objekt pomoci built-in funkce `list`:
+  ```python
+  if vyber == "vsechny filmy":
+    print(ODDELOVAC)
+    print(f"Mame v nabidce tyto snimky:")
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC)
+  ```
+
+  #### 🔎 Detaily filmu
+  Druha podminka bude mit na starost obstarat vystup, ktery zahrnuje obsah
+  jednotlivych vnitrnich slovniku (tedy detaily konkretniho filmu).
+  - `get` - pokud najde klic, vrati jeho hodnotu
+  - `setdefault` - nastavi novy klic s hodnotou
+
+  Film pak muzeme ziskat pomoci dalsi metody slovniku `get`. Tato metoda ma
+  za cil jedine, najde klic, ktery ji zadame a ona vrati jeho hodnotu.
+  Volitelne pak muzeme nastavit, co vrati, pokud hledany klic nenajde.
+  ```python
+  elif vyber == "detaily filmu":
+    print(ODDELOVAC)
+    print(list(filmovy_slovnik.keys()))
+    print(ODDELOVAC)
+
+    vyber_filmu = input("VYBERTE FILM: ")
+    print(ODDELOVAC)
+    pprint(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
+    ```
+
+</details>
+
+---
+
+<details>
+  <summary>🔢 Mnoziny</summary>
+
+</details>
+
+---
 
