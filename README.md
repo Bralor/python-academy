@@ -312,14 +312,112 @@
     vyber_filmu = input("VYBERTE FILM: ")
     print(ODDELOVAC)
     pprint(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
-    ```
+  ```
 
+</details>
 </details>
 
 ---
 
 <details>
   <summary>🔢 Mnoziny</summary>
+
+  #### 📊 Obecne
+  Mnozina neboli set je opet neserazena kolekce udaju, ktera je typicka tim,
+  ze uvnitr nenajdeme zadnou hodnotu dvakrat. Sety se pouzivaji zejmena kvuli
+  svym matematickym operacim.
+  - sjednoceni (`union`/ `|`)
+  - prunik (`intersection`/ `&`)
+  - rozdil (`difference`/ `-`)
+  - symetricky rozdil (`^`)
+  
+  #### 📌 Vytvorime mnozinu
+  ```python
+  prvni_set = set()
+  print(type(prvni_set))
+
+  druhy_set = {"Matous", "Marek", "Lukas", "Jan"}
+  print(type(druhy_set))
+  ```
+
+  #### 🔁 Pridavame, odebirame
+  - `add`
+  - `discard`
+  ```python
+  novy_set = set()
+
+  novy_set.add("Matous")
+  novy_set.add("Marek")
+  print(novy_set)
+
+  novy_set.discard("Matous")
+  print(novy_set)
+  ```
+
+  #### 🎎 Spolecni herci
+  Dalsi funkci bude zjistit spolecne herce pro dva ruzne filmy.
+  ```python
+  set1 = {"Pavel", "Matous", "Tomas", "Martin"}
+  set2 = {"Martin", "Petr", "Vojtech"}
+
+  print(set1 & set2)  # "Martin"
+  ```
+  Dokonceni dalsi podminky:
+  ```python
+  elif vyber == "spolecni herci":
+      print(ODDELOVAC)
+      print(list(filmovy_slovnik.keys()))
+      print(ODDELOVAC)
+
+      film1 = input("VYBERTE I. FILM: ")
+      film2 = input("VYBERTE II. FILM: ")
+
+      herci_film1 = set(filmovy_slovnik[film1]["HRAJI"])
+      herci_film2 = set(filmovy_slovnik[film2]["HRAJI"])
+
+      prunik = herci_film1 & herci_film2
+      print(
+          f"SPOLECNI HERCI PRO *{filmovy_slovnik[film1]['JMENO']}* \
+          A *{filmovy_slovnik[film2]['JMENO']}*: {prunik}"
+      )
+  ```
+
+  #### 📢 Vsichni reziseri
+  Nakonec chceme zapsat podminkovou vetev, ktera nam vrati vsechny rezisery.
+  ```python
+  elif "reziseri" in vyber:
+      print(ODDELOVAC)
+      set_reziseri = (
+          filmovy_slovnik["The Dark Knight"]["REZISER"],
+          filmovy_slovnik["The Godfather"]["REZISER"],
+          filmovy_slovnik["Shawshank Redemption"]["REZISER"],
+          filmovy_slovnik["The Prestige"]["REZISER"]
+      )
+
+      print("VSICHNI REZISERI V NASEM SEZNAMU:")
+      print(f"{set_reziseri}")
+  ```
+
+</details>
+
+<details>
+  <summary> 📦 Dalsi metody</summary>
+
+  #### 🔢 Podmnozina
+<details>
+  <summary> 🔽 vice o...</summary>
+
+  Jde o dalsi metodu typickou pro mnoziny...
+
+</details>
+
+  #### 🔢 Disjoint
+<details>
+  <summary> 🔽 vice o...</summary>
+
+  Jde o dalsi metodu typickou pro mnoziny...
+
+</details>
 
 </details>
 
