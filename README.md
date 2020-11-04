@@ -118,22 +118,20 @@
 ---
 
 <details>
-  <summary>📔 **Slovniky v Pythonu**</summary>
+  <summary>📔 Slovniky v Pythonu</summary>
 
 <details>
   <summary>📂 Vytvorime adresar & novy soubor</summary>
 
-
-  Vytvorime nejprve adresar pro nas kurz:
-
+  #### 📁 Vytvorime adresar pro nas kurz
   ```
   mkdir python-akademie
   ```
-  Potom adresar pro dnesni lekci:
+  #### 📁 Vytvorime adresar pro dnesni lekci
   ```
   mkdir python-akademie/lekce03
   ```
-  Posledni v rade bude dnesni uloha:
+  #### 🎞 Vytvorime soubor pro dnesni lekce
   ```
   touch movies.py       # Linux
   copy nul "movies.py"  # Windows
@@ -145,6 +143,7 @@
 <details>
   <summary>❓ Co je to slovnik</summary>
 
+  #### ☝ K zapamatovani
   - **standartni datovy typ** Pythonu
   - tvoreny pary **klic: hodnota**
   - podle **klice** vratim (mapuji) **hodnotu** (ne naopak)
@@ -159,25 +158,25 @@
 <details>
   <summary>📓 Uvod k praci se slovniky</summary>
 
-  ##### 📚 Vytvorime slovnik
+  #### 📚 Vytvorime slovnik
   ```python
   filmovy_slovnik = {}      # 1. zpusob
   filmovy_slovnik = dict()  # 2. zpusob
   ```
 
-  ##### 🗝  Vlozime prvni klic
+  #### 🗝  Vlozime prvni klic
   Tak jak jsme pouzivali hranate zavorky u seznamu, je pouzijeme i u slovniku.
   Ale v tentokrat pro vytvoreni **klice a jeho **hodnoty**.
   ```python
   filmovy_slovnik["jmeno"] = None
   ```
 
-  ##### 👑 Pridame hodnotu
+  #### 👑 Pridame hodnotu
   ```python
   filmovy_slovnik["jmeno"] = "Matous"
   ```
 
-  ##### 😱 Ruzne hodnoty
+  #### 😱 Ruzne hodnoty
   Do slovniku muzeme ke klici ulozit nejen cisla ci slova. Muzeme ulozit i
   seznamy a ntice:
   ```python
@@ -185,7 +184,7 @@
   filmovy_slovnik["pismena"] = PISMENA
   ```
 
-  ##### 🤦 Slovnik ve slovniku
+  #### 🤦 Slovnik ve slovniku
   Do slovniku muzu vlozit i jine slovniky:
   ```python
   vnoreny_slovnik_1 = {"jmeno": "Lukas"}
@@ -195,7 +194,7 @@
   filmovy_slovnik["2_slovnik"] = vnoreny_slovnik_2
   ```
 
-  ##### ⏪ Odstranime klice & hodnoty
+  #### ⏪ Odstranime klice & hodnoty
   - funkce `del`
   - metoda `pop`
   - metoda `popitem`
@@ -243,7 +242,6 @@
   #### 🔝 Vypiseme nabidku
   Vypiseme nabidku, kterou bude mit uzivatel k dispozici (pozdeji doplnime):
   ```python
-  print(ODDELOVAC)
   print("Vitejte v nasi skromne filmove databazi".center(76, " "))
 
   print(
@@ -266,7 +264,7 @@
 
   print(
     "VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "),
-    end=f"\n{ODDELOVAC}"
+    end=f"\n{ODDELOVAC}\n"
   )
   ```
 
@@ -275,9 +273,10 @@
   ODDELOVAC = "=" * 76
 
   print(
-    "VYBERTE KATEGORII:",
-    f"{'VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI'.center(76, " ")}",
-    sep=f"\n{ODDELOVAC}"
+      "VYBERTE KATEGORII:",
+      "VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI".center(76, " "),
+      sep=f"\n{ODDELOVAC}\n",
+      end=f"\n{ODDELOVAC}\n"
   )
   ```
 ---
