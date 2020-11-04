@@ -118,10 +118,11 @@
 ---
 
 <details>
-  <summary>📔 Slovniky v Pythonu</summary>
+  <summary>📔 **Slovniky v Pythonu**</summary>
 
 <details>
   <summary>📂 Vytvorime adresar & novy soubor</summary>
+
 
   Vytvorime nejprve adresar pro nas kurz:
 
@@ -142,7 +143,7 @@
 </details>
 
 <details>
-  <summary>❓Co je to slovnik</summary>
+  <summary>❓ Co je to slovnik</summary>
 
   - **standartni datovy typ** Pythonu
   - tvoreny pary **klic: hodnota**
@@ -155,10 +156,8 @@
 
 </details>
 
-  #### 📓 Uvod k praci se slovniky
-
 <details>
-  <summary>🔽 Zjisti vice...</summary>
+  <summary>📓 Uvod k praci se slovniky</summary>
 
   ##### 📚 Vytvorime slovnik
   ```python
@@ -166,7 +165,7 @@
   filmovy_slovnik = dict()  # 2. zpusob
   ```
 
-  ##### 🗝 Vlozime prvni klic
+  ##### 🗝  Vlozime prvni klic
   Tak jak jsme pouzivali hranate zavorky u seznamu, je pouzijeme i u slovniku.
   Ale v tentokrat pro vytvoreni **klice a jeho **hodnoty**.
   ```python
@@ -204,7 +203,8 @@
   del filmovy_slovnik["1_slovnik"]
   filmovy_slovnik.pop("2_slovnik")
   ```
-  
+---
+
 </details>
 </details>
 
@@ -229,6 +229,7 @@
 
   #### 🔄 Zarovnani textu
   Retezec muzeme zarovnat pomoci **metod**:
+  
   - metoda `center`
   - metoda `ljust`
   - metoda `rjust`
