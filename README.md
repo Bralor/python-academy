@@ -158,15 +158,19 @@
 <details>
   <summary>📓 Uvod k praci se slovniky</summary>
 
-  #### 📚 Vytvorime slovnik
+<details>
+  <summary>📚 Vytvorime slovnik</summary>
   ```python
   filmovy_slovnik = {}      # 1. zpusob
   filmovy_slovnik = dict()  # 2. zpusob
   ```
+---
 
-  #### 🗝  Vlozime prvni klic
-  Tak jak jsme pouzivali hranate zavorky u seznamu, je pouzijeme i u slovniku.
-  Ale v tentokrat pro vytvoreni **klice a jeho **hodnoty**.
+<details>
+  <summary>🗝  Vlozime prvni klc</summary>
+
+  #### 🔑 Vlozime klic
+  Hranate zavorky u slovniku se nechovaji jako u seznamu:
   ```python
   filmovy_slovnik["jmeno"] = None
   ```
@@ -175,8 +179,14 @@
   ```python
   filmovy_slovnik["jmeno"] = "Matous"
   ```
+---
 
-  #### 😱 Ruzne hodnoty
+</details>
+
+<details>
+  <summary>😱 Ruzne hodnoty</summary>
+
+  #### 😑 Seznam jako hodnota
   Do slovniku muzeme ke klici ulozit nejen cisla ci slova. Muzeme ulozit i
   seznamy a ntice:
   ```python
@@ -193,8 +203,24 @@
   filmovy_slovnik["1_slovnik"] = vnoreny_slovnik_1
   filmovy_slovnik["2_slovnik"] = vnoreny_slovnik_2
   ```
+  Doplnime nase slovniky `film_1`, `film_2`, `film_3` a `film_4` do slovniku
+  `filmovy_slovnik`:
+  ```python
+  filmovy_slovnik = {}
 
-  #### ⏪ Odstranime klice & hodnoty
+  filmovy_slovnik[film_1["JMENO"]] = film_1
+  filmovy_slovnik[film_2["JMENO"]] = film_2
+  filmovy_slovnik[film_3["JMENO"]] = film_3
+  filmovy_slovnik[film_4["JMENO"]] = film_4
+  ```
+---
+
+</details>
+
+<details>
+  <summary>⏪ Odstranime klice & hodnoty</summary>
+
+  #### 🥉Zpusoby odstranovani
   - funkce `del`
   - metoda `pop`
   - metoda `popitem`
@@ -212,8 +238,10 @@
 <details>
   <summary>📞 Komunikace s uzivatelem</summary>
 
-  #### 📡 Pozdravime uzivatele
-  Nejprve pozdravime uzivatele:
+<details>
+  <summary>📡 Pozdravime uzivatele</summary>
+
+  #### 🗣Uvitaci oznameni
   ```python
   print("VITEJTE V NASEM FILMOVEM SLOVNIKU!")
   ```
@@ -225,8 +253,14 @@
   print("VITEJTE V NASEM FILMOVEM SLOVNIKU!")
   print(ODDELOVAC)
   ```
+---
 
-  #### 🔄 Zarovnani textu
+</details>
+
+<details>
+  <summary>🔄 Zarovnani textu</summary>
+
+  #### ↔ Centrovani zpravy
   Retezec muzeme zarovnat pomoci **metod**:
   
   - metoda `center`
@@ -238,8 +272,14 @@
   print("VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "))
   print(ODDELOVAC)
   ```
+---
 
-  #### 🔝 Vypiseme nabidku
+</details>
+
+<details>
+  <summary>🔝 Vypis nabidky</summary>
+
+  #### 😎 Zprava s nabidkou
   Vypiseme nabidku, kterou bude mit uzivatel k dispozici (pozdeji doplnime):
   ```python
   print("Vitejte v nasi skromne filmove databazi".center(76, " "))
@@ -252,8 +292,14 @@
   {ODDELOVAC}"""
   )
   ```
+---
 
-  #### ☠  Volitelne klicove argumenty
+</details>
+
+<details>
+  <summary>☠  Volitelne klicove argumenty</summary>
+
+  #### 📕 Zkraslime nas zapis
   U funkce `print` nas budou zajimat tyto:
   - `end`
   - `sep`
@@ -281,27 +327,44 @@
   ```
 ---
 
+</details>
+
 <details>
   <summary>🆎 Podminkovy zapis</summary>
 
-  #### 🌲 Strom podminek
+<details>
+  <summary>🌲 Strom podminek</summary>
+
+  #### 🐭Jak rozhodovat
   Podminky nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat.
   Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky:
   ```python
-  # bud TOTO
-  # nebo TOTO
-  # nebo TOTO
-  # jinak TOTO
+  # bud VSECHNY FILMY
+  # nebo DETAILY FILMU
+  # nebo SPOLECNI HERCI
+  # jinak VSICHNI REZISERI
   ```
+---
+</details>
 
-  #### ✅ Vyber uzivatele
+<details>
+  <summary>✅ Vyber uzivatele</summary>
+
+  #### 🛐 Vstup od uzivatele
   Uzivatel si musi nejprve vybrat jednu moznost. Kod musi fungovat jak pro mala,
   tak pro velka pismena:
   ```python
   vyber = input("VYBERTE MOZNOST: ").lower()
+  print(ODDELOVAC)
   ```
+---
 
-  #### 🎬 Vypis vsechny filmy
+</details>
+
+<details>
+  <summary>🎬 Vypis vsechny filmy</summary>
+
+  #### 👓 Pohledy slovniku
   Prvni vetev naseho podminkoveho zapisu vrati jmena vsech filmu. Pomohou nam
   pohledy slovniku (metody slovniku):
   - `items` - vrati objekt s klici a jejich hodnotami
@@ -311,13 +374,20 @@
   Nasledne prevedeme vysledny objekt pomoci built-in funkce `list`:
   ```python
   if vyber == "vsechny filmy":
-    print(ODDELOVAC)
-    print(f"Mame v nabidce tyto snimky:")
-    print(list(filmovy_slovnik.keys()))
-    print(ODDELOVAC)
+      print(
+          "Mame v nabidce tyto snimky:",
+          list(filmovy_slovnik.keys()),
+          end=f"\n{ODDELOVAC}\n"
+      )
   ```
+---
 
-  #### 🔎 Detaily filmu
+</details>
+
+<details>
+  <summary>🔎 Vypis detaily filmu</summary>
+
+  #### 🔖 Metody slovniku
   Druha podminka bude mit na starost obstarat vystup, ktery zahrnuje obsah
   jednotlivych vnitrnich slovniku (tedy detaily konkretniho filmu).
   - `get` - pokud najde klic, vrati jeho hodnotu
@@ -327,15 +397,18 @@
   za cil jedine, najde klic, ktery ji zadame a ona vrati jeho hodnotu.
   Volitelne pak muzeme nastavit, co vrati, pokud hledany klic nenajde.
   ```python
-  elif vyber == "detaily filmu":
-    print(ODDELOVAC)
-    print(list(filmovy_slovnik.keys()))
-    print(ODDELOVAC)
+elif vyber == "detaily filmu":
+    print(
+        list(filmovy_slovnik.keys()),
+        end=f"\n{ODDELOVAC}\n"
+    )
 
     vyber_filmu = input("VYBERTE FILM: ")
-    print(ODDELOVAC)
-    pprint(filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"))
+    print(ODDELOVAC,
+          filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"),
+          sep="\n")
   ```
+---
 
 </details>
 </details>
