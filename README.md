@@ -411,6 +411,7 @@ elif vyber == "detaily filmu":
 ---
 
 </details>
+
 </details>
 
 ---
