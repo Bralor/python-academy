@@ -25,6 +25,7 @@
 
 <details>
   <summary>📔 Odkazy</summary>
+
   - [Vzdelavaci platforma Engeta](https://engeto.com)
   - [Vstupni data, Shawshank Redemption](https://www.imdb.com/title/tt0111161/?ref_=fn_al_tt_1)
   - [Vstupni data, Godfather](https://www.imdb.com/title/tt0068646/?ref_=fn_al_tt_1)
@@ -37,6 +38,7 @@
 
 <details>
   <summary>⏯  Ukazka programu</summary>
+
   1. ✌  [Stahnete si treti lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce03.zip)
   2. 💪 Presunte se ke stazenemu souboru
   3. 🙏 Spustte soubor **movies** v PyCharm
