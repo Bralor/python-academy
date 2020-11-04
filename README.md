@@ -25,7 +25,7 @@
 
 <details>
   <summary>📔 Odkazy</summary>
-
+</br >
   - [Vzdelavaci platforma Engeta](https://engeto.com)
   - [Vstupni data, Shawshank Redemption](https://www.imdb.com/title/tt0111161/?ref_=fn_al_tt_1)
   - [Vstupni data, Godfather](https://www.imdb.com/title/tt0068646/?ref_=fn_al_tt_1)
@@ -38,7 +38,7 @@
 
 <details>
   <summary>⏯  Ukazka programu</summary>
-
+</br >
   1. ✌  [Stahnete si treti lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce03.zip)
   2. 💪 Presunte se ke stazenemu souboru
   3. 🙏 Spustte soubor **movies** v PyCharm
@@ -118,18 +118,22 @@
 <details>
   <summary>📔 Slovniky v Pythonu</summary>
 
-  ##### 📂 Vytvorime pracovni adresar
-  Vytvorime prazdny adresar pro jednotlive lekce a do nej dalsi:
-  ```
-  mkdir python-akademie
-  mkdir python-akademie/lekce03
-  ```
+  ##### 📂 Vytvorime adresar & novy soubor
+  <details>
+    <summary>🔽 Zjisti vice...</summary>
 
-  ##### 🗄  Vytvorime novy soubor
-  ```
-  touch movies.py       # Linux
-  copy nul "movies.py"  # Windows
-  ```
+    Vytvorime prazdny adresar pro jednotlive lekce a do nej dalsi:
+    ```
+    mkdir python-akademie
+    mkdir python-akademie/lekce03
+    ```
+
+    ```
+    touch movies.py       # Linux
+    copy nul "movies.py"  # Windows
+    ```
+
+  </details>
 
   ##### ❓Co je to slovnik
   - **standartni datovy typ** Pythonu
@@ -158,14 +162,15 @@
   ```
 
   ##### 😱 Pridame seznam jako hodnotu
+  Do slovniku muzeme ke klici ulozit nejen cisla ci slova. Muzeme ulozit i
+  seznamy a ntice:
   ```python
   PISMENA = ["a", "b", "c", "d"]
   filmovy_slovnik["pismena"] = PISMENA
   ```
 
   ##### 🤦 Slovnik ve slovniku
-  Tento princip muzeme chapat jako vkladani slovniku do slovniku (plati i pro
-  jine datove typy jako senzamy aj.)
+  Do slovniku muzu vlozit i jine slovniky:
   ```python
   vnoreny_slovnik_1 = {"jmeno": "Lukas"}
   vnoreny_slovnik_2 = {"jmeno": "Jan"}
