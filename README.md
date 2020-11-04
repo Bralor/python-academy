@@ -231,6 +231,7 @@
 ---
 
 </details>
+
 </details>
 
 ---
@@ -328,6 +329,10 @@
 ---
 
 </details>
+
+</details>
+
+---
 
 <details>
   <summary>🆎 Podminkovy zapis</summary>
