@@ -15,18 +15,16 @@
 
 ### 🗒 Obsah lekce
 1. Odkazy
-2. Demo
+2. Ukazka ulohy
 3. Vstupni data
-4. Slovniky
-5. Mnoziny
-6. Dalsi podminky
-7. Dalsi metody
+4. Slovniky v Pythonu
+5. Komunikace s uzivatelem
+6. Slozitejsi podminkovy zapis
+7. Mnoziny v Pythonu
 ---
 
 <details>
   <summary>📔 Odkazy</summary>
-
- 
   - [Vzdelavaci platforma Engeta](https://engeto.com)
   - [Vstupni data, Shawshank Redemption](https://www.imdb.com/title/tt0111161/?ref_=fn_al_tt_1)
   - [Vstupni data, Godfather](https://www.imdb.com/title/tt0068646/?ref_=fn_al_tt_1)
@@ -39,8 +37,6 @@
 
 <details>
   <summary>⏯  Ukazka programu</summary>
-
-
   1. ✌  [Stahnete si treti lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce03.zip)
   2. 💪 Presunte se ke stazenemu souboru
   3. 🙏 Spustte soubor **movies** v PyCharm
@@ -54,7 +50,7 @@
 <details>
   <summary>📥 Vstupni data</summary>
 
-  ##### The Shawshank redemption
+  ##### 💂 The Shawshank redemption
   ```python
   film_1 = {
     "JMENO": "Shawshank Redemption",
@@ -69,7 +65,7 @@
   }
   ```
 
-  ##### The Godfather
+  ##### 👴 The Godfather
   ```python
   film_2 = {
     "JMENO": "The Godfather",
@@ -84,7 +80,7 @@
   }
   ```
 
-  ##### The Dark knight
+  ##### ⚔ The Dark knight
   ```python
   film_3 = {
     "JMENO": "The Dark Knight",
@@ -99,7 +95,7 @@
   }
   ```
 
-  ##### The Prestige
+  ##### 🔥 The Prestige
   ```python
   film_4 = {
     "JMENO": "The Prestige",
@@ -161,7 +157,7 @@
 <details>
   <summary>📚 Vytvorime slovnik</summary>
 
-  #### 👷 Nejdrive procvicime slovniky
+  #### 👷 Procvicime dvoji zpusob
   ```python
   filmovy_slovnik = {}      # 1. zpusob
   filmovy_slovnik = dict()  # 2. zpusob
@@ -225,14 +221,13 @@
   <summary>⏪ Odstranime klice & hodnoty</summary>
 
   #### 🥉Zpusoby odstranovani
-  - funkce `del`
-  - metoda `pop`
-  - metoda `popitem`
+  - `del` - zabudovana funkce Pythonu
+  - `pop` - metoda slovniku pro odstraneni klice
+  - `popitem` - metoda slovniku pro odstraneni posledniho pridaneho klice
   ```python
   del filmovy_slovnik["1_slovnik"]
   filmovy_slovnik.pop("2_slovnik")
   ```
----
 
 </details>
 
@@ -308,8 +303,8 @@
 
   #### 📕 Zkraslime nas zapis
   U funkce `print` nas budou zajimat tyto:
-  - `end`
-  - `sep`
+  - `end` - nepovinny argument, ktery doplni libovolny znak na zaver vypisovani
+  - `sep` - nepovinny argument, ktery se vklada mezi jednotlive udaje
 
   Pouziti argumentu `end`:
   ```python
@@ -346,14 +341,15 @@
 <details>
   <summary>🌲 Strom podminek</summary>
 
-  #### 🐭Jak rozhodovat
+  #### 🐭 Jak rozhodovat
   Podminky nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat.
   Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky:
   ```python
   # bud VSECHNY FILMY
   # nebo DETAILY FILMU
   # nebo SPOLECNI HERCI
-  # jinak VSICHNI REZISERI
+  # neco VSICHNI REZISERI
+  # jinak UKONCIT
   ```
 ---
 </details>
@@ -408,16 +404,16 @@
   za cil jedine, najde klic, ktery ji zadame a ona vrati jeho hodnotu.
   Volitelne pak muzeme nastavit, co vrati, pokud hledany klic nenajde.
   ```python
-elif vyber == "detaily filmu":
-    print(
-        list(filmovy_slovnik.keys()),
-        end=f"\n{ODDELOVAC}\n"
-    )
+  elif vyber == "detaily filmu":
+      print(
+          list(filmovy_slovnik.keys()),
+          end=f"\n{ODDELOVAC}\n"
+      )
 
-    vyber_filmu = input("VYBERTE FILM: ")
-    print(ODDELOVAC,
-          filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"),
-          sep="\n")
+      vyber_filmu = input("VYBERTE FILM: ")
+      print(ODDELOVAC,
+            filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"),
+            sep="\n")
   ```
 ---
 
@@ -430,104 +426,110 @@ elif vyber == "detaily filmu":
 <details>
   <summary>🔢 Mnoziny</summary>
 
-  #### 📊 Obecne
-  Mnozina neboli set je opet neserazena kolekce udaju, ktera je typicka tim,
-  ze uvnitr nenajdeme zadnou hodnotu dvakrat. Sety se pouzivaji zejmena kvuli
-  svym matematickym operacim.
+<details>
+  <summary>❓ Co je to mnozina</summary>
+
+  #### ☝ K zapamatovani
+  - **standartni datovy typ** Pythonu
+  - tvoreny **unikatnimi** hodnotami
+  - nema poradi (podobne slovnikum)
+  - idealni pro praci s matematickymi mnozinami
   - sjednoceni (`union`/ `|`)
   - prunik (`intersection`/ `&`)
   - rozdil (`difference`/ `-`)
   - symetricky rozdil (`^`)
-  
+---
+
+</details>
+
+<details>
+  <summary>📓 Uvod k praci se mnozinami</summary>
+
   #### 📌 Vytvorime mnozinu
   ```python
   prvni_set = set()
-  print(type(prvni_set))
-
   druhy_set = {"Matous", "Marek", "Lukas", "Jan"}
-  print(type(druhy_set))
   ```
 
   #### 🔁 Pridavame, odebirame
-  - `add`
-  - `discard`
+  - `add` - pridame hodnoty
+  - `discard` - odstranime hodnoty
   ```python
-  novy_set = set()
+  prvni_set.add("Matous")
+  prvni_set.add("Marek")
+  print(prvni_set)
 
-  novy_set.add("Matous")
-  novy_set.add("Marek")
-  print(novy_set)
-
-  novy_set.discard("Matous")
-  print(novy_set)
+  druhy_set.discard("Matous")
+  print(druhy_set)
   ```
 
-  #### 🎎 Spolecni herci
-  Dalsi funkci bude zjistit spolecne herce pro dva ruzne filmy.
+  #### 🗽 Sjednotime mnoziny
   ```python
-  set1 = {"Pavel", "Matous", "Tomas", "Martin"}
-  set2 = {"Martin", "Petr", "Vojtech"}
-
-  print(set1 & set2)  # "Martin"
+  print(prvni_set | druhy_set)
   ```
-  Dokonceni dalsi podminky:
+---
+
+</details>
+
+
+<details>
+  <summary>🎎 Dalsi podminka</summary>
+
+  #### 👪 Spolecni herci
+  Nyni chceme zjistit, kteri herci hraji ve dvou ruznych libovolnych filmech:
   ```python
   elif vyber == "spolecni herci":
-      print(ODDELOVAC)
-      print(list(filmovy_slovnik.keys()))
-      print(ODDELOVAC)
+      print(
+        list(filmovy_slovnik.keys()),
+        end=f"\n{ODDELOVAC}\n"
+        )
 
-      film1 = input("VYBERTE I. FILM: ")
-      film2 = input("VYBERTE II. FILM: ")
+      prvni_film = input("VYBERTE I. FILM: ")
+      druhy_film = input("VYBERTE II. FILM: ")
 
-      herci_film1 = set(filmovy_slovnik[film1]["HRAJI"])
-      herci_film2 = set(filmovy_slovnik[film2]["HRAJI"])
+      herci_prvni_film = set(filmovy_slovnik[prvni_film]["HRAJI"])
+      herci_druhy_film = set(filmovy_slovnik[druhy_film]["HRAJI"])
 
       prunik = herci_film1 & herci_film2
-      print(
-          f"SPOLECNI HERCI PRO *{filmovy_slovnik[film1]['JMENO']}* \
-          A *{filmovy_slovnik[film2]['JMENO']}*: {prunik}"
-      )
+      print(f"SPOLECNI HERCI JSOU: {prunik}")
   ```
+---
+
+</details>
+
+<details>
+  <summary>🕰 Posledni podminka</summary>
 
   #### 📢 Vsichni reziseri
-  Nakonec chceme zapsat podminkovou vetev, ktera nam vrati vsechny rezisery.
+  Nakonec chceme vypsat vsechny rezisery:
   ```python
   elif "reziseri" in vyber:
-      print(ODDELOVAC)
-      set_reziseri = (
+      set_reziseri = set(
           filmovy_slovnik["The Dark Knight"]["REZISER"],
           filmovy_slovnik["The Godfather"]["REZISER"],
           filmovy_slovnik["Shawshank Redemption"]["REZISER"],
           filmovy_slovnik["The Prestige"]["REZISER"]
       )
 
-      print("VSICHNI REZISERI V NASEM SEZNAMU:")
-      print(f"{set_reziseri}")
+      print(f"VSICHNI REZISERI: {set_reziseri}")
+  ```
+---
+
+</details>
+
+<details>
+  <summary>🔚 Ukoncujici podminka</summary>
+
+  #### 🤦 Posledni moznost
+  Pokud uzivatele zada cokoliv jineho:
+  ```python
+  else:
+    print(f"MOZNOST -> {vyber} NENI V NABIDCE! UKONCUJI..")
   ```
 
 </details>
 
-<details>
-  <summary> 📦 Dalsi metody</summary>
-
-  #### 🔢 Podmnozina
-<details>
-  <summary> 🔽 vice o...</summary>
-
-  Jde o dalsi metodu typickou pro mnoziny...
-
-</details>
-
-  #### 🔢 Disjoint
-<details>
-  <summary> 🔽 vice o...</summary>
-
-  Jde o dalsi metodu typickou pro mnoziny...
-
-</details>
-
-</details>
-
 ---
+
+➡ [pokracovat na dalsi lekci](https://github.com/Bralor/python-academy/tree/lekce04)
 
