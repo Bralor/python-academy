@@ -121,25 +121,30 @@
   <summary>📔 Slovniky v Pythonu</summary>
 
   ##### 📂 Vytvorime adresar & novy soubor
-  <details>
-    <summary>🔽 Zjisti vice...</summary>
-    Vytvorime nejprve adresar pro nas kurz:
-    ```
-    mkdir python-akademie
-    ```
-    Potom adresar pro dnesni lekci:
-    ```
-    mkdir python-akademie/lekce03
-    ```
-    Posledni v rade bude dnesni uloha:
-    ```
-    touch movies.py       # Linux
-    copy nul "movies.py"  # Windows
-    ```
+<details>
+  <summary>🔽 Zjisti vice...</summary>
+  Vytvorime nejprve adresar pro nas kurz:
 
-  </details>
+  ```
+  mkdir python-akademie
+  ```
+  Potom adresar pro dnesni lekci:
+  ```
+  mkdir python-akademie/lekce03
+  ```
+  Posledni v rade bude dnesni uloha:
+  ```
+  touch movies.py       # Linux
+  copy nul "movies.py"  # Windows
+  ```
+
+</details>
 
   ##### ❓Co je to slovnik
+
+<details>
+  <summary>🔽 Zjisti vice...</summary>
+
   - **standartni datovy typ** Pythonu
   - tvoreny pary **klic: hodnota**
   - podle **klice** vratim (mapuji) **hodnotu** (ne naopak)
@@ -148,7 +153,14 @@
   - nelze indexovat jako seznamy/ntice
   - nemaji poradi jako seznamy/ntice
 
-  ##### 📓 Vytvorime prazdny slovnik
+</details>
+
+  ##### 📓 Uvod k praci se slovniky
+
+<details>
+  <summary>🔽 Zjisti vice...</summary>
+
+  #### 📚 Vytvorime slovnik
   ```python
   filmovy_slovnik = {}      # 1. zpusob
   filmovy_slovnik = dict()  # 2. zpusob
@@ -160,12 +172,13 @@
   ```python
   filmovy_slovnik["jmeno"] = None
   ```
+
   ##### 👑 Pridame hodnotu
   ```python
   filmovy_slovnik["jmeno"] = "Matous"
   ```
 
-  ##### 😱 Pridame seznam jako hodnotu
+  ##### 😱 Ruzne hodnoty
   Do slovniku muzeme ke klici ulozit nejen cisla ci slova. Muzeme ulozit i
   seznamy a ntice:
   ```python
@@ -191,7 +204,8 @@
   del filmovy_slovnik["1_slovnik"]
   filmovy_slovnik.pop("2_slovnik")
   ```
-
+  
+</details>
 </details>
 
 ---
