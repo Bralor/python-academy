@@ -160,11 +160,15 @@
 
 <details>
   <summary>📚 Vytvorime slovnik</summary>
+
+  #### 👷 Nejdrive procvicime slovniky
   ```python
   filmovy_slovnik = {}      # 1. zpusob
   filmovy_slovnik = dict()  # 2. zpusob
   ```
 ---
+
+</details>
 
 <details>
   <summary>🗝  Vlozime prvni klc</summary>
