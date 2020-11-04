@@ -120,9 +120,9 @@
 <details>
   <summary>📔 Slovniky v Pythonu</summary>
 
-  ##### 📂 Vytvorime adresar & novy soubor
 <details>
-  <summary>🔽 Zjisti vice...</summary>
+  <summary>📂 Vytvorime adresar & novy soubor</summary>
+
   Vytvorime nejprve adresar pro nas kurz:
 
   ```
@@ -137,13 +137,12 @@
   touch movies.py       # Linux
   copy nul "movies.py"  # Windows
   ```
+---
 
 </details>
 
-  ##### ❓Co je to slovnik
-
 <details>
-  <summary>🔽 Zjisti vice...</summary>
+  <summary>❓Co je to slovnik</summary>
 
   - **standartni datovy typ** Pythonu
   - tvoreny pary **klic: hodnota**
@@ -152,15 +151,16 @@
   - hodnota nemusi byt (napr. retezec, cislo, seznam, ntice, jiny slovnik)
   - nelze indexovat jako seznamy/ntice
   - nemaji poradi jako seznamy/ntice
+---
 
 </details>
 
-  ##### 📓 Uvod k praci se slovniky
+  #### 📓 Uvod k praci se slovniky
 
 <details>
   <summary>🔽 Zjisti vice...</summary>
 
-  #### 📚 Vytvorime slovnik
+  ##### 📚 Vytvorime slovnik
   ```python
   filmovy_slovnik = {}      # 1. zpusob
   filmovy_slovnik = dict()  # 2. zpusob
