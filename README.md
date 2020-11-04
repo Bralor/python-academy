@@ -25,7 +25,8 @@
 
 <details>
   <summary>📔 Odkazy</summary>
-</br >
+
+ 
   - [Vzdelavaci platforma Engeta](https://engeto.com)
   - [Vstupni data, Shawshank Redemption](https://www.imdb.com/title/tt0111161/?ref_=fn_al_tt_1)
   - [Vstupni data, Godfather](https://www.imdb.com/title/tt0068646/?ref_=fn_al_tt_1)
@@ -38,7 +39,8 @@
 
 <details>
   <summary>⏯  Ukazka programu</summary>
-</br >
+
+
   1. ✌  [Stahnete si treti lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce03.zip)
   2. 💪 Presunte se ke stazenemu souboru
   3. 🙏 Spustte soubor **movies** v PyCharm
@@ -121,13 +123,15 @@
   ##### 📂 Vytvorime adresar & novy soubor
   <details>
     <summary>🔽 Zjisti vice...</summary>
-
-    Vytvorime prazdny adresar pro jednotlive lekce a do nej dalsi:
+    Vytvorime nejprve adresar pro nas kurz:
     ```
     mkdir python-akademie
+    ```
+    Potom adresar pro dnesni lekci:
+    ```
     mkdir python-akademie/lekce03
     ```
-
+    Posledni v rade bude dnesni uloha:
     ```
     touch movies.py       # Linux
     copy nul "movies.py"  # Windows
