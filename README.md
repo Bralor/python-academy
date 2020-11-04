@@ -14,30 +14,16 @@
 ---
 
 ### 🗒 Obsah lekce
-1. Odkazy
-2. Ukazka ulohy
-3. Vstupni data
-4. Slovniky v Pythonu
-5. Komunikace s uzivatelem
-6. Slozitejsi podminkovy zapis
-7. Mnoziny v Pythonu
+1. Ukazka ulohy
+2. Vstupni data
+3. Slovniky v Pythonu
+4. Komunikace s uzivatelem
+5. Slozitejsi podminkovy zapis
+6. Mnoziny v Pythonu
 ---
 
 <details>
-  <summary>📔 Odkazy</summary>
-
-  - [Vzdelavaci platforma Engeta](https://engeto.com)
-  - [Vstupni data, Shawshank Redemption](https://www.imdb.com/title/tt0111161/?ref_=fn_al_tt_1)
-  - [Vstupni data, Godfather](https://www.imdb.com/title/tt0068646/?ref_=fn_al_tt_1)
-  - [Vstupni data, Dark Knight](https://www.imdb.com/title/tt0468569/?ref_=fn_al_tt_1)
-  - [Vstupni data, Prestige](https://www.imdb.com/title/tt0482571/?ref_=fn_al_tt_1)
-
-</details>
-
----
-
-<details>
-  <summary>⏯  Ukazka programu</summary>
+  <summary>⏯  Ukazka ulohy</summary>
 
   1. ✌  [Stahnete si treti lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce03.zip)
   2. 💪 Presunte se ke stazenemu souboru
