@@ -155,7 +155,7 @@
 </details>
 
 <details>
-  <summary>🗝  Vlozime prvni klc</summary>
+  <summary>🗝  Vlozime prvni klic</summary>
 
   #### 🔑 Vlozime klic
   Hranate zavorky u slovniku se nechovaji jako u seznamu:
@@ -208,7 +208,7 @@
 <details>
   <summary>⏪ Odstranime klice & hodnoty</summary>
 
-  #### 🥉Zpusoby odstranovani
+  #### 🥉 Zpusoby odstranovani
   - `del` - zabudovana funkce Pythonu
   - `pop` - metoda slovniku pro odstraneni klice
   - `popitem` - metoda slovniku pro odstraneni posledniho pridaneho klice
@@ -412,7 +412,7 @@
 ---
 
 <details>
-  <summary>🔢 Mnoziny</summary>
+  <summary>🔢 Mnoziny v Pythonu</summary>
 
 <details>
   <summary>❓ Co je to mnozina</summary>
@@ -486,7 +486,7 @@
 </details>
 
 <details>
-  <summary>🕰 Posledni podminka</summary>
+  <summary>🕰  Posledni overovaci podminka</summary>
 
   #### 📢 Vsichni reziseri
   Nakonec chceme vypsat vsechny rezisery:
@@ -518,6 +518,8 @@
 </details>
 
 ---
+
+</details>
 
 ➡ [pokracovat na dalsi lekci](https://github.com/Bralor/python-academy/tree/lekce04)
 
