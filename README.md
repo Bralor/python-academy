@@ -521,5 +521,7 @@
 
 </details>
 
+---
+
 ➡ [pokracovat na dalsi lekci](https://github.com/Bralor/python-academy/tree/lekce04)
 
