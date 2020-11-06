@@ -61,7 +61,7 @@
 <details>
   <summary>💿 Nova lekce, novy soubor</summary>
 
-  #### 🗄 Vytvorime novy soubr
+  #### 🗄 Vytvorime novy soubor
   ```
   cd python-akademie  # presunout
   mkdir lekce04       # vytvorit adresar
@@ -339,9 +339,6 @@
 <details>
   <summary>🚼 Walrus operator</summary>
 
-<details>
-  <summary>❓ O co jde</summary>
-  
   #### 📜 Prirazovaci operator 
   Patri mezi novejsi vyrazy (Python3.8+)
 
@@ -361,8 +358,6 @@
       else:
           kosik[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
   ```
-
-</details>
 
 </details>
 
