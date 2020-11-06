@@ -7,7 +7,7 @@
 ## 4⃣ Python akademie
 ### 🗒 Dulezite odkazy
 - [Python Academy, Engeto](https://engeto.com/)
-- [Walrus operator, dokumentace](hhttps://www.python.org/dev/peps/pep-0572/)
+- [Walrus operator, dokumentace](https://www.python.org/dev/peps/pep-0572/)
 ---
 
 ### 🗒 Obsah lekce
@@ -16,7 +16,8 @@
 3. Uvodni vypisovani
 4. While cyklus
 5. Nekonecna smycka
-6. Walrus operator
+6. Preskocit/pokracovat ohlaseni
+7. Walrus operator
 ---
 
 <details>
@@ -49,7 +50,6 @@
       "pomeranc": [15, 10]
   }
   ```
----
 
 </details>
 
@@ -78,7 +78,7 @@
   #### 🗄 Pozdrav a oddelovac
   ```python
   print(
-    "VITEJTE V NASEM VIRTUALNIM OBCHODE".center(76, " "),
+    "VITEJTE V NASEM VIRTUALNIM OBCHODE".center(40, " "),
     end=f"\n{ODDELOVAC}\n",
   )
   ```
@@ -94,13 +94,12 @@
   #### 🛃 Zkombinujeme oboji
   ```python
   print(
-    "VITEJTE V NASEM VIRTUALNIM OBCHODE".center(76, " "),
+    "VITEJTE V NASEM VIRTUALNIM OBCHODE".center(40, " "),
     POTRAVINY,
     sep=f"\n{ODDELOVAC}\n",
     end=f"\n{ODDELOVAC}\n"
   )
   ```
----
 
 </details>
 
@@ -124,10 +123,7 @@
   ```
   **Doplnime pro 4 potraviny**
 
----
 </details>
-
----
 
 </details>
 
@@ -137,7 +133,7 @@
   <summary>♻ While cyklus</summary>
 
 <details>
-  <summary>❔Jak ji pozname </summary>
+  <summary>❔Jak jej pozname </summary>
 
   #### 🔑 Klicove znaky
   1. `while`
@@ -149,7 +145,6 @@
     # pokud je podminka True, proved TOTO
   # pokud je podminka False, proved TOTO
   ```
----
 
 </details>
 
@@ -166,7 +161,6 @@
 
   print(f"{x=}; {x}=10, podminka neni pravdiva, pokracuje kod pod smyckou!")
   ```
----
 </details>
 
 <details>
@@ -192,11 +186,8 @@
       end=f"\n{ODDELOVAC}\n"
     )
   ```
----
 
 </details>
-
----
 
 </details>
 
@@ -261,7 +252,6 @@
       end=f"\n{ODDELOVAC}\n"
     )
   ```
----
 
 </details>
 
@@ -279,8 +269,6 @@
       kosik[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
   ```
 
----
-
 </details>
 
 <details>
@@ -295,11 +283,8 @@
       radek_potravina = TABULKA.popitem()
       print(f"POTRAVINA: {radek_potravina[0]},\tCENA: {radek_potravina[1][0]}")
   ```
----
 
 </details>
-
----
 
 </details>
 
@@ -346,9 +331,10 @@
   else:
       print(f"POSLEDNI INDEX {len(veta[:cislo])}")
   ```
----
 
 </details>
+
+---
 
 <details>
   <summary>🚼 Walrus operator</summary>
@@ -375,7 +361,6 @@
       else:
           kosik[vyber_zbozi] = POTRAVINY[vyber_zbozi][0]
   ```
----
 
 </details>
 
@@ -405,6 +390,7 @@
   ```
 
 ---
+
 </details>
 
 <details>
@@ -430,6 +416,7 @@
               end=f"\n{ODDELOVAC}\n")
   ```
 ---
+
 </details>
 
 </details>
