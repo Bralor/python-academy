@@ -1,14 +1,83 @@
-Minula [lekce#03](https://github.com/Bralor/python-academy/tree/lekce03)
+➡ [vratit se na treti lekci](https://github.com/Bralor/python-academy/tree/lekce03)
 
 <p align="center">
-  <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
+  <img alt="engeto-logo" width="100px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
 </p>
 
-# Python academy, lekce 04
-## Dulezite odkazy
-- Portal [Engeto.com](https://engeto.com/)
-- Python Academy [repozitar](https://github.com/Bralor/python-academy)
-- [Walrus operator](https://realpython.com/lessons/assignment-expressions/)
+## 4⃣ Python akademie
+### 🗒 Dulezite odkazy
+- [Python Academy, Engeto](https://engeto.com/)
+- [Walrus operator, dokumentace](hhttps://www.python.org/dev/peps/pep-0572/)
+---
+
+### 🗒 Obsah lekce
+1. Ukazka ulohy
+2. Vstupni data
+3. Uvodni vypisovani
+4. While cyklus
+5. Nekonecna smycka
+6. Walrus operator
+---
+
+<details>
+  <summary>⏯  Ukazka ulohy</summary>
+
+  1. ✌  [Stahnete si ctvrtou lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce04.zip)
+  2. 💪 Presunte se ke stazenemu souboru
+  3. 🙏 Spustte soubor **kosik** v PyCharm
+  4. 🐍 Spustte program pomoci klaves **ctrl+shift+F10**
+  5. 🎥 Zkousejte!
+
+</details>
+
+---
+
+<details>
+  <summary> Vstupni data</summary>
+
+---
+
+</details>
+
+---
+
+<details>
+  <summary> Uvodni vypisovani</summary>
+
+---
+
+</details>
+
+---
+
+<details>
+  <summary> While cyklus</summary>
+
+---
+
+</details>
+
+---
+
+<details>
+  <summary> Nekonecna smycka</summary>
+
+---
+
+</details>
+
+---
+
+<details>
+  <summary> Walrus operator</summary>
+
+---
+
+</details>
+
+---
+
+➡ [pokracovat na dalsi (05) lekci](https://github.com/Bralor/python-academy/tree/lekce05)
 
 ## Co nas dnes ceka?
 Doposud jsme se snazili kazdy udaj zadat rucne. Kazde oznameni v
