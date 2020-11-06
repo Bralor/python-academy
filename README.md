@@ -6,11 +6,11 @@
 
 ## 3⃣ Python akademie
 ### 🗒 Dulezite odkazy
-- [Python Academy, Engeto]()
-- [The Shawshank Redemption]()
-- [The Godfather]()
-- [The Dark Knight]()
-- [The Prestige]()
+- [Python Academy, Engeto](https://engeto.com/)
+- [The Shawshank Redemption](https://www.csfd.cz/film/2294-vykoupeni-z-veznice-shawshank/prehled/)
+- [The Godfather](https://www.csfd.cz/film/1644-kmotr/prehled/)
+- [The Dark Knight](https://www.csfd.cz/film/223734-temny-rytir/prehled/)
+- [The Prestige](https://www.csfd.cz/film/223160-dokonaly-trik/prehled/)
 ---
 
 ### 🗒 Obsah lekce
@@ -309,10 +309,11 @@
   ODDELOVAC = "=" * 76
 
   print(
-      "VYBERTE KATEGORII:",
-      "VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI".center(76, " "),
-      sep=f"\n{ODDELOVAC}\n",
-      end=f"\n{ODDELOVAC}\n"
+    "VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "),
+    "VYBERTE KATEGORII:",
+    "VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI".center(76, " "),
+    sep=f"\n{ODDELOVAC}\n",
+    end=f"\n{ODDELOVAC}\n"
   )
   ```
 ---
@@ -398,7 +399,7 @@
           end=f"\n{ODDELOVAC}\n"
       )
 
-      vyber_filmu = input("VYBERTE FILM: ")
+      vyber_filmu = input("VYBERTE FILM (OPATRNE NA VELKA/MALA PISMENA): ")
       print(ODDELOVAC,
             filmovy_slovnik.get(vyber_filmu, "Vami zadany film neni v db"),
             sep="\n")
@@ -479,7 +480,10 @@
       herci_druhy_film = set(filmovy_slovnik[druhy_film]["HRAJI"])
 
       prunik = herci_film1 & herci_film2
-      print(f"SPOLECNI HERCI JSOU: {prunik}")
+      if prunik:
+        print(f"SPOLECNI HERCI JSOU: {prunik}")
+      else:
+        print("ZADNI SPOLECNI HERCI")
   ```
 ---
 
@@ -503,6 +507,8 @@
   ```
 ---
 
+</details>
+
 <details>
   <summary>🔚 Ukoncujici podminka</summary>
 
@@ -512,10 +518,9 @@
   else:
     print(f"MOZNOST -> {vyber} NENI V NABIDCE! UKONCUJI..")
   ```
+---
 
 </details>
-
----
 
 </details>
 
