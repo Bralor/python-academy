@@ -1,125 +1,258 @@
-Vratit na [:star:Uvodni lekci:star:](https://github.com/Bralor/python-academy/blob/master/README.md)
+➡ [vratit se na uvodni lekci](https://github.com/Bralor/python-academy/tree/master)
 
 <p align="center">
-  <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
+  <img alt="engeto-logo" width="100px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
 </p>
 
-# Python academy, lekce 01
-## Dulezite odkazy
-- [Python Academy, Git](https://engeto.com/cs/kurz/git-zaklady-pro-uzivatele/lekce)
-- [Python Academy, zaciname!](https://engeto.com/cs/kurz/python-academy/studium/SpmtH-mVRY6zPL9alhruMQ/home-set-up/basics-of-command-line)
+## 1⃣ Python akademie
+### 🗒 Dulezite odkazy
 - [Repl.it](https://repl.it/)
 - [Engeto.com](https://engeto.com/cs/)
+- [Python Academy, Git](https://engeto.com/cs/kurz/git-zaklady-pro-uzivatele/lekce)
+- [Python Academy, zaciname!](https://engeto.com/cs/kurz/python-academy/studium/SpmtH-mVRY6zPL9alhruMQ/home-set-up/basics-of-command-line)
+- [Python, dokumentace zabudovanych funkci](https://docs.python.org/3/library/functions.html)
+---
 
-## Co nas dnes ceka?
-Vytvorime jednoduchy skript pojmenovany "Destinatio". Tento program bude komunikovat s uzivatelem. Komunikaci rozumejme nejake predavani vstupu a vystupu s nasim programem. Jelikoz jde o nasi prvni spolecnou hodinu, vsechno se budeme snazit resit pomoci vzdaleneho online [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)(integrated development enviroment). Prejdeme tedy na [repl.it](#-dulezite-odkazy)!
+### 🗒 Obsah lekce
+1. Ukazka ulohy
+2. Ciselne a textove hodnoty (prevadime?)
+3. Promenne
+4. Kontejnerove hodnoty (indexovani?)
+5. Uvodni sekce
+6. Vypisujeme
+7. Ukladame
+8. Formujeme lepsi vystup s rezetci
+---
 
-## Co bude vysledkem?
-Po spusteni by mela komunikace vypadat nasledovne:
-```
-===================================
-Vitejte u nasi aplikace Destinatio!
-===================================
+<details>
+  <summary>⏯  Ukazka ulohy</summary>
 
-1 - Praha   | 150
-2 - Viden   | 200
-3 - Olomouc | 120
-4 - Svitavy | 120
-5 - Zlin    | 100
-6 - Ostrava | 180
+  1. ✌  [Stahnete si prvni lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce01.zip)
+  2. 💪 Presunte se ke stazenemu souboru
+  3. 🙏 Spustte soubor **movies** v PyCharm
+  4. 🐍 Spustte program pomoci klaves **ctrl+shift+F10**
+  5. 🎥 Zkousejte!
 
-===================================
-Vyberte cislo lokality: 3
-JMENO: Matous
-PRIJMENI: Holinka
-VEK: 28
-EMAIL: matous@nic.cz
-HESLO: panpes738
-===================================
-UZIVATEL: Matous
-DESTINACE: Olomouc
-CENA(cil:Olomouc): 120
-Jizdenku posleme na Vasi emailovou adresu: matous@nic.cz
-```
+</details>
 
-## Jak zacit?
-Pojdme vsichni na tuto __adresu__:
-```
-https://repl.it/
-```
-Muzeme se prihlasit pomoci _Google uctu_ a otevreme si _novy projekt_:
-```
-python
-```
+---
 
-Pripadne moznost vpravo nahore primo pouzit tlacitko a ihned psat kod:
-```
-<> start coding
-```
+<details>
+  <summary>🔜 Ciselne a textove hodnoty</summary>
 
-## Upozorneni!
-S kodem, ktery dneska zapiseme pomoci [repl.it](#-dulezite-odkazy) budeme opet pracovat ve druhe hodine. Vysledek si proto muzete bud ulozit, nebo stahnout potom ode me.
+<details>
+  <summary>🔢 Cisla</summary>
 
-## Nas prvni kod
-Zadame promenne, se kterymi chceme pracovat. Ale jake?
+  #### ✌ Cela cisla(integers)
+  ```python
+  100 + 200  # 300
+  300 - 100  # 200
+  type(1234) # overeni
+  ```
 
-<p align="center">
-  <img src="https://media.giphy.com/media/64aBc1uYI7asXZH28O/source.gif" width="300" height="300">
-</p>
+  #### 💲 Desetinna cisla(floats)
+  **Pozor!** Desetinnym oddelovacem je tecka. Carka slouzi k jinym ucelum.
+  ```python
+  0.1 + 0.3  # 0.4
+  type(0.4)  # overeni
+  ```
+  **Plovouci radova carka** nektera desetinna cisla nemaji odpovidajici
+  binarni tvar. Proto jsou ulozena jako priblizne hodnoty.
+  ```python
+  0.1 + 0.2  # 0.30000000000000004
+  type(0.3)  # overeni
+  ```
 
-## Prvne cisla
-### Cela cisla, integers
-Hodnoty zapisujeme pomoci [celych cisel](https://engeto.com/cs/kurz/python-academy/studium/91lewpELSZaQ6CI_vGz9ng/1-intro-to-programming/basics/data-types-overview).
-```bash
-# zapis pomoci Python interpretru
->>> type(1100)
-<class 'int'>  # -> zkratka pro integer
->>> 1100 + 100
-1200
->>> 5 - 2
-3
-```
+  #### 💹 Aritmeticke operace
+  ```python
+  10 + 5    # 15
+  10 - 5    # 5
+  10 * 5    # 50
+  10 / 5    # 2.0 (?)
+  10 // 3   # celociselne deleni
+  10 % 3    # ziskani zbytku po deleni
+  10 ** 3   # umocnovani
+  ```
+---
 
-### Desetinna cisla, floats
-Hodnoty zapisujeme jako desetinna cisla. Oddelovac je __tecka__! Carka slouzi k jinym ucelum.
-```bash
->>> type(3.1415926536)
->>> 10/3; type(10/3)
-3.3333333333333335
-<class 'float'>
-```
+</details>
 
-### Co jeste muzeme s cisly provadet?
-## Zakladni operatory
-V Pythonu pouzivame [zakladni matematicke operace](https://engeto.com/cs/kurz/python-academy/studium/3mDYjEkEQJi0yNIwGTyMBw/1-intro-to-programming/numeric-data-types/arithmetic-operations). Tedy scitani, odcitani, nasobeni a deleni. Dale mame tri dalsi operace: celociselne deleni, zbytek po deleni, negace a umocnovani.
+<details>
+  <summary>🔡 Text</summary>
 
-Zkousime jednotlive __operatory__:
-```bash
->>> 10 + 5          # 15
->>> 10 - 5          # 5
->>> 10 * 5          # 50
->>> 10 / 5          # 2.0 (?)
->>> 10 // 3         # celociselne deleni
->>> 10 % 3          # ziskani zbytku po deleni
->>> -10             # negace
->>> 10 ** 3         # umocnovani
-```
+  #### 🆎 Retezce(strings)
+  Ruzne dlouhe uskupeni znaku (cisla, pismena, specialni symboly), ohranicene
+  uvozovkami:
+  1. `'Matous'` jednoduche uvozovky
+  2. `"Matous"` dvojite uvozovky
+  3. `"""Matous"""` trojite uvozovky (take `'''Matous'''`)
 
-## Je libo i text? Retezce, strings!
-Jde o ruzne dlouhe uskupeni [znaku](https://engeto.com/cs/kurz/python-academy/studium/p1_xjnimSui6cpwn2nISBQ/1-intro-to-programming/sequence-data-types/strings) (cisla, pismena, specialni symboly,..), ohranicenych uvozovkami.
-```bash
->>> "Matous Holinka"; type("Matous Holinka")
-'Matous Holinka'
-<class 'str'>
->>> '1234566789'; type('1234566789')
-'1234566789'
-<class 'str'>
->>> "!@#$%%^&*"; type("!@#$%%^&*")
-'!@#$%%^&*'
-<class 'str'>
-```
+  ```python
+  "Matous Holinka"  # <class 'str'>
+  '1234566789'      # <class 'str'>
+  "!@#$%%^&*"       # <class 'str'>
+  '''Matous
+  Holinka'''        # 'Matous\nHolinka'
+  ```
 
-## Jak tedy hodnotu uchovat a vyhledat? Promenne...
+---
+
+</details>
+
+<details>
+  <summary>🔁 Prevadeni</summary>
+
+  #### 🔀 Z retezce na cislo
+  ```python
+  2 + 2         # 4
+  "2" + "2"     # '22'
+  type("2")          # <class 'str'>
+  type(int("2"))     # <class 'int'>
+  ```
+  **Nektere datove typy neni mozne prevest!**
+
+
+---
+
+</details>
+
+---
+
+</details>
+
+<details>
+  <summary>📦 Promenne</summary>
+
+  #### ☝ K zapamatovani
+  - promenne jsou v podstate symbolicke odkazy
+  - v pameti odkazuji na konkretni objekt
+  - potrebne pokud chceme hodnotu opakovane pouzivat
+  - v Pythonu muzeme prepisovat typ hodnoty
+
+  #### 📺 Zapis
+  ```python
+  jmeno_promenne = "hodnota_promenne"
+  ```
+  **Pozor!** Jista [pravidla](https://easycodebook.com/python-variable-names-and-naming-rules/)
+  musime dodrzet i pri vytvareni jmen promennych.
+
+  ```python
+  MESTO = 'Praha'     # <class 'str'>
+  MNOZSTVI = 2        # <class 'int'>
+  CENA = 1000.5       # <class 'float'>
+  ```
+---
+
+</details>
+
+---
+
+<details>
+  <summary>📬 Kontejnerove datove typy</summary>
+
+<details>
+  <summary>📑 Seznam (list)</summary>
+
+  #### ☝ K zapamatovani
+  - tvoreny hranatymi zavorkami
+  - udaje oddelene _carkou_ (ucel carky je tedy datovy oddelovac)
+  - muzeme pridavat a odebirat udaje (_zmenitelna_ posloupnost)
+  - udaje maji dane _poradi_
+  - muze obsahovat retezec, cela cisla, desetinna cisla i jine seznamy
+  - muzeme _indexovat_
+
+  #### ❔ Jak vypada seznam
+  ```python
+  jmeno_seznamu = ["udaj_1", "udaj_2", "udaj_3", "udaj_4"]
+  ```
+
+  #### 🔝 Nas prvni seznam
+  **Konstanta** obsahuje mesta, ktere budeme pouzivat v prvni uloze:
+  ```python
+  MESTA = ["Praha", "Viden", "Olomouc", "Svitavy", "Zlin", "Ostrava"]
+  type(MESTA)
+  ```
+  Indexovani umoznuje najit hodnotu pomoci jejiho indexu:
+  ```python
+  MESTA[0]  # vrati udaj s indexem 0 (prvni hodnotu v zavorkach)
+  MESTA[-1] # vrati udaj s indexem -1 (posledni hodnota)
+  MESTA[1]  # vrati udaj s indexem 1 (druha hodnota)
+  ```
+---
+
+</details>
+
+<details>
+  <summary>📑 Ntice (tupl)</summary>
+
+  #### ☝ K zapamatovani
+  - tvoreny kulatymi zavorkami
+  - udaje oddelene _carkou_ (ucel carky je tedy datovy oddelovac)
+  - **nemuzeme** pridavat a odebirat udaje (_nezmenitelna_ posloupnost)
+  - udaje maji dane _poradi_
+  - muze obsahovat retezec, cela cisla, desetinna cisla, seznamy a ntice
+  - muzeme _indexovat_
+
+  #### ❔ Jak vypada ntice
+  ```python
+  jmeno_tuplu = ("udaj_1", "udaj_2", "udaj_3", "udaj_4")
+  ```
+
+  #### 🔝 Nas prvni tupl
+  **Konstanta** obsahuje ceny imaginarniho jizdneho:
+  ```python
+  CENY = (150, 200, 120, 120, 100, 180)
+  type(CENY)
+  ```
+  Indexovani umoznuje najit hodnotu pomoci jejiho indexu:
+  ```python
+  CENY[0]  # vrati udaj s indexem 0 (prvni hodnotu v zavorkach)
+  CENY[-1] # vrati udaj s indexem -1 (posledni hodnota)
+  CENY[1]  # vrati udaj s indexem 1 (druha hodnota)
+  ```
+---
+
+</details>
+
+</details>
+
+---
+
+<details>
+  <summary>Uvodni sekce</summary>
+
+---
+
+</details>
+
+---
+
+<details>
+  <summary>Vypisujeme</summary>
+
+---
+
+</details>
+
+---
+
+<details>
+  <summary>ukladame</summary>
+
+---
+
+</details>
+
+---
+
+<details>
+  <summary>Formujeme vystup</summary>
+
+---
+
+</details>
+
+---
 [Promenne](https://engeto.com/cs/kurz/python-academy/studium/0ujrbVm0T_uX6LlvMP1D1g/1-intro-to-programming/data/variable) v Pythonu jsou je symbolickymi odkazy, ktere odkazuji na objekt v pameti.
 
 __Predpis/syntaxe__ vypada nasledovne:
