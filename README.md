@@ -7,7 +7,7 @@
 ## 4⃣ Python akademie
 ### 🗒 Dulezite odkazy
 - [Python Academy, Engeto](https://engeto.com/)
-- [Walrus operator, dokumentace](https://www.python.org/dev/peps/pep-0572/)
+- [Walrus operator, dokumentace](https://realpython.com/lessons/assignment-expressions/)
 ---
 
 ### 🗒 Obsah lekce
