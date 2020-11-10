@@ -117,6 +117,8 @@
 
 </details>
 
+---
+
 <details>
   <summary>📦 Promenne</summary>
 
@@ -189,7 +191,7 @@
   - muze obsahovat retezec, cela cisla, desetinna cisla, seznamy a ntice
   - muzeme _indexovat_
 
-  #### ❔ Jak vypada ntice
+  #### ❓ Jak vypada ntice
   ```python
   jmeno_tuplu = ("udaj_1", "udaj_2", "udaj_3", "udaj_4")
   ```
@@ -206,7 +208,6 @@
   CENY[-1] # vrati udaj s indexem -1 (posledni hodnota)
   CENY[1]  # vrati udaj s indexem 1 (druha hodnota)
   ```
----
 
 </details>
 
@@ -224,18 +225,10 @@
 
   MESTA = ["Praha", "Viden", "Olomouc", "Svitavy", "Zlin", "Ostrava"]
   CENY = (150, 200, 120, 120, 100, 180)
-  ODDELOVAC = '==================================='
+  ODDELOVAC = "==================================="
   ```
----
 
-</details>
-
----
-
-<details>
-  <summary>🆕 Vypisujeme</summary>
-
-  #### 🖨 Vypiseme pozdra
+  #### 🖨  Vypiseme pozdrav
   Pomoci zabudovane funkce `print`, pozdravime uzivatele:
   ```python
   print("VITEJTE U NASI APLIKACE DESTINATIO!")  # I. varianta
@@ -265,7 +258,6 @@
   )
   print(ODDELOVAC)
   ```
----
 
 </details>
 
