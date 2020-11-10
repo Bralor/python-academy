@@ -335,3 +335,4 @@
 
 
 ➡ [pokracovat na druhou lekci](https://github.com/Bralor/python-academy/tree/lekce02)
+
