@@ -17,11 +17,10 @@
 1. Ukazka ulohy
 2. Ciselne a textove hodnoty
 3. Promenne
-4. Kontejnerove hodnoty
+4. Kontejnerove datove typy
 5. Uvodni sekce
-6. Vypisujeme
-7. Ukladame
-8. Formujeme lepsi vystup s rezetci
+6. Vkladame udaje
+7. Vystup programu
 ---
 
 <details>
@@ -112,8 +111,6 @@
   **Nektere datove typy neni mozne prevest!**
 
 </details>
-
----
 
 </details>
 
@@ -218,7 +215,7 @@
 <details>
   <summary>👋 Uvodni sekce</summary>
 
-  #### 🛠 S cim budeme pracova
+  #### 🛠 S cim budeme pracovat
   Nejprve potrebujeme promenne:
   ```python
   """Lekce #1 - Uvod do programovani, Destinatio, cast 1."""
