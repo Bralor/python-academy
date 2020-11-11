@@ -1,11 +1,10 @@
-#!/usr/local/bin/python3.8
+#!/usr/bin/python3
 """Lekce #1 - Uvod do programovani, 1/2 Destinatio"""
 
-MESTA = ("Praha", "Viden", "Olomouc", "Svitavy", "Zlin", "Ostrava")
+MESTA = ["Praha", "Viden", "Olomouc", "Svitavy", "Zlin", "Ostrava"]
 CENY = (150, 200, 120, 120, 100, 180)
 ODDELOVAC = "=" * 35
 
-print(ODDELOVAC)
 print("VITEJTE U NASI APLIKACE DESTINATIO!")
 print(ODDELOVAC)
 print(
@@ -20,7 +19,7 @@ print(
 )
 print(ODDELOVAC)
 
-por_cislo = int(input("VYBERTE CISLO LOKALITY: "))
+cislo_lokality = int(input("VYBERTE CISLO LOKALITY: "))
 jmeno = input("JMENO: ")
 prijmeni = input("PRIJMENI: ")
 rok_narozeni = int(input("ROK NAROZENI: "))
@@ -28,11 +27,10 @@ email = input("EMAIL: ")
 heslo = input("HESLO: ")
 print(ODDELOVAC)
 
-destinace = MESTA[por_cislo - 1]
-cena = CENY[por_cislo - 1]
+destinace = MESTA[cislo_lokality - 1]
+cena = CENY[cislo_lokality - 1]
 
-print("UZIVATEL: " + jmeno)
 print("DESTINACE: " + destinace)
+print("DEKUJI,", jmeno, ". JIZDENKU POSLEME NA EMAIL:", email)
 print("CENA(cil:" + destinace + "): " + str(cena))
-print(f"JIZDENKU POSLEME NA VASI EMAILOVOU ADRESU: {email}")
 
