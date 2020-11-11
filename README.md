@@ -49,6 +49,7 @@ The best place is the official website
 1. 🏁 Issue [#107](https://github.com/Bralor/python-academy/issues/107) in [Bralor/python-academy](https://github.com/Bralor/python-academy)
 2. 🏁 Issue [#109](https://github.com/Bralor/python-academy/issues/109) in [Bralor/python-academy](https://github.com/Bralor/python-academy) ([Lesson03](https://github.com/Bralor/python-academy/tree/lekce03) modified)
 3. 🏁 Issue [#113](https://github.com/Bralor/python-academy/issues/113) in [Bralor/python-academy](https://github.com/Bralor/python-academy) ([Lesson04](https://github.com/Bralor/python-academy/tree/lekce04) modified)
+3. 🏁 Issue [#119](https://github.com/Bralor/python-academy/issues/119) in [Bralor/python-academy](https://github.com/Bralor/python-academy) ([Lesson01](https://github.com/Bralor/python-academy/tree/lekce04) modified)
 <!--END_SECTION:activities-->
 
 ---
