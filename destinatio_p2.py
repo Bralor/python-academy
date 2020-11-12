@@ -22,15 +22,14 @@ print(
 
 print(ODDELOVAC)
 
-
-cislo_lokality = int(input("Vyberte cislo lokality: "))
+cislo_lokality = int(input("VYBERTE CISLO LOKALITY: "))
 if cislo_lokality > 1 or cislo_lokality < 6:
     destinace = MESTA[cislo_lokality - 1]
     cena = CENY[cislo_lokality - 1]
     print(f"DESTINACE: {destinace}")
     print(ODDELOVAC)
 else:
-    print("Vami vybrane cislo neni v nabidce, ukoncuji")
+    print("VAMI VYBRANE CISLO NENI V NABIDCE, UKONCUJI..")
     exit()
 
 if destinace in SLEVY:
@@ -44,38 +43,38 @@ if jmeno.isalpha() and prijmeni.isalpha():
     print(f"JMENO: {jmeno}, PRIJMENI: {prijmeni}")
     print(ODDELOVAC)
 else:
-    print("Jmeno a prijmeni musi obsahovat pouze pismena, ukoncuji")
+    print("JMENO A PRIJMENI MUSI OBSAHOVAT POUZE PISMENA, UKONCUJI..")
     exit()
 
 vek = int(input("ROK NAROZENI: "))
 if (AKT_ROK - vek) >= 18:
-    print(f"Pokracuji...")
+    print(f"POKRACUJI..")
     print(ODDELOVAC)
 else:
-    print("Nase sluzby mohou vyuzivat pouze osoby starsi 18 let, ukoncuji")
+    print("NASE SLUZBY MOHOU VYUZIVAT POUZE OSOBY STARSI 18 LET, UKONCUJI..")
     exit()
 
 email = input("EMAIL: ")
 if "@" in email:
-    print("Email v poradku, pokracuji...")
+    print("EMAIL V PORADKU, POKRACUJI..")
     print(ODDELOVAC)
 else:
-    print("Nepodporovany format emailu, ukoncuji")
+    print("NEPODPOROVANY FORMAT EMAILU, UKONCUJI..")
     exit()
 
 heslo = input("HESLO: ")
 if len(heslo) >= 8 or heslo.isalpha() and heslo.isnumeric():
-    print("Heslo v poradku")
-    print("UZIVATEL: " + jmeno)
+    print("HESLO V PORADKU")
+    print(ODDELOVAC)
     print("DESTINACE: " + destinace)
-    print("CENA(cil:" + destinace + "): " + str(cena_po_sleve))
-    print(f"Jizdenku posleme na Vasi emailovou adresu: {email}")
+    print("DEKUJEME,", jmeno, "JIZDENKU POSLEME NA EMAIL:", email)
+    print(f"CENA (CIL: {destinace}): {cena}")
     print(ODDELOVAC)
 else:
     print(
-        """Tvoje heslo je spatne zadane:
-	1. Musi obsahovat jak pismena, tak cislice,
-	2. Alespon 8 znaku dlouhe,
+        """TVOJE HESLO JE SPATNE ZADANE:
+	1. MUSI OBSAHOVAT JAK PISMENA, TAK CISLICE,
+	2. ALESPON 8 ZNAKU DLOUHE,
     """
     )
 
