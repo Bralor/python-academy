@@ -1,72 +1,37 @@
-Minula [lekce#01](https://github.com/Bralor/python-academy/tree/lekce01)
+➡ [vratit se na prvni lekci](https://github.com/Bralor/python-academy/tree/lekce01)
 
 <p align="center">
-  <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
+  <img alt="engeto-logo" width="100px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
 </p>
 
-# Python academy, lekce 02
-## Dulezite odkazy
-- [Python Academy, lekce](https://engeto.com/cs/kurz/python-academy/lekce)
-- [Python Academy, muj repozitar](https://github.com/Bralor/python-academy)
-- [Python Academy, muj repozitar, lekce#01](https://github.com/Bralor/python-academy/tree/lekce01)
+## 2⃣ Python akademie
+### 🗒 Dulezite odkazy
+- [Engeto.com](https://engeto.com/cs/)
+- [Python Academy, Git](https://engeto.com/cs/kurz/git-zaklady-pro-uzivatele/lekce)
+- [Python Academy, zaciname!](https://engeto.com/cs/kurz/python-academy/studium/SpmtH-mVRY6zPL9alhruMQ/home-set-up/basics-of-command-line)
+- [Python, dokumentace zabudovanych funkci](https://docs.python.org/3/library/functions.html)
+---
 
-## Co nas dnes ceka?
-V navaznosti na minulou lekci se budeme snazit nas program (Destinatio) zdokonalit. Soucasti naseho vylepsovani bude patrit teorie k boolean hodnotam, logickym operatorum a zaklady k podminkovemu zapisu.
+### 🗒 Obsah lekce
+1. Ukazka ulohy
+2. Doplnime ulohu z [prvni lekce]()
+3. Python, prace
+4. Boolean
+5. Podminkovy zapis
+6. Ukonceni kodu
+7. Metody datovych typu
+---
 
-## Co bude vysledkem?
-Po spusteni by mel program vypadat nasledovne (nebo viz. demo):
-```bash
-$ ./destinatio
-```
-Dostaneme nasledny vypis:
-```
-===================================
-Vitejte u nasi aplikace Destinatio!
-===================================
+<details>
+  <summary>⏯  Ukazka ulohy</summary>
 
-1 - Praha   | 150
-2 - Viden   | 200
-3 - Olomouc | 120
-4 - Svitavy | 120
-5 - Zlin    | 100
-6 - Ostrava | 180
+  1. ✌  [Stahnete si druhou lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce02.zip)
+  2. 💪 Presunte se ke stazenemu souboru
+  3. 🙏 Spustte soubor **destinatio_p2** v PyCharm
+  4. 🐍 Spustte program pomoci klaves **ctrl+shift+F10**
+  5. 🎥 Zkousejte!
 
-===================================
-Vyberte cislo lokality: 3
-DESTINACE: Olomouc
-===================================
-JMENO: Matous
-PRIJMENI: Holinka
-JMENO: Matous, PRIJMENI: Holinka
-===================================
-ROK NAROZENI: 1992
-Pokracuji...
-===================================
-EMAIL: matous@matous.cz
-Email v poradku, pokracuji...
-===================================
-HESLO: panpes738
-Heslo v poradku
-===================================
-UZIVATEL: Matous
-DESTINACE: Olomouc
-CENA(cil:Olomouc): 90.0
-Jizdenku posleme na Vasi emailovou adresu: matous@matous.cz
-```
-
-## Co budeme potrebovat?
-- Python 3.6+
-- textovy editor (dle uvazeni/doporuceni)
-- vystup z [prvni lekce](https://github.com/Bralor/python-academy/blob/lekce01/destinatio_part1)
-- vytvorit si novy soubor ve svem pracovnim adresari
-
-## Pokracujeme s kodem!
-
-<p align="center">
-  <img src="https://media.giphy.com/media/XbV2l8rk7wGKbQlpPM/source.gif" width="300" height="300">
-</p>
-
-Otevreme nas novy pracovni soubor a vlozime zapis z posledni lekce.
+</details>
 
 ## Rozsirime zadani naseho programu
 Budeme chtit vytvorit soupis lokalit, ktere pokud uzivatel vybere, dostane slevu.
