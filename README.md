@@ -14,8 +14,8 @@
 
 ### 🗒 Obsah lekce
 1. Ukazka ulohy
-2. Doplnime ulohu z [prvni lekce](https://github.com/Bralor/python-academy/blob/lekce01/destinatio_p1.py)
-3. Jak pracovat s Pythonem
+2. Jak pracovat s Pythonem
+3. Doplnime ulohu z [prvni lekce](https://github.com/Bralor/python-academy/blob/lekce01/destinatio_p1.py)
 4. Datovy typ Boolean
 5. Logicke operatory
 6. Podminkovy zapis, obecne
@@ -37,21 +37,6 @@
 ---
 
 <details>
-  <summary>📝 Doplnime ulohu</summary>
-
-  #### 📥 Pridame vstupni hodnoty
-  Jakmile uzivatel nakoupi jizdenku do jedne z vybranych lokalit, dostane 25%
-  slevu:
-  ```python
-  SLEVY = ("Olomouc", "Svitavy")
-  AKT_ROK = 2020
-  ```
-
-</details>
-
----
-
-<details>
   <summary>⚒ Jak pracovat s Pythonem</summary>
 
   1. ⏯ [PyCharm community edition](https://www.jetbrains.com/help/pycharm/quick-start-guide.html)
@@ -62,6 +47,21 @@
   6. ✏  Na prvni radek napiseme `print("Muj prvni lokalni Python soubor!")`
   7. 🏃 Klikneme pravym tlacitkem mysi na zalozku se jmenem souboru a spustime ho
   8. 👇 Na spodu se vysune karta s dokoncenym interpretovanim naseho zapisu.
+
+</details>
+
+---
+
+<details>
+  <summary>📝 Doplnime ulohu</summary>
+
+  #### 📥 Pridame vstupni hodnoty
+  Jakmile uzivatel nakoupi jizdenku do jedne z vybranych lokalit, dostane 25%
+  slevu:
+  ```python
+  SLEVY = ("Olomouc", "Svitavy")
+  AKT_ROK = 2020
+  ```
 
 </details>
 
