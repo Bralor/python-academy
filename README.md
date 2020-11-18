@@ -33,10 +33,12 @@
 
 </details>
 
+---
+
 <details>
   <summary>📝 Doplnime ulohu</summary>
 
-  #### 💲 Pridame slevy
+  #### 💲 Pridame vstupni hodnoty
   Jakmile uzivatel nakoupi jizdenku do jedne z vybranych lokalit, dostane 25%
   slevu:
   ```python
@@ -61,6 +63,7 @@
 
 <details>
   <summary>📌 Boolean hodnoty</summary>
+
   #### ☝ K zapamatovani
   - specialni datovy typ spadajici pod _integer_
   - ciselne hodnoty **1** a **0**
@@ -93,9 +96,9 @@
 ---
 
 <details>
-  <summary>📌 Boolean hodnoty</summary>
+  <summary>📌 Logicke operatory</summary>
   
-  #### 💻 Logicke operatory
+  #### 💻 Vypis logickych operatoru
   S boolean hodnotami souvisi pouziti logickych operatoru:
   1. `and`
   2. `or`
@@ -122,6 +125,8 @@
 
 <details>
   <summary>🔧 Predpis podminkoveho zapisu</summary>
+
+  #### ☝ K zapamatovani
   Podminkovy zapis obsahuje:
   1. `if` klicovy vyraz
   2. `bool()` overovany vyraz
@@ -130,7 +135,7 @@
 
   #### 🎨 Jak vypada podminkovy zapis
   ```python
-  X = 10_000
+  X = 10_000  # u 'int' muzeme oddelit cislice podtrzitkem
   Y = 15_000
 
   if X < Y:
@@ -314,6 +319,8 @@
   ```
 
 </details>
+
+---
 
 <details>
   <summary>🛂 Overeni hesla</summary>
