@@ -15,11 +15,10 @@
 ### 🗒 Obsah lekce
 1. Ukazka ulohy
 2. Doplnime ulohu z [prvni lekce](https://github.com/Bralor/python-academy/blob/lekce01/destinatio_p1.py)
-3. Python, prace
-4. Boolean
+3. Jak pracovat s Pythonem
+4. Datovy typ Boolean
 5. Podminkovy zapis
-6. Ukonceni kodu
-7. Metody datovych typu
+
 ---
 
 <details>
@@ -51,7 +50,7 @@
 ---
 
 <details>
-  <summary>Jak pracovat s Pythonem</summary>
+  <summary>⚒ Jak pracovat s Pythonem</summary>
 
 </details>
 
@@ -81,7 +80,8 @@
   bool(1 < 3)   # True
   bool(1 < -3)  # False
   ```
-  **Pozor!** Boolean hodnotu maji i hodnoty, u kterych bychom je necekali:
+  **Pozor!** Funkce `bool` muze vratit boolean hodnotu i u hodnot, u kterych
+  bychom je necekali:
   ```python
   bool(2)           # True
   bool("Matous")    # True
@@ -90,13 +90,12 @@
   bool([])          # False
   bool([" "])       # True
   ```
+---
 
 </details>
 
----
-
 <details>
-  <summary>📌 Logicke operatory</summary>
+  <summary>📍 Logicke operatory</summary>
   
   #### 💻 Vypis logickych operatoru
   S boolean hodnotami souvisi pouziti logickych operatoru:
@@ -173,6 +172,7 @@
   1. `exit()`
   2. `quit()`
   3. `sys.exit()`/`os._exit()`
+
   **Pozor!** `exit`/`quit` funkce ukazuji na stejny objekt
   **Varianta 3** vice se dozvime az v lekci o modulech v Pythonu
 
@@ -189,10 +189,9 @@
       print("VAMI VYBRANE CISLO NENI V NABIDCE, UKONCUJI..")
       quit()
   ```
+---
 
 </details>
-
----
 
 <details>
   <summary>💰 Vypocet ceny po sleve</summary>
@@ -215,10 +214,9 @@
   else:
       cena_po_sleve = cena
   ```
+---
 
 </details>
-
----
 
 <details>
   <summary>📛 Spravne jmeno a prijmeni</summary>
@@ -247,10 +245,9 @@
       print("JMENO A PRIJMENI MUSI OBSAHOVAT POUZE PISMENA, UKONCUJI..")
       exit()
   ```
+---
 
 </details>
-
----
 
 <details>
   <summary>👼 Overeni veku uzivatele</summary>
@@ -270,10 +267,9 @@
       print("NASE SLUZBY MOHOU VYUZIVAT POUZE OSOBY STARSI 18 LET, UKONCUJI..")
       quit()
   ```
+---
 
 </details>
-
----
 
 <details>
   <summary>📮 Overeni emailu uzivatele</summary>
@@ -317,10 +313,9 @@
       print("NEPODPOROVANY FORMAT EMAILU, UKONCUJI..")
       quit()
   ```
+---
 
 </details>
-
----
 
 <details>
   <summary>🛂 Overeni hesla</summary>
@@ -372,5 +367,5 @@
 
 ---
 
-Pokracovat na [Lekci#03](https://github.com/Bralor/python-academy/tree/lekce03)
+➡ [pokracovat na treti lekci](https://github.com/Bralor/python-academy/tree/lekce03)
 
