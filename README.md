@@ -160,7 +160,7 @@
 
   #### 📺 Prvni podminka
   ```python
-  if cislo_lokality <= 0 or cislo_lokality < 6:
+  if cislo_lokality < 0 or cislo_lokality < 6:
     # pocitame cenu
   else:
     # ukoncime
@@ -186,7 +186,7 @@
   ```python
   cislo_lokality = int(input("VYBERTE CISLO LOKALITY: "))
 
-  if 0 <= cislo_lokality < len(MESTA):
+  if 0 < cislo_lokality < len(MESTA):
       destinace = MESTA[cislo_lokality - 1]
       cena = CENY[cislo_lokality - 1]
       print(f"DESTINACE: {destinace}")
@@ -249,7 +249,7 @@
       print(ODDELOVAC)
   else:
       print("JMENO A PRIJMENI MUSI OBSAHOVAT POUZE PISMENA, UKONCUJI..")
-      exit()
+      quit()
   ```
 ---
 
