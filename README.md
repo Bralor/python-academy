@@ -128,9 +128,6 @@
 <details>
   <summary>👉 Podminkovy zapis, obecne</summary>
 
-<details>
-  <summary>🔧 Predpis podminkoveho zapisu</summary>
-
   #### ☝ K zapamatovani
   Podminkovy zapis obsahuje:
   1. `if` klicovy vyraz
@@ -150,8 +147,6 @@
   ```
   **control-flow** ve vzoru vyse je jednoduchy podminkovy zapis slozeny
   z dvou moznych scenaru.
-
-</details>
 
 </details>
 
