@@ -18,7 +18,8 @@
 3. Jak pracovat s Pythonem
 4. Datovy typ Boolean
 5. Logicke operatory
-6. Podminkovy zapis
+6. Podminkovy zapis, obecne
+7. Podminkovy zapis, upravujeme program
 
 ---
 
@@ -38,7 +39,7 @@
 <details>
   <summary>📝 Doplnime ulohu</summary>
 
-  #### 💲 Pridame vstupni hodnoty
+  #### 📥 Pridame vstupni hodnoty
   Jakmile uzivatel nakoupi jizdenku do jedne z vybranych lokalit, dostane 25%
   slevu:
   ```python
@@ -53,10 +54,18 @@
 <details>
   <summary>⚒ Jak pracovat s Pythonem</summary>
 
+  1. ⏯ [PyCharm community edition](https://www.jetbrains.com/help/pycharm/quick-start-guide.html)
+  2. ➕ Klikneme na novy projekt
+  3. 🏘 Vybereme adresar **python_akademie**, vybere interpreta Pythonu (3.8+)
+  4. 📁 Vytvorime adresar pro druhou lekci **lekce02**
+  5. 🐍 Vytvorime novy soubor **prvni_pokus** (pripona `.py`)
+  6. ✏  Na prvni radek napiseme `print("Muj prvni lokalni Python soubor!")`
+  7. 🏃 Klikneme pravym tlacitkem mysi na zalozku se jmenem souboru a spustime ho
+  8. 👇 Na spodu se vysune karta s dokoncenym interpretovanim naseho zapisu.
+
 </details>
 
 ---
-
 
 <details>
   <summary>📘 Datovy typ boolean</summary>
@@ -119,9 +128,6 @@
 <details>
   <summary>👉 Podminkovy zapis, obecne</summary>
 
-<details>
-  <summary>🔧 Predpis podminkoveho zapisu</summary>
-
   #### ☝ K zapamatovani
   Podminkovy zapis obsahuje:
   1. `if` klicovy vyraz
@@ -150,9 +156,9 @@
   <summary>🔂 Podminkovy zapis, upravujeme program</summary>
 
 <details>
-  <summary>❎ Platne cislo lokality</summary>
+  <summary>🔢 Platne cislo lokality</summary>
 
-  #### 📺 Podminka
+  #### 📺 Prvni podminka
   ```python
   if cislo_lokality <= 0 or cislo_lokality < 6:
     # pocitame cenu
@@ -225,7 +231,7 @@
   Potrebujeme overit, jestli promenne `jmeno` a `prijmeni` obsahuji pouze
   symboly pismen.
 
-  #### 🖱 Metody retezcu
+  #### 🖱  Metody retezcu
   Datove typy maji uzitecne pomucky pro efektivnejsi praci s nimi:
   1. `isalpha` - vrati `True` pokud jsou vsechny znaky pismena, jinak `False`
   2. `isnumeric` - vrati `True` pokud jsou vsechny znaky cislice, jinak `False`
@@ -233,7 +239,7 @@
   help(str)  # napoveda pro retezce v ramci interpretu
   ```
 
-  #### ➕ Overeni udaju
+  #### 💡 Overeni udaju
   ```python
   jmeno = input("JMENO: ")
   prijmeni = input("PRIJMENI: ")
@@ -250,7 +256,7 @@
 </details>
 
 <details>
-  <summary>👼 Overeni veku uzivatele</summary>
+  <summary>👶 Overeni veku uzivatele</summary>
 
   #### 🥅 Nas cil
   Jen uzivatele starsi 18ti let mohou pouzivat nasi aplikaci. Ostatnim omezime
