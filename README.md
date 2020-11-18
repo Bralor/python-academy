@@ -17,7 +17,8 @@
 2. Doplnime ulohu z [prvni lekce](https://github.com/Bralor/python-academy/blob/lekce01/destinatio_p1.py)
 3. Jak pracovat s Pythonem
 4. Datovy typ Boolean
-5. Podminkovy zapis
+5. Logicke operatory
+6. Podminkovy zapis
 
 ---
 
@@ -60,9 +61,6 @@
 <details>
   <summary>📘 Datovy typ boolean</summary>
 
-<details>
-  <summary>📌 Boolean hodnoty</summary>
-
   #### ☝ K zapamatovani
   - specialni datovy typ spadajici pod _integer_
   - ciselne hodnoty **1** a **0**
@@ -90,9 +88,10 @@
   bool([])          # False
   bool([" "])       # True
   ```
----
 
 </details>
+
+---
 
 <details>
   <summary>📍 Logicke operatory</summary>
@@ -115,12 +114,10 @@
   ```
 </details>
 
-</details>
-
 ---
 
 <details>
-  <summary>👉 Podminkovy zapis</summary>
+  <summary>👉 Podminkovy zapis, obecne</summary>
 
 <details>
   <summary>🔧 Predpis podminkoveho zapisu</summary>
@@ -145,9 +142,12 @@
   **control-flow** ve vzoru vyse je jednoduchy podminkovy zapis slozeny
   z dvou moznych scenaru.
 
+</details>
+
 ---
 
-</details>
+<details>
+  <summary>🔂 Podminkovy zapis, upravujeme program</summary>
 
 <details>
   <summary>❎ Platne cislo lokality</summary>
@@ -362,6 +362,8 @@
       """
       )
   ```
+
+</details>
 
 </details>
 
