@@ -160,7 +160,7 @@
 
   #### 📺 Prvni podminka
   ```python
-  if cislo_lokality < 0 or cislo_lokality < 6:
+  if cislo_lokality > 0 or cislo_lokality < 6:
     # pocitame cenu
   else:
     # ukoncime
