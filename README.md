@@ -1,367 +1,369 @@
-Minula [lekce#01](https://github.com/Bralor/python-academy/tree/lekce01)
+➡ [vratit se na prvni lekci](https://github.com/Bralor/python-academy/tree/lekce01)
 
 <p align="center">
-  <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
+  <img alt="engeto-logo" width="100px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
 </p>
 
-# Python academy, lekce 02
-## Dulezite odkazy
-- [Python Academy, lekce](https://engeto.com/cs/kurz/python-academy/lekce)
-- [Python Academy, muj repozitar](https://github.com/Bralor/python-academy)
-- [Python Academy, muj repozitar, lekce#01](https://github.com/Bralor/python-academy/tree/lekce01)
+## 2⃣ Python akademie
+### 🗒 Dulezite odkazy
+- [Engeto.com](https://engeto.com/cs/)
+- [Python Academy, Git](https://engeto.com/cs/kurz/git-zaklady-pro-uzivatele/lekce)
+- [Python Academy, zaciname!](https://engeto.com/cs/kurz/python-academy/studium/SpmtH-mVRY6zPL9alhruMQ/home-set-up/basics-of-command-line)
+- [Python, dokumentace zabudovanych funkci](https://docs.python.org/3/library/functions.html)
+---
 
-## Co nas dnes ceka?
-V navaznosti na minulou lekci se budeme snazit nas program (Destinatio) zdokonalit. Soucasti naseho vylepsovani bude patrit teorie k boolean hodnotam, logickym operatorum a zaklady k podminkovemu zapisu.
+### 🗒 Obsah lekce
+1. Ukazka ulohy
+2. Doplnime ulohu z [prvni lekce](https://github.com/Bralor/python-academy/blob/lekce01/destinatio_p1.py)
+3. Python, prace
+4. Boolean
+5. Podminkovy zapis
+6. Ukonceni kodu
+7. Metody datovych typu
+---
 
-## Co bude vysledkem?
-Po spusteni by mel program vypadat nasledovne (nebo viz. demo):
-```bash
-$ ./destinatio
-```
-Dostaneme nasledny vypis:
-```
-===================================
-Vitejte u nasi aplikace Destinatio!
-===================================
+<details>
+  <summary>⏯  Ukazka ulohy</summary>
 
-1 - Praha   | 150
-2 - Viden   | 200
-3 - Olomouc | 120
-4 - Svitavy | 120
-5 - Zlin    | 100
-6 - Ostrava | 180
+  1. ✌  [Stahnete si druhou lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce02.zip)
+  2. 💪 Presunte se ke stazenemu souboru
+  3. 🙏 Spustte soubor **destinatio_p2** v PyCharm
+  4. 🐍 Spustte program pomoci klaves **ctrl+shift+F10**
+  5. 🎥 Zkousejte!
 
-===================================
-Vyberte cislo lokality: 3
-DESTINACE: Olomouc
-===================================
-JMENO: Matous
-PRIJMENI: Holinka
-JMENO: Matous, PRIJMENI: Holinka
-===================================
-ROK NAROZENI: 1992
-Pokracuji...
-===================================
-EMAIL: matous@matous.cz
-Email v poradku, pokracuji...
-===================================
-HESLO: panpes738
-Heslo v poradku
-===================================
-UZIVATEL: Matous
-DESTINACE: Olomouc
-CENA(cil:Olomouc): 90.0
-Jizdenku posleme na Vasi emailovou adresu: matous@matous.cz
-```
+</details>
 
-## Co budeme potrebovat?
-- Python 3.6+
-- textovy editor (dle uvazeni/doporuceni)
-- vystup z [prvni lekce](https://github.com/Bralor/python-academy/blob/lekce01/destinatio_part1)
-- vytvorit si novy soubor ve svem pracovnim adresari
+<details>
+  <summary>📝 Doplnime ulohu</summary>
 
-## Pokracujeme s kodem!
+  #### 💲 Pridame slevy
+  Jakmile uzivatel nakoupi jizdenku do jedne z vybranych lokalit, dostane 25%
+  slevu:
+  ```python
+  SLEVY = ("Olomouc", "Svitavy")
+  AKT_ROK = 2020
+  ```
 
-<p align="center">
-  <img src="https://media.giphy.com/media/XbV2l8rk7wGKbQlpPM/source.gif" width="300" height="300">
-</p>
+</details>
 
-Otevreme nas novy pracovni soubor a vlozime zapis z posledni lekce.
+---
 
-## Rozsirime zadani naseho programu
-Budeme chtit vytvorit soupis lokalit, ktere pokud uzivatel vybere, dostane slevu.
+<details>
+  <summary>Jak pracovat s Pythonem</summary>
 
-```python
-SLEVY = ("Olomouc", "Svitavy")
-```
+</details>
 
-## Prvni podminka
-Prvnim krokem, u ktereho bude potreba rozhodovat, je samotne cislo lokality.
-Chceme v podstate zabranit tomu, aby uzivatel zadal takove cislo, ktere nemame
-na vyber. Tedy cokoliv mensiho nez 1 a vetsi nez 6.
-
-Obecne:
-```python
-por_cislo = int(input("Vyberte cislo lokality: "))
-# Promenna *por_cislo* > 0 a *por_cislo* <= 6 
-```
-## Pravda nebo ne?
-Abychom byli schopni rozlisit, co je v Pythonu pravda a neni, budeme se muset
-seznamit s datovym typem _boolean_. Je to dalsi typ jako byl retezec, desetinne
-cislo, atd. Castence spada pod _integer_ (tedy specialne hodnoty 1 a 0). V
-Pythonu je ale casteji oznacujeme textovym popiskem __True(1)__ a __False(0)__.
-Jejich ucelem je rozhodovat v testovaci procedure, zda-li je nejaky vyraz
-[pravdivy](https://engeto.com/cs/kurz/online-python-akademie/studium/9roGO2_ITGaLbq-X-KGT7w/rozhodujeme/datovy-typ-boolean/co-je-to-boolean)
-nebo ne.
-
-Ukazka:
-```python
-bool(1)  # True
-bool(0)  # False
-```
-
-## Logicke operatory
-Boolean hodnoty souvisi s pouzitim [logickych operatoru](https://engeto.com/cs/kurz/online-python-akademie/studium/rh38CL2fRmmOBqJt312GOA/rozhodujeme/datovy-typ-boolean/logicke-operace):
-1. __and__
-2. __or__
-3. __not__
-
-```python
-bool(True and True)     # True, viz. tabulka zadani
-bool(True and False)    # False
-bool(False and False)  # False
-
-bool(True or True)      # True
-bool(True or False)     # True
-bool(False or False)     # False
-
-bool(not True)      # False
-bool(not False)     # True
-```
-
-## Podminkovy zapis
-Pro pouziti
-[podminkoveho zapisu](https://engeto.com/cs/kurz/online-python-akademie/studium/EBuXiFdpSKK96n6Eds4cgA/rozhodujeme/python-rozhoduje/podminky-if)
-musime dodrzet nasledujici kroky:
-1. Klicove slovo __if__
-2. Vytvorit __bool()__ test
-3. Radek ukoncit dvojteckou __:__
-4. Nasledujici radek psat _odsazeny_
-
-Ukazka __if-else__:
-```python
-A = 10_000
-B = 15_000
-
-if A > B:
-    print("PRAVDA! A je mensi nez B")           # Vypis toto, pokud je bool -> True
-else:
-    print("NENI PRAVDA! A neni vetsi nez B")    # Vypis toto, pokud je bool -> False
-```
-
-## Zapiseme prvni podminku
-<p align="center">
-  <img src="https://media.giphy.com/media/l2Je57ilZJPzNkeXK/source.gif" width="300" height="300">
-</p>
-
-Takze pomoci teorie o podminkovem zapise v nasem souboru vytvorime prvni
-podminku:
-```python
-por_cislo = int(input("Vyberte cislo lokality: "))
-
-if por_cislo < 1 or por_cislo > 6:
-    print("Vami vybrane cislo neni v nabidce, ukoncuji")
-    # ukoncuji
-else:
-    destinace = SEZNAM_MEST[por_cislo - 1]
-    cena = SEZNAM_CEN[por_cislo - 1]
-    print(f"DESTINACE: {destinace}")
-    print(ODDELOVAC)
-```
-
-## Jak ukoncime program? 
-Pokud uzivatel nejakou podminku pri zadavani nesplni, chceme automaticky
-program ukoncit. Budeme pouzivat tzv. _ukoncovaci oznameni_. Jde o formu
-ukonceni prubehu naseho souboru. V Pythonu je vic moznosti jak ukonceni
-vyvolat (__quit()__/__exit()__).(pozn. oba tyto prikazy vychazi ze stejneho
-principu) 
-
-__Priklad__:
-```python
-...
-if por_cislo < 1 or por_cislo > 6:
-    print("Vami vybrane cislo neni v nabidce, ukoncuji")
-    exit()
-    ...
-```
-
-## Aplikujeme prepocet slev
-Po poradovem cislu chceme aplikovat vypocet mozne slevy. Nejprve je nutne
-zjistit, jestli se konkretni lokalita nachazi v destinacich se zlevnenym
-jizdnym.
-
-### Overeni clenstvi
-Jde o formu dotazu, kdy se ptame, jestli je nejaky udaj
-[soucasti](https://engeto.com/cs/kurz/online-python-akademie/studium/tR_PX2qoQw68kXQKe1q1fg/zaciname-s-pythonem-datove-typy/operace-se-sekvencemi/pritomnost-prvku-membership-test)
-sekvence jako je retezec, seznam, tuple. Klicovym pojmem v tomto overovani
-je __in__.
-
-__Priklad__:
-```bash
-"Matous" in ["Matous", "Marek", "Lukas", "Jan"]  # True
-```
-
-## Zapiseme dalsi podminku
-Nase varianta se slevou bude vypada nasledovne:
-```python
-if destinace in SLEVY:
-    cena_po_sleve = 0.75 * cena
-else:
-    cena_po_sleve = cena
-```
+---
 
 
-## Overime jmeno a prijmeni
-Nyni se chceme ujistit, ze symboly zadane do promennych *jmeno* a *prijmeni*
-jsou slozene pouze z pismen. Pokud chceme podobnym zpusobem pracovat s
-retezci, muzeme se podivat, jestli nami hledane upravy nezahrnuji
-stavajici _metody retezcu_.
+<details>
+  <summary>📘 Datovy typ boolean</summary>
 
-Kde hledat jmena metod:
-```bash
-help(str)  # Napoveda pro retezce
-```
+<details>
+  <summary>📌 Boolean hodnoty</summary>
+  #### ☝ K zapamatovani
+  - specialni datovy typ spadajici pod _integer_
+  - ciselne hodnoty **1** a **0**
+  - hodnoty **True** a **False**
+  - pomahaji resit, jestli je podminka/metoda pravdiva nebo neni
+  
+  #### ❓ Jak vypada boolean
+  ```python
+  jmeno_promenne = True
+  ```
 
-Vystup:
-```
-...
- |  isalpha(...)
- |      S.isalpha() -> bool
- |      
- |      Return True if all characters in S are alphabetic
- |      and there is at least one character in S, False otherwise.
- |  
-...
-```
-Obecne pouziti metod (nejen pro retezce):
-```python
-<jmeno_promenne><.><jmeno_metody><()>
-```
+  #### 🔎 Co je vsechno pravda (v Pythonu)
+  Funkce `bool` nam pomuze zjistovat, co je ci neni pravdive:
+  ```python
+  bool(1 < 3)   # True
+  bool(1 < -3)  # False
+  ```
+  **Pozor!** Boolean hodnotu maji i hodnoty, u kterych bychom je necekali:
+  ```python
+  bool(2)           # True
+  bool("Matous")    # True
+  bool("")          # False
+  bool(" ")         # True
+  bool([])          # False
+  bool([" "])       # True
+  ```
 
-__Priklad__:
-```bash
-"matous".isalpha()      # True
-"m@tous".isalpha()      # False
-"mat0us".isalpha()      # False
-```
+</details>
 
-Takze muzeme dopsat overovaci cast k promennym __jmeno__ a __prijmeni__:
-```python
-jmeno = input("JMENO: ")
-prijmeni = input("PRIJMENI: ")
+---
 
-if jmeno.isalpha() and prijmeni.isalpha():
-    print(f"JMENO: {jmeno}, PRIJMENI: {prijmeni}")
-    print(ODDELOVAC)
-else:
-    print("Jmeno a prijmeni musi obsahovat pouze pismena, ukoncuji")
-    exit()
-```
+<details>
+  <summary>📌 Boolean hodnoty</summary>
+  
+  #### 💻 Logicke operatory
+  S boolean hodnotami souvisi pouziti logickych operatoru:
+  1. `and`
+  2. `or`
+  3. `not`
+  ```python
+  bool(True and True)       # True
+  bool(True and False)      # False
+  bool(False and False)     # False
+  bool(not True)            # False
 
-## Overeni veku
-Dalsi podminkovy zapis bude overovat vek potencialniho uzivatele, abychom
-zamezili pouzivani mladsim 18ti let.
+  bool(True or True)        # True
+  bool(True or False)       # True
+  bool(False or True)       # True
+  bool(False or False)      # False
+  ```
+</details>
 
-__Obecne__:
-```
-<aktualni_rok>-<vek> > 18
-```
+</details>
 
-__Dopiseme__:
-```python
-AKT_ROK = 2020
-vek = int(input("ROK NAROZENI: "))
+---
 
-if (AKT_ROK - vek) >= 18:
-    print(f"Pokracuji...")
-    print(ODDELOVAC)
-else:
-    print("Nase sluzby mohou vyuzivat pouze osoby starsi 18 let, ukoncuji")
-    exit()
-```
+<details>
+  <summary>👉 Podminkovy zapis</summary>
 
-## Kontrola emailove adresy
-Pro kontrolu emailu bude stacit zjistit, jestli zadany email obsahuje symbol zavinace (*@*). Tudiz se ptam, jestli promenna neobsahuje konkretni [symbol](###-overeni-clenstvi).
+<details>
+  <summary>🔧 Predpis podminkoveho zapisu</summary>
+  Podminkovy zapis obsahuje:
+  1. `if` klicovy vyraz
+  2. `bool()` overovany vyraz
+  3. `:` zahlavi zakoncene dvojteckou
+  4. odsazeny odstavec instrukci
 
-__Dopiseme__:
-```python
-email = input("EMAIL: ")
+  #### 🎨 Jak vypada podminkovy zapis
+  ```python
+  X = 10_000
+  Y = 15_000
 
-if "@" in email:
-    print("Email v poradku, pokracuji...")
-    print(ODDELOVAC)
-else:
-    print("Nepodporovany format emailu, ukoncuji")
-    exit()
-```
+  if X < Y:
+    print("Ano, to je pravda!")
+  else:
+    print("Ne, toto neni pravda!")
+  ```
+  **control-flow** ve vzoru vyse je jednoduchy podminkovy zapis slozeny
+  z dvou moznych scenaru.
 
-## Kontrola hesla
-Kontrola hesla bude komplikovanejsi. Aby bylo heslo platne, bude muset
-splnovat nasledujici:
-1. Musi byt delsi nez 8 symbolu
-2. Musi obsahovat pismena
-3. Musi obsahovat cislice
+---
 
-### Vestavena funkce __len()__
-Jde o preddefinovanou funkci, ktera slouzi k [pocitani prvku](https://engeto.com/cs/kurz/online-python-akademie/studium/MCDGtwdxTn2GMv5sfPvXQA/zaciname-s-pythonem-datove-typy/operace-se-sekvencemi/zjisteni-delky-lenght) v udaji.
+</details>
 
-Priklad:
-```python
-len("matous")           # 6
-len(["a", "b", "c"])    # 3
-```
+<details>
+  <summary>❎ Platne cislo lokality</summary>
 
-Prvni cast podminky:
-```python
-if len(heslo) >= 8 ...
-```
+  #### 📺 Podminka
+  ```python
+  if cislo_lokality <= 0 or cislo_lokality < 6:
+    # pocitame cenu
+  else:
+    # ukoncime
+  ```
 
-### Pismena a cislice
-Za timto ucelem opet prohledame dostupne [metody](#kontrola-jmeno-a-prijmeni)
+  #### ↔ Delka objektu
+  Pomoci funkce `len` muzeme zjistit delku objektu:
+  ```python
+  PISMENA = ["a", "b", "c"]; len(PISMENA) # 3
+  JMENO = "Matous"; len(JMENO)            # 6
+  ```
 
-### Nektere metody retezcu
-Jde o metody, ktere nam pomahaji/usnadnuji praci s retezci.
-1. __S.isalpha()__ --> vraci True, pokud jsou vsechny znaky v __S__ pismena
-2. __S.isnumeric()__ --> vraci False, pokud jsou vsechny znaky v __S__ ciselne
+  #### ⏹ Ukonceni programu
+  Pro ukonceni beziciho programu mame tyto moznosti:
+  1. `exit()`
+  2. `quit()`
+  3. `sys.exit()`/`os._exit()`
+  **Pozor!** `exit`/`quit` funkce ukazuji na stejny objekt
+  **Varianta 3** vice se dozvime az v lekci o modulech v Pythonu
 
-__Priklad__:
-```bash
-"Matous".isalpha()      # True
-"M@tous".isalpha()      # False
-"Mat0us".isalpha()      # False
-"7350".isalpha()        # False
-"7350".isnumeric()      # True
-```
+  #### 🔁 Opravime prvni podminku
+  ```python
+  cislo_lokality = int(input("VYBERTE CISLO LOKALITY: "))
 
-__Doplnime__:
-```python
-if len(heslo) >= 8 and not heslo.isalpha() and not heslo.isnumeric():
-    print("Heslo v poradku")
-    print(ODDELOVAC)
-    print("UZIVATEL: " + jmeno)
-    print("DESTINACE: " + destinace)
-    print("CENA(cil:" + destinace + "): " + str(cena_po_sleve))
-    print(f"Jizdenku posleme na Vasi emailovou adresu: {email}")
+  if 0 <= cislo_lokality < len(MESTA):
+      destinace = MESTA[cislo_lokality - 1]
+      cena = CENY[cislo_lokality - 1]
+      print(f"DESTINACE: {destinace}")
+      print(ODDELOVAC)
+  else:
+      print("VAMI VYBRANE CISLO NENI V NABIDCE, UKONCUJI..")
+      quit()
+  ```
 
-else:
-    print(
-    """
-    Tvoje heslo je spatne zadane:
-	1. Musi obsahovat alespon 8 znaku,
-	2. Musi obsahovat pismena,
-    3. Musi obsahovat cislice
-    """
-    )
-```
+</details>
 
-## Slozitejsi podminkova vetev
-Nami zapsane podminkove vetve byly pomerne strucne. Prakticky se muze stat,
-ze budeme potrebovat rozhodovaci proces delsi nez proste __bud__ a __nebo__.
+---
 
-Ukazka __if-elif-else__:
-```python
-METRO = False               # bool
-POCET_OBYVATEL = 374_734    # integer
+<details>
+  <summary>💰 Vypocet ceny po sleve</summary>
 
-if POCET_OBYVATEL < 100_000:
-    print("Jde o male mesto")
+  #### 💁 Overeni clenstvi
+  V podstate se ptame, jestli je nejaky udaj soucasti konkretni sekvence:
+  ```python
+  JMENA = ("Marek", "Lukas", "Jan")
 
-elif POCET_OBYVATEL < 300_000:
-    print("Jde o velke mesto")
+  bool("Marek" in JMENA)  # True
+  bool("Tomas" in JMENA)  # False
+  ```
 
-elif POCET_OBYVATEL == 374_734 and METRO == False:
-    print("Jasne BRNO!")
-```
+  #### 🆕 Nova cena
+  Pokud je cilova lokalita mezi zlevnenymi, vypocitej novou cenu:
+  ```python
+  if destinace in SLEVY:
+      cena_po_sleve = 0.75 * cena
+      print("ZISKAVATE 25% SLEVU!")
+  else:
+      cena_po_sleve = cena
+  ```
+
+</details>
+
+---
+
+<details>
+  <summary>📛 Spravne jmeno a prijmeni</summary>
+
+  #### 🥅 Nas cil
+  Potrebujeme overit, jestli promenne `jmeno` a `prijmeni` obsahuji pouze
+  symboly pismen.
+
+  #### 🖱 Metody retezcu
+  Datove typy maji uzitecne pomucky pro efektivnejsi praci s nimi:
+  1. `isalpha` - vrati `True` pokud jsou vsechny znaky pismena, jinak `False`
+  2. `isnumeric` - vrati `True` pokud jsou vsechny znaky cislice, jinak `False`
+  ```python
+  help(str)  # napoveda pro retezce v ramci interpretu
+  ```
+
+  #### ➕ Overeni udaju
+  ```python
+  jmeno = input("JMENO: ")
+  prijmeni = input("PRIJMENI: ")
+
+  if jmeno.isalpha() and prijmeni.isalpha():
+      print(f"JMENO: {jmeno}, PRIJMENI: {prijmeni}")
+      print(ODDELOVAC)
+  else:
+      print("JMENO A PRIJMENI MUSI OBSAHOVAT POUZE PISMENA, UKONCUJI..")
+      exit()
+  ```
+
+</details>
+
+---
+
+<details>
+  <summary>👼 Overeni veku uzivatele</summary>
+
+  #### 🥅 Nas cil
+  Jen uzivatele starsi 18ti let mohou pouzivat nasi aplikaci. Ostatnim omezime
+  pristup.
+
+  #### 🖱 Metody retezcu
+  ```python
+  vek = int(input("ROK NAROZENI: "))
+
+  if (AKT_ROK - vek) >= 18:
+      print("POKRACUJI..")
+      print(ODDELOVAC)
+  else:
+      print("NASE SLUZBY MOHOU VYUZIVAT POUZE OSOBY STARSI 18 LET, UKONCUJI..")
+      quit()
+  ```
+
+</details>
+
+---
+
+<details>
+  <summary>📮 Overeni emailu uzivatele</summary>
+
+  #### 🥅 Nas cil
+  Mailovou adresu overime pomoci dvou kriterii:
+  1. Obsahuje znak `@`
+  2. Obsahuje `.cz` (TLD)
+
+  #### 🏫 Spojeni dvou podminek
+  ```python
+  email = input("EMAIL: ")
+
+  if "@" in email and ".cz" in email:
+      print("EMAIL V PORADKU, POKRACUJI..")
+      print(ODDELOVAC)
+  else:
+      print("NEPODPOROVANY FORMAT EMAILU, UKONCUJI..")
+      quit()
+  ```
+
+  #### 🔪Cast retezce
+  Pokud chceme ziskat jen vyrez z retezce (slicing):
+  ```python
+  jmeno = "Matous"
+
+  jmeno[0:2]  # jmeno[start:stop] -> prvni 3 pismena
+  jmeno[:3]   # jmeno[start:stop] -> prvni 3 pismena
+  jmeno[3:]   # jmeno[start:stop] -> bez prvnich 3 pismen
+  jmeno[-3:]   # jmeno[start:stop] -> posledni 3 pismena
+  ```
+  #### 🆕 Upravena podminka
+  Overime, ze se `.cz` nachazi na poslednich 3 indexech (pomoci `==`):
+  ```python
+  email = input("EMAIL: ")
+
+  if "@" in email and email[-3:] == ".cz":
+      print("EMAIL V PORADKU, POKRACUJI..")
+      print(ODDELOVAC)
+  else:
+      print("NEPODPOROVANY FORMAT EMAILU, UKONCUJI..")
+      quit()
+  ```
+
+</details>
+
+<details>
+  <summary>🛂 Overeni hesla</summary>
+
+  #### 🥅 Nas cil
+  Heslo musi splnovat nasledujici kriteria:
+  1. Je dlouhe alespon 8 znaku
+  2. Obsahuje cislice
+  3. Obsahuje pismena
+
+  #### 📏 Delka
+  ```python
+  heslo = "panpes738";bool(len(heslo) >= 8)
+  ```
+
+  #### 🔢 Cislice
+  ```python
+  heslo = "12345678";heslo.isnumeric()
+  ```
+
+  #### 🔡 Pismena
+  ```python
+  heslo = "abcdefgh";heslo.isalpha()
+  ```
+
+  #### 🤼 Zkombinujeme vse
+  ```python
+  if len(heslo) >= 8 and not heslo.isalpha() and not heslo.isnumeric():
+      # True and not False and not False
+      # True and True and True -> True
+      print("HESLO V PORADKU")
+      print(ODDELOVAC)
+      print("DESTINACE: " + destinace)
+      print("DEKUJEME,", jmeno, "JIZDENKU POSLEME NA EMAIL:", email)
+      print(f"CENA (CIL: {destinace}): {cena}")
+  else:
+      # True and not True and not False
+      # True and False and True -> False
+      print(
+          """TVOJE HESLO JE SPATNE ZADANE:
+      1. MUSI OBSAHOVAT ALESPON 8 ZNAKU
+      2. MUSI OBSAHOVAT PISMENA
+      3. MUSI OBSAHOVAT CISLICE
+      """
+      )
+  ```
+
+</details>
+
+---
 
 Pokracovat na [Lekci#03](https://github.com/Bralor/python-academy/tree/lekce03)
 
