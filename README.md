@@ -21,10 +21,11 @@
 1. Ukazka ulohy
 2. Vstupni udaje
 3. For cyklus, obecne
-4. Slova
-5. Vyskyt
-6. Nejvetsi klice
-7. Vystup
+4. Rozdeleni retezce
+5. Vyskyt jednotlivych slov
+6. Ziskani 5ti nejvetsich klicu
+7. Zaverecny vystup
+8. Procvicovani na doma
 ---
 
 <details>
@@ -215,15 +216,12 @@
       print("Neni tu zadne G")
   ```
 
----
-
-
 </details>
 
 ---
 
 <details>
-  <summary>📵 Slova</summary>
+  <summary>📵 Rozdeleni retezce</summary>
 
   #### ➿ Prvni cyklus s for
   Prochazime promennou `TEXT`:
@@ -287,7 +285,7 @@
 ---
 
 <details>
-  <summary>📈 Vyskyt</summary>
+  <summary>📈 Vyskyt jednotlivych slov</summary>
 
   #### 🥅 Nas cil
   Chceme evidovat kazde slovo, na ktere narazime a soucasne pocitat jeho vyskyt.
@@ -325,7 +323,7 @@
 ---
 
 <details>
-  <summary>🔑 Nejvetsi klice</summary>
+  <summary>🔑 Ziskani 5ti nejvetsich klicu</summary>
 
   #### 🥅 Nas cil
   Hotove promenne chceme seradit.
@@ -355,7 +353,7 @@
 ---
 
 <details>
-  <summary>📊 Vystupy</summary>
+  <summary>📊 Zaverecny vystup</summary>
 
   #### 🥅 Nas cil
   Nakonec potrebujeme vysledek sestupne vypisovat
