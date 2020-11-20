@@ -352,10 +352,8 @@
       upraveny_typ, prirustek = prevodnik_bytu(typ, PREVOD_UDAJU)
       uspesne += prirustek
   ```
-<details>
-  <summary>✂ Zkratime zapis</summary>
 
-  #### 🕹 Spojime se zbytkem udaju
+  #### 🕹 Spojime se zbytkem udaj
   ```python
   upraveny_radek = f"{upraveny_typ},{dalsi_udaje}"
   ```
@@ -383,8 +381,6 @@
       print(f"PREVEDENO: {uspesne} UDAJU")
   ```
   **Pozor!** Nas zapis muzeme dale vylepsit.
-
-</details>
 
 </details>
 
