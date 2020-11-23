@@ -196,7 +196,7 @@
   **Obecne:**
   ```python
   for docasna_promenna in sada_udaju:
-      <telo_smycky>
+      # odsazeny zapis ve smycce
   ```
   **Priklad:**
   ```python
@@ -243,8 +243,8 @@
   #### ✂ Odstranime nezadouci symboly
   Dalsi metoda, `strip` nam umozni odstranit nezadouci znaky:
   ```python
-  VETA2 = "   Není trapnější hloupost, než dutý zvuk krásných a vznešených slov,\
-          která však postrádají myšlenku a znalost.   "
+  VETA2 = """   Není trapnější hloupost, než dutý zvuk krásných a vznešených
+          slov, která však postrádají myšlenku a znalost.   """
   VETA3 = "Není trapnější hloupost,..."
   print(VETA2.strip())        # odstranime uvodni a zaverecne mezery
   print(VETA3.strip(".,"))    # odstranime uvodni a zaverecne carky/tecky
@@ -277,7 +277,9 @@
       ciste_slovo = slovo.strip(",./:'")
       vycistena_slova.append(ciste_slovo)
   ```
-  **Pozor!** Je mozne zapis upravit pomoci seznamove komprehence.
+  **Pozor!** zapis je mozne upravit:
+  1. Seznamova komprehence
+  2. Metoda retezcu `lower`
 
 
 </details>
@@ -312,11 +314,11 @@
       elif slovo in vyskyt_slov:
           vyskyt_slov[slovo] += 1
   ```
-  **Pozor!** Opet muzeme nas zapis vylepsit.
+  **Pozor!** opet muzeme nas zapis vylepsit:
   1. `else` vetev
   2. Ternarni operator
   3. `setdefault` metoda slovniku
-  4. **Narocne** `from collections import Counter`
+  4. **Narocnejsi!** `from collections import Counter`
 
 </details>
 
@@ -356,21 +358,9 @@
   <summary>📊 Zaverecny vystup</summary>
 
   #### 🥅 Nas cil
-  Nakonec potrebujeme vysledek sestupne vypisovat
+  Nakonec potrebujeme vysledek sestupne vypisovat.
 
-  #### 🗒 Jak na t
-  Pomoci funkce `enumerate` vyzkousime jak smycku rozsirit:
-  ```python
-  JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
-  print(enumerate(JMENA, 1))
-  ```
-  **Priklad se smyckou:**
-  ```python
-  for cislo, jmeno in enumerate(JMENA, 1):
-      print(f"{cislo}.: {jmeno}")
-  ```
-
-  #### 🆘 Reseni
+  #### 🆘 Nejprve uvod
   Doplnime uvodni text:
   ```python
   print(
@@ -379,6 +369,32 @@
       sep="\n"
   )
   ```
+
+  #### 🆘 Prvni moznost
+  Pouzijeme pomocnou promennou `index`:
+  ```python
+  JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
+  index = 1
+
+  for cislo, jmeno in enumerate(JMENA, 1):
+      print(f"{cislo}.: {jmeno}")
+      index = index + 1
+  ```
+
+  #### 🗒 Jak na t olepe
+  Pomoci funkce `enumerate` vyzkousime jak smycku rozsirit:
+  ```python
+  JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
+  print(enumerate(JMENA, 1))
+  ```
+  **Priklad se smyckou:**
+  ```python
+  JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
+
+  for cislo, jmeno in enumerate(JMENA, 1):
+      print(f"{cislo}.: {jmeno}")
+  ```
+
   Pripiseme posledni smycku pro vypisovani:
   ```python
   for index, vysledek in enumerate(pet_nejcastejsich, 1):
@@ -386,7 +402,6 @@
           f"{index}. SLOVO: {vysledek}, VYSKYT: {vyskyt_slov[vysledek]}",
       )
   ```
-
 
 </details>
 
