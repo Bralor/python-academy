@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""Lekce #5 - Uvod do programovani, nejcastejsi slova"""
+
 TEXT = """
 Affronting imprudence do he he everything. Sex lasted dinner wanted indeed
 wished out law. Far advanced settling say finished raillery. Offered
@@ -132,33 +135,19 @@ for slovo in TEXT.split():
     ciste_slovo = slovo.strip(",.:;'")
     vycistena_slova.append(ciste_slovo.lower())
 
-# seznamova komprehence -> list comprehensions
-#vycistena_slova = [slovo.strip(",.:;'").lower() for slovo in TEXT.split()]
-
 vyskyt_slov = {}
 
 for slovo in vycistena_slova:
     if slovo not in vyskyt_slov:
         vyskyt_slov[slovo] = 1
     else:
-        vyskyt_slov[slovo] = vyskyt_slov[slovo] + 1  # 1 + 1 = 2
+        vyskyt_slov[slovo] = vyskyt_slov[slovo] + 1
 
-# ternarni operator
-#    vyskyt_slov[slovo] = 1 if slovo not in vyskyt_slov else \
-#        vyskyt_slov[slovo] = vyskyt_slov[slovo] + 1
-
-# metoda setdefault()
-#    vyskyt_slov[slovo] = vyskyt_slov.setdefault(slovo, 0) + 1
-
-# collections
-#from collections import Counter
-#pocitadlo = Counter(vycistena_slova)
-
-pet_nejcastejsich = sorted(vyskyt_slov, key=vyskyt_slov.get, reverse=True)[0: 5]
-
-# collections
-#pocitadlo = Counter(vycistena_slova).most_common(5)
-#print(f"{list(pocitadlo)}")
+pet_nejcastejsich = sorted(
+    vyskyt_slov,
+    key=vyskyt_slov.get,
+    reverse=True
+)[0: 5]
 
 print(
     "5 NEJCASTEJSICH SLOV V TEXTU: ".center(35, " "),
@@ -167,3 +156,26 @@ print(
 )
 for index, nejcasteji in enumerate(pet_nejcastejsich, 1):
     print(f"{index}, SLOVO:{nejcasteji}, VYSKYT: {vyskyt_slov[nejcasteji]}")
+
+# ~~~~~~~~~~~~~~~~~~~ Dalsi varianty: ~~~~~~~~~~~~~~~~~~~
+#vycistena_slova = [
+    #slovo.strip(",.:;'").lower() for slovo in TEXT.split()
+#]
+#vyskyt_slov = {}
+
+#for slovo in vycistena_slova:
+# ternarni operator
+#    vyskyt_slov[slovo] = 1 if slovo not in vyskyt_slov else \
+#        vyskyt_slov[slovo] = vyskyt_slov[slovo] + 1
+
+# metoda setdefault()
+#    vyskyt_slov[slovo] = vyskyt_slov.setdefault(slovo, 0) + 1
+
+# modul collections
+#from collections import Counter
+#pocitadlo = Counter(vycistena_slova)
+#pocitadlo = Counter(vycistena_slova).most_common(5)
+#print(f"{list(pocitadlo)}")
+
+# ~~~~~~~~~~~~~~~~~~~ Dalsi varianty: ~~~~~~~~~~~~~~~~~~~
+
