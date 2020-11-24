@@ -169,9 +169,8 @@
   **Pozor!** Nas zapis muzeme vylepsit nekolika kroky:
   1. Napovidani datovych typu
   2. Zkraceny zapis
-  3. Seznamova komprehence
-  4. f-string, volani funkce
-  5. Idealne pouzit `sum` funkci 😏
+  3. f-string, volani funkce
+  4. Idealne pouzit `sum` funkci 😏
 
 <details>
   <summary>💣Nase prvni funkce</summary>
