@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""Lekce #6 - Uvod do programovani, upraveni udaju"""
+
 UDAJE = """
 byt0001,55m2,Olomouc,ul.Heyrovského,
 byt0003,65m2,Olomouc,ul.Novosadský_dvůr,
