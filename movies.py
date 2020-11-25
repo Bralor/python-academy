@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lekce #3 - Uvod do programovani, Movies"""
+""" Lekce #3 - Uvod do programovani, Movies """
 
 film_1 = {
     "JMENO": "Shawshank Redemption",
@@ -82,6 +82,31 @@ elif vyber ==  "detaily filmu":
 
 elif vyber == "spolecni herci":
     print(list(filmovy_slovnik.keys()), end=f"\n{ODDELOVAC}\n")
+    print(
+        "MAME V NABIDCE TYTO FILMY: ",
+        list(filmovy_slovnik.keys()),
+        end=f"\n{ODDELOVAC}\n"
+    )
+
+elif vyber ==  "detaily filmu":
+    print(
+        list(filmovy_slovnik.keys()),
+        end=f"\n{ODDELOVAC}\n"
+    )
+
+    vyber_filmu = input("VYBERTE FILM (OPATRNE NA VELKA/MALA PISMENA): ")
+    print(
+        ODDELOVAC,
+        filmovy_slovnik.get(vyber_filmu, "TAKOVY FILM NEEXISTUJE!"),
+        sep="\n"
+    )
+
+elif vyber == "spolecni herci":
+    print(
+        list(filmovy_slovnik.keys()),
+        end=f"\n{ODDELOVAC}\n"
+    )
+
     prvni_film = input("VYBERTE I. FILM: ")
     druhy_film = input("VYBERTE II. FILM: ")
 
@@ -90,7 +115,6 @@ elif vyber == "spolecni herci":
     prunik = herci_prvni_film & herci_druhy_film
 
     print(f"SPOLECNI HERCI: {prunik}") if prunik else print("ZADNI SPOLECNI HERCI")
-
 
 elif "reziseri" in vyber.lower():
     set_reziseri = {
