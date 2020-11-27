@@ -38,7 +38,7 @@
 <details>
   <summary>📥 Vstupni data</summary>
 
-  ##### 💂 The Shawshank redemption
+  ##### 💂 Jednotlive slovniky s filmy
   ```python
   film_1 = {
     "JMENO": "Shawshank Redemption",
@@ -51,10 +51,7 @@
       "Jeffrey DeMunn", "Larry Brandenburg"
      )
   }
-  ```
 
-  ##### 👴 The Godfather
-  ```python
   film_2 = {
     "JMENO": "The Godfather",
     "HODNOCENI": "92/100",
@@ -66,10 +63,7 @@
       "John Marley", "Richard Conte"
     )
   }
-  ```
 
-  ##### ⚔ The Dark knight
-  ```python
   film_3 = {
     "JMENO": "The Dark Knight",
     "HODNOCENI": "90/100",
@@ -81,10 +75,7 @@
       "Monique Gabriela", "Ron Dean", "Cillian Murphy"
     )
   }
-  ```
 
-  ##### 🔥 The Prestige
-  ```python
   film_4 = {
     "JMENO": "The Prestige",
     "HODNOCENI": "85/100",
@@ -105,26 +96,6 @@
   <summary>📔 Slovniky v Pythonu</summary>
 
 <details>
-  <summary>📂 Vytvorime adresar & novy soubor</summary>
-
-  #### 📁 Vytvorime adresar pro nas kurz
-  ```
-  mkdir python-akademie
-  ```
-  #### 📁 Vytvorime adresar pro dnesni lekci
-  ```
-  mkdir python-akademie/lekce03
-  ```
-  #### 🎞 Vytvorime soubor pro dnesni lekce
-  ```
-  touch movies.py       # Linux
-  copy nul "movies.py"  # Windows
-  ```
----
-
-</details>
-
-<details>
   <summary>❓ Co je to slovnik</summary>
 
   #### ☝ K zapamatovani
@@ -135,6 +106,12 @@
   - hodnota nemusi byt (napr. retezec, cislo, seznam, ntice, jiny slovnik)
   - nelze indexovat jako seznamy/ntice
   - nemaji poradi jako seznamy/ntice
+
+  #### ❓ Jak vypada slovnik
+  ```python
+  DETAILY = {"jmeno": "Matous", "email": "matous@matous.cz", "vek": 34}
+  ```
+
 ---
 
 </details>
@@ -211,7 +188,6 @@
   #### 🥉 Zpusoby odstranovani
   - `del` - zabudovana funkce Pythonu
   - `pop` - metoda slovniku pro odstraneni klice
-  - `popitem` - metoda slovniku pro odstraneni posledniho pridaneho klice
   ```python
   del filmovy_slovnik["1_slovnik"]
   filmovy_slovnik.pop("2_slovnik")
@@ -236,7 +212,6 @@
   print("VITEJTE V NASEM FILMOVEM SLOVNIKU!")
   ```
   #### 📖 Doplnime oddelovac
-  Jde jen o vizualni prvek v ramci prikazoveho radku:
   ```python
   ODDELOVAC = "=" * 76
 
@@ -272,14 +247,13 @@
   #### 😎 Zprava s nabidkou
   Vypiseme nabidku, kterou bude mit uzivatel k dispozici (pozdeji doplnime):
   ```python
-  print("Vitejte v nasi skromne filmove databazi".center(76, " "))
-
   print(
-  f"""{ODDELOVAC}
-  VYBERTE KATEGORII:
-  {ODDELOVAC}
-  {'VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI'.center(76, " ")}
-  {ODDELOVAC}"""
+      "VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "),
+      ODDELOVAC,
+      "VYBERTE KATEGORII:",
+      ODDELOVAC,
+      "VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI".center(76, " "),
+      ODDELOVAC
   )
   ```
 ---
@@ -290,30 +264,21 @@
   <summary>☠  Volitelne klicove argumenty</summary>
 
   #### 📕 Zkraslime nas zapis
-  U funkce `print` nas budou zajimat tyto:
-  - `end` - nepovinny argument, ktery doplni libovolny znak na zaver vypisovani
-  - `sep` - nepovinny argument, ktery se vklada mezi jednotlive udaje
-
-  Pouziti argumentu `end`:
-  ```python
-  ODDELOVAC = "=" * 76
-
-  print(
-    "VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "),
-    end=f"\n{ODDELOVAC}\n"
-  )
-  ```
+  Volitelny argument `sep`, ktery je dostupny u funkce `print` umozni prokladat
+  jednotlive udaje volitenymi znaky:
 
   Pouziti argumentu `sep`:
   ```python
   ODDELOVAC = "=" * 76
 
   print(
-    "VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "),
-    "VYBERTE KATEGORII:",
-    "VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI".center(76, " "),
-    sep=f"\n{ODDELOVAC}\n",
-    end=f"\n{ODDELOVAC}\n"
+      "VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "),
+      ODDELOVAC,
+      "VYBERTE KATEGORII:",
+      ODDELOVAC,
+      "VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI".center(76, " "),
+      ODDELOVAC,
+      sep="\n"
   )
   ```
 ---
@@ -325,14 +290,13 @@
 ---
 
 <details>
-  <summary>🆎 Podminkovy zapis</summary>
+  <summary>🆎 Slozitejsi podminkovy zapis</summary>
 
 <details>
   <summary>🌲 Strom podminek</summary>
 
   #### 🐭 Jak rozhodovat
-  Podminky nam umozni vzdy vybrat jeden proces, ktery budeme chtit aplikovat.
-  Mame 4 ruzne procesy, takze potrebujeme vytvorit 4 ruzne podminky:
+  Tentokrat bude nas *control-flow* ustit ve 5 potencialnich procesu:
   ```python
   # bud VSECHNY FILMY
   # nebo DETAILY FILMU
@@ -347,12 +311,17 @@
   <summary>✅ Vyber uzivatele</summary>
 
   #### 🛐 Vstup od uzivatele
-  Uzivatel si musi nejprve vybrat jednu moznost. Kod musi fungovat jak pro mala,
-  tak pro velka pismena:
+  Uzivatel vybere jeden ze 4 procesu:
+  ```python
+  vyber = input("VYBERTE MOZNOST: ")
+  print(ODDELOVAC)
+  ```
+  **Pozor!** doplnime funkcionalitu pro mala/velka pismena.
   ```python
   vyber = input("VYBERTE MOZNOST: ").lower()
   print(ODDELOVAC)
   ```
+
 ---
 
 </details>
@@ -361,8 +330,7 @@
   <summary>🎬 Vypis vsechny filmy</summary>
 
   #### 👓 Pohledy slovniku
-  Prvni vetev naseho podminkoveho zapisu vrati jmena vsech filmu. Pomohou nam
-  pohledy slovniku (metody slovniku):
+  Pomoci pohledu slovniku (metod), muzeme sledovat:
   - `items` - vrati objekt s klici a jejich hodnotami
   - `keys` - vrati objekt s klici
   - `values` - vrati objekt s hodnotami
@@ -384,14 +352,15 @@
   <summary>🔎 Vypis detaily filmu</summary>
 
   #### 🔖 Metody slovniku
-  Druha podminka bude mit na starost obstarat vystup, ktery zahrnuje obsah
-  jednotlivych vnitrnich slovniku (tedy detaily konkretniho filmu).
+  Druha podminka vrati detaily vybraneho filmu:
   - `get` - pokud najde klic, vrati jeho hodnotu
-  - `setdefault` - nastavi novy klic s hodnotou
-
-  Film pak muzeme ziskat pomoci dalsi metody slovniku `get`. Tato metoda ma
-  za cil jedine, najde klic, ktery ji zadame a ona vrati jeho hodnotu.
-  Volitelne pak muzeme nastavit, co vrati, pokud hledany klic nenajde.
+  ```python
+  DETAILY = {"jmeno": "Matous", "email": "matous@matous.cz", "vek": 34}
+  DETAILY.get("jmeno")  # "Matous"
+  DETAILY.get("adresa")  # "None"
+  DETAILY.get("adresa", "Klic neexistuje!")  # "Klic neexistuje!"
+  ```
+  **Pozor!** vyhodou metody je, ze nam interpret neskonci vyjimkou.
   ```python
   elif vyber == "detaily filmu":
       print(
@@ -427,6 +396,13 @@
   - prunik (`intersection`/ `&`)
   - rozdil (`difference`/ `-`)
   - symetricky rozdil (`^`)
+
+  #### ❓Jak vypada slovnik
+  ```python
+  prvni_set = set()
+  druhy_set = {"Matous", "Marek", "Lukas", "Jan"}
+  ```
+
 ---
 
 </details>
@@ -481,9 +457,9 @@
 
       prunik = herci_film1 & herci_film2
       if prunik:
-        print(f"SPOLECNI HERCI JSOU: {prunik}")
+          print(f"SPOLECNI HERCI JSOU: {prunik}")
       else:
-        print("ZADNI SPOLECNI HERCI")
+          print("ZADNI SPOLECNI HERCI")
   ```
 ---
 
@@ -496,12 +472,12 @@
   Nakonec chceme vypsat vsechny rezisery:
   ```python
   elif "reziseri" in vyber:
-      set_reziseri = set(
+      set_reziseri = set((
           filmovy_slovnik["The Dark Knight"]["REZISER"],
           filmovy_slovnik["The Godfather"]["REZISER"],
           filmovy_slovnik["Shawshank Redemption"]["REZISER"],
           filmovy_slovnik["The Prestige"]["REZISER"]
-      )
+      ))
 
       print(f"VSICHNI REZISERI: {set_reziseri}")
   ```
@@ -522,9 +498,48 @@
 
 </details>
 
+<details>
+  <summary>🏠 Procvicovani na doma</summary>
+
+<details>
+  <summary>🚧 Volitelny argument end</summary>
+
+  Dalsim volitelnym argumentem funkce `print` je `end`. Doplni libovolny znak
+  na zaver vypisovani:
+  ```python
+  ODDELOVAC = "=" * 76
+
+  print(
+    "VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "),
+    end=f"\n{ODDELOVAC}\n"
+  )
+  ```
+
+</details>
+
+<details>
+  <summary>🚧 Metoda slovniku popitem</summary>
+  Odstrani posledni pridany klic a jeho hodnotu. Soucasne vrati jako vystup
+  tuple tohoto paru:
+  ```python
+  DETAILY = {"jmeno": "Matous", "email": "matous@matous.cz", "vek": 34}
+  DETAILY.popitem()
+  ('vek', 34)
+  ```
+</details>
+
+<details>
+  <summary>🚧 Metoda slovniku setdefault</summary>
+  Nastavi novy klic s defaultni, nebo definovanou hodnotou:
+  ```python
+  DETAILY = {"jmeno": "Matous", "email": "matous@matous.cz", "vek": 34}
+  DETAILY.setdefault("adresa")  # "adresa": None
+  DETAILY.setdefault("adresa", "Kpt. Jarose 7b")  # "adresa": "Kpt. Jarose 7b"
+  ```
+
 </details>
 
 ---
 
-➡ [pokracovat na dalsi (04) lekci](https://github.com/Bralor/python-academy/tree/lekce04)
+➡ [pokracovat na ctvrtou lekci](https://github.com/Bralor/python-academy/tree/lekce04)
 
