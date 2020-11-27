@@ -498,6 +498,8 @@
 
 </details>
 
+</details>
+
 <details>
   <summary>🏠 Procvicovani na doma</summary>
 
@@ -536,8 +538,6 @@
   DETAILY.setdefault("adresa")  # "adresa": None
   DETAILY.setdefault("adresa", "Kpt. Jarose 7b")  # "adresa": "Kpt. Jarose 7b"
   ```
-</details>
-
 </details>
 
 </details>
