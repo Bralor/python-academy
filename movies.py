@@ -58,10 +58,12 @@ filmovy_slovnik[film_4["JMENO"]] = film_4
 
 print(
     "VITEJTE V NASEM FILMOVEM SLOVNIKU!".center(76, " "),
+    ODDELOVAC,
     "VYBERTE KATEGORII:",
+    ODDELOVAC,
     "VSECHNY FILMY | DETAILY FILMU | SPOLECNI HERCI | VSICHNI REZISERI".center(76, " "),
-    sep=f"\n{ODDELOVAC}\n",
-    end=f"\n{ODDELOVAC}\n"
+    ODDELOVAC,
+    sep="\n"
 )
 
 vyber = input("VYBERTE MOZNOST: ").lower()
