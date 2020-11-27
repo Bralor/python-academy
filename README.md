@@ -540,6 +540,8 @@
 
 </details>
 
+</details>
+
 ---
 
 ➡ [pokracovat na ctvrtou lekci](https://github.com/Bralor/python-academy/tree/lekce04)
