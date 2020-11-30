@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"Lekce #7 - Uvod do programovani, kalkulacka"
+"""Lekce #7 - Uvod do programovani, kalkulacka"""
 
 NABIDKA = "DOSTUPNE OPERACE: "
 ODDELOVAC = "=" * 50
@@ -15,12 +15,12 @@ def main() -> "None":
         vyber_operace(operace)
 
 
-def uvodni_text(text: "str")-> "None":
+def uvodni_text(text: "str") -> None:
     "Uvodni text pred zacatkem cyklu"
     print(f"{text}".center(50), end=f"\n{ODDELOVAC}\n")
 
 
-def dostupne_operace(*args) -> "str":
+def dostupne_operace(*args) -> None:
     "Vypisovani dostupnych operaci uvnitr cyklu"
     print(f"{' | '.join(args)}".center(50), end=f"\n{ODDELOVAC}\n")
 
@@ -29,7 +29,7 @@ def vyber_operaci() -> "str":
     return input("VYBER MATEMATICKOU OPERACI: ")
 
 
-def vyber_operace(op: "str") -> "none":
+def vyber_operace(op: "str") -> None:
     print(ODDELOVAC)
 
     if op in ("+", "-", "*", "/"):
@@ -61,11 +61,11 @@ def vyber_operace(op: "str") -> "none":
         print(f"*{op}* NENI V NABIDCE")
 
 
-def vyber_cisla() -> "tuple":
+def vyber_cisla() -> tuple:
     return float(input("x1: ")), float(input("x2: "))
 
 
-def zakladni_operace(x: "float", y: "float", op: "str") -> "float":
+def zakladni_operace(x: "float", y: "float", op: "str") -> float:
     return {
         "+": x + y,
         "-": x - y,
@@ -73,7 +73,7 @@ def zakladni_operace(x: "float", y: "float", op: "str") -> "float":
         "/": x / y
     }.get(op)
 
-    
+
 def vyber_radu_cisel() -> "list":
     rada_cisel = input("VLOZTE CISLA ODDELENA CARKOU: ")
     prevedene = []
