@@ -1,14 +1,84 @@
-Minula [lekce#06](https://github.com/Bralor/python-academy/tree/lekce06)
+➡ [vratit se na sestou lekci](https://github.com/Bralor/python-academy/tree/lekce06)
 
 <p align="center">
-  <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
+  <img alt="engeto-logo" width="100px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
 </p>
 
-# Python academy, lesson 07
-## Dulezite odkazy
-- Portal [Engeto.com](https://engeto.com/)
-- Python Academy [repozitar](https://github.com/Bralor/python-academy)
-- [Anotace](https://www.python.org/dev/peps/pep-3107/) v Pythonu
+## 7⃣ Python akademie
+###  Dulezite odkazy
+- [Portal Engeto.com](https://engeto.com/)
+- [Seznamova komprehence](http://howto.py.cz/cap08.htm#10)
+- [Ternarni operator](https://book.pythontips.com/en/latest/ternary_operators.html)
+- [Python, dokumentace zabudovanych funkci](https://docs.python.org/3/library/functions.html)
+- [Collections, standartni modul](https://docs.python.org/3/library/collections.html#collections.Counter)
+- [Type hints, napovidani u funkci](https://www.python.org/dev/peps/pep-0484/)
+---
+
+###  Obsah lekce
+1. Ukazka ulohy
+2. Funkce, prace vice funkci
+3. Jmenna prostredi v Pythonu
+4. Funkcni ramce
+5. Type hint, napovidani
+6. Typy argumentu
+---
+
+<details>
+  <summary>⏯  Ukazka ulohy</summary>
+
+  1. ✌  [Stahnete si sedmou lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce07.zip)
+  2. 💪 Presunte se ke stazenemu souboru
+  3. 🙏 Spustte soubor **upravene_udaje** v PyCharm
+  4. 🐍 Spustte program pomoci klaves **ctrl+shift+F10**
+  5. 🎥 Zkousejte!
+
+</details>
+
+---
+
+<details>
+  <summary>🎹 Funkce, prace vice funkci</summary>
+
+</details>
+
+---
+
+<details>
+  <summary>📊 Jmenna prostredi v Pythonu</summary>
+
+</details>
+
+---
+
+<details>
+  <summary>🎎 Funkcni ramce</summary>
+
+</details>
+
+---
+
+<details>
+  <summary>💬 Type hint, napovidani</summary>
+
+</details>
+
+---
+
+<details>
+  <summary>👽 Typy argumentu</summary>
+
+</details>
+
+---
+
+<details>
+  <summary>🚧 Procvicovani na doma</summary>
+
+</details>
+
+---
+➡ [pokracovat na osmou lekci](https://github.com/Bralor/python-academy/tree/lekce08)
+
 
 ## Co nas dneska ceka?
 Ucelem dnesni lekce je rozsirit znalosti o funkcich v Pythonu. V minule lekci
