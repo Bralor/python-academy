@@ -52,10 +52,12 @@ def vyber_operace(op: "str") -> None:
         )
 
     elif op in ("quit", "exit", "q", "e"):
+        print(ODDELOVAC)
         print("UKONCUJI...")
         exit()
 
     else:
+        print(ODDELOVAC)
         print(f"*{op}* NENI V NABIDCE")
 
 
@@ -74,11 +76,11 @@ def zakladni_operace(x: "float", y: "float", op: "str") -> float:
 
 def vyber_radu_cisel() -> "list":
     rada_cisel = input("VLOZTE CISLA ODDELENA CARKOU: ")
-    prevedene = [
-        float(cislo.strip())
-        for cislo in rada_cisel.split(",")
-        if cislo != ""
-    ]
+    prevedene = []
+
+    for cislo in rada_cisel.split(","):
+        if cislo != "":
+                prevedene.append(float(cislo))
     return prevedene
 
 

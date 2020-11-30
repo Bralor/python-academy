@@ -64,7 +64,7 @@ UKONCUJI...
 - [while smycky](https://github.com/Bralor/python_academy/tree/master/lesson04#while-cyklus)
 - [for cyklus](https://github.com/Bralor/python_academy/tree/master/lesson05#for-cyklus)
 - [funkce](https://github.com/Bralor/python_academy/tree/master/lesson06#funkce)
-- [Anotace funkci](https://www.python.org/dev/peps/pep-3107/#parameters)
+
 Potrebne promenne:
 ```
 NABIDKA = "DOSTUPNE OPERACE: "
@@ -326,6 +326,12 @@ def vyber_operace(op: "str") -> "none":
     if op == "+":
         x1, x2 = vyber_cisla()
         print(f"x1 + x2: {x1} + {x2} = {x1 + x2}")
+```
+Jakmile budeme mit hotovou cast, kde promenne `x1`, `x2` ukladame z funkce,
+musime doplnit funkci `vyber_cisla`:
+```python
+def vyber_cisla() -> "tuple":
+    return float(input("x1: ")), float(input("x2: "))
 ```
 Jeste musime doplnit nas vystup a potrebne `ODDELOVAC`. Zatim zname uvod k
 formatovani pomoci __f-string__. Dale vime o nepovinnem argumentu `end`. Dneska
