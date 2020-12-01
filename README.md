@@ -1,485 +1,585 @@
-Minula [lekce#06](https://github.com/Bralor/python-academy/tree/lekce06)
+➡ [vratit se na sestou lekci](https://github.com/Bralor/python-academy/tree/lekce06)
 
 <p align="center">
-  <img src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" width="300" height="300">
+  <img alt="engeto-logo" width="100px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
 </p>
 
-# Python academy, lesson 07
-## Dulezite odkazy
-- Portal [Engeto.com](https://engeto.com/)
-- Python Academy [repozitar](https://github.com/Bralor/python-academy)
-- [Anotace](https://www.python.org/dev/peps/pep-3107/) v Pythonu
+## 7⃣ Python akademie
+###  Dulezite odkazy
+- [Portal Engeto.com](https://engeto.com/)
+- [Seznamova komprehence](http://howto.py.cz/cap08.htm#10)
+- [Ternarni operator](https://book.pythontips.com/en/latest/ternary_operators.html)
+- [Python, dokumentace zabudovanych funkci](https://docs.python.org/3/library/functions.html)
+- [Collections, standartni modul](https://docs.python.org/3/library/collections.html#collections.Counter)
+- [Type hints, napovidani u funkci](https://www.python.org/dev/peps/pep-0484/)
+- [Vice k jmennym prostredim a funkcnim ramcum](https://code.tutsplus.com/tutorials/what-are-python-namespaces-and-why-are-they-needed--cms-28598)
+---
 
-## Co nas dneska ceka?
-Ucelem dnesni lekce je rozsirit znalosti o funkcich v Pythonu. V minule lekci
-jsme si rekli neco o funkcich na uvod. Vsechno jsme si overili na nasi prvni
-definovane funkci. Dnes nas ceka:
-1. Pouziti vice funkci
-2. Jmenna prostredi (namespaces)
-3. Ramce funkci (function scopes)
-4. Anotace funkci
-5. Typy argumentu
- 
-## Kalkulacka
-Ulohou pro dnesni lekci bude napsat vlastni __kalkulacku__. Tady se budeme
-snazit pochopit, jak spolu muzou funkce vzajemne komunikovat a predavat si
-informace.
+###  Obsah lekce
+1. Ukazka ulohy
+2. Funkce, prace vice funkci
+3. Jmenna prostredi v Pythonu
+4. Funkcni ramce
+5. Type hint, napovidani
+6. Typy argumentu
+7. Procvicovani na doma
+---
 
-## Ukazka na zacatek
-Spustime skript v nasem adresari:
-```
-$ ./kalkulacka
-```
-Vystup muzeme vypadat nasledovne:
-```
-          VITEJTE U PROGRAMU KALKULACKA           
-==================================================
-               + | - | * | / | abs                
-==================================================
-VYBER MATEMATICKOU OPERACI: +
-==================================================
-x1: 123
-x2: 326
-==================================================
-x1 + x2: 123.0 + 326.0 = 449.0
-==================================================
-               + | - | * | / | abs                
-==================================================
-VYBER MATEMATICKOU OPERACI: abs
-==================================================
-VLOZTE CISLA ODDELENA CARKOU: 1,2,3,4,
-==================================================
-RADA CISEL: [1.0, 2.0, 3.0, 4.0], VYSLEDEK: 2.5
-==================================================
-               + | - | * | / | abs                
-==================================================
-VYBER MATEMATICKOU OPERACI: q
-==================================================
-UKONCUJI...
-```
+<details>
+  <summary>⏯  Ukazka ulohy</summary>
 
-## Co budeme potrebovat?
-- python 3.6.9+
-- text. editor
-- [while smycky](https://github.com/Bralor/python_academy/tree/master/lesson04#while-cyklus)
-- [for cyklus](https://github.com/Bralor/python_academy/tree/master/lesson05#for-cyklus)
-- [funkce](https://github.com/Bralor/python_academy/tree/master/lesson06#funkce)
+  1. ✌  [Stahnete si sedmou lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce07.zip)
+  2. 💪 Presunte se ke stazenemu souboru
+  3. 🙏 Spustte soubor **upravene_udaje** v PyCharm
+  4. 🐍 Spustte program pomoci klaves **ctrl+shift+F10**
+  5. 🎥 Zkousejte!
 
-Potrebne promenne:
-```
-NABIDKA = "DOSTUPNE OPERACE: "
-ODDELOVAC = "-" * 50
-```
+</details>
 
-## Zaciname!
+---
 
-<p align="center">
-  <img src="https://media.giphy.com/media/Y5pJPmh9IWMKc/giphy-downsized.gif" width="300" height="300">
-</p>
+<details>
+  <summary>🎹 Funkce, prace vice funkci</summary>
 
-Nejprve si zkopirujeme uvod souboru a zadani, ktere najdete vyse:
-```python
-#!/usr/bin/python3
-"Lekce #7 - Uvod do programovani, kalkulacka"
+<details>
+  <summary>🤖 Uvodni sekce</summary>
 
-NABIDKA = "DOSTUPNE OPERACE: "
-ODDELOVAC = "=" * 50
-```
-Naformatujeme jednoduchy uvodni text a vracime jej pomoci `print`:
-```python
-print("VITEJTE U PROGRAMU KALKULACKA")
-print(f"KALKULACKA".center(50), end=f"\n{ODDELOVAC}\n")
-print(NABIDKA, end=f"\n{ODDELOVAC}\n")
-```
+  #### ⚒ Struktura zapisu
+  ```python
+  #!/usr/bin/python3
+  """Lekce #07 - Uvod do programovani, kalkulacka.py"""
 
-## Vytvorime hlavni funkci
-Nejprve vytvorime hlavni funkci, kterou si pojmenujeme `main`. Ta bude mit za
-ukol delegovat ukoly dal:
-```python
-def main() -> None:
-    "Hlavni ridici funkce nasi kalkulacky"
-    uvodni_text()
-```
-Budeme chtit cely prubeh opakovat. Prakticky budeme chtit tocit tyto kroky:
-1. Uvod do funkce
-2. Vyber operace
-3. Presmerovani k matematicke operaci a jeji provedeni
-```python
-    while True:
-        # dostupne_operace()
-        # zadana_operace()
-        # vyber_proces()
-```
-Tim mame uvod nachystany a muzeme se soustredit na dilci funkce.
-
-## Uvodni text
-Nejprve presuneme cast kodu, kterou jsme jiz napsali v uvodu:
-```python
-...
-NABIDKA = "DOSTUPNE OPERACE: "
-ODDELOVAC = "=" * 50
-
-print(NABIDKA, end=f"\n{ODDELOVAC}\n")
-
-def main() -> "None":
-    "Hlavni ridici funkce nasi kalkulacky"
-    uvodni_text()
+  # definice: Hlavni funkce
+      # spousteni: Pozdrav
+      # spouteni: Nabidka
 
 
-def uvodni_text(text: "str")-> "str":
-    "Uvodni text pred zacatkem cyklu"
-    print(f"{text}".center(50), end=f"\n{ODDELOVAC}\n")
-```
-Nyni muzeme vyzkouset jak se nas program bude chovat po teto uprave. Vsimnete
-si pouziti anotaci u funkce. Jednak jejich __parametru__, jednak vracene
-__promenne__.
-```
-jmeno_funkce.__annotations__
-```
-Timto zpusobem si mohu nechat zobrazit moje anotace.
+  # definice: Pozdrav
 
-## Copak to jde?
-Vsimneme v nasem soucasnem zapise promenne `ODDELOVAC`. Vidime, ze s ni funkce
-pracuje, ale pritom ji nikde do funkce nevkladam, jak je to mozne?
 
-### Namespace
-Jde o jmenne prostredi, ktere automaticky funguje na pozadi naseho kodu v
-Pythonu. Pomoci techto prostredi v Pythonu spravujeme a uchovavame promenne.
-Kazdy soubor, kazda funkce maji vlastni prostredi, aby zabranili potencialni
-kolizi se jmeny promennych.
-```
-# Globalni jmenne prostredi
-JMENO = "Matous"
-VEK = 45
+  # definice: Nabidka
 
-# namespace = {"JMENO": "Matous", "VEK": 45}
-```
-Pokud bych mel napriklad funkci, vypadaly by obe prostredi:
-```python
-EMAIL = "matous@matous.cz"
 
-def ziskej_domenu(mail: "str") -> "str":
-    return mail.split("@")[1].split(".")[0]
-```
-Tentokrat tu mame hned dve jmenna prostredi:
-```
-# Globalni jmenne prostredi
-namespace_1 = {"EMAIL": "matous@matous.cz", "ziskej_domenu": ""}
+  # spousteni: Hlavni funkce
+  ```
 
-# Lokalni jmenne prostredi
-namespace_2 = {"mail": ""}
-```
-Pokud bych mel lokalnich prostredi vic, melo by kazde svoje vlastni jmenne
-prostredi.
+---
 
-### Ramce v Pythonu
-Aby byl Python schopen dohledat konrektni promennou, existuji na to 4 typy
-prostredi (hierarchie):
-1. Zabudovana jmena (built-in) - napr. `def`, `str`, `sum`
-2. Globalni (global scope) - napr. promenne v souboru
-3. Uzavrene prostredi (enclosing scope) - funkce uvnitr funkce
-4. Lokalni prostredi (local scope) - napr. parametry funkci, promenne ve funkci
+</details>
 
-### Priklad uzavreneho prostredi
-Mame tu na ukazku jeden pohled na uzavrenou funkci (funkci uvnitr funkce):
-```python
-def vnejsi_func(em):
-    mail = em.split("@")
-    def vnitrni_func():
-            return mail[1].split(".")
-    domena, *zbytek = vnitrni_func()
-    return domena
-```
-Pokud zavolame funkci `vnejsi_func` s argumentem `matous@matous.cz`, ziskame
-samotnou domenu. Pokud ale budu chtit pouzit vnitrni funkci `vnitrni_func`,
-Python nas nenecha.
+<details>
+  <summary>🖱 Definice funkci v uvodu</summary>
 
-### Proc to?
-Nasledujici priklad nam objasni, proc vubec vsechna ta jmenna prostredi a
-ramcove celky musime resit:
-```python
-JMENO = "Matous"
+  #### 🎬 Definice hlavni funkce
+  ```python
+  def main() -> None:
+      """Hlavni ridici funkce nasi kalkulacky"""
+      pass
+  ```
 
-def func():
-    print(JMENO)
-```
-Pokud spustime tuto funkci, vypise nas interpret hodnotu `Matous`.
-```python
-def func():
-    JMENO = "Lukas"
+  #### 🗽 Definice pomocnych funkci
+  ```python
 
-print(JMENO)
-```
-Ale pokud zapiseme tuto funkci a budeme chtit pouzit `print` a vypsat promennou
-`JMENO`, dostaneme `NameError`. V podstate si staci pamatovat,
-ze __globalni__ promenne jsou viditelne v celem nasem kodu. Zatim co
-__lokalni__ promenne jsou viditelne pouze v prostredi, ve kterem vznikly.
 
-### Z toho vyplyva?
-Pokud volame z lokalniho jmenneho prostredi promennou z globalniho jmenneho
-prostredi, Python ji umi naleznout, ale obracene to neplati.
+  def pozdrav_uzivatele() -> None:
+      pass
 
-### Zaverem k hierarchii
-Pokud tedy Python hleda promennou, postupuje nasledovne:
-1. Nejprve prohlizi __lokalni__ jmenne prostredi (napr. ve funkci)
-2. Pokud nenajde, pokracuje do __globalniho__ prostredi (v nasem souboru)
-3. Pokud nenajde, pokracuje do __built-in__ prostredi (predefinovane)
-4. Pokud nenajde, nasleduje `NameError`
 
-## Dostupne operace
-Dalsim krokem bude vypsat operaci, kterymi nase kalkulacka disponuje. Napiseme
-proto novou funkci, ktera bude vypisovat tyto informace:
-```python
-def dostupne_operace(text: 'tuple') -> "str":
-    "Vypisovani dostupnych operaci uvnitr cyklu"
-    print(f"{' | '.join(text)}".center(50), end=f"\n{ODDELOVAC}\n")
-```
-Takovouto definici muzeme pouzit za predpokladu, ze zname vstupni promennou.
-Pokud ale predem nevime, kolik budeme argumentu, musime na to jinak.
+  def vypis_nabidku() -> None:
+      pass
+  ```
+---
 
-## Jak zapisovat parametry?
-Variant pro zadavani parametru do funkce je cela skala:
-1. Podle pozice
-2. Podle __klice__
-3. __Defaultni__ parametr
-4. __*args__ (list, tuple)
-5. __**kwargs__ (slovnik)
+</details>
 
-### Co se nam hodi?
-Pokud nemame poneti, kolik toho bude nase funkce zpracovavat, muzeme pouzit
-pozicni argumenty (`*args`). Jejich pouziti je pomerne snadne:
-```
-def func(*args) -> "str":
-    print(f"{'|'.join(args)}")
-```
-Pojdme zkusit nasi funkci zavolat se tremi argumenty:
-```
-func("+", "-", "*")  # +|-|*
-```
-Nyni s peti argumenty:
-```
-func("+", "-", "*", "/", "**")  # +|-|*|/|**
-```
-### Prepiseme funkci `dostupne_operace`
-Ted, kdyz umime pozicni argumenty, muzeme prepsat funkci `dostupne_operace`:
-```python
-def dostupne_operace(*args) -> "str":
-    "Vypisovani dostupnych operaci uvnitr cyklu"
-    print(f"{' | '.join(args)}".center(50), end=f"\n{ODDELOVAC}\n")
-```
-Jakmile ji mame vytvorenou, muzeme ji zavolat v nasi hlavni funkci `main`.
+<details>
+  <summary>📣 Dokoceni uvodu</summary>
 
-## Vyber operace
-Jakmile uzivateli vypiseme souhrn vsech dostupnych operaci, muze vybirat:
-```python
-def vyber_operaci() -> "str":
-    return input("VYBER MATEMATICKOU OPERACI: ")
-```
-Staci pouzit funkci `input`, ktera si uschova vybranou operaci jako `str`.
-Jeste dopiseme volani funkce `vyber_operaci` do nasi hlavni funkce `main`:
-```python
-def main() -> "None":
-    "Hlavni ridici funkce nasi kalkulacky"
-    uvodni_text(ODDELOVAC)
+  #### 👋 Pozdravime uzivatele
+  1. Vypisime obsah promenne `uvod`
+  2. Zarovname zpravu na stred
+  3. Na zaver pridame `oddelovac`
+  ```python
+  def pozdrav_uzivatele(uvod: str, oddelovac: str) -> None:
+      print(f"{uvod}".center(50), end=oddelovac)
+  ```
 
-    dostupne_operace(OPERACE)
-    operace = vyber_operaci()
-```
+  Definovanou funkci `pozdrav_uzivatele` spustime v ramci funkce `main`:
+  ```python
+  def main() -> None:
+      """Hlavni ridici funkce nasi kalkulacky"""
+      pozdrav_uzivatele()
+  ```
 
-## Delegujeme na jine
-Jakmile uzivatel vybere operaci, kterou vyzaduje, musime vytvorit dalsi funkci
-celek. Zatim mame nasledujici:
-```python
-    ...
-    uvodni_text(ODDELOVAC)
+  Doplnime ve funkci `main` potrebne promenne:
+  ```python
+  def main() -> None:
+      """Hlavni ridici funkce nasi kalkulacky"""
+      UVODNI_ZPRAVA = "VITEJTE V PROGRAMU KALKULACKA!"
+      ODDELOVAC = f"\n{'=' * 50}\n"
 
-    dostupne_operace(OPERACE)
-    operace = vyber_operaci()
-    ...
-```
-Potrebujeme vymyslet neco podobneho:
-```python
-    ...
-    uvodni_text(ODDELOVAC)
+      pozdrav_uzivatele(UVODNI_ZPRAVA, ODDELOVAC)
+  ```
+---
 
-    dostupne_operace(OPERACE)
-    operace = vyber_operaci()
-    # zpracuj operaci -> vstup: promenna 'operace'
-        # pokud bude 'operace' = '+' -> spust 'scitani'
-        # pokud bude 'operace' = '-' -> spust 'odcitani'
-        # pokud bude 'operace' = '/" -> spust 'deleni'
-        # ...
-```
-Takze si muzeme vsimnout jisteho vzoru:
-```python
-def zpracuj_operaci(operace: "str") -> "none":
-    if ...
-    elif ...
-    elif ...
-    else ...
-```
-Soustredme se prvni jenom na scitani a odcitani. Na zacatek musime vlozit dva
-argumenty do nasi funkce `dostupne_operace`. Tim uzivateli umoznime nahled.
-Potom vytvorime prvni podminku ve funkci `vyber_operace`:
-```python
-def vyber_operace(op: "str") -> "none":
-    if op == "+":
-        x1, x2 = vyber_cisla()
-        print(f"x1 + x2: {x1} + {x2} = {x1 + x2}")
-```
-Jakmile budeme mit hotovou cast, kde promenne `x1`, `x2` ukladame z funkce,
-musime doplnit funkci `vyber_cisla`:
-```python
-def vyber_cisla() -> "tuple":
-    return float(input("x1: ")), float(input("x2: "))
-```
-Jeste musime doplnit nas vystup a potrebne `ODDELOVAC`. Zatim zname uvod k
-formatovani pomoci __f-string__. Dale vime o nepovinnem argumentu `end`. Dneska
-si ukazeme dalsi nepovinny argument pro funkci `print` a tim je `sep`.
+</details>
 
-`sep` je zkratka _oddelovac_. Jde o definici symbolu, ktery se ma vkladat mezi
-jednotlive promenne, ktere chceme vypsat pomoci funkce `print`.
-```
-print("NABIDKA", "-------", "+ | -", "-------", sep="\n")
-```
-Takze zname dalsi zpusob, kterym muzeme formatovat vystup pomoci funkce `print`.
+</details>
 
-### Pouzijeme v nasi funkci
-```python
-def vyber_operace(op: "str") -> "none":
-    if op == "+":
-        x1, x2 = vyber_cisla()
-        print(
-            ODDELOVAC,
-            f"x1 + x2: {x1} + {x2} = {x1 + x2}",
-            ODDELOVAC,
-            sep="\n"
-            )
-```
-Ted by bylo mozna na miste povedet si neco o prostredich v Pythonu.
+---
 
-### Obdobne dopiseme podminku odcitani
-Jde prakticky o stejny zapis, akorat doplnime znamenko `-` do funkce
-`dostupne_operace` a dalsi podminku, ktera jej zohledni.
-```python
-    elif op == "-":
-        x1, x2 = vyber_cisla()
-        print(
-            ODDELOVAC,
-            f"x1 - x2: {x1} - {x2} = {x1 - x2}",
-            ODDELOVAC,
-            sep="\n"
-        )
-```
-Funkci `print` jsem rozdelil na radky po sebe jelikoz by byl zapis moc dlouhy.
+<details>
+  <summary>📊 Jmenna prostredi</summary>
 
-## Nez pujdeme dal
-Kdyz se na nase prvni dve podminky podivame, muzeme rict, ze pro zakladni
-aritmeticke operace bude prubeh vzdy podobny. Prakticky budeme pracovat s
-promennymi:
-1. __x1__
-2. __x2__
-3. __znamenko__
-Takze by mozna stalo za to setrit zapisem podminek a napsat pro to jinou funkci.
-```python
-    if op in ("+", "-", "*", "/"):
-        x1, x2 = vyber_cisla()
-        vysledek = zakladni_operace(x1, x2, op)
-        print(
-            ODDELOVAC,
-            f"x1 {op} x2: {x1} {op} {x2} = {vysledek}",
-            ODDELOVAC,
-            sep = "\n"
-        )
-```
-Nejprve musime prizpusobit nasemu zapisu podminku v uvodu funkce
-`vyber_operace`. Jakmile mame opraveny uvod, muzeme dodelat potrebnou funkci:
-```python
-def zakladni_operace(x: "float", y: "float", op: "str") -> "float":
-    return {
-        "+": x + y,
-        "-": x - y,
-        "*": x * y,
-        "/": x / y
-    }.get(op)
-```
-Tato funkce (v kombinaci s volajici podminkou) pro nas obstara reseni vysledku
-pro 4 zakladni aritmeticke operace nasi kalkulacky.
+<details>
+  <summary>❓ O co jde</summary>
 
-## Dalsi operace
+  #### 🏖  Motivace
+  1. Proc musime promenne zapsat ve funkci `main`?
+  2. Muzu je zapsat do jine funkce?
+  3. Je v tom vubec nejaky system?
+  4. K cemu nas to vede?
 
-<p align="center">
-  <img src="https://media.giphy.com/media/vtVpHbnPi9TLa/giphy.gif" width="300" height="300">
-</p>
+  #### ✍ Definice
+  Jmenne prostredi (_namespace_) je soubor aktualne zapsanych promennych
+  a jejich hodnot. Pro lepsi predstavu si je muzeme vysvetlit jako nejaky druh
+  slovniku.
+  ```python
+  # Pokud mame novy soubor
+  namespace_1 = {}
 
-Mame za sebou 4 operace, pojdme zkusit pocitani prumerne hodnoty. Cely postup
-by mohl vypadat nasledovne:
-```
+  # Pokud doplnime promenne
+  jmeno = "Matous"          # namespace_1
+  vek = 33                  # namespace_1
+
+  def f():
+    nove_jmeno = "David"    # namespace_2
+
+  # Funkce
+  namespace_1 = {"jmeno": "Matous", "vek": 33}
+  namespace_2 = {"nove_jmeno": "David"}
+  ```
+  **Pozor!**, vyse uvedeny priklad je pouze ilustrace.
+
+---
+
+</details>
+
+<details>
+  <summary>🌐 Shrnuti k prostredim</summary>
+
+  #### ☝ K zapamatovani
+  1. Kazda z funkci ma vlastni _namespace_
+  2. Pokud chceme promennou vlozit, pouzijeme parametry funkce
+  3. Pokud chceme promennou vratit, pouzijeme `return`
+  4. Mimo funkce mame jine _namespace_
+  5. Vytvari tedy oddelena prostredi
+  6. [The Zen of Python](https://www.python.org/dev/peps/pep-0020/)
+  7. Diky jmennym prostredim muzeme vytvorit ruzne funkcni ramce
+
+</details>
+
+</details>
+
+---
+
+<details>
+  <summary>🎎 Funkcni ramce</summary>
+
+<details>
+  <summary>👭 Rozdeleni ramcu</summary>
+  Obecne muzeme oznacit tyto funkcni ramce (_function scopes_)
+
+  **Built-In**/zabudovany ramec obsahuje vsechny dostupne objekty, po celou dobu
+  behu souboru.
+
+  **Global**/globalni ramec vznika, kdyz spustime nas program a zanikne, jakmile
+  interpret ukonci svoji cinnost. Globalni prostredi vytvori take pro nahrane
+  moduly/baliky.
+
+  **Local & enclosing**/lokalni & uzavreny ramec interpret vytvori, kdyz
+  spusti funkci (pripadne funkci uvnitr funkce).
+
+---
+</details>
+
+<details>
+  <summary>📺 Ukazky</summary>
+
+  #### 🔨 Zabudovane prostredi
+  Pro vypis vsech objektu z tohoto jmenneho prostredi:
+  ```
+  >>> dir(__buildins__)
+  ```
+
+  #### 🌏 Globalni prostredi
+  ```python
+  JMENO = "Matous"
+
+  def uprav_jmeno(jmeno: str, koncovka: str) -> str:
+      return f"{jmeno}{koncovka}"
+
+  zdrobnele = uprav_jmeno(JMENO, "ek")
+  print(globals())
+  ```
+
+  #### ⛩ Lokalni prostredi
+  ```python
+  JMENO = "Matous"
+
+  def uprav_jmeno(jmeno: str, koncovka: str) -> str:
+      print(locals())
+      return f"{jmeno}{koncovka}"
+
+  zdrobnele = uprav_jmeno(JMENO, "ek")
+  ```
+  **Pozor!**, pokud `locals()` pouzijeme mimo funkcni jmenne prostredi,
+  bude vystup stejny jako `globals()`.
+
+  #### 🚧 Uzavrene prostredi
+  Specialni varianta, kdy mam uvnitr jednoho prostredi prostredi jine:
+  ```python
+  def uzavirajici_fce():
+      print("Zacina uzavirajici fce")
+
+
+      def uzavrena_fce():
+          print("Zacina uzavrena fce")
+          print("Konci uzavrena fce")
+          return
+
+
+          uzavrena_fce()
+          print("Konci uzavirajici_fce")
+          return
+
+
+  uzavirajici_fce()
+  ```
+---
+</details>
+
+<details>
+  <summary>🎢 Aplikace ramcu</summary>
+
+  #### ☝ K zapamatovani
+  Ramce slouzi k oddeleni jednotlivych prostredi. Kazde je udrzovane zvlast,
+  ma ruznou delku existence a neovlivnuji ostatni.
+
+  #### 🎉 Dukaz
+  ```python
+  prostredi = "globalni"
+
+  def a():
+      prostredi = "uzavirajici"
+
+      def b():
+          prostredi = "lokalni"
+          print(prostredi)
+
+      b()
+  a()
+  ```
+
+  #### ✌ Zaverem
+  Struktura umoznuje hierarchicke hledani promennych:
+  1. Nejprve prohleda funkci, v niz se nachazi
+  2. Pokud neni uvnitr, zkus uzavirajici prostredi (pokud existuje)
+  3. Pokud neni uvnitr uzavirajiciho prostredi, posli interpret do globalniho
+  4. Pokud neni uvnitr globalniho, zkus seznam zabudovanych objektu
+  5. `NameError`
+
+
+---
+</details>
+
+</details>
+
+---
+
+<details>
+  <summary>💬 Parametry funkci</summary>
+
+<details>
+  <summary>✒ Moznosti zapisu</summary>
+
+<details>
+  <summary>🥇 Podle pozice</summary>
+  ```python
+  def func(par1, par2, par3):
+      print(f"{par1=}")
+      print(f"{par2=}")
+      print(f"{par3=}")
+
+
+  func(1, 2, 3)
+  ```
+---
+</details>
+
+<details>
+  <summary>🗝 Podle klice</summary>
+  ```python
+  def func(par1, par2, par3):
+      print(f"{par1=}")
+      print(f"{par2=}")
+      print(f"{par3=}")
+
+
+  func(par2=2, par3=3, par1=1)
+  ```
+---
+</details>
+
+<details>
+  <summary>🎰 Defaultni parametr</summary>
+  ```python
+  def func(par1, par2, par3=3):
+      print(f"{par1=}")
+      print(f"{par2=}")
+      print(f"{par3=}")
+
+
+  func(1, 2)
+  func(1, 2, 4)
+  ```
+---
+</details>
+
+<details>
+  <summary>🆕 Position-only parametry</summary>
+  ```python
+  def func(par1, /, par2, par3=3):
+      print(f"{par1=}")
+      print(f"{par2=}")
+      print(f"{par3=}")
+
+
+  func(0, 5, 5)
+  func(0, b=5, c=5)
+  func(0, c=5, b=5)
+  func(a=0, c=5, b=5)
+  ```
+---
+</details>
+
+<details>
+  <summary>😱 args</summary>
+  ```python
+  def func(*args):
+      for arg in args:
+          print(f"{arg=}")
+
+
+  func(0)
+  func(0, "a", "b", "c", 10, 12)
+  ```
+---
+</details>
+
+<details>
+  <summary>😵 kwargs</summary>
+  ```python
+  def func(**kwargs):
+      for klic, hodnota in kwargs.items():
+          print(f"{klic=} -> {hodnota=}")
+
+
+  func(cislo=11)
+  func(cislo=11, jmeno="Matous", datum="11.11.2011")
+  ```
+---
+</details>
+
+---
+</details>
+
+<details>
+  <summary>🤺D ostupne operace</summary>
+
+  1. Chceme vypsat vice ruznych operaci
+  2. Spojime symbolem `|`
+  3. Na zaver oddelime
+  ```python
+  def vypis_nabidku(oddelovac: str, *args) -> None:
+      print(f"{' | '.join(args)}".center(50), end=oddelovac)
+  ```
+
+---
+</details>
+
+<details>
+  <summary>✍🏻 Uzivatelsky vstup</summary>
+  1. Uzivatele zada operator
+  2. Operator ulozime do promenne
+  ```python
+  def zvol_operator() -> "str":
+      return input("VYBER MATEMATICKOU OPERACI: ")
+
+
+  operator = zvol_operator()
+  ```
+
+---
+</details>
+
+<details>
+  <summary>🔢V yber cisel</summary>
+  1. Uzivatele zada dve ciselne hodnoty oddelene carkou
+  2. Udaj ulozime do promenne
+  3. Oddelime obe hodnoty
+  ```python
+  def zvol_cisla() -> "str":
+      return input("ZADEJ 2 CISLA ODDELENE CARKOU: ")
+
+
+  x1, x2 = zvol_cisla()
+            .replace(" ", "")
+            .split(",")
+  ```
+---
+</details>
+
+<details>
+  <summary>📳 Z pracovani hodnot</summary>
+  1. Vytvorime novou funkci, ktera pouzije 3 parametry
+  2. I. parametr - cislo, II. parametr - cislo, III. parametr - operator
+  3. Na zaklade operatoru postavime matematickou operaci
+  4. Ohlaseni `return` vrati vyslednou hodnotu
+  ```python
+  def zpracuj_vypocet(x1: "float", x2: "float", op: "str") -> float:
+      """
+      Uzivatel vlozi hodnoty do parametru:
+        x1 -> str [1, 1.1, 11.1, -1.11]
+        x2 -> str [2, 2.2, 22.2, -2.22]
+        op -> str ["+", "-", "*", "/"]
+
+      Obecna proces funkce:
+       x1 = 1, x2 = 2, op = "+" ->  1 + 2
+       x1 = 1.11, x2 = 2.22, op = "-" ->  1.11 - 2.22
+      """
+      return {
+        "+": float(x1) + float(x2),
+        "-": float(x1) - float(x2),
+        "*": float(x1) * float(x2),
+        "/": float(x1) / float(x2)
+      }.get(op)
+
+
+  print(f"VYSLEDEK = {zpracuj_vypocet(1, 2, '+')}")
+  ```
+
+---
+</details>
+
+<details>
+  <summary>🔔 Doplnime hlavni funkci</summary>
+  1. Kalkulacka probiha tak dlouho, dokud ji uzivatel neukonci
+  2. Ukoncime pomoci vyrazu `exit`
+  3. Zabranime pouziti nevalidnich operaci
+  ```python
+  def main() -> None:
+      """Hlavni ridici funkce nasi kalkulacky"""
+      UVODNI_ZPRAVA = "VITEJTE V PROGRAMU KALKULACKA!"
+      ODDELOVAC = "=" * 50
+      pozdrav_uzivatele(UVODNI_ZPRAVA, ODDELOVAC)
+
+      while (operator := zvol_operator()) != "exit":
+          if operator in ("+", "-", "*", "/"):
+              x1, x2 = zvol_cisla().replace(" ", "").split(",")
+              print(f"VYSLEDEK: {zpracuj_vypocet(x1, x2, operator)}",
+                    end=ODDELOVAC)
+          else:
+              print("NEPODPOROVANY OPERATOR", end=ODDELOVAC)
+
+      else:
+          print("UKONCUJI KALKULACKU..")
+          quit()
+  ```
+  **Pozor!**, nakonec nezapomene zavolat hlavni funkci `main`.
+
+</details>
+
+---
+
+<details>
+  <summary>🚧 Procvicovani na doma</summary>
+
+<details>
+  <summary>🚧 __doc__</summary>
+
+---
+</details>
+
+<details>
+  <summary>🚧 anotace funkci</summary>
+
+---
+</details>
+
+<details>
+  <summary>🚧 type hints</summary>
+
+---
+</details>
+
+<details>
+  <summary>🚧 Dopiseme funkci pro sumu cisel</summary>
+
+  **Ukazka**
+  ```python
 # Vkladame libovolny pocet cisel
-1, 2, 3, 4, 5, 6, 7, 8, 9, 0
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 0
 
 # Dostavame prumernou hodnotu
-4.5
-```
-Na zacatek upravime argumentu funkce `dostupne_operace`:
-```python
-    dostupne_operace("+", "-", "*", "/", "abs")
-```
-Dale zapiseme spravnou podminku, ktera zajisti, ze se spusti potrebna
-funkce:
-```python
-    elif op in ("abs", "prum", "prumer"):
-        rada = vyber_radu_cisel()
-        print(
-            ODDELOVAC,
-            f"RADA CISEL: {rada}, VYSLEDEK: {sum(rada)/len(rada)}",
-            ODDELOVAC,
-            sep = "\n"
-        )
-```
-A v posledni kroku tohoto bodu sepiseme potrebnou funkci, ktera nam vraci
-prevedenou radu cisel:
-```python
-def vyber_radu_cisel() -> "list":
-    rada_cisel = input("VLOZTE CISLA ODDELENA CARKOU: ")
-    prevedene = [
-        float(cislo.strip())
-        for cislo in rada_cisel.split(",")
-        if cislo != ""
-    ]
-    return prevedene
-```
+  4.5
+  ```
 
-## Par uprav nakonec
-Aby bylo mozna kalkulacku pouzivat na vice operaci, pridame na uvod nasi funkce
-`main` cyklus:
-```python
-def main() -> "None":
-    "Hlavni ridici funkce nasi kalkulacky"
-    uvodni_text()
+  Podminka ve funkci `main`:
+  ```python
+  elif operator in ("abs", "prum", "prumer"):
+      rada = vyber_radu_cisel()
+      print(f"RADA CISEL: {rada}, VYSLEDEK: {sum(rada)/len(rada)}",
+            end=ODDELOVAC)
+  ```
 
-    while True:
-        dostupne_operace("+", "-", "*", "/", "abs")
-        operace = vyber_operaci()
-        vyber_operace(operace)
-```
-Dalsim krokem bude zpusobem, jakym tuto smycku ukoncit. Nejlepsi bude, kdyz
-k nasim podminkam pridame dalsi podminkovou vetev, ktera bude obsahovat funkci
-`exit` (pripadne `quit`):
-```python
-    elif op in ("quit", "exit", "q", "e"):
-        print(ODDELOVAC)
-        print("UKONCUJI...")
-        exit()
-```
-A uplne posledni detail na zaver by mel osetrit scenar, kdy uzivatel zada jiny
-vstup nez mame v nabidce:
-```python
-    else:
-        print(ODDELOVAC)
-        print(f"*{op}* NENI V NABIDCE")
-```
-Tim by byl nas program kalkulacka kompletni!
+  Samotna funkce:
+  ```python
+  def zvol_radu_cisel() -> "list":
+      rada_cisel = input("VLOZTE CISLA ODDELENA CARKOU: ")
+      return [
+          float(cislo.strip())
+          for cislo in rada_cisel.split(",")
+          if cislo != ""
+      ]
+  ```
 
-Pokracovat na [lekci#08](https://github.com/Bralor/python-academy/tree/lekce08)
+---
+</details>
+
+<details>
+  <summary>🚧 Vlastni uzavrena funkce</summary>
+
+  1. Napiste uzavirajici funkci `vnejsi`
+  2. Tato funkce rozdeli string pomoci `@`
+  3. Napiste uzavrenou funkci `vnitrni`
+  4. Tato funkce vrati oba stringy po rozdeleni `.`
+  ```python
+  def vnejsi_func(em):
+      mail = em.split("@")
+      def vnitrni_func():
+              return mail[1].split(".")
+      domena, *zbytek = vnitrni_func()
+      return domena
+
+  print(f"Top-level domain: {vnejsi_func("Matous@gmail.com")}")
+  ```
+
+---
+</details>
+
+</details>
+
+---
+➡ [pokracovat na osmou lekci](https://github.com/Bralor/python-academy/tree/lekce08)
 
