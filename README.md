@@ -12,6 +12,7 @@
 - [Python, dokumentace zabudovanych funkci](https://docs.python.org/3/library/functions.html)
 - [Collections, standartni modul](https://docs.python.org/3/library/collections.html#collections.Counter)
 - [Type hints, napovidani u funkci](https://www.python.org/dev/peps/pep-0484/)
+- [Vice k jmennym prostredim a funkcnim ramcum](https://code.tutsplus.com/tutorials/what-are-python-namespaces-and-why-are-they-needed--cms-28598)
 ---
 
 ###  Obsah lekce
@@ -22,8 +23,6 @@
 5. Type hint, napovidani
 6. Typy argumentu
 7. Procvicovani na doma
-  - annotations
-  -
 ---
 
 <details>
@@ -118,6 +117,7 @@
       """Hlavni ridici funkce nasi kalkulacky"""
       UVODNI_ZPRAVA = "VITEJTE V PROGRAMU KALKULACKA!"
       ODDELOVAC = f"\n{'=' * 50}\n"
+
       pozdrav_uzivatele(UVODNI_ZPRAVA, ODDELOVAC)
   ```
 ---
@@ -141,7 +141,7 @@
   4. K cemu nas to vede?
 
   #### ✍ Definice
-  Jmenne prostredi (namespace) je soubor aktualne zapsanych promennych
+  Jmenne prostredi (_namespace_) je soubor aktualne zapsanych promennych
   a jejich hodnot. Pro lepsi predstavu si je muzeme vysvetlit jako nejaky druh
   slovniku.
   ```python
@@ -169,14 +169,13 @@
   <summary>🌐 Shrnuti k prostredim</summary>
 
   #### ☝ K zapamatovani
-  1. Kazda z funkci ma vlastni namespace
+  1. Kazda z funkci ma vlastni _namespace_
   2. Pokud chceme promennou vlozit, pouzijeme parametry funkce
   3. Pokud chceme promennou vratit, pouzijeme `return`
-  4. Mimo funkce mame dalsi namespace
-  5. Vytvari oddelena prostredi
-  6. The Zen of Python
-
----
+  4. Mimo funkce mame jine _namespace_
+  5. Vytvari tedy oddelena prostredi
+  6. [The Zen of Python](https://www.python.org/dev/peps/pep-0020/)
+  7. Diky jmennym prostredim muzeme vytvorit ruzne funkcni ramce
 
 </details>
 
@@ -189,14 +188,16 @@
 
 <details>
   <summary>👭 Rozdeleni ramcu</summary>
-  **Built-In**/zabudovane jmenne prostredi obsahuje vsechny dostupne objekty,
-  po celou dobu behu souboru.
+  Obecne muzeme oznacit tyto funkcni ramce (_function scopes_)
 
-  **Global**/globalni jmenne prostredi vznika, kdyz spustime nas program
-  a zanikne, jakmile interpret ukonci svoji cinnost. Globalni prostredi
-  vytvori take pro nahrane moduly/baliky.
+  **Built-In**/zabudovany ramec obsahuje vsechny dostupne objekty, po celou dobu
+  behu souboru.
 
-  **Local & enclosing**/lokalni & uzavrene prostredi interpret vytvori, kdyz
+  **Global**/globalni ramec vznika, kdyz spustime nas program a zanikne, jakmile
+  interpret ukonci svoji cinnost. Globalni prostredi vytvori take pro nahrane
+  moduly/baliky.
+
+  **Local & enclosing**/lokalni & uzavreny ramec interpret vytvori, kdyz
   spusti funkci (pripadne funkci uvnitr funkce).
 
 ---
