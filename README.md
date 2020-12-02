@@ -395,7 +395,7 @@
 </details>
 
 <details>
-  <summary>🤺D ostupne operace</summary>
+  <summary>🤺Dostupne operace</summary>
 
   1. Chceme vypsat vice ruznych operaci
   2. Spojime symbolem `|`
@@ -410,6 +410,7 @@
 
 <details>
   <summary>✍🏻 Uzivatelsky vstup</summary>
+
   1. Uzivatele zada operator
   2. Operator ulozime do promenne
   ```python
@@ -424,7 +425,7 @@
 </details>
 
 <details>
-  <summary>🔢V yber cisel</summary>
+  <summary>🔢Vyber cisel</summary>
   1. Uzivatele zada dve ciselne hodnoty oddelene carkou
   2. Udaj ulozime do promenne
   3. Oddelime obe hodnoty
@@ -441,7 +442,8 @@
 </details>
 
 <details>
-  <summary>📳 Z pracovani hodnot</summary>
+  <summary>📳 Zpracovani hodnot</summary>
+
   1. Vytvorime novou funkci, ktera pouzije 3 parametry
   2. I. parametr - cislo, II. parametr - cislo, III. parametr - operator
   3. Na zaklade operatoru postavime matematickou operaci
@@ -497,6 +499,8 @@
           quit()
   ```
   **Pozor!**, nakonec nezapomene zavolat hlavni funkci `main`.
+
+</details>
 
 </details>
 
