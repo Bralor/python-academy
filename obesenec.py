@@ -1,18 +1,19 @@
 #!/usr/bin/python3
 """Lekce #8 - Uvod do programovani, obesenec"""
+from random import sample
+
 
 def main() -> None:
-    "Hlavni ridici funkce nasi hry"
+    """Hlavni ridici funkce nasi hry"""
     hrac = pridej_hrace()
     vybrane_slovo = vyber_slovo("slova.txt")
     tajne_slovo, pokusy = schovej_slovo(vybrane_slovo)
 
     while pokusy:
         vypis_hry(hrac, tajne_slovo, pokusy)
-        vybrane_pismeno = vyber_pismena()
-        overeni_pismena(vybrane_pismeno, tajne_slovo, vybrane_slovo)
+        overeni_pismena(vyber_pismena(), tajne_slovo, vybrane_slovo)
+        konec_kola(tajne_slovo, pokusy)
         pokusy -= 1
-        ukonceni_hry(tajne_slovo, hrac, pokusy)
 
 
 def pridej_hrace() -> str:
@@ -20,17 +21,12 @@ def pridej_hrace() -> str:
 
 
 def vyber_slovo(soubor: str) -> str:
-    import random
     with open(soubor, "r") as txt:
-        vsechna_slova = txt.readlines()
-    return random.choice(vsechna_slova).strip()
+        return sample(set(txt.readlines()), 1).pop().strip()
 
 
 def schovej_slovo(slovo: str) -> tuple:
-    return (
-        len(slovo) * ["_"],
-        round(len(slovo) * 1.4)
-    )
+    return (len(slovo) * ["_"], round(len(slovo) * 1.4))
 
 
 def vypis_hry(jmeno: str, tajenka: list, pokusy: int) -> None:
@@ -60,6 +56,14 @@ def ukonceni_hry(tajne_slovo: list, hrac: str, pokusy: int) -> None:
         print(f"PROHRALS, {hrac}, NEKDY JINDY!")
         exit()
 
+
+def konec_kola(tajne_slovo: str, pokusy: int) -> None:
+    if "_" not in tajne_slovo:
+        print("VYHRALS!")
+        quit()
+    elif "_" in tajne_slovo and pokusy == 1:
+        print("PROHRALS!")
+        quit()
 
 main()
 
