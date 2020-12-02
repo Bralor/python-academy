@@ -13,6 +13,7 @@
 - [Collections, standartni modul](https://docs.python.org/3/library/collections.html#collections.Counter)
 - [Type hints, napovidani u funkci](https://www.python.org/dev/peps/pep-0484/)
 - [Vice k jmennym prostredim a funkcnim ramcum](https://code.tutsplus.com/tutorials/what-are-python-namespaces-and-why-are-they-needed--cms-28598)
+- [Namespaces and Scope in Python](https://realpython.com/python-namespaces-scope/)
 ---
 
 ###  Obsah lekce
@@ -93,7 +94,7 @@
 </details>
 
 <details>
-  <summary>📣 Dokoceni uvodu</summary>
+  <summary>📣 Dokonceni uvodu</summary>
 
   #### 👋 Pozdravime uzivatele
   1. Vypisime obsah promenne `uvod`
@@ -120,7 +121,6 @@
 
       pozdrav_uzivatele(UVODNI_ZPRAVA, ODDELOVAC)
   ```
----
 
 </details>
 
@@ -188,8 +188,8 @@
 
 <details>
   <summary>👭 Rozdeleni ramcu</summary>
-  Obecne muzeme oznacit tyto funkcni ramce (_function scopes_)
 
+  #### 🛡 Funkcni ramce (scopes)
   **Built-In**/zabudovany ramec obsahuje vsechny dostupne objekty, po celou dobu
   behu souboru.
 
@@ -289,8 +289,6 @@
   4. Pokud neni uvnitr globalniho, zkus seznam zabudovanych objektu
   5. `NameError`
 
-
----
 </details>
 
 </details>
@@ -300,11 +298,11 @@
 <details>
   <summary>💬 Parametry funkci</summary>
 
-<details>
-  <summary>✒ Moznosti zapisu</summary>
-
+  #### 📝 Moznosti zapisu
 <details>
   <summary>🥇 Podle pozice</summary>
+
+  #### ✏ Priklad
   ```python
   def func(par1, par2, par3):
       print(f"{par1=}")
@@ -318,7 +316,9 @@
 </details>
 
 <details>
-  <summary>🗝 Podle klice</summary>
+  <summary>🗝  Podle klice</summary>
+
+  #### ✏ Priklad
   ```python
   def func(par1, par2, par3):
       print(f"{par1=}")
@@ -333,6 +333,8 @@
 
 <details>
   <summary>🎰 Defaultni parametr</summary>
+
+  #### ✏ Priklad
   ```python
   def func(par1, par2, par3=3):
       print(f"{par1=}")
@@ -348,6 +350,8 @@
 
 <details>
   <summary>🆕 Position-only parametry</summary>
+
+  #### ✏ Priklad
   ```python
   def func(par1, /, par2, par3=3):
       print(f"{par1=}")
@@ -365,6 +369,8 @@
 
 <details>
   <summary>😱 args</summary>
+
+  #### ✏ Priklad
   ```python
   def func(*args):
       for arg in args:
@@ -379,6 +385,8 @@
 
 <details>
   <summary>😵 kwargs</summary>
+
+  #### ✏ Priklad
   ```python
   def func(**kwargs):
       for klic, hodnota in kwargs.items():
@@ -397,6 +405,7 @@
 <details>
   <summary>🤺Dostupne operace</summary>
 
+  #### ✏ Postup
   1. Chceme vypsat vice ruznych operaci
   2. Spojime symbolem `|`
   3. Na zaver oddelime
@@ -411,6 +420,7 @@
 <details>
   <summary>✍🏻 Uzivatelsky vstup</summary>
 
+  #### ✏ Postup
   1. Uzivatele zada operator
   2. Operator ulozime do promenne
   ```python
@@ -426,6 +436,8 @@
 
 <details>
   <summary>🔢Vyber cisel</summary>
+
+  #### ✏ Postup
   1. Uzivatele zada dve ciselne hodnoty oddelene carkou
   2. Udaj ulozime do promenne
   3. Oddelime obe hodnoty
@@ -444,6 +456,7 @@
 <details>
   <summary>📳 Zpracovani hodnot</summary>
 
+  #### ✏ Postup
   1. Vytvorime novou funkci, ktera pouzije 3 parametry
   2. I. parametr - cislo, II. parametr - cislo, III. parametr - operator
   3. Na zaklade operatoru postavime matematickou operaci
@@ -477,6 +490,7 @@
 <details>
   <summary>🔔 Doplnime hlavni funkci</summary>
 
+  #### ✏ Postup
   1. Kalkulacka probiha tak dlouho, dokud ji uzivatel neukonci
   2. Ukoncime pomoci vyrazu `exit`
   3. Zabranime pouziti nevalidnich operaci
