@@ -106,16 +106,18 @@
   ```
   **Pozor!**, z funkce ziskame cely `set`
 
----
 </details>
 
 </details>
 
 ---
 <details>
-  <summary>Modul random</summary>
+  <summary>❓ Modul random</summary>
 
-  #### (Pseudo)nahodny vyber
+<details>
+  <summary>🔣 (Pseudo)nahodny vyber</summary>
+
+  #### 📜 Modul random
   Standartni knihovna obsahuje modul `random`:
   ```python
   def vyber_nahodne_slovo(jmeno_souboru: str) -> str:
@@ -128,25 +130,37 @@
   ```
   **Pozor!**, zapis muzeme refaktorovat
 
-  #### Skryjeme slovo & vypocitam zivoty
+---
+</details>
+
+<details>
+  <summary>🌚 Skryjeme slovo & vypocitame zivoty</summary>
+
+  #### ✍ Jak to provest
   1. Vytvorime funkci `schovej_slovo`
-  2. Popiseme jeji ucel
+  2. Popiseme jeji ucel ( _docstring_)
   3. Funkce ma jeden parametr `slovo`
   4. Funkce vraci retezec, kdy v tajnem slove nahradim jednotliva pismena `_`
   5. Funkce vrati cele cislo jako pocet zivotu, ktere hrac ziska
+  6. Vyslednou hodnotu zaokrouhlime na cela cisla `round`
   ```python
   def schovej_slovo(slovo: str) -> list:
       """Nahradime pismena symbolem `_` a soucasne vypocita pocet pokusu"""
-      return ["_"] * len(slovo), 1.3 * len(slovo)
+      return ["_"] * len(slovo), round(1.3 * len(slovo))
   ```
 
-  #### Ulozime jmeno hrace
+  #### 📩 Ulozime jmeno hrace
   ```python
   def pridej_hrace() -> str:
       return input("ZADEJTE JMENO HRACE: ")
   ```
+---
+</details>
 
-  #### Dosavadni zapis
+<details>
+  <summary>✍ Dosavadni zapis</summary>
+
+  #### 📜 Reseni 
   ```python
   #!/usr/bin/python
   """Lekce #8 - Uvod do programovani, obesenec"""
@@ -165,12 +179,13 @@
 
   def schovej_slovo(slovo: str) -> list:
       """Nahradime pismena symbolem `_` a soucasne vypocita pocet pokusu"""
-      return ["_"] * len(slovo), 1.3 * len(slovo)
+      return ["_"] * len(slovo), round(1.3 * len(slovo))
 
 
   def pridej_hrace() -> str:
       return input("ZADEJTE JMENO HRACE: ")
   ```
+</details>
 
 </details>
 
