@@ -121,11 +121,11 @@
   Standartni knihovna obsahuje modul `random`:
   ```python
   def vyber_nahodne_slovo(jmeno_souboru: str) -> str:
-      from random import choice
+      from random import sample
       with open(jmeno_souboru, mode="r") as txt_soubor:
           obsah = txt_soubor.readlines()
-          nahodne_slovo = choice(set(obsah))
-          ostripovane_sl = nahodne_slovo.strip()
+          nahodne_slovo = sample(set(obsah), 1)
+          ostripovane_sl = nahodne_slovo.pop().strip()
       return ostripovane_sl
   ```
   **Pozor!**, zapis muzeme refaktorovat
@@ -164,7 +164,7 @@
   ```python
   #!/usr/bin/python
   """Lekce #8 - Uvod do programovani, obesenec"""
-  from random import choice
+  from random import sample
 
 
   def main() -> None:
@@ -174,7 +174,7 @@
 
   def vyber_nahodne_slovo(jmeno_souboru: str) -> str:
       with open(jmeno_souboru, mode="r") as txt_soubor:
-          return choice(set(txt_soubor.readlines())).strip()
+          return sample(set(txt_soubor.readlines()), 1).strip()
 
 
   def schovej_slovo(slovo: str) -> list:
@@ -185,17 +185,16 @@
   def pridej_hrace() -> str:
       return input("ZADEJTE JMENO HRACE: ")
   ```
-</details>
 
 </details>
 
 ---
 
 <details>
-  <summary>Formatovani retezcu</summary>
+  <summary>🗜 Formatovani retezcu</summary>
 
 <details>
-  <summary>Stav hry</summary>
+  <summary>📉 Stav hry</summary>
 
   #### 🥅 Nas cil 
   V kazdem kole chceme vypsat jmeno hrac, zbyvajici pocet pokusu a hadane slovo.
@@ -205,9 +204,14 @@
   2. **Formatovaci metoda** (str.format())
   3. **f-string**           (f"")
 
+---
+
 </details>
 
-  #### Formatovaci vyraz
+<details>
+  <summary>📎 Formatovaci vyraz</summary>
+
+  #### ☝ K zapamatovani
   Je to prapuvodni zpusob formatovani v Pythonu uz od sameho zacatku:
   ```python
   JMENO = "Lukas"; VEK = 27
@@ -216,7 +220,13 @@
   **Pozor!**, dnes se jiz oficialne nedoporuje, jelikoz casto selhava,
   nespravne zobrazuje ntice nebo slovniky. Vypisovani neni prilis prakticke.
 
-  #### Formatovaci metoda
+---
+</details>
+
+<details>
+  <summary>🔗 Formatovaci metoda</summary>
+
+  #### ☝ K zapamatovani
   Od verze Pythonu 2.6 mame k dispozici dalsi zpusob pro formatovani:
   ```python
   JMENO = "Eliska"; VEK = 26
@@ -225,7 +235,13 @@
   **Pozor!**, pouziti je porad pomerne upovidane napr. pri zapisu vice
   promennych. Ma siroke moznosti formatovani ale ne vzdy pouzitelne.
 
-  #### f-string
+---
+</details>
+
+<details>
+  <summary>🔝 f-string</summary>
+
+  #### ☝ K zapamatovani
   Od verze Pythonu 3.6 mame k dispozici jeste jednu metodu pro formatovani:
   ```python
   JMENO = "Lucie"; VEK = 28
@@ -234,7 +250,13 @@
   Syntaxe je strucna presto citelna. Zvlada ruzne platne operace v Pythonu
   vcetne volani funkci. Opatrne pri psani uvozovek.
 
-  #### Zobraz stav hry
+---
+</details>
+
+<details>
+  <summary>🔧 Aplikace ve funkci</summary>
+
+  #### ▶ Zobraz stav hry
   1. Funkce `vypis_stav_hry`
   2. Parametry `hrac`, `tajenka` a `zivoty`
   3. Vytvorime zpravu, zarovname oddelovacem a `print`
@@ -244,13 +266,23 @@
       oddelovac = len(zprava) * "-"
       print(oddelovac, zprava, oddelovac, sep="\n")
   ```
-  #### Hrac hada pismeno
+  #### 🗣 Hrac hada pismeno
   ```python
   def vyber_pismeno() -> str:
       return input("HADEJ PISMENO: ")
   ```
+</details>
 
-  #### Spravny odhad
+---
+</details>
+
+<details>
+  <summary>♻ Vyber cyklu</summary>
+
+<details>
+  <summary>✅S pravny odhad</summary>
+
+  #### ⌨ Jak na to 
   1. Funkce `overeni_vyberu`
   2. Parametry `hadane_pismeno`, `tajenka` a `tajne_slovo`
   3. Pokud se ve slove hadane pismeno nachazi, nahrad podtrzitko
@@ -260,7 +292,13 @@
           if pismeno == hadane_pismeno:
               tajenka[index] = pismeno
   ```
-  #### Podminka pro ukonceni
+---
+</details>
+
+<details>
+  <summary>🔚Podminka pro ukonceni< /summary>
+
+  #### ✍ Jak na to
   1. Pokud `tajne_slovo` neobsahuje `_`, vitezstvi
   2. Pokud `tajne_slovo` obsahuje `_` a zbyva mu jeden pokus, prohra
   ```python
@@ -277,9 +315,9 @@
 
 ---
 <details>
-  <summary>Doplnime hlavni funkci</summary>
+  <summary>🛡D oplnime hlavni funkci</summary>
 
-  #### Hlavni funkce
+  #### 🔍 Hlavni funkce
   ```python
   def main() -> None:
       """Hlavni ridici funkce nasi hry"""
@@ -297,29 +335,44 @@
 
 </details>
 
+</details>
+
 ---
+
 <details>
-  <summary>4. Kapitola</summary>
+  <summary>🚧 Procvicovani na doma</summary>
+
+<details>
+  <summary>🚧 Textovy soubor v interpretu</summary>
+
+  #### 📚 Priklad
+
+  Kurzor muzeme posunout pomoci metody `seek()`, kdy do kulate zavorky nastavime
+  pozici, na ktere jej chceme nastavit:
+  1. __seek(0)__ - pro zacatek souboru
+  2. __seek(0, 2)__ - pro konec souboru
+
+  Pokud potrebuji zjistit, kde se v souboru aktualne nachazim, pouziju metodu
+  `tell()`.
 
 ---
 </details>
 
+<details>
+  <summary>🚧 Rezimy funkce open()</summary>
+
+  #### ⌨ Pomucka
+  1. `r` - defaultne, otevri pro cteni
+  2. `w` - otevri pro zapis (zapisuje od zacatku -> muze prepsat udaje)
+  3. `x` - otevri pouze pro vytvoreni souboru (pokud existuje, selze)
+  4. `a` - otevri pro zapis (zapisuje na konec -> pridava k stavajicim udajum)
+  5. `b` - otevri v binarnim rezimu
+  6. `+` - otevri pro aktualizovani (cteni i zapis)
+
+</details>
+
+</details>
+
 ---
 ➡ [pokracovat na devatou lekci](https://github.com/Bralor/python-academy/tree/lekce09)
-### Opatrne
-Kurzor muzeme posunout pomoci metody `seek()`, kdy do kulate zavorky nastavime
-pozici, na ktere jej chceme nastavit:
-1. __seek(0)__ - pro zacatek souboru
-2. __seek(0, 2)__ - pro konec souboru
 
-Pokud potrebuji zjistit, kde se v souboru aktualne nachazim, pouziju metodu
-`tell()`.
-
-### Kontextovy manazer
-Je zapis s klicovym slovem `with` na zacatku definice. Je dobry prave kvuli
-svoji syntaxi:
-1. __otevri__ objekt
-2. __zpracuj__ jej
-3. __zavri__ objekt
-Takze pri nasi manipulaci se souborem nemusime myslet na to, jestli jsme jej
-ukoncili nebo ne:
