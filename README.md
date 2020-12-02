@@ -188,6 +188,8 @@
 
 </details>
 
+</details>
+
 ---
 
 <details>
@@ -273,14 +275,14 @@
   ```
 </details>
 
----
 </details>
 
+---
 <details>
   <summary>♻ Vyber cyklu</summary>
 
 <details>
-  <summary>✅S pravny odhad</summary>
+  <summary>✅ Spravny odhad</summary>
 
   #### ⌨ Jak na to 
   1. Funkce `overeni_vyberu`
@@ -296,7 +298,7 @@
 </details>
 
 <details>
-  <summary>🔚Podminka pro ukonceni< /summary>
+  <summary>🔚Podminka pro ukonceni</summary>
 
   #### ✍ Jak na to
   1. Pokud `tajne_slovo` neobsahuje `_`, vitezstvi
@@ -315,7 +317,7 @@
 
 ---
 <details>
-  <summary>🛡D oplnime hlavni funkci</summary>
+  <summary>🛡 oplnime hlavni funkci</summary>
 
   #### 🔍 Hlavni funkce
   ```python
