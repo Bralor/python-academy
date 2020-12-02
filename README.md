@@ -19,10 +19,9 @@
 ###  Obsah lekce
 1. Ukazka ulohy
 2. Funkce, prace vice funkci
-3. Jmenna prostredi v Pythonu
+3. Jmenna prostredi
 4. Funkcni ramce
-5. Type hint, napovidani
-6. Typy argumentu
+5. Parametry funkci
 7. Procvicovani na doma
 ---
 
