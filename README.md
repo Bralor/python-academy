@@ -476,6 +476,7 @@
 
 <details>
   <summary>🔔 Doplnime hlavni funkci</summary>
+
   1. Kalkulacka probiha tak dlouho, dokud ji uzivatel neukonci
   2. Ukoncime pomoci vyrazu `exit`
   3. Zabranime pouziti nevalidnich operaci
