@@ -374,7 +374,7 @@
   ```python
   def func(*args):
       for arg in args:
-          print(f"{arg=}")
+ https://realpython.com/python-namespaces-scope/         print(f"{arg=}")
 
 
   func(0)
@@ -396,9 +396,6 @@
   func(cislo=11)
   func(cislo=11, jmeno="Matous", datum="11.11.2011")
   ```
----
-</details>
-
 ---
 </details>
 
