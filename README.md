@@ -221,6 +221,7 @@
   zdrobnele = uprav_jmeno(JMENO, "ek")
   print(globals())
   ```
+  [**Odkaz**](https://repl.it/@JustBraloR/globalscope#main.py) ke spusteni
 
   #### ⛩ Lokalni prostredi
   ```python
@@ -232,6 +233,8 @@
 
   zdrobnele = uprav_jmeno(JMENO, "ek")
   ```
+  [**Odkaz**](https://repl.it/@JustBraloR/localscope#main.py) ke spusteni
+
   **Pozor!**, pokud `locals()` pouzijeme mimo funkcni jmenne prostredi,
   bude vystup stejny jako `globals()`.
 
@@ -248,13 +251,15 @@
           return
 
 
-          uzavrena_fce()
-          print("Konci uzavirajici_fce")
-          return
+      uzavrena_fce()
+      print("Konci uzavirajici_fce")
+      return
 
 
   uzavirajici_fce()
   ```
+  [**Odkazy**](https://repl.it/@JustBraloR/enclosingscope#main.py) ke spusteni
+
 ---
 </details>
 
@@ -311,6 +316,8 @@
 
   func(1, 2, 3)
   ```
+  [**Odkaz**](https://repl.it/@JustBraloR/positionalparams#main.py) ke spusteni
+
 ---
 </details>
 
@@ -327,6 +334,8 @@
 
   func(par2=2, par3=3, par1=1)
   ```
+  [**Odkaz**](https://repl.it/@JustBraloR/keywordparams#main.py) ke spusteni
+
 ---
 </details>
 
@@ -344,6 +353,8 @@
   func(1, 2)
   func(1, 2, 4)
   ```
+  [**Odkaz**](https://repl.it/@JustBraloR/defaultparams#main.py) ke spusteni
+
 ---
 </details>
 
@@ -363,6 +374,8 @@
   func(0, c=5, b=5)
   func(a=0, c=5, b=5)
   ```
+  [**Odkaz**](https://repl.it/@JustBraloR/position-onlyparams#main.py) ke spusteni
+
 ---
 </details>
 
@@ -373,12 +386,14 @@
   ```python
   def func(*args):
       for arg in args:
- https://realpython.com/python-namespaces-scope/         print(f"{arg=}")
+          print(f"{arg=}")
 
 
   func(0)
   func(0, "a", "b", "c", 10, 12)
   ```
+  [**Odkaz**](https://repl.it/@JustBraloR/argsparams#main.py) ke spusteni
+
 ---
 </details>
 
@@ -395,6 +410,8 @@
   func(cislo=11)
   func(cislo=11, jmeno="Matous", datum="11.11.2011")
   ```
+  [**Odkaz**](https://repl.it/@JustBraloR/kwargsparams#main.py) ke spusteni
+
 ---
 </details>
 
