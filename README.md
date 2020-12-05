@@ -208,7 +208,7 @@
   #### 🔨 Zabudovane prostredi
   Pro vypis vsech objektu z tohoto jmenneho prostredi:
   ```
-  >>> dir(__buildins__)
+  >>> dir(__builtins__)
   ```
 
   #### 🌏 Globalni prostredi
