@@ -174,7 +174,6 @@
   """
   ```
 
-
 </details>
 
 ---
@@ -204,19 +203,18 @@
   for jmeno in ["Helmut", "Helga", "Harold"]:
       print(f"{jmeno=}")
   ```
-  🔛 [**Odkaz** pro spusteni](https://repl.it/@JustBraloR/forexample)
+  🔝 [**Vyzkousej sam**](https://repl.it/@JustBraloR/forexample) 🔝
 
   **Priklad s else:**
   ```python
-  pismena = ["a", "b", "c", "d", "e", "g"]
-  for pismeno in pismena:
+  for pismeno in ["a", "b", "c", "d", "e", "g"]:
       if pismeno == "g":
           print("Mam hodnotu -> G")
           break
   else:
       print("Neni tu zadne G")
   ```
-  🔛 [**Odkaz** pro spusteni](https://repl.it/@JustBraloR/forelseexample#main.py)
+  🔝 [**Vyzkousej sam**](https://repl.it/@JustBraloR/forelseexample#main.py) 🔝
 
 </details>
 
