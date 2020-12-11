@@ -174,7 +174,6 @@
   """
   ```
 
-
 </details>
 
 ---
@@ -196,25 +195,26 @@
   **Obecne:**
   ```python
   for docasna_promenna in sada_udaju:
-      # odsazeny zapis ve smycce
+      # odsazeny zapis patri ke smycce
+  # uz nepatri ke smycce
   ```
   **Priklad:**
   ```python
-  JMENA = ["Helmut", "Helga", "Harold", "Hammet", "Hetfield"]
-
-  for jmeno in JMENA:
+  for jmeno in ["Helmut", "Helga", "Harold"]:
       print(f"{jmeno=}")
   ```
+  🔝 [**Vyzkousej sam**](https://repl.it/@JustBraloR/forexample) 🔝
+
   **Priklad s else:**
   ```python
-  pismena = ["a", "b", "c", "d", "e", "g"]
-  for pismeno in pismena:
+  for pismeno in ["a", "b", "c", "d", "e", "g"]:
       if pismeno == "g":
           print("Mam hodnotu -> G")
           break
   else:
       print("Neni tu zadne G")
   ```
+  🔝 [**Vyzkousej sam**](https://repl.it/@JustBraloR/forelseexample#main.py) 🔝
 
 </details>
 
