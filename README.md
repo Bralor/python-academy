@@ -1,4 +1,4 @@
-➡ [vratit se ke treti casti](https://github.com/Bralor/python-workshop/tree/master/materials/03_loops)
+➡ [vratit se na patou lekci](https://github.com/Bralor/python-academy/tree/lekce05)
 
 <p align="center">
   <img alt="engeto-logo" width="100px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
@@ -33,7 +33,7 @@
 
   1. ✌  [Stahnete si cely repozitar jako **zip**](https://github.com/Bralor/python-workshop/archive/mh-dev.zip)
   2. 💪 Presunte se ke stazenemu souboru
-  3. 🙏 Spustte soubor **materials/04_importing/hangman.py** v PyCharm
+  3. 🙏 Spustte soubor **obesenec.py** v PyCharm
   4. 🐍 Spustte program pomoci klaves **ctrl+shift+F10**
   5. 🎥 Zkousejte!
 
@@ -52,6 +52,11 @@
    2. Pomocna promenna `tajenka` (podtrzitka misto pismen)
    3. Pomocna promenna `zivoty` (hodnota = `7`)
    4. Pomocna promenna `hra_probiha` (hodnota = `True`)
+
+<details>
+   <summary>👇 Nas zapis 👇</summary>
+
+   #### 📂 obesenec.py
    ```python
    #!/usr/bin/python3
 
@@ -61,6 +66,9 @@
    zivoty = 7
    hra_probiha = True
    ```
+</details>
+
+<!--PRVNI CAST HRY-->
 
 ---
 
@@ -72,6 +80,11 @@
    #### 🔚 Kdy hra konci
    1. Dokud ma hrac v promenne `zivoty` hodnotu vetsi jak `0`
    2. Nasledne zastavime prubeh pomoci `hra_probiha`
+
+<details>
+   <summary>👇 Nase reseni 👇</summary>
+
+   #### 📂 obesenec.py
    ```python
    while hra_probiha and zivoty > 0:
        ...
@@ -82,11 +95,17 @@
        else:
            print(f"Bohuzel, prohrals. Hledane slovo: *{SLOVO}*")
    ```
+</details>
 
    #### 👀 V kazdem kole
    1. Vypisu stav hry
    2. Necham hrace zadat pismeno/slovo (promenna `hadani`)
-   3. Sestavime vhodne podminky
+   3. Sestavime vhodne podminky (uhodne slovo/ pismeno/ neuhodne)
+
+<details>
+   <summary>👇 Nase reseni 👇</summary>
+
+   #### 📂 obesenec.py
    ```python
    print(f"TAJENKA: {' '.join(tajenka)}, ZIVOTY: {zivoty}")
    hadani = input("Hadej pismeno nebo cele slovo:").lower()
@@ -104,12 +123,17 @@
    else:
        zivoty -= 1
    ```
+   [**🔝 Vyzkousej sam 🔝**](https://repl.it/@JustBraloR/sample1-1#main.py)
+
+---
+
+</details>
 
    #### ❓ Konec nebo ne
    Hra nam funguje. Co bychom mohli zlepsit?
-       1. Vice hadanych slov
-       2. Nahodny vyber slova
-       3. Cistejsi vypis
+   1. Vice hadanych slov
+   2. Nahodny vyber slova
+   3. Cistejsi vypis
 
 ---
 
@@ -121,21 +145,17 @@
    #### ☝ K zapamatovani
    1. Jde o soubor s priponou `py`
    2. Obsahuje promenne, datove typy, standartni algoritmy
-   3. Nektere jiz mame k dispozici (napr. `usr/lib/python3.8/`)
+   3. Nektere jiz mame k dispozici (napr. `usr/lib/python3.x/`)
    ```python
    import pprint
 
 
-   UDAJE = {
-       "jmeno": "Matous",
-       "prijmeni": "Holinka",
-       "email": "matous@matous.cz",
-       "adresa": "Kocourkov, U Potoka 28"
-   }
+   UDAJE = {"jmeno": "Matous", "prijmeni": "Holinka", "email": "matous@matous.cz",
+       "adresa": "Kocourkov, U Potoka 28"}
 
    pprint.pprint(UDAJE)
    ```
-   [**Odkaz**](https://repl.it/@JustBraloR/importing#main.py) pro spusteni
+   [**🔝 Vyzkousej sam 🔝**](https://repl.it/@JustBraloR/module#main.py)
 
 ---
 
@@ -145,14 +165,14 @@
    <summary>🗃 Baliky</summary>
 
    #### ☝ K zapamatovani
-   1. Vetsinou sbirka nekolika modulu
+   1. Sbirka nekolika modulu
    2. Spolecne umistene v adresari
    3. Baliky obsahuji `__init__.py`
    4. Baliky obsahuji `__pycache__`
 
    #### 🔍 Soubor init
    Tento, dost casto prazdny, soubor umoznuje interpretu najit & nahrat moduly.
-   Pokud neni prazdny, obsahuje dokumentace, zavislosti, aj.
+   **Pozor!** nemusi byt prazdny, nekdy obsahuje dokumentace, zavislosti, aj.
 
    #### ⏩ Slozka pycache
    Tato slozka vznika, kdyz spoustime kod a interpret jej zkompiluje
@@ -180,11 +200,12 @@
    <summary>📥 Importovani</summary>
 
    #### ☝ K zapamatovani
-   Predpis pro nahrani modulu/baliku ma svoje pravidla:
+   Predpis pro nahrani modulu/baliku ma svoje pravidla (pomocna funkce `dir`):
    1. `import pprint` - nahrajeme cely modul, pouziti `modul.funkce`
    2. `from pprint import *` - nahrajeme cely modul, pouziti `funkce`
    3. `from pprint import pprint` - nahraje pouze vybranou funkci (`funkce`)
    4. `as` - doplneni aliasu, pouziti `from pprint import pprint as pp` (`pp`)
+   [**🔝 Vyzkousej sam 🔝**](https://repl.it/@JustBraloR/importingmethods#main.py)
 
    #### 📽 Hledani modul
    1. Interpret uvidi oznameni o nahravani modulu (pr. `import`)
@@ -194,6 +215,7 @@
    5. Dale prohleda: `sys.path[1:]`
    6. Pokud **nenasel** -> `ModuleNotFound`
    7. Pokud **nasel** -> nahravam modul, prip. balik
+   [**🔝 Vyzkousej sam 🔝**](https://repl.it/@JustBraloR/wrongway#main.py)
 
 </details>
 
@@ -210,40 +232,59 @@
    nahrat a pouzivat.
 
    #### ❓Modul random
-   1. Pokud vyzadujeme vyuziti prvku pseudo-nahody, pouzijeme standartni modul
-   `random`, dale doplnime seznam s vice slovy:
+   1. Pokud vyzadujeme vyuziti [prvku pseudo-nahody](https://docs.python.org/3/library/random.html),
+   pouzijeme standartni modul `random`:
+
+<details>
+   <summary>👇 Nase reseni 👇</summary>
+
+   #### 📂obesenec.py
    ```python
    import random
 
    SLOVA = ["obesenec", "autobus", "klavesnice", "nedele"]
-   ```
-   2. Vybereme vhodnou funkci pro selekci nahodne udaje ze sekvence dat:
-   ```python
    slovo = random.choice(SLOVA)
    ```
+---
+</details>
 
    #### 🕺 Vlastni modul
    1. Spolecne si nahrajeme nas vlastni modul `figurka`
    2. Pouzijeme slovnik `hangman` uvnitr souboru
    3. Doplnime vypis v kazdem kole a pri prohre
+
+<details>
+   <summary>👇 Nase reseni 👇</summary>
+
+   #### 📂obesenec.py
    ```python
    import figurka
 
 
    print(figurka.hangman[7 - zivoty])
    ```
+---
+
+</details>
 
    #### 📺 Modul os
    1. Protoze je nase hra prilis upovidana, nahrajeme dalsi standartni modul,
    ktery nam pomuze udrzet vystup mene upovidany
    2. Aplikujeme funkci, pro strucny vystup ve vypisu a v zaveru
+
+<details>
+   <summary>👇 Nase reseni 👇</summary>
+
+   #### 📂obesenec.py
    ```python
    import os
 
-   os.system("clear")
+   os.system("clear")  # win: os.system("cls")
    ```
+</details>
 
 ---
+
 </details>
 
 <details>
@@ -310,5 +351,5 @@
 
 ---
 
-➡ [pokracovat k dalsi casti](https://github.com/Bralor/python-workshop/tree/master/materials/05_functions_and_text_files)
+➡ [pokracovat k sedme lekci]()
 
