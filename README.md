@@ -4,7 +4,7 @@
   <img alt="engeto-logo" width="100px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
 </p>
 
-## 4⃣ Python workshop
+## 6⃣ Python academy
 ### 🗒 Obsah lekce
 1. Uzitecne odkazy
 2. Ukazka ulohy
