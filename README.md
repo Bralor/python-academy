@@ -112,18 +112,26 @@
   <summary>👼 Funkce, zabudovane</summary>
 
   #### ☝ K zapamatovani
-  - jako uzivatel je nemusim definovat
-  - mohu je primo pouzit (_zavolat_)
+  - nemusime definovat
+  - pripravene na pouziti(_zavolat_)
   - soupisku vsech najdeme v sekci [odkazy](#dulezite-odkazy)
-  - setrime vypisovani
-  - zapis je citelnejsi
+  - setrime prsty
+  - citelnejsi zapis
   - opakovane pouzitelne
 
   #### ❓ Jak vypada zabudovana funkce
   ```python
-  print("Ahoj, vsem!")
-  int(input("Zadejte cislo: "))
+  print("Ahoj, uz buh-vi-po-kolikate!")
+  input("Nejaky vstup:")
+  int("3")
+  str(3)
+  round(3.1234, 2)
+  ord("@")
+  chr(64)
+  x = 2
+  eval("x + 1")
   ```
+  [**🔝 Vyzkousej sam 🔝**](https://repl.it/@JustBraloR/builtinsfunc#main.py)
 
 </details>
 
@@ -134,8 +142,8 @@
 
   #### ☝ K zapamatovani
   - neni soucasti standartni knihovny Pythonu
-  - nejprve potrebuji zapsat jeji definici
-  - pokud ji chci spustit, musim ji _zavolat_ (pouzit)
+  - nejprve potrebuji zapsat jeji _definici_
+  - pokud ji chci _spustit_, musim ji _zavolat_
   - `def` klicovy vyraz v zahlavi definice
   - `vypocitej_sumu` nasleduje jmeno funkce, budu potrebovat pri spusteni
   - `cisla` v kulate zavorce je parametr funkce (idealne 2, max. 3)
@@ -154,11 +162,9 @@
   ```python
   def vypocitej_sumu(cisla):
       """Dokumentace funkce"""
-      suma_cisel = list()
-
+      suma_cisel = 0
       for cislo in cisla:
           suma_cisel = suma_cisel + cislo
-
       return suma_cisel
 
 
@@ -166,6 +172,8 @@
   vysledek = vypocitej_sumu(seznam_cisel)
   print(f"SUMA VSECH CISEL: {vysledek}")
   ```
+  [**🔝 Vyzkousej sam 🔝**](https://repl.it/@JustBraloR/sumnumbers#main.py)
+
   **Pozor!** Nas zapis muzeme vylepsit nekolika kroky:
   1. Napovidani datovych typu
   2. Zkraceny zapis
