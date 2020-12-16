@@ -4,30 +4,36 @@
   <img alt="engeto-logo" width="100px" src="https://engeto.cz/wp-content/uploads/2019/01/engeto-square.png" />
 </p>
 
-## 6⃣ Python akademie
-###  Dulezite odkazy
-- [Portal Engeto.com](https://engeto.com/)
-- [Seznamova komprehence](http://howto.py.cz/cap08.htm#10)
-- [Ternarni operator](https://book.pythontips.com/en/latest/ternary_operators.html)
-- [Python, dokumentace zabudovanych funkci](https://docs.python.org/3/library/functions.html)
-- [Collections, standartni modul](https://docs.python.org/3/library/collections.html#collections.Counter)
+## 4⃣ Python workshop
+### 🗒 Obsah lekce
+1. Uzitecne odkazy
+2. Ukazka ulohy
+3. Moduly & baliky
+4. Importovani
+5. Rozdeleni podle puvodu
 ---
 
-###  Obsah lekce
-1. Ukazka ulohy
-2. Vstupni udaje
-3. Funkce, zabudovane
-4. Funkce, uzivatelem definovane
-5. Prirazovani hodnot promennym
-6. Zkraceny zapis
+
+<details>
+  <summary>☝ Uzitecne odkazy</summary>
+
+  #### 🗒 Dulezite odkaz
+  - [Instalator balicku, pip3](https://pypi.org/project/pip/)
+  - [\_\_init\_\_.py](https://pythontips.com/2013/07/28/what-is-__init__-py/)
+  - [Walrus operator, dokumentace](https://realpython.com/lessons/assignment-expressions/)
+  - [Python.org, hledani modulu](https://docs.python.org/3/tutorial/modules.html#the-module-search-path)
+  - [Pycharm importing](https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html)
+
+</details>
+
 ---
 
 <details>
   <summary>⏯  Ukazka ulohy</summary>
 
-  1. ✌  [Stahnete si sestou lekci jako **zip**](https://github.com/Bralor/python-academy/archive/lekce06.zip)
+  1. ✌  [Stahnete si cely repozitar jako **zip**](https://github.com/Bralor/python-workshop/archive/mh-dev.zip)
   2. 💪 Presunte se ke stazenemu souboru
-  3. 🙏 Spustte soubor **upravene_udaje** v PyCharm
+  3. 🙏 Spustte soubor **obesenec.py** v PyCharm
   4. 🐍 Spustte program pomoci klaves **ctrl+shift+F10**
   5. 🎥 Zkousejte!
 
@@ -36,185 +42,153 @@
 ---
 
 <details>
-  <summary>📥 Vstupni udaje</summary>
+   <summary>📦 Moduly & baliky</summary>
 
-  #### 📜 Upravene & scrapovane detaily
-  ```python
-  UDAJE = """
-  byt0001,55m2,Olomouc,ul.Heyrovského,
-  byt0003,65m2,Olomouc,ul.Novosadský_dvůr,
-  byt0004,75m2,Olomouc,ul.Wolkerova,
-  byt0004,68m2,Olomouc,ul.Zikova,
-  byt0001,36m2,Olomouc,ul.Nová_Ulice,
-  byt0003,46m2,Olomouc,ul.Nové_sady,
-  byt0004,75m2,Olomouc,ul.Nová_Ulice,
-  byt0003,42m2,Olomouc,ul.Nová_Ulice,
-  byt0005,107m2,Olomouc,ul.Nová_Ulice,
-  byt0003,74m2,Olomouc,ul.Uničovská,
-  byt0003,42m2,Olomouc,ul.Nešverova,
-  byt0002,55m2,Olomouc,ul.Dělnická,
-  byt0004,59m2,Olomouc,ul.Zirmova,
-  byt0007,92m2,Olomouc,ul.Nová_Ulice,
-  byt0002,52m2,Olomouc,ul.Nová_Ulice,
-  byt0004,76m2,Olomouc,ul.Nová_Ulice,
-  byt0002,81m2,Olomouc,ul.Nová_Ulice,
-  byt0003,64m2,Olomouc,ul.Za_vodojemem,
-  byt0007,113m2,Olomouc,ul.Jihoslovanská,
-  byt0005,94m2,Olomouc,ul.Uničovská,
-  byt0003,42m2,Olomouc,ul.Rošického,
-  byt0003,75m2,Olomouc,ul.Rošického,
-  byt0004,48m2,Olomouc,ul.Handského,
-  byt0004,68m2,Olomouc,ul.Komenského,
-  byt0003,61m2,Olomouc,ul.Jarmily_Glazarové,
-  byt0004,39m2,Olomouc,ul.Přichystalova,
-  byt0003,70m2,Olomouc,ul.Foerstova,
-  byt0005,61m2,Olomouc,ul.Nová_Ulice,
-  byt0007,88m2,Olomouc,ul.Nová_Ulice,
-  byt0003,92m2,Olomouc,ul.U_cukrovaru,
-  byt0003,56m2,Olomouc,ul.U_cukrovaru,
-  byt0004,56m2,Olomouc,ul.Paseka,
-  byt0002,74m2,Olomouc,ul.Rokycanova,
-  byt0007,116m2,Olomouc,ul.U_cukrovaru,
-  byt0004,59m2,Olomouc,ul.Řezáčova,
-  byt0004,100m2,Olomouc,ul.Libušina,
-  byt0003,64m2,Olomouc,ul.Řezáčova,
-  byt0001,33m2,Olomouc,ul.Libušina,
-  byt0006,87m2,Olomouc,ul.Černá cesta,
-  byt0007,95m2,Olomouc,ul.Kaštanová,
-  byt0003,74m2,Olomouc,ul.Nová_Ulice,
-  byt0003,75m2,Olomouc,ul.Nová_Ulice,
-  byt0004,86m2,Olomouc,ul.Hněvotínská,
-  byt0002,67m2,Olomouc,ul.Polská,
-  byt0007,120m2,Olomouc,ul.Dvořákova,
-  byt0004,90m2,Olomouc,ul.Dvořákova,
-  byt0004,86m2,Olomouc,ul.Nová Ulice,
-  byt0003,75m2,Olomouc,ul.Nešverova,
-  byt0001,45m2,Olomouc,ul.Zirmova,
-  byt0006,114m2,Olomouc,ul.Přichystalová,
-  """
+<details>
+   <summary>💾 Uvod hry</summary>
 
-  PREVOD_UDAJU = {
-    "byt0001": "1+1",
-    "byt0002": "2+1",
-    "byt0003": "2+kk",
-    "byt0004": "3+1",
-    "byt0005": "3+kk",
-    "byt0006": "4+1",
-    "byt0007": "4+kk",
-  }
-  ```
+   #### 🎮 Obesenec
+   1. Pomocna promenna `SLOVO` (konstanta)
+   2. Pomocna promenna `tajenka` (podtrzitka misto pismen)
+   3. Pomocna promenna `zivoty` (hodnota = `7`)
+   4. Pomocna promenna `hra_probiha` (hodnota = `True`)
 
+<details>
+   <summary>👇 Nas zapis 👇</summary>
+
+   #### 📂 obesenec.py
+   ```python
+   #!/usr/bin/python3
+
+
+   SLOVO = "obesenec"
+   tajenka = len(SLOVO) * ["_"]
+   zivoty = 7
+   hra_probiha = True
+   ```
 </details>
+
+<!--PRVNI CAST HRY-->
 
 ---
 
-<details>
-  <summary>👼 Funkce, zabudovane</summary>
-
-  #### ☝ K zapamatovani
-  - jako uzivatel je nemusim definovat
-  - mohu je primo pouzit (_zavolat_)
-  - soupisku vsech najdeme v sekci [odkazy](#dulezite-odkazy)
-  - setrime vypisovani
-  - zapis je citelnejsi
-  - opakovane pouzitelne
-
-  #### ❓ Jak vypada zabudovana funkce
-  ```python
-  print("Ahoj, vsem!")
-  int(input("Zadejte cislo: "))
-  ```
-
 </details>
+
+<details>
+   <summary>♻ Prubeh kol</summary>
+
+   #### 🔚 Kdy hra konci
+   1. Dokud ma hrac v promenne `zivoty` hodnotu vetsi jak `0`
+   2. Nasledne zastavime prubeh pomoci `hra_probiha`
+
+<details>
+   <summary>👇 Nase reseni 👇</summary>
+
+   #### 📂 obesenec.py
+   ```python
+   while hra_probiha and zivoty > 0:
+       ...
+   else:
+       if not hra_probiha:
+           print(f"Tajenka: {SLOVO}")
+           print("Super! Vitezis, jsi frajer kurzu!")
+       else:
+           print(f"Bohuzel, prohrals. Hledane slovo: *{SLOVO}*")
+   ```
+</details>
+
+   #### 👀 V kazdem kole
+   1. Vypisu stav hry
+   2. Necham hrace zadat pismeno/slovo (promenna `hadani`)
+   3. Sestavime vhodne podminky (uhodne slovo/ pismeno/ neuhodne)
+
+<details>
+   <summary>👇 Nase reseni 👇</summary>
+
+   #### 📂 obesenec.py
+   ```python
+   print(f"TAJENKA: {' '.join(tajenka)}, ZIVOTY: {zivoty}")
+   hadani = input("Hadej pismeno nebo cele slovo:").lower()
+
+   if hadani == SLOVO:
+       hra_probiha = False
+
+   elif len(hadani) == 1 and hadani in SLOVO:
+       for index, pismeno in enumerate(SLOVO):
+           if pismeno == hadani:
+               tajenka[index] = hadani
+       if "_" not in tajenka:
+           hra_probiha = False
+
+   else:
+       zivoty -= 1
+   ```
+   [**🔝 Vyzkousej sam 🔝**](https://repl.it/@JustBraloR/sample1-1#main.py)
 
 ---
 
-<details>
-  <summary>🔥 Funkce, uzivatelem definovane</summary>
+</details>
 
-  #### ☝ K zapamatovani
-  - neni soucasti standartni knihovny Pythonu
-  - nejprve potrebuji zapsat jeji definici
-  - pokud ji chci spustit, musim ji _zavolat_ (pouzit)
-  - `def` klicovy vyraz v zahlavi definice
-  - `vypocitej_sumu` nasleduje jmeno funkce, budu potrebovat pri spusteni
-  - `cisla` v kulate zavorce je parametr funkce (idealne 2, max. 3)
-  - pokud jmeno funkce neni dostatecne popisne, zapisu dokumentaci
-  - `return` ohlaseni, pokud chci z funkce vratit nejaky udaj
-  - `vypocitej_sumu()` spusteni funkce (_volani_)
-  - `seznam_cisel` argument funkce, ktery chci pouzit ve funkci
+   #### ❓ Konec nebo ne
+   Hra nam funguje. Co bychom mohli zlepsit?
+   1. Vice hadanych slov
+   2. Nahodny vyber slova
+   3. Cistejsi vypis
 
-  #### ❓ Jak vypada zabudovana funkce
-  ```python
-  def jmeno_funkce(parametr_1, parametr_2):
-      # odsazeny kod
-      # VOLITELNE: vraceni hodnoty
-  ```
-  **Priklad funkce**
-  ```python
-  def vypocitej_sumu(cisla):
-      """Dokumentace funkce"""
-      suma_cisel = list()
+---
 
-      for cislo in cisla:
-          suma_cisel = suma_cisel + cislo
-
-      return suma_cisel
-
-
-  seznam_cisel = [11, 22, 33, 44, 55, 66, 77, 88, 99]
-  vysledek = vypocitej_sumu(seznam_cisel)
-  print(f"SUMA VSECH CISEL: {vysledek}")
-  ```
-  **Pozor!** Nas zapis muzeme vylepsit nekolika kroky:
-  1. Napovidani datovych typu
-  2. Zkraceny zapis
-  3. f-string, volani funkce
-  4. Idealne pouzit `sum` funkci 😏
+</details>
 
 <details>
-  <summary>💣Nase prvni funkce</summary>
+   <summary>⚙ Moduly</summary>
 
-  #### 🥅 Nas cil
-  Nejprve bez funkce. Chceme napsat mechanismus, ktery prevede `byt0001`
-  na `1+1`.
+   #### ☝ K zapamatovani
+   1. Jde o soubor s priponou `py`
+   2. Obsahuje promenne, datove typy, standartni algoritmy
+   3. Nektere jiz mame k dispozici (napr. `usr/lib/python3.x/`)
+   ```python
+   import pprint
 
-  #### 1⃣ Prvni krok
-  Nejprve pomocna promenna `udaj_1`:
-  ```python
-  udaj_1 = "byt0001"
-  ```
 
-  #### 2⃣ Control-flow
-  Mechanismus, kterym provedu prevedeni:
-  ```python
-  if udaj_1 in PREVOD_UDAJU.keys():
-      udaj_1 = PREVOD_UDAJU[udaj_1]
-  ```
-  Pokud nebude hodnota ve slovniku, musime myslet na `KeyError`:
-  ```python
-  else:
-      print("NEZNAMY TYP BYTU!")
-  ```
-  **Pozor!** Nas zapis muzeme vylepsit nekolika kroky:
-  1. Odstranit metodu `keys`
-  2. Ternarni operator
-  3. Metoda slovniku `get`
+   UDAJE = {"jmeno": "Matous", "prijmeni": "Holinka", "email": "matous@matous.cz",
+       "adresa": "Kocourkov, U Potoka 28"}
 
-  #### 3⃣ Pomoci funkce
-  Zapiseme pomoci funkce a doplnime pocitani:
-  ```python
-  def prevodnik_bytu(typ_bytu: str, vzor: dict) -> str:
-      """Prevede a zapocita stavajici typ bytu na novy"""
-      if typ_bytu in vzor:
-          typ_bytu = vzor[typ_bytu]
-          return typ_bytu
-      else:
-          print("NEZNAMY TYP BYTU!")
+   pprint.pprint(UDAJE)
+   ```
+   [**🔝 Vyzkousej sam 🔝**](https://repl.it/@JustBraloR/module#main.py)
 
-  vysledny_typ = prevodnik_bytu(udaj_1, PREVOD_UDAJU)
-  print(f"PUVODNI: {udaj_1}, NOVY: {vysledny_typ}")
-  ```
+---
+
+</details>
+
+<details>
+   <summary>🗃 Baliky</summary>
+
+   #### ☝ K zapamatovani
+   1. Sbirka nekolika modulu
+   2. Spolecne umistene v adresari
+   3. Baliky obsahuji `__init__.py`
+   4. Baliky obsahuji `__pycache__`
+
+   #### 🔍 Soubor init
+   Tento, dost casto prazdny, soubor umoznuje interpretu najit & nahrat moduly.
+   **Pozor!** nemusi byt prazdny, nekdy obsahuje dokumentace, zavislosti, aj.
+
+   #### ⏩ Slozka pycache
+   Tato slozka vznika, kdyz spoustime kod a interpret jej zkompiluje
+   na _bytecode_. Nasledne schova zkompilovany kod do tohoto adresare.
+
+---
+
+</details>
+
+<details>
+   <summary>⏪ Rekapitulace</summary>
+
+   #### 💪 Souhrn vyhod modulu & baliku
+   1. Nemusime opakovane prepisovat stejne instrukce
+   2. Muzu opakovane pouzivat na vice mistech
+   3. Citelnosti je ucineno zadost
 
 </details>
 
@@ -223,163 +197,153 @@
 ---
 
 <details>
-  <summary>🚦 Prirazovani hodnot promennym</summary>
+   <summary>📥 Importovani</summary>
 
-<details>
-  <summary>📜 Jak ziskat puvodni typ bytu</summary>
+   #### ☝ K zapamatovani
+   Predpis pro nahrani modulu/baliku ma svoje pravidla (pomocna funkce `dir`):
+   1. `import pprint` - nahrajeme cely modul, pouziti `modul.funkce`
+   2. `from pprint import *` - nahrajeme cely modul, pouziti `funkce`
+   3. `from pprint import pprint` - nahraje pouze vybranou funkci (`funkce`)
+   4. `as` - doplneni aliasu, pouziti `from pprint import pprint as pp` (`pp`)
+   [**🔝 Vyzkousej sam 🔝**](https://repl.it/@JustBraloR/importingmethods#main.py)
 
-  #### 1⃣ Jak prochazet retezec po radcich
-  ```python
-  for radek in UDAJE.split():
-      print(f"{radek=}")
-  ```
-
-  #### 2⃣ Jak rozdelit radek
-  ```python
-  for radek in UDAJE.split():
-      radek = radek.split(",")
-      print(f"""
-        {radek[0]=}
-        {radek[1]=}
-        {radek[2]=}
-        {radek[3]=}
-      """)
-  ```
-
-  #### 3⃣ Vicenasobne prirazovani hodnot
-  Pocet jmen promennych odpovida hodnotam:
-  ```python
-  for radek in UDAJE.split():
-      typ, plocha, mesto, ulice = radek.split(",")
-      print(f"""
-        {typ=}
-        {plocha=}
-        {mesto=}
-        {ulice=}
-      """)
-  ```
-
-  Pocet jmen promennych neodpovida hodnotam (musim pouzit `*`):
-  ```python
-  for radek in UDAJE.split():
-      typ, *dalsi_udaje = radek.split(",")
-      print(f"""
-        {typ=}
-        {dalsi_udaje=}
-      """)
-  ```
-  **Pozor!** Pokud si nebude pocet jmen promennych a hodnot promennych
-  odpovidat, dostaneme `ValueError`
-
----
-
-</details>
-
-<details>
-  <summary>📆 Jak inkrementovat uspesna prevedeni</summary>
-
-  #### 🆘 Opet pouzijeme prirazovani vice hodnot
-  Krome prevedeneho udaje vratime cele cislo `1`:
-  ```python
-  def prevodnik_bytu(typ_bytu: str, vzor: dict) -> str:
-      """Prevede a zapocita stavajici typ bytu na novy"""
-      if typ_bytu in vzor:
-          typ_bytu = vzor[typ_bytu]
-          return (typ_bytu, 1)      # vracim tuple s hodnotami
-      else:
-          print("NEZNAMY TYP BYTU!")
-          return 0                  # vracim pouze 0
-  ```
-  **Pozor!** Aby nam zapis fungoval musime v obou variantach vracet `tuple` se
-  dvema hodnotami! Provedeme drobnou upravu:
-  ```python
-      else:
-          return ("NEZNAMY TYP BYTU!", 0)
-  ```
-
-  #### 🤙 Zavolame funkci
-  Opravena funkce vraci dve hodnoty, takze musim davat pozor pri spousteni:
-  ```python
-  for radek in UDAJE.split():
-      typ, *dalsi_udaje = radek.split(",")
-      upraveny_typ, prirustek = prevodnik_bytu(typ, PREVOD_UDAJU)
-  ```
-  Doplnime pocitani uspesnych prevodu:
-  ```python
-  vysledek = set()
-  uspesne = 0
-
-  for radek in UDAJE.split():
-      typ, *dalsi_udaje = radek.split(",")
-      upraveny_typ, prirustek = prevodnik_bytu(typ, PREVOD_UDAJU)
-      uspesne = uspesne + prirustek
-      print(f"{uspesne=}, {upraveny_typ=}")
-  ```
-
-</details>
+   #### 📽 Hledani modul
+   1. Interpret uvidi oznameni o nahravani modulu (pr. `import`)
+   2. Prohleda zabudovane moduly: `sys.builtin_module_names`
+   3. Dale prohleda: `sys.modules` (s podporou symlinku)
+   4. Dale prohleda aktualni umisteni: `sys.path[0]` (pokud nejsou symlinky, bude 3.)
+   5. Dale prohleda: `sys.path[1:]`
+   6. Pokud **nenasel** -> `ModuleNotFound`
+   7. Pokud **nasel** -> nahravam modul, prip. balik
+   [**🔝 Vyzkousej sam 🔝**](https://repl.it/@JustBraloR/wrongway#main.py)
 
 </details>
 
 ---
 
 <details>
-  <summary>🎯 Zkracene prirazovani</summary>
-
-  #### ❓ Jak zkracene prirazeni vypada
-  Zatim jsme si povidali pouze o nasledujicim zpusobu:
-  ```
-  x = x <operator> y
-  ```
-  Zkracene prirazeni vypada nasledovne:
-  ```
-  x <operator>= y
-  ```
-
-  #### 👌 Vyhody
-  1. Zkratim zapis
-  2. Neztratim citelnost zapisu
-  3. Pouze upravim puvodni hodnotu (1 krok)
-  4. Puvodni zapis vytvoreni promennou a priradi hodnotu (2 kroky)
+   <summary>🗂 Rozdeleni podle puvodu</summary>
 
 <details>
-  <summary>✂ Zkratime zapis</summary>
+   <summary>🏘 Knihovny standartni</summary>
 
-  #### ♻ Upravime cyklus
-  ```python
-  for radek in UDAJE.split():
-      typ, *dalsi_udaje = radek.split(",")
-      upraveny_typ, prirustek = prevodnik_bytu(typ, PREVOD_UDAJU)
-      uspesne += prirustek
-  ```
+   #### ☝ K zapamatovani
+   Nainstalujeme jazyk, interpret a tyto knihovny. Nemusim instalovat, staci
+   nahrat a pouzivat.
 
-  #### 🕹 Spojime se zbytkem udaj
-  ```python
-  upraveny_radek = f"{upraveny_typ},{dalsi_udaje}"
-  ```
+   #### ❓Modul random
+   1. Pokud vyzadujeme vyuziti [prvku pseudo-nahody](https://docs.python.org/3/library/random.html),
+   pouzijeme standartni modul `random`:
 
-  #### 🔛 Ulozime hotovy vysledek
-  Potrebujeme jednotlive udaje spojit pomoci metody retezcu `join`:
-  ```python
-  ", ".join(["A", "B", "C"])        # 'A, B, C'
-  "#".join(["A", "B", "C"])         # 'A#B#C'
-  ```
-  Upravene reseni:
-  ```python
-  upraveny_radek = f"{upraveny_typ},{','.join(dalsi_udaje)}"
-  vysledky.add(upraveny_radek)
-  ```
+<details>
+   <summary>👇 Nase reseni 👇</summary>
 
-  #### 💌 Zaverecny vystup
-  ```python
-  for vysledek in vysledky:
-      if "NEZNAMY TYP BYTU!" in vysledek:
-          continue
-      else:
-          print(f"{vysledek=}")
-  else:
-      print(f"PREVEDENO: {uspesne} UDAJU")
-  ```
-  **Pozor!** Nas zapis muzeme dale vylepsit.
+   #### 📂obesenec.py
+   ```python
+   import random
+
+   SLOVA = ["obesenec", "autobus", "klavesnice", "nedele"]
+   slovo = random.choice(SLOVA)
+   ```
+---
+</details>
+
+   #### 🕺 Vlastni modul
+   1. Spolecne si nahrajeme nas vlastni modul `figurka`
+   2. Pouzijeme slovnik `hangman` uvnitr souboru
+   3. Doplnime vypis v kazdem kole a pri prohre
+
+<details>
+   <summary>👇 Nase reseni 👇</summary>
+
+   #### 📂obesenec.py
+   ```python
+   import figurka
+
+
+   print(figurka.hangman[7 - zivoty])
+   ```
+---
+
+</details>
+
+   #### 📺 Modul os
+   1. Protoze je nase hra prilis upovidana, nahrajeme dalsi standartni modul,
+   ktery nam pomuze udrzet vystup mene upovidany
+   2. Aplikujeme funkci, pro strucny vystup ve vypisu a v zaveru
+
+<details>
+   <summary>👇 Nase reseni 👇</summary>
+
+   #### 📂obesenec.py
+   ```python
+   import os
+
+   os.system("clear")  # win: os.system("cls")
+   ```
+</details>
+
+---
+
+</details>
+
+<details>
+   <summary>👾 Knihovny tretich stran</summary>
+
+   #### ☝ K zapamatovani
+   Protoze je knihoven pro Python spousta, nektere je potreba doinstalovat rucne.
+
+<br />
+<p align="center">
+  <img alt="terminal-icon" width="80px" src="https://cubiclenate.files.wordpress.com/2018/04/terminal-icon.png?w=286&h=286" />
+</p>
+
+   #### 🆑 Pomoci prikazoveho radku
+   1. Vytvorime virtualni pracovni prostredi:
+   ```bash
+   python3 -m venv <jmeno_prostredi>
+   ```
+
+   2. Aktivujeme virtualni pracovni prostredi:
+   ```bash
+   source <jmeno_prostredi>/bin/activate
+   ```
+   **Pozor!** Po aktivaci dostaneme na zacatku dotazovaciho radku zavorku
+   se jmenem prostredi (pr. `(env)`)
+
+   3. Overime dostupnost spravce balicku `pip3 --version`
+
+   4. Pokud mame, instalujeme balicky (nahled [pypi.org](https://pypi.org/)):
+   ```bash
+   pip3 install <jmeno_balicku>         # instalace
+   pip3 uninstall <jmeno_balicku>       # odstraneni
+   pip3 --help                          # napoveda
+   ```
+
+   5. Vytvoreni souboru `requirements.txt` se zavislostmi:
+   ```bash
+   pip3 freeze > requirements.txt
+   ```
+
+   6. Pomoci zavilosti mohou ostatni uzivatele nainstalovat externi knihovny z 
+   naseho virtualniho prostredi:
+   ```bash
+   pip3 install -r requirements.txt
+   ```
+
+<br />
+<p align="center">
+  <img alt="pycharm-icon" width="80px" src="https://caktus-website-production-2015.s3.amazonaws.com/media/blog-images/logo.png" />
+</p>
+
+   #### 🐍 Pomoci PyCharm
+   1. Spustime Pycharm a otevreme projekt
+   2. `ctrl + alt + s` -> Settings
+   3. -> Project: <jmeno_projektu>
+   4. -> Project interpreter
+   5. ⚙ `Add...` Pridat prostredi/pouzit stavajici
+   6. ➕ Instalovat knihovny pomoci symbolu `+` dole pod nabidkou
+   7. `Terminal` dole na liste pro export zavislosti (`pip3 freeze > requirements.txt`)
 
 </details>
 
@@ -387,5 +351,5 @@
 
 ---
 
-➡ [pokracovat na sedmou lekci](https://github.com/Bralor/python-academy/tree/lekce07)
+➡ [pokracovat k sedme lekci]()
 
