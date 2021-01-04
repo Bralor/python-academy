@@ -18,11 +18,10 @@
   <summary>☝ Uzitecne odkazy</summary>
 
   #### 🗒 Dulezite odkaz
-  - [Instalator balicku, pip3](https://pypi.org/project/pip/)
-  - [\_\_init\_\_.py](https://pythontips.com/2013/07/28/what-is-__init__-py/)
-  - [Walrus operator, dokumentace](https://realpython.com/lessons/assignment-expressions/)
-  - [Python.org, hledani modulu](https://docs.python.org/3/tutorial/modules.html#the-module-search-path)
   - [Pycharm importing](https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html)
+  - [Instalator balicku, pip3](https://pypi.org/project/pip/)
+  - [Python.org, hledani modulu](https://docs.python.org/3/tutorial/modules.html#the-module-search-path)
+  - [Walrus operator, dokumentace](https://realpython.com/lessons/assignment-expressions/)
 
 </details>
 
